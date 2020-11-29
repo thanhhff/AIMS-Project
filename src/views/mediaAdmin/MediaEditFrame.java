@@ -103,7 +103,7 @@ public class MediaEditFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Sale");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5%", "10%", "20%" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0%", "5%", "10%", "20%" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
