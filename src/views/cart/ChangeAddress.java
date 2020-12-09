@@ -5,6 +5,11 @@
  */
 package views.cart;
 
+import db.ConnectSQL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JButton;
+
 /**
  *
  * @author thanhhff
@@ -14,10 +19,88 @@ public class ChangeAddress extends javax.swing.JPanel {
     /**
      * Creates new form ChangeAddress
      */
-    public ChangeAddress() {
-        initComponents();
-    }
+    ConnectSQL connectSQL = new ConnectSQL();
+    private boolean flag_province = false;
+    private boolean flag_district = false;
 
+    public ChangeAddress() {
+        
+        initComponents();
+        submitButton.setFocusPainted(false);
+        cancelButton.setFocusPainted(false);
+        setProvince();
+        setDistrict(provinceBox.getSelectedItem().toString());
+        setWard(districtBox.getSelectedItem().toString());
+       
+    }
+    public JButton getCancelButton(){
+        return this.cancelButton;
+    }
+    public String getNameUser(){
+        return nameText.getText();
+    }
+    public String getPhone(){
+        return phoneText.getText();
+    }
+    public String getProvince(){
+        return provinceBox.getSelectedItem().toString();
+    }
+    public String getDistrict(){
+        return districtBox.getSelectedItem().toString();
+    }
+    public String getWard(){
+        return wardBox.getSelectedItem().toString();
+    }
+    public JButton getSubmitButton(){
+        return this.submitButton;
+    }
+    private void setProvince() {
+        try {
+            flag_province = false;
+            ResultSet rs = connectSQL.sqlQuery("Select * from provinces");
+            while (rs.next()) {
+                String name = rs.getString("name");
+                provinceBox.addItem(name);
+            }
+            flag_province = true;
+        } catch (SQLException e) {
+        }
+
+    }
+    private void setDistrict(String province){
+        try {
+            flag_district = false;
+            ResultSet rs = connectSQL.sqlQuery("Select id from provinces where name like '" + province + "'");
+            String idProvince = "";
+            while (rs.next()) {
+                idProvince = rs.getString("id");
+            }
+            rs = connectSQL.sqlQuery("Select * from districts where province_id = " + idProvince );
+            districtBox.removeAllItems();
+            while (rs.next()) {
+                String name = rs.getString("name");
+                districtBox.addItem(name);
+            }
+            flag_district = true;
+        } catch (SQLException e) {
+        }
+    }
+    private void setWard(String district){
+        try {
+            ResultSet rs = connectSQL.sqlQuery("Select id from districts where name like '" + district + "'");
+            String idDistrict = "";
+            while (rs.next()) {
+                idDistrict = rs.getString("id");
+            }
+            rs = connectSQL.sqlQuery("Select * from wards where district_id = " + idDistrict );
+            wardBox.removeAllItems();
+            while (rs.next()) {
+                String name = rs.getString("name");
+                wardBox.addItem(name);
+            }
+        } catch (SQLException e) {
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,101 +110,163 @@ public class ChangeAddress extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        phoneText = new javax.swing.JTextField();
+        nameText = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        provinceBox = new javax.swing.JComboBox<>();
+        districtBox = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        wardBox = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(500, 450));
 
         jLabel1.setText("Name");
 
         jLabel2.setText("Phone");
 
-        jTextField1.setText("jTextField1");
+        phoneText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneTextActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("jTextField1");
+        jLabel3.setText("Province");
 
-        jLabel3.setText("City");
+        jLabel4.setText("Districts");
 
-        jTextField3.setText("jTextField1");
+        submitButton.setText("Submit");
 
-        jLabel4.setText("Address");
+        cancelButton.setText("Cancel");
 
-        jTextField4.setText("jTextField1");
+        provinceBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                provinceBoxActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Submit");
+        districtBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                districtBoxActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancel");
+        jLabel5.setText("Ward");
+
+        wardBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wardBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jLabel7.setText("Shipping Infomation New");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(25, 25, 25)))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(submitButton)
+                        .addGap(62, 62, 62)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(nameText, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(phoneText, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(provinceBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 297, Short.MAX_VALUE)
+                        .addComponent(districtBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(wardBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(provinceBox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(20, 20, 20)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(districtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(wardBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(56, 56, 56))
+                    .addComponent(submitButton)
+                    .addComponent(cancelButton))
+                .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void provinceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceBoxActionPerformed
+        if(flag_province){
+            setDistrict(provinceBox.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_provinceBoxActionPerformed
+
+    private void phoneTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneTextActionPerformed
+
+    private void wardBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wardBoxActionPerformed
+       
+    }//GEN-LAST:event_wardBoxActionPerformed
+
+    private void districtBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtBoxActionPerformed
+        if(flag_district){
+            setWard(districtBox.getSelectedItem().toString());
+        }
+        
+    }//GEN-LAST:event_districtBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JComboBox<String> districtBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JTextField nameText;
+    private javax.swing.JTextField phoneText;
+    private javax.swing.JComboBox<String> provinceBox;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JComboBox<String> wardBox;
     // End of variables declaration//GEN-END:variables
 }
