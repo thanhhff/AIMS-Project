@@ -6,7 +6,7 @@
 package views.cart;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -19,6 +19,8 @@ public class DeliveryPanel extends javax.swing.JPanel {
     /**
      * Creates new form JPanel
      */
+	public static final int HEIGHT = 351;
+	public static final int WIDTH = 325;
      private String nameNew ;
      private String phoneNew ;
      private String provinceNew;
@@ -133,6 +135,29 @@ public class DeliveryPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    public String getNameNew() {
+        return nameNew;
+    }
+
+    public String getPhoneNew() {
+        return phoneNew;
+    }
+
+    public String getProvinceNew() {
+        return provinceNew;
+    }
+
+    public String getDistrictNew() {
+        return districtNew;
+    }
+
+    public String getWardNew() {
+        return wardNew;
+    }
+    public String getNoteText(){
+        return this.noteText.getText();
+    }
 
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
         JDialog jDialog = new JDialog();

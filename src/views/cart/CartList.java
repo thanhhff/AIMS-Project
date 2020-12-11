@@ -25,8 +25,11 @@ public class CartList extends JPanel{
     private List<JButton> changeMedia;
     private int deleteTotalPrice;
     private int totalAll = 0;
+    public static final int MAX_WIDTH = 650;
+    public static final int MAX_HEIGHT = 600;
+    private int mediaCount = 0;
     public CartList() {        
-        setSize(650, 600);
+        
         setLayout(new GridLayout(1,0));
         cartPanel = new JPanel(new GridLayout(0,1));
         add(new JScrollPane(cartPanel));
@@ -41,10 +44,12 @@ public class CartList extends JPanel{
                 if(select == JOptionPane.YES_OPTION){
                     this.deleteObj(cartItemPanel);
                     deleteTotalPrice = cartItemPanel.getTotalPrice();
+                    mediaCount -= 1;
                 }
             });
             totalAll += cartItemPanel.getTotalPrice();
-        }        
+            mediaCount += 1;
+        }  
     }
     public void addObj(JPanel object){
         cartPanel.add(object);
@@ -57,5 +62,8 @@ public class CartList extends JPanel{
     }
     public int getTotalAll(){
         return this.totalAll;
+    }
+    public int getMediaCount() {
+    	return this.mediaCount;
     }
 }

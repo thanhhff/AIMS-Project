@@ -25,6 +25,8 @@ public class CartItemPanel extends javax.swing.JPanel {
     /**
      * Creates new form CartItemPanel
      */
+	public static final int WIDTH = 630;
+	public static final int HEIGHT = 190;
     public CartItemPanel() {
 
         initComponents();

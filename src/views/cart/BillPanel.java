@@ -16,6 +16,8 @@ public class BillPanel extends javax.swing.JPanel {
     /**
      * Creates new form BillPanel
      */
+	public static final int WIDTH = 325;
+	public static final int HEIGHT  = 151;
     public BillPanel() {
         initComponents();
         setSize(325, 151);
