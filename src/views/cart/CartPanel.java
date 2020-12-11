@@ -44,12 +44,12 @@ public class CartPanel extends JPanel {
             });
         });
 
-        deliveryPanel.setBounds(cartList.getWidth() + 30, 12, deliveryPanel.getWidth(), deliveryPanel.getHeight());
-        billPanel.setBounds(cartList.getWidth() + 30, deliveryPanel.getHeight() + 30, billPanel.getWidth(), billPanel.getHeight());
+        deliveryPanel.setBounds(CartList.MAX_WIDTH + 30, 12, DeliveryPanel.WIDTH, DeliveryPanel.HEIGHT);
+        billPanel.setBounds(CartList.MAX_WIDTH + 30 , DeliveryPanel.WIDTH + 30 + 30, BillPanel.WIDTH, BillPanel.HEIGHT);
 
         checkoutButton.setText("Checkout");
         checkoutButton.setFocusPainted(false);
-        checkoutButton.setBounds(cartList.getWidth() + 30, 12 + deliveryPanel.getHeight() + 30 + 30 + billPanel.getHeight(), deliveryPanel.getWidth(), 35);
+        checkoutButton.setBounds(CartList.MAX_WIDTH  + 30, 12 + DeliveryPanel.HEIGHT + 30 + 30 + BillPanel.HEIGHT, DeliveryPanel.WIDTH, 35);
 
         checkoutButton.addActionListener((ActionEvent e) -> {         
             if (deliveryPanel.getWardNew() != null) {
