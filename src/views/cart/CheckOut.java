@@ -7,7 +7,14 @@ package views.cart;
 
 
 import aims.FormatNumber;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -36,9 +43,74 @@ public class CheckOut extends javax.swing.JPanel {
         totalBillLabel.setText(FormatNumber.formatString("" + totalBill) + " VND");
         shippingFeeLabel.setText(FormatNumber.formatString("" + shippingFee) + " VND");
         billAll.setText(FormatNumber.formatString("" + (shippingFee + totalBill)) + " VND");
+        
+        addPlaceholder(cardNumberText, "Enter card number");
+        addPlaceholder(dateText, "MM/YY");
+        addPlaceholder(cvvText, "***");
+        
+        
     }
     public JButton getcancelButton(){
         return this.cancelButton;
+    }
+    public JButton getConfirmButton(){
+        return this.confirmButton;
+    }
+    public String getCardNumber(){
+        return cardNumberText.getText().trim();
+    }
+    public String getdateNumber(){
+        return dateText.getText().trim();
+    }
+    public String getCVV(){
+        return String.valueOf(cvvText.getPassword());
+    }
+    public boolean checkCardNumber(){
+        String cardNumber = getCardNumber();
+        if(cardNumber.length() != 16)
+            return false;
+        return FormatNumber.isNumeric(cardNumber);
+    }
+    public boolean checkDateNumber(){
+        String date = getdateNumber();
+        if (date.matches("[0-9]{2}/[0-9]{2}")){
+            LocalDate currentDate = LocalDate.now();
+            int month = Integer.parseInt(date.split("/")[0]);
+            int year = Integer.parseInt(date.split("/")[1]);
+            int current_year = currentDate.getYear() % 100;
+            int current_month = currentDate.getMonthValue();
+            if(month >= 1 && month <= 12){   
+                if(year > current_year){
+                    return true;
+                }else if(year == current_year){
+                    if(month > current_month)
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean checkCVV(){
+        return getCVV().matches("[0-9]{3}");
+    }
+    private void addPlaceholder(JTextField obj, String string){
+        obj.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (obj.getText().equals(string)) {
+                    obj.setText("");
+                    obj.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (obj.getText().isEmpty()) {
+                    obj.setForeground(Color.GRAY);
+                    obj.setText(string);
+                }
+            }
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +139,12 @@ public class CheckOut extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cardNumberText = new javax.swing.JTextField();
+        cvvText = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        dateText = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -189,6 +267,28 @@ public class CheckOut extends javax.swing.JPanel {
 
         jLabel4.setText("Credit Card ");
 
+        cardNumberText.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+
+        cvvText.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        cvvText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvvTextActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Card Number : ");
+
+        jLabel6.setText("Date : ");
+
+        jLabel7.setText("CVV:");
+
+        dateText.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        dateText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateTextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,8 +297,23 @@ public class CheckOut extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(351, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel6)))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cardNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(dateText, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(cvvText, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,10 +322,26 @@ public class CheckOut extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardNumberText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateText)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cvvText, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel6)))
+                .addContainerGap())
         );
 
         confirmButton.setText("Comfirm");
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
 
@@ -248,7 +379,7 @@ public class CheckOut extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,12 +395,27 @@ public class CheckOut extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void dateTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateTextActionPerformed
+
+    private void cvvTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cvvTextActionPerformed
+
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+       
+    }//GEN-LAST:event_confirmButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel address;
     private javax.swing.JLabel billAll;
     private javax.swing.JButton cancelButton;
+    private javax.swing.JTextField cardNumberText;
     private javax.swing.JButton confirmButton;
+    private javax.swing.JPasswordField cvvText;
+    private javax.swing.JTextField dateText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
@@ -278,6 +424,9 @@ public class CheckOut extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;

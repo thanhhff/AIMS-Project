@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import aims.FormatNumber;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -71,7 +72,14 @@ public class CartPanel extends JPanel {
                 checkOut.getcancelButton().addActionListener((ActionEvent e1) -> {
                     jDialog.dispose();
                 });
-
+                checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
+                    if(checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()){
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number has 16 number.\n Date: MM/YY.\n CVV has 3 number.");
+                    }
+                });
+                
                 jDialog.setModal(true);
                 jDialog.setVisible(true);
             } else {
