@@ -5,13 +5,14 @@
  */
 package views.cart;
 
-import aims.FormatNumber;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import aims.FormatNumber;
 
 /**
  *
@@ -35,8 +36,11 @@ public class CartPanel extends JPanel {
         totalBill = cartList.getTotalAll();
 
         changeBill();
-
         cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
+        if(cartList.getMediaCount() < 3) {
+        	cartList.setBounds(12, 12, CartList.MAX_WIDTH, (CartItemPanel.HEIGHT + 20 )* cartList.getMediaCount());
+        }
+        
         cartList.getchangeMedia().forEach((button) -> {
             button.addActionListener((ActionEvent e) -> {
                 totalBill += Integer.parseInt(button.getName());

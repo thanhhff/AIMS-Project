@@ -23,6 +23,8 @@ public class FormatNumber {
         return decimalFormat.format(Integer.parseInt(string)) + "";
     }
     public static void main(String[] args) {
-        System.out.println(Integer.parseInt("-2000"));
+        String a = "Hieu - 02343";
+        
+        System.out.println(a.split("-")[1]);
     }
 }

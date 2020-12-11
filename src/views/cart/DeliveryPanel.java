@@ -6,6 +6,7 @@
 package views.cart;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -137,23 +138,26 @@ public class DeliveryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     public String getNameNew() {
-        return nameNew;
+        return name_phone.getText().split("-")[0];
     }
 
     public String getPhoneNew() {
-        return phoneNew;
+        return name_phone.getText().split("-")[1];
     }
 
     public String getProvinceNew() {
-        return provinceNew;
+        return province.getText();
     }
 
     public String getDistrictNew() {
-        return districtNew;
+        return district.getText();
     }
 
     public String getWardNew() {
-        return wardNew;
+        if(ward.getText().equals("")){
+            return null;
+        }
+        return ward.getText();
     }
     public String getNoteText(){
         return this.noteText.getText();
@@ -161,35 +165,25 @@ public class DeliveryPanel extends javax.swing.JPanel {
 
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
         JDialog jDialog = new JDialog();
-        
-        ChangeAddress changeAddress = new ChangeAddress();
-        jDialog.setSize(500, 450);
-        changeAddress.setBounds(0, 0, 500, 450);
+        ShippingPanel shippingPanel = new ShippingPanel();
+        jDialog.setSize(ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
+        shippingPanel.setBounds(0, 0, ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
         jDialog.setUndecorated(true);
-        jDialog.add(changeAddress);
+        jDialog.add(shippingPanel);
         jDialog.setLocationRelativeTo(null);
-
+        
+        shippingPanel.getSubmit().addActionListener((ActionEvent e) -> {
+            name_phone.setText(shippingPanel.getNamePhone());
+            province.setText(shippingPanel.getProvince());
+            district.setText(shippingPanel.getDistrict());
+            ward.setText(shippingPanel.getWard());  
+            jDialog.dispose();
+        });
+        shippingPanel.getCancel().addActionListener((ActionEvent e) -> {
+            jDialog.dispose();
+        });
+        
         jDialog.setModal(true);
-
-        changeAddress.getCancelButton().addActionListener((ActionEvent e) -> {
-            jDialog.setVisible(false);
-        });
-        changeAddress.getSubmitButton().addActionListener((ActionEvent e) -> {
-            nameNew = changeAddress.getNameUser();
-            phoneNew = changeAddress.getPhone();
-            provinceNew = changeAddress.getProvince();
-            districtNew = changeAddress.getDistrict();
-            wardNew = changeAddress.getWard();
-            if (nameNew.equals("") || phoneNew.equals("")) {
-                JOptionPane.showMessageDialog(null, "Name and Phone is not blank");
-            } else {
-                name_phone.setText(nameNew + " - " + phoneNew);
-                province.setText(provinceNew);
-                district.setText(districtNew);
-                ward.setText(wardNew);
-                jDialog.setVisible(false);
-            }
-        });
 
         jDialog.setVisible(true);
     }//GEN-LAST:event_changeButtonActionPerformed

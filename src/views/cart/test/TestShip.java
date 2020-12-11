@@ -7,19 +7,18 @@ package views.cart.test;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import views.cart.CartPanel;
-
-
+import views.cart.ShippingList;
+import views.cart.ShippingPanel;
 
 /**
  *
  * @author hsnt
  */
-public class Test {
+public class TestShip {
     JFrame jFrame = new JFrame();
 
-    public Test(JPanel panel) {
+    public TestShip(JPanel panel) {
         
         jFrame.setSize(1200, 700);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +32,7 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        Test test = new Test(new CartPanel());
+        TestShip test = new TestShip(new ShippingPanel());
         
     }
 }
