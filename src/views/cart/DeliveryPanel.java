@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.Cart.ShippingInfo;
+import model.User.User;
 
 /**
  *
@@ -20,16 +22,14 @@ public class DeliveryPanel extends javax.swing.JPanel {
     /**
      * Creates new form JPanel
      */
-	public static final int HEIGHT = 351;
-	public static final int WIDTH = 325;
-     private String nameNew ;
-     private String phoneNew ;
-     private String provinceNew;
-     private String districtNew;
-     private String wardNew;
-    public DeliveryPanel() {
+    public static final int HEIGHT = 351;
+    public static final int WIDTH = 325;
+    private User user;
+    private ShippingInfo selected =  null;
+    public DeliveryPanel(User user) {
         initComponents();
         setSize(325,351);
+        this.user = user;
     }
 
     /**
@@ -137,35 +137,17 @@ public class DeliveryPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    public String getNameNew() {
-        return name_phone.getText().split("-")[0];
-    }
-
-    public String getPhoneNew() {
-        return name_phone.getText().split("-")[1];
-    }
-
-    public String getProvinceNew() {
-        return province.getText();
-    }
-
-    public String getDistrictNew() {
-        return district.getText();
-    }
-
-    public String getWardNew() {
-        if(ward.getText().equals("")){
-            return null;
-        }
-        return ward.getText();
-    }
     public String getNoteText(){
         return this.noteText.getText();
     }
 
+    public ShippingInfo getSelected() {
+        return selected;
+    }
+    
     private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
         JDialog jDialog = new JDialog();
-        ShippingPanel shippingPanel = new ShippingPanel();
+        ShippingPanel shippingPanel = new ShippingPanel(user);
         jDialog.setSize(ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
         shippingPanel.setBounds(0, 0, ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
         jDialog.setUndecorated(true);
@@ -173,10 +155,12 @@ public class DeliveryPanel extends javax.swing.JPanel {
         jDialog.setLocationRelativeTo(null);
         
         shippingPanel.getSubmit().addActionListener((ActionEvent e) -> {
-            name_phone.setText(shippingPanel.getNamePhone());
-            province.setText(shippingPanel.getProvince());
-            district.setText(shippingPanel.getDistrict());
-            ward.setText(shippingPanel.getWard());  
+            selected = shippingPanel.selectedInfo();
+            name_phone.setText(selected.getName() + " - " + selected.getPhone());
+            ward.setText(selected.getWardObject().getWard());
+            district.setText(selected.getWardObject().getDistrict());
+            province.setText(selected.getWardObject().getProvince());
+            noteText.setText(selected.getDelivery_instruction());
             jDialog.dispose();
         });
         shippingPanel.getCancel().addActionListener((ActionEvent e) -> {

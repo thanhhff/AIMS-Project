@@ -13,6 +13,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import model.Cart.ShippingInfo;
 
 /**
  *
@@ -20,42 +21,31 @@ import javax.swing.JScrollPane;
  */
 public class ShippingList extends JPanel{
 
-    public static final int WIDTH = ShippingInfo.WIDTH + 40;
+    public static final int WIDTH = ShippingInfoPanel.WIDTH + 40;
     private JPanel listShipInfo = new JPanel(new GridLayout(0,1));
     private ButtonGroup buttonGroup = new ButtonGroup();
-    private List<ShippingInfo> listInfo = new ArrayList<ShippingInfo>();
-    public ShippingList() {
+    private List<ShippingInfoPanel> listInfo = new ArrayList<ShippingInfoPanel>();
+    public ShippingList(int [] shipping_info_list) {
         setLayout(new GridLayout(1,0));
         add(new JScrollPane(listShipInfo));
-        for(int i = 0 ; i < 2 ; i++){
-            ShippingInfo shippingInfo = new ShippingInfo(
-                    "Hoang Trung Hieu","0352587779","Thành phố Hà Nội","Quận Thanh Xuân","Phường Khương Trung");
+        int i = 0;
+        for(int shipping_id : shipping_info_list){        
+            ShippingInfoPanel shippingInfo = new ShippingInfoPanel(shipping_id);
             listShipInfo.add(shippingInfo);
             buttonGroup.add(shippingInfo.getRadioButton());
             if (i == 0 ){
                 shippingInfo.getRadioButton().setSelected(true);
+                i = i + 1;
             }
-            listInfo.add(shippingInfo);
-        }  
+            listInfo.add(shippingInfo);   
+        }
     }
-    private ShippingInfo selectedInfo(){
-        for(ShippingInfo shippingInfo: listInfo){
+    public ShippingInfo selectedInfo(){
+        for(ShippingInfoPanel shippingInfo: listInfo){
             if(shippingInfo.getRadioButton().isSelected()){
-                return shippingInfo;
+                return shippingInfo.getShippingInfo();
             }
         }
         return null;
-    }
-    public String getNamePhone(){
-        return selectedInfo().getNamePhone();
-    }
-    public String getProvince(){
-        return selectedInfo().getProvince();
-    }
-    public String getDistrict(){
-        return selectedInfo().getDistrict();
-    }
-    public String getWard(){
-        return selectedInfo().getWard();
     }
 }

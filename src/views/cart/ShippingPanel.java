@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import model.Cart.ShippingInfo;
+import model.User.User;
 
 /**
  *
@@ -22,12 +24,14 @@ public class ShippingPanel extends javax.swing.JPanel {
     public static final int WIDTH = 490;
     public static final int HEIGHT = 500;
     private JPanel listShipInfo = new JPanel(new GridLayout(0,1));
-    private ShippingList shippingList = new ShippingList();
+    private ShippingList shippingList ;
     private ButtonGroup buttonGroup = new ButtonGroup();
-    public ShippingPanel() {
+    public ShippingPanel(User user) {
         initComponents();
-        shippingList.setBounds(12, 64, 462, 367);
         
+        int[] shipping_list_id = user.getShippingList(); // Check NULL
+        shippingList = new ShippingList(shipping_list_id);
+        shippingList.setBounds(12, 64, 462, 367);
         add(shippingList);
         
         setSize(WIDTH, HEIGHT);
@@ -38,17 +42,8 @@ public class ShippingPanel extends javax.swing.JPanel {
     public JButton getCancel(){
         return cancelButton;
     }
-    public String getNamePhone(){
-        return shippingList.getNamePhone();
-    }
-    public String getProvince(){
-        return shippingList.getProvince();
-    }
-    public String getDistrict(){
-        return shippingList.getDistrict();
-    }
-    public String getWard(){
-        return shippingList.getWard();
+    public ShippingInfo selectedInfo(){
+        return shippingList.selectedInfo();
     }
     /**
      * This method is called from within the constructor to initialize the form.
