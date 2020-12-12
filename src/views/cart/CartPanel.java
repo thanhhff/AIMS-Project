@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 
 import aims.FormatNumber;
 import java.awt.event.ActionListener;
+import model.Cart.ShippingInfo;
+import model.User.User;
 
 /**
  *
@@ -26,12 +28,14 @@ public class CartPanel extends JPanel {
     private BillPanel billPanel;
     private JButton checkoutButton;
     private int totalBill;
+    private User user;
 
-    public CartPanel() {
+    public CartPanel(User user) {
+        this.user = user;
         setLayout(null);
         setSize(1000, 600);
         cartList = new CartList();
-        deliveryPanel = new DeliveryPanel();
+        deliveryPanel = new DeliveryPanel(user);
         billPanel = new BillPanel();
         checkoutButton = new JButton();
         totalBill = cartList.getTotalAll();
@@ -56,13 +60,12 @@ public class CartPanel extends JPanel {
         checkoutButton.setFocusPainted(false);
         checkoutButton.setBounds(CartList.MAX_WIDTH  + 30, 12 + DeliveryPanel.HEIGHT + 30 + 30 + BillPanel.HEIGHT, DeliveryPanel.WIDTH, 35);
 
-        checkoutButton.addActionListener((ActionEvent e) -> {         
-            if (deliveryPanel.getWardNew() != null) {
+        checkoutButton.addActionListener((ActionEvent e) -> { 
+            ShippingInfo shippingInfo = deliveryPanel.getSelected();
+            if (shippingInfo != null) {
 
                 JDialog jDialog = new JDialog();
-                CheckOut checkOut = new CheckOut(deliveryPanel.getNameNew(), deliveryPanel.getPhoneNew(),
-                        deliveryPanel.getProvinceNew(), deliveryPanel.getDistrictNew(), deliveryPanel.getWardNew(),
-                        deliveryPanel.getNoteText(), totalBill, 100000);
+                CheckOut checkOut = new CheckOut(shippingInfo,deliveryPanel.getNoteText(), totalBill, 100000);
                 jDialog.setSize(650, 700);
                 checkOut.setBounds(0, 0, 650, 700);
                 jDialog.setUndecorated(true);

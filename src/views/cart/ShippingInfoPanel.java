@@ -6,24 +6,33 @@
 package views.cart;
 
 import javax.swing.JRadioButton;
+import model.Cart.ShippingInfo;
 
 /**
  *
  * @author hsnt
  */
-public class ShippingInfo extends javax.swing.JPanel {
+public class ShippingInfoPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Shipping
      */
     public static final int WIDTH = 400;
     public static final int HEIGHT = 80;
-    public ShippingInfo(String name, String phone, String provice, String district, String ward) {
+    private ShippingInfo shippingInfo;
+    public ShippingInfoPanel(int shipping_info_id) {
         initComponents();
-        namePhoneLabel.setText(name + " - " + phone);
-        addressLabel.setText(ward + "-" + district + "-" + provice);
+        shippingInfo = new ShippingInfo(shipping_info_id);
+        namePhoneLabel.setText(shippingInfo.getName() + " - " + shippingInfo.getPhone());
+        addressLabel.setText(shippingInfo.getWardObject().getWard() + "-" + shippingInfo.getWardObject().getDistrict() + "-" + shippingInfo.getWardObject().getProvince());
         setSize(WIDTH,500);
-    }   
+    } 
+
+    public ShippingInfo getShippingInfo() {
+        return shippingInfo;
+    }
+
+    
     public String getNamePhone(){
         return namePhoneLabel.getText();
     }

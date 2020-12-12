@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import model.Cart.ShippingInfo;
 
 /**
  *
@@ -32,12 +33,12 @@ public class CheckOut extends javax.swing.JPanel {
      * @param note
      */
 
-    public CheckOut(String name, String phone, String province, String district, String ward, String note,int totalBill, int shippingFee) {
+    public CheckOut(ShippingInfo shippingInfo, String note,int totalBill, int shippingFee) {
         initComponents();
         confirmButton.setFocusPainted(false);
         cancelButton.setFocusPainted(false);
-        name_phone.setText("Name: " + name + " - " + phone);
-        address.setText("Address: " + ward + "-" + district + "-" + province);
+        name_phone.setText("Name: " + shippingInfo.getName() + " - " + shippingInfo.getPhone());
+        address.setText("Address: " + shippingInfo.getWardObject().getWard() + "-" + shippingInfo.getWardObject().getDistrict() + "-" + shippingInfo.getWardObject().getProvince());
         noteText.setText("Note: " + note);
         provisional.setText(FormatNumber.formatString(""+totalBill) + " VND");
         totalBillLabel.setText(FormatNumber.formatString("" + totalBill) + " VND");
