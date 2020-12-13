@@ -34,7 +34,7 @@ public class CartPanel extends JPanel {
         this.user = user;
         setLayout(null);
         setSize(1000, 600);
-        cartList = new CartList();
+        cartList = new CartList(user.getCartItems());
         deliveryPanel = new DeliveryPanel(user);
         billPanel = new BillPanel();
         checkoutButton = new JButton();
@@ -65,7 +65,11 @@ public class CartPanel extends JPanel {
             if (shippingInfo != null) {
 
                 JDialog jDialog = new JDialog();
-                CheckOut checkOut = new CheckOut(shippingInfo,deliveryPanel.getNoteText(), totalBill, 100000);
+                int ship_fee = 10000;
+                if(totalBill > 100000){
+                    ship_fee = 0;
+                }
+                CheckOut checkOut = new CheckOut(shippingInfo,deliveryPanel.getNoteText(), totalBill, ship_fee);
                 jDialog.setSize(650, 700);
                 checkOut.setBounds(0, 0, 650, 700);
                 jDialog.setUndecorated(true);

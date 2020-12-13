@@ -14,6 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import model.Cart.CartItem;
 
 /**
  *
@@ -26,16 +27,16 @@ public class CartItemPanel extends javax.swing.JPanel {
      */
 	public static final int WIDTH = 630;
 	public static final int HEIGHT = 190;
-    public CartItemPanel() {
+    public CartItemPanel(CartItem cartItem) {
 
         initComponents();
-        quantityLabel.setName("3");
+        quantityLabel.setName("" + cartItem.getQuantity());
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
         
-        totalPrice.setName("300000");
+        totalPrice.setName("" + (cartItem.getPrice() * cartItem.getQuantity()));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
         
-        priceLabel.setName("100000");
+        priceLabel.setName("" + cartItem.getPrice());
         priceLabel.setText(FormatNumber.formatString(priceLabel.getName()));
         
         imageLabel.setBounds(12, 12, 143, 164);

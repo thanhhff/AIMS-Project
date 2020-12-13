@@ -53,7 +53,6 @@ public class FormatNumber {
     }
     public static void main(String[] args) {
 
-        String date = "01/21";
-        System.out.println(checkDateNumber(date));
+       
     }
 }
