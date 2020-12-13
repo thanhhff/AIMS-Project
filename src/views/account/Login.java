@@ -5,6 +5,7 @@
  */
 package views.account;
 
+import static aims.AIMS.MediaList;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -12,11 +13,15 @@ import controller.User.AccountController;
 import model.User.Account;
 
 import java.awt.*;
+import views.MediaList.mediaList;
+
 
 /**
  * @author hsnt
  */
 public class Login extends javax.swing.JFrame {
+  
+    public static mediaList MediaList;
     AccountController accController = new AccountController();
     /**
      * Creates new form Lo
@@ -184,7 +189,10 @@ public class Login extends javax.swing.JFrame {
             System.out.println(acc.getUsername() + " " + acc.getPassword());
             if (check == true)
             {
-                JOptionPane.showMessageDialog(null, "Đăng nhập thành công!", "Dang nhap thanh cong", JOptionPane.INFORMATION_MESSAGE);
+                
+                MediaList = new mediaList();
+                MediaList.setVisible(true);
+               
             }
             else
             {
