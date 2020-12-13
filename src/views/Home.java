@@ -5,23 +5,20 @@
  */
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JFrame;
 import views.MediaList.mediaList;
 
 /**
  *
  * @author thanhhff
  */
-public class Home extends javax.swing.JFrame {
+public final class Home extends javax.swing.JFrame {
 
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        mediaList media = new mediaList();
         fill();
         System.out.println("Hello");
     }
