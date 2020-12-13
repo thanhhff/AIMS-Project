@@ -9,6 +9,9 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JButton;
+import model.Cart.ShippingInfo;
+import model.Cart.Ward;
+import model.User.User;
 
 /**
  *
@@ -19,37 +22,35 @@ public class ChangeAddress extends javax.swing.JPanel {
     /**
      * Creates new form ChangeAddress
      */
-    ConnectSQL connectSQL = new ConnectSQL();
     private boolean flag_province = false;
     private boolean flag_district = false;
-
-    public ChangeAddress() {
-        
+    private User user;
+    public static final int WIDTH = 500;
+    public static final int HEIGHT = 450;
+    public ChangeAddress(User user) {
+        this.user = user;
         initComponents();
         submitButton.setFocusPainted(false);
         cancelButton.setFocusPainted(false);
         setProvince();
         setDistrict(provinceBox.getSelectedItem().toString());
-        setWard(districtBox.getSelectedItem().toString());
-       
+        setWard(districtBox.getSelectedItem().toString());       
+    }
+    public String getNameNew(){
+        return nameText.getText();
+    }
+    public String getPhoneNew(){
+        return phoneText.getText();
     }
     public JButton getCancelButton(){
         return this.cancelButton;
     }
-    public String getNameUser(){
-        return nameText.getText();
-    }
-    public String getPhone(){
-        return phoneText.getText();
-    }
-    public String getProvince(){
-        return provinceBox.getSelectedItem().toString();
-    }
-    public String getDistrict(){
-        return districtBox.getSelectedItem().toString();
-    }
-    public String getWard(){
-        return wardBox.getSelectedItem().toString();
+    public ShippingInfo getShippingInfo(){
+        String name = getNameNew();
+        String phone = getPhoneNew();
+        Ward ward = Ward.getWardbyName(wardBox.getSelectedItem().toString());
+        ShippingInfo shippingInfo = new ShippingInfo(name, phone, user.getUser_id() , ward);
+        return shippingInfo;
     }
     public JButton getSubmitButton(){
         return this.submitButton;
@@ -57,9 +58,9 @@ public class ChangeAddress extends javax.swing.JPanel {
     private void setProvince() {
         try {
             flag_province = false;
-            ResultSet rs = connectSQL.sqlQuery("Select * from provinces");
+            ResultSet rs = ConnectSQL.sqlQuery("Select * from Provinces");
             while (rs.next()) {
-                String name = rs.getString("name");
+                String name = rs.getString("province_name");
                 provinceBox.addItem(name);
             }
             flag_province = true;
@@ -70,15 +71,15 @@ public class ChangeAddress extends javax.swing.JPanel {
     private void setDistrict(String province){
         try {
             flag_district = false;
-            ResultSet rs = connectSQL.sqlQuery("Select id from provinces where name like '" + province + "'");
+            ResultSet rs = ConnectSQL.sqlQuery("Select province_id from Provinces where province_name like '" + province + "'");
             String idProvince = "";
             while (rs.next()) {
-                idProvince = rs.getString("id");
+                idProvince = rs.getString("province_id");
             }
-            rs = connectSQL.sqlQuery("Select * from districts where province_id = " + idProvince );
+            rs = ConnectSQL.sqlQuery("Select * from Districts where province_id = " + idProvince );
             districtBox.removeAllItems();
             while (rs.next()) {
-                String name = rs.getString("name");
+                String name = rs.getString("district_name");
                 districtBox.addItem(name);
             }
             flag_district = true;
@@ -87,15 +88,15 @@ public class ChangeAddress extends javax.swing.JPanel {
     }
     private void setWard(String district){
         try {
-            ResultSet rs = connectSQL.sqlQuery("Select id from districts where name like '" + district + "'");
+            ResultSet rs = ConnectSQL.sqlQuery("Select district_id from Districts where district_name like '" + district + "'");
             String idDistrict = "";
             while (rs.next()) {
-                idDistrict = rs.getString("id");
+                idDistrict = rs.getString("district_id");
             }
-            rs = connectSQL.sqlQuery("Select * from wards where district_id = " + idDistrict );
+            rs = ConnectSQL.sqlQuery("Select * from Wards where District_id = " + idDistrict );
             wardBox.removeAllItems();
             while (rs.next()) {
-                String name = rs.getString("name");
+                String name = rs.getString("ward_name");
                 wardBox.addItem(name);
             }
         } catch (SQLException e) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 12, 2020 lúc 11:26 AM
+-- Thời gian đã tạo: Th12 13, 2020 lúc 11:55 PM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -73,6 +73,14 @@ CREATE TABLE `CartItems` (
   `quantity` int NOT NULL,
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `CartItems`
+--
+
+INSERT INTO `CartItems` (`media_id`, `price`, `quantity`, `user_id`) VALUES
+(1, 17000, 7, 1),
+(2, 17000, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -1102,10 +1110,19 @@ CREATE TABLE `ShippingInfos` (
   `shipping_info_id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `delivery_instruction` varchar(45) NOT NULL,
+  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
-  `address_id` int NOT NULL
+  `ward_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ShippingInfos`
+--
+
+INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_instruction`, `user_id`, `ward_id`) VALUES
+(3, 'Hoàng Trung Hiếu ', '0352587779', 'Giao hàng nhanh', 3, 1),
+(4, 'Hoàng Trung Hiếu ', '0123456789', 'Giao hàng nhanh', 3, 1),
+(6, 'asd', 'asd', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1141,6 +1158,14 @@ CREATE TABLE `Users` (
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `Users`
+--
+
+INSERT INTO `Users` (`user_id`, `email`, `password`, `is_admin?`) VALUES
+(1, 'hieu.jno1@gmail.com', '123456', 1),
+(3, 'hieu@gmail.com', '123456', 1);
 
 -- --------------------------------------------------------
 
@@ -12481,7 +12506,7 @@ ALTER TABLE `Sales`
 ALTER TABLE `ShippingInfos`
   ADD PRIMARY KEY (`shipping_info_id`,`user_id`),
   ADD KEY `fk_ShippingInfos_Users1_idx` (`user_id`),
-  ADD KEY `fk_ShippingInfos_Addresses1_idx` (`address_id`);
+  ADD KEY `FK_shipping` (`ward_id`);
 
 --
 -- Chỉ mục cho bảng `TrackLists`
@@ -12525,7 +12550,7 @@ ALTER TABLE `Actions`
 -- AUTO_INCREMENT cho bảng `Addresses`
 --
 ALTER TABLE `Addresses`
-  MODIFY `address_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `Categories`
@@ -12579,16 +12604,19 @@ ALTER TABLE `Sales`
 -- AUTO_INCREMENT cho bảng `ShippingInfos`
 --
 ALTER TABLE `ShippingInfos`
-  MODIFY `shipping_info_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `shipping_info_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `Tracks`
 --
 ALTER TABLE `Tracks`
   MODIFY `track_id` int NOT NULL AUTO_INCREMENT;
-  
+
+--
+-- AUTO_INCREMENT cho bảng `Users`
+--
 ALTER TABLE `Users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -12687,7 +12715,7 @@ ALTER TABLE `PhysicalGoods`
 -- Các ràng buộc cho bảng `ShippingInfos`
 --
 ALTER TABLE `ShippingInfos`
-  ADD CONSTRAINT `fk_ShippingInfos_Addresses1` FOREIGN KEY (`address_id`) REFERENCES `Addresses` (`address_id`),
+  ADD CONSTRAINT `FK_shipping` FOREIGN KEY (`ward_id`) REFERENCES `Wards` (`ward_id`),
   ADD CONSTRAINT `fk_ShippingInfos_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
 
 --

@@ -27,16 +27,21 @@ public class CartItemPanel extends javax.swing.JPanel {
      */
 	public static final int WIDTH = 630;
 	public static final int HEIGHT = 190;
+        private CartItem cartItem;
     public CartItemPanel(CartItem cartItem) {
 
         initComponents();
-        quantityLabel.setName("" + cartItem.getQuantity());
+        this.cartItem = cartItem;
+        
+        mediaNameLabel.setText(this.cartItem.getMediaName());
+        
+        quantityLabel.setName("" + this.cartItem.getQuantity());
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
         
-        totalPrice.setName("" + (cartItem.getPrice() * cartItem.getQuantity()));
+        totalPrice.setName("" + (this.cartItem.getPrice() * this.cartItem.getQuantity()));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
         
-        priceLabel.setName("" + cartItem.getPrice());
+        priceLabel.setName("" + this.cartItem.getPrice());
         priceLabel.setText(FormatNumber.formatString(priceLabel.getName()));
         
         imageLabel.setBounds(12, 12, 143, 164);
@@ -91,7 +96,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(630, 190));
         setPreferredSize(new java.awt.Dimension(630, 190));
 
-        mediaNameLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        mediaNameLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         mediaNameLabel.setText("Conan");
 
         imageLabel.setMaximumSize(new java.awt.Dimension(143, 164));
@@ -214,6 +219,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
         totalPrice.setName("" + (price*quantity));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
+        this.cartItem.update(this.cartItem.getQuantity() + 1);
         
     }//GEN-LAST:event_plusMediaActionPerformed
 
@@ -229,6 +235,7 @@ public class CartItemPanel extends javax.swing.JPanel {
             quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
             totalPrice.setName("" + (price*quantity));
             totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
+            this.cartItem.update(this.cartItem.getQuantity() - 1);
         }
     }//GEN-LAST:event_minusMediaActionPerformed
 

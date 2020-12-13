@@ -25,6 +25,14 @@ public class User {
     public User() {
         this.user_id = 1;
     }
+    public User(int user_id){
+        this.user_id = user_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+    
     public List<ShippingInfo>  getShippingList(){
         try {
             int index = 0;

@@ -14,13 +14,13 @@ import java.sql.SQLException;
  * @author hsnt
  */
 public class ShippingInfo {
+
     private String name;
     private String phone;
     private String delivery_instruction;
     private int user_id;
     private int shipping_info_id;
     private Ward ward;
-    private String note;
 
     public ShippingInfo(int shipping_info_id) {
         this.shipping_info_id = shipping_info_id;
@@ -34,22 +34,21 @@ public class ShippingInfo {
                 this.delivery_instruction = rs.getString("delivery_instruction");
             }
         } catch (SQLException ex) {
-            
+
         }
+    }
+
+    public ShippingInfo(String name, String phone, int user_id, Ward ward) {
+        this.ward = ward;
+        this.name = name;
+        this.phone = phone;
+        this.user_id = user_id;
     }
 
     public void setDelivery_instruction(String delivery_instruction) {
         this.delivery_instruction = delivery_instruction;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public String getNote() {
-        return note;
-    }
-    
     public String getName() {
         return name;
     }
@@ -69,8 +68,11 @@ public class ShippingInfo {
     public Ward getWardObject() {
         return ward;
     }
-    
-    public void update(){
-        
+
+    public void create() {
+        ConnectSQL.sqlQueryUpdate(
+                "Insert into ShippingInfos (`user_id`,`ward_id`,`name`,`phone`) "
+                + "values (" + user_id + "," + ward.getWard_id() + ",'" + name + "','" + phone + "')");
+
     }
 }
