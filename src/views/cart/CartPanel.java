@@ -79,7 +79,7 @@ public class CartPanel extends JPanel {
                     if(checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()){
                         
                     }else{
-                        JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number has 16 number.\n Date: MM/YY.\n CVV has 3 number.");
+                        JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number : XXXXXX_groupXX_2020.\n Date: MM/YY.\n CVV has 3 number.");
                     }
                 });
                 

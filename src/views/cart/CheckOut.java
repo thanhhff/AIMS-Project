@@ -45,10 +45,17 @@ public class CheckOut extends javax.swing.JPanel {
         shippingFeeLabel.setText(FormatNumber.formatString("" + shippingFee) + " VND");
         billAll.setText(FormatNumber.formatString("" + (shippingFee + totalBill)) + " VND");
         
-        addPlaceholder(cardNumberText, "Enter card number");
-        addPlaceholder(dateText, "MM/YY");
-        addPlaceholder(cvvText, "***");
+        addPlaceholder(cardNumberText, "Enter card number");        
+        cardNumberText.setForeground(Color.GRAY);
+        cardNumberText.setText("Enter card number");
         
+        addPlaceholder(dateText, "MM/YY");
+        dateText.setForeground(Color.GRAY);
+        dateText.setText("MM/YY");
+        
+        addPlaceholder(cvvText, "***");
+        cvvText.setForeground(Color.GRAY);
+        cvvText.setText("***");
         
     }
     public JButton getcancelButton(){
@@ -68,9 +75,7 @@ public class CheckOut extends javax.swing.JPanel {
     }
     public boolean checkCardNumber(){
         String cardNumber = getCardNumber();
-        if(cardNumber.length() != 16)
-            return false;
-        return FormatNumber.isNumeric(cardNumber);
+        return cardNumber.matches("[0-9]{6}_group[0-9]{2}_2020");
     }
     public boolean checkDateNumber(){
         String date = getdateNumber();
