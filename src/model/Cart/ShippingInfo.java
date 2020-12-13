@@ -70,7 +70,7 @@ public class ShippingInfo {
     }
 
     public void create() {
-        ConnectSQL.sqlQueryUpdate(
+        ConnectSQL.sqlUpdate(
                 "Insert into ShippingInfos (`user_id`,`ward_id`,`name`,`phone`) "
                 + "values (" + user_id + "," + ward.getWard_id() + ",'" + name + "','" + phone + "')");
 

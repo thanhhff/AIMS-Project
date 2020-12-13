@@ -23,31 +23,6 @@ public class ConnectSQL {
             JOptionPane.showMessageDialog(null, "Lỗi ConnectSQL: kết nối tới SQL thất bại !");
         }
     }
-        
-	public static ResultSet sqlQuery(String sql_query) {  
-		try {
-                    conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-                    st = conn.createStatement();  
-                    return st.executeQuery(sql_query);
-		} catch (SQLException e) {
-                    System.out.println("Error sqlQuery");
-                    System.exit(0);
-		}
-		return null;
-	}
-        
-        public static int sqlUpdate(String sql_query) {  
-		try {
-                    conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-                    st = conn.createStatement();  
-                    return st.executeUpdate(sql_query);
-		} catch (SQLException e) {
-                    System.out.println("Error Update");
-		}
-		return 0;
-	}
-     
-}
 
     public static ResultSet sqlQuery(String sql_query) {
         try {
@@ -70,4 +45,16 @@ public class ConnectSQL {
             System.exit(0);
         }
     }
+
+    public static int sqlUpdate(String sql_query) {
+        try {
+            conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            st = conn.createStatement();
+            return st.executeUpdate(sql_query);
+        } catch (SQLException e) {
+            System.out.println("Error Update");
+        }
+        return 0;
+    }
+
 }

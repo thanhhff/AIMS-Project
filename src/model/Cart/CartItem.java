@@ -47,6 +47,6 @@ public class CartItem {
     }
     public void update(int quantily){
         this.quantity = quantily;
-        ConnectSQL.sqlQueryUpdate("update CartItems set quantity = " + this.quantity + " where user_id = " + user_id + " and media_id = " + media_id);
+        ConnectSQL.sqlUpdate("update CartItems set quantity = " + this.quantity + " where user_id = " + user_id + " and media_id = " + media_id);
     }
 }
