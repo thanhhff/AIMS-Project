@@ -18,7 +18,6 @@ public class AIMS {
      * @param args the command line arguments
      */
 
-    public static Login frmLogin;
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -26,8 +25,6 @@ public class AIMS {
 //         Test connect SQL 
 //        ConnectSQL cn = new ConnectSQL();
 
-            frmLogin = new Login();
-            frmLogin.setVisible(true);
     }
     
 }

@@ -31,11 +31,23 @@ public class ConnectSQL {
                     st = conn.createStatement();  
                     return st.executeQuery(sql_query);
 		} catch (SQLException e) {
-                    System.out.println("Error");
+                    System.out.println("Error sqlQuery");
                     System.exit(0);
 		}
 		return null;
 	}
+        
+        public static int sqlUpdate(String sql_query) {  
+		try {
+                    conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+                    st = conn.createStatement();  
+                    return st.executeUpdate(sql_query);
+		} catch (SQLException e) {
+                    System.out.println("Error Update");
+		}
+		return 0;
+	}
+     
 }
 
 
