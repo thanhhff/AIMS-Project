@@ -25,12 +25,12 @@ public class ShippingList extends JPanel{
     private JPanel listShipInfo = new JPanel(new GridLayout(0,1));
     private ButtonGroup buttonGroup = new ButtonGroup();
     private List<ShippingInfoPanel> listInfo = new ArrayList<ShippingInfoPanel>();
-    public ShippingList(int [] shipping_info_list) {
+    public ShippingList(List<ShippingInfo> shippingInfos) {
         setLayout(new GridLayout(1,0));
         add(new JScrollPane(listShipInfo));
         int i = 0;
-        for(int shipping_id : shipping_info_list){        
-            ShippingInfoPanel shippingInfo = new ShippingInfoPanel(shipping_id);
+        for(ShippingInfo shipping : shippingInfos){        
+            ShippingInfoPanel shippingInfo = new ShippingInfoPanel(shipping);
             listShipInfo.add(shippingInfo);
             buttonGroup.add(shippingInfo.getRadioButton());
             if (i == 0 ){
@@ -41,9 +41,9 @@ public class ShippingList extends JPanel{
         }
     }
     public ShippingInfo selectedInfo(){
-        for(ShippingInfoPanel shippingInfo: listInfo){
-            if(shippingInfo.getRadioButton().isSelected()){
-                return shippingInfo.getShippingInfo();
+        for(ShippingInfoPanel shippingInfoPanel: listInfo){
+            if(shippingInfoPanel.getRadioButton().isSelected()){
+                return shippingInfoPanel.getShippingInfo();
             }
         }
         return null;

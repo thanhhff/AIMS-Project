@@ -8,8 +8,11 @@ package model.User;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Cart.ShippingInfo;
 
 /**
  *
@@ -21,19 +24,16 @@ public class User {
     public User() {
         this.user_id = 1;
     }
-    public int [] getShippingList(){
+    public List<ShippingInfo>  getShippingList(){
         try {
-            int[] tmp = new int[10];
-            int index = 0;
+            List<ShippingInfo> shippingInfos = new ArrayList<ShippingInfo>();            
             ResultSet rs = ConnectSQL.sqlQuery("select * from ShippingInfos where user_id = " + user_id);
-            while(rs.next()){
-                tmp[index++] = Integer.parseInt(rs.getString("shipping_info_id"));
+            while(rs.next()){                
+                int tmp = Integer.parseInt(rs.getString("shipping_info_id"));
+                ShippingInfo shippingInfo = new ShippingInfo(tmp);
+                shippingInfos.add(shippingInfo);
             }
-            int[] result = new int[index];
-            for(int i = 0 ; i < index; i++){
-                result[i] = tmp[i];
-            }
-            return result;
+            return shippingInfos;
         } catch (SQLException ex) {
             return null;
         }

@@ -6,6 +6,7 @@
 package views.cart;
 
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ public class ShippingPanel extends javax.swing.JPanel {
     public ShippingPanel(User user) {
         initComponents();
         
-        int[] shipping_list_id = user.getShippingList(); // Check NULL
+        List<ShippingInfo> shipping_list_id = user.getShippingList(); // Check NULL
         shippingList = new ShippingList(shipping_list_id);
         shippingList.setBounds(12, 64, 462, 367);
         add(shippingList);

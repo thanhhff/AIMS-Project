@@ -20,9 +20,9 @@ public class ShippingInfoPanel extends javax.swing.JPanel {
     public static final int WIDTH = 400;
     public static final int HEIGHT = 80;
     private ShippingInfo shippingInfo;
-    public ShippingInfoPanel(int shipping_info_id) {
+    public ShippingInfoPanel(ShippingInfo shippingInfo) {
         initComponents();
-        shippingInfo = new ShippingInfo(shipping_info_id);
+        this.shippingInfo = shippingInfo;
         namePhoneLabel.setText(shippingInfo.getName() + " - " + shippingInfo.getPhone());
         addressLabel.setText(shippingInfo.getWardObject().getWard() + "-" + shippingInfo.getWardObject().getDistrict() + "-" + shippingInfo.getWardObject().getProvince());
         setSize(WIDTH,500);
