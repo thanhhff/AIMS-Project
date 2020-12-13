@@ -6,6 +6,8 @@
 package aims;
 
 import db.ConnectSQL;
+import views.account.Login;
+
 /**
  *
  * @author thanhhff
@@ -15,11 +17,17 @@ public class AIMS {
     /**
      * @param args the command line arguments
      */
+
+    public static Login frmLogin;
+
     public static void main(String[] args) {
         // TODO code application logic here
         
-        // Test connect SQL 
+//         Test connect SQL 
 //        ConnectSQL cn = new ConnectSQL();
+
+            frmLogin = new Login();
+            frmLogin.setVisible(true);
     }
     
 }
