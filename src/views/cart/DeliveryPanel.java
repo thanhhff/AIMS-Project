@@ -25,10 +25,11 @@ public class DeliveryPanel extends javax.swing.JPanel {
     public static final int HEIGHT = 351;
     public static final int WIDTH = 325;
     private User user;
-    private ShippingInfo selected =  null;
+    private ShippingInfo selected = null;
+
     public DeliveryPanel(User user) {
         initComponents();
-        setSize(325,351);
+        setSize(325, 351);
         this.user = user;
     }
 
@@ -136,40 +137,71 @@ public class DeliveryPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-    
-    public String getNoteText(){
+
+    public String getNoteText() {
         return this.noteText.getText();
     }
 
     public ShippingInfo getSelected() {
         return selected;
     }
-    
-    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
-        JDialog jDialog = new JDialog();
-        ShippingPanel shippingPanel = new ShippingPanel(user);
-        jDialog.setSize(ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
-        shippingPanel.setBounds(0, 0, ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
-        jDialog.setUndecorated(true);
-        jDialog.add(shippingPanel);
-        jDialog.setLocationRelativeTo(null);
-        
-        shippingPanel.getSubmit().addActionListener((ActionEvent e) -> {
-            selected = shippingPanel.selectedInfo();
-            name_phone.setText(selected.getName() + " - " + selected.getPhone());
-            ward.setText(selected.getWardObject().getWard());
-            district.setText(selected.getWardObject().getDistrict());
-            province.setText(selected.getWardObject().getProvince());
-            noteText.setText(selected.getDelivery_instruction());
-            jDialog.dispose();
-        });
-        shippingPanel.getCancel().addActionListener((ActionEvent e) -> {
-            jDialog.dispose();
-        });
-        
-        jDialog.setModal(true);
 
-        jDialog.setVisible(true);
+    private void setShippingInfo(ShippingInfo shippingInfo) {
+        selected = shippingInfo;
+        name_phone.setText(selected.getName() + " - " + selected.getPhone());
+        ward.setText(selected.getWardObject().getWard());
+        district.setText(selected.getWardObject().getDistrict());
+        province.setText(selected.getWardObject().getProvince());
+        noteText.setText(selected.getDelivery_instruction());
+    }
+    private void changeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeButtonActionPerformed
+        if (user.getShippingList() != null) {
+            JDialog jDialog = new JDialog();
+            ShippingPanel shippingPanel = new ShippingPanel(user);
+            jDialog.setSize(ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
+            shippingPanel.setBounds(0, 0, ShippingPanel.WIDTH, ShippingPanel.HEIGHT);
+            jDialog.setUndecorated(true);
+            jDialog.add(shippingPanel);
+            jDialog.setLocationRelativeTo(null);
+
+            shippingPanel.getSubmit().addActionListener((ActionEvent e) -> {
+                setShippingInfo(shippingPanel.selectedInfo());
+                jDialog.dispose();
+            });
+            shippingPanel.getCancel().addActionListener((ActionEvent e) -> {
+                jDialog.dispose();
+            });
+
+            jDialog.setModal(true);
+
+            jDialog.setVisible(true);
+        } else {
+            JDialog jDialog = new JDialog();
+            ChangeAddress changeAddress = new ChangeAddress(user);
+            jDialog.setSize(ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+            changeAddress.setBounds(0, 0, ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+            jDialog.setUndecorated(true);
+            jDialog.add(changeAddress);
+            jDialog.setLocationRelativeTo(null);
+
+            changeAddress.getSubmitButton().addActionListener((ActionEvent e) -> {
+                if (changeAddress.getNameNew().equals("") || changeAddress.getPhoneNew().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Plese import name and phone number");
+                } else {
+                    ShippingInfo  shippingInfo = changeAddress.getShippingInfo();
+                    setShippingInfo(shippingInfo);
+                    shippingInfo.create();
+                    jDialog.dispose();
+                }
+            });
+            changeAddress.getCancelButton().addActionListener((ActionEvent e) -> {
+                jDialog.dispose();
+            });
+
+            jDialog.setModal(true);
+
+            jDialog.setVisible(true);
+        }
     }//GEN-LAST:event_changeButtonActionPerformed
 
     private void noteTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noteTextActionPerformed

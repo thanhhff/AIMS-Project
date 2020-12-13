@@ -18,20 +18,41 @@ import java.util.logging.Logger;
  */
 public class Ward {
     private int ward_id;
-
+    private String ward_name;
+    private Ward(){
+        
+    }
     public Ward(int ward_id) {
         this.ward_id = ward_id;
-    }
-    public String getWard() {
         try {
             ResultSet rs = ConnectSQL.sqlQuery("select * from Wards where ward_id = " + ward_id);
             while (rs.next()) {
-                return rs.getString("ward_name");
+                this.ward_name = rs.getString("ward_name");
+            }
+        } catch (SQLException ex) {            
+        }
+    }
+
+    public int getWard_id() {
+        return ward_id;
+    }
+    
+    public static Ward getWardbyName(String name){
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("select * from Wards where ward_name = '" + name + "'");
+            while (rs.next()) {
+                Ward ward = new Ward();
+                ward.ward_id = Integer.parseInt(rs.getString("ward_id"));
+                ward.ward_name = rs.getString("ward_name");
+                return ward;
             }
             return null;
         } catch (SQLException ex) {
             return null;
         }
+    }
+    public String getWard() {
+        return this.ward_name;
     }
     public String getDistrict() {
         try {
@@ -54,5 +75,8 @@ public class Ward {
         } catch (SQLException ex) {
             return null;
         }
+    }
+    public void save(){
+        
     }
 }
