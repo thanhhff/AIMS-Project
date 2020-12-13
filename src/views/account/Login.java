@@ -5,8 +5,6 @@
  */
 package views.account;
 
-import static aims.AIMS.MediaList;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -15,7 +13,6 @@ import model.User.Account;
 
 import java.awt.*;
 import views.Home;
-import views.MediaList.mediaList;
 
 
 /**

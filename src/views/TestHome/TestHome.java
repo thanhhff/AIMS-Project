@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.User.User;
 import views.Home;
-import views.MediaList.mediaList;
 import views.account.Login;
 import views.cart.CartPanel;
 
