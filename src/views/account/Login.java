@@ -6,6 +6,7 @@
 package views.account;
 
 import static aims.AIMS.MediaList;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -13,6 +14,7 @@ import controller.User.AccountController;
 import model.User.Account;
 
 import java.awt.*;
+
 import views.MediaList.mediaList;
 
 
@@ -20,9 +22,10 @@ import views.MediaList.mediaList;
  * @author hsnt
  */
 public class Login extends javax.swing.JFrame {
-  
+
     public static mediaList MediaList;
     AccountController accController = new AccountController();
+
     /**
      * Creates new form Lo
      */
@@ -45,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         jButtonLogin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        CreateAccount = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButtonQuit = new javax.swing.JButton();
@@ -56,20 +59,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel3.setText("Username");
 
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Password");
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
 
         jButtonLogin.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButtonLogin.setText("Login");
@@ -81,7 +72,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel5.setText("Forgot password");
 
-        jLabel7.setText("Create an account");
+        CreateAccount.setText("Create an account");
+        CreateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreateAccountMouseClicked(evt);
+            }
+        });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/login.png"))); // NOI18N
 
@@ -89,7 +85,6 @@ public class Login extends javax.swing.JFrame {
 
         jButtonQuit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButtonQuit.setText("Quit");
-        jButtonQuit.setActionCommand("Quit");
         jButtonQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonQuitActionPerformed(evt);
@@ -124,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addComponent(jLabel5)
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel7)))
+                        .addComponent(CreateAccount)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,12 +142,10 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel7))
+                    .addComponent(CreateAccount))
                 .addGap(57, 57, 57))
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        jButtonQuit.getAccessibleContext().setAccessibleName("Quit");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,7 +153,7 @@ public class Login extends javax.swing.JFrame {
     private Border lineBorder = BorderFactory.createLineBorder(Color.RED);
     private Border nullBorder = BorderFactory.createLineBorder(Color.BLACK);
 
-    public void setNullBorder(){
+    public void setNullBorder() {
         txtUsername.setBorder(nullBorder);
         txtPassword.setBorder(nullBorder);
     }
@@ -176,7 +169,7 @@ public class Login extends javax.swing.JFrame {
 
         boolean check = accController.CheckLogin(acc);
 
-        if (username.equals("") || password.equals("")){
+        if (username.equals("") || password.equals("")) {
             setNullBorder();
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "Error", JOptionPane.ERROR_MESSAGE);
             setNullBorder();
@@ -187,15 +180,12 @@ public class Login extends javax.swing.JFrame {
         } else {
             setNullBorder();
             System.out.println(acc.getUsername() + " " + acc.getPassword());
-            if (check == true)
-            {
-                
+            if (check == true) {
+                this.setVisible(false);
                 MediaList = new mediaList();
                 MediaList.setVisible(true);
-               
-            }
-            else
-            {
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Username or password incorrect.", "Error Login", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -218,14 +208,22 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonQuitActionPerformed
 
+    private SignUp frmSignUp;
+    private void CreateAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateAccountMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        frmSignUp = new SignUp();
+        frmSignUp.setVisible(true);
+    }//GEN-LAST:event_CreateAccountMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CreateAccount;
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JButton jButtonQuit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
