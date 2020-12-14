@@ -12,7 +12,7 @@ import controller.User.AccountController;
 import model.User.Account;
 
 import java.awt.*;
-import views.Home;
+import views.HomeUser.HomeUser;
 
 
 /**
@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
             if (check == true) {
                 this.setVisible(false);
 
-                Home home = new Home();
+                HomeUser home = new HomeUser();
                 home.setVisible(true);
 
             } else {

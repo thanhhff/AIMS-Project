@@ -31,7 +31,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="593" max="32767" attributes="0"/>
-              <Component id="jLabel4" min="-2" pref="109" max="-2" attributes="0"/>
+              <Component id="Cart" min="-2" pref="109" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Account" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel4" max="32767" attributes="0"/>
+                      <Component id="Cart" max="32767" attributes="0"/>
                   </Group>
                   <Component id="Home" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField1" min="-2" pref="49" max="-2" attributes="0"/>
@@ -106,13 +106,16 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AccountMouseClicked"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="Cart">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/views/images/shopping-cart.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cart"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CartMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Home">
       <Properties>

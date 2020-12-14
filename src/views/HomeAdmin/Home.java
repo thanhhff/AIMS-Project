@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views;
+package views.HomeAdmin;
 
+import views.HomeUser.*;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import views.MediaList.mediaList;
-import views.account.AccountPanel;
+import views.account.User.AccountPanel;
+import views.cart.CartPanel;
 
 /**
  *
@@ -46,7 +48,7 @@ public final class Home extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Account = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Cart = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,8 +74,13 @@ public final class Home extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart.png"))); // NOI18N
-        jLabel4.setText("Cart");
+        Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart.png"))); // NOI18N
+        Cart.setText("Cart");
+        Cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CartMouseClicked(evt);
+            }
+        });
 
         Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/logo-resize-1.png"))); // NOI18N
         Home.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,7 +101,7 @@ public final class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 593, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cart, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Account)
                 .addGap(40, 40, 40))
@@ -114,7 +121,7 @@ public final class Home extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(8, 8, 8)
                             .addComponent(jLabel2))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(Home)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -144,12 +151,17 @@ public final class Home extends javax.swing.JFrame {
         jpLayout.updateUI();
     }//GEN-LAST:event_HomeMouseClicked
 
+    private void CartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_CartMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Account;
+    private javax.swing.JLabel Cart;
     private javax.swing.JLabel Home;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jpLayout;

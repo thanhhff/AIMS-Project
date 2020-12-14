@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.TestHome;
+package views.HomeUser;
 
 import views.account.test.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.User.User;
-import views.Home;
+import views.HomeUser.HomeUser;
 import views.account.Login;
 import views.cart.CartPanel;
 
@@ -17,10 +17,10 @@ import views.cart.CartPanel;
  *
  * @author thanhhff
  */
-public class TestHome {
+public class TestHomeUser {
     
     public static void main(String[] args) { 
-        Home frmHome = new Home();
+        HomeUser frmHome = new HomeUser();
         frmHome.setVisible(true);
     }
 }
