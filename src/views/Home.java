@@ -5,7 +5,8 @@
  */
 package views;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
 import views.MediaList.mediaList;
 
 /**
@@ -20,14 +21,13 @@ public final class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         fill();
-        System.out.println("Hello");
     }
     
     public void fill()
     {
         mediaList media = new mediaList();
-        jpLayout.add(media);
-        jpLayout.updateUI();
+        jpLayout.setLayout(new BorderLayout());
+        jpLayout.add(media, BorderLayout.CENTER);
     }
 
     /**
@@ -57,7 +57,7 @@ public final class Home extends javax.swing.JFrame {
         );
         jpLayoutLayout.setVerticalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 698, Short.MAX_VALUE)
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass.png"))); // NOI18N
@@ -107,7 +107,7 @@ public final class Home extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jpLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
