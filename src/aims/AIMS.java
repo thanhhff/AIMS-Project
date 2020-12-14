@@ -6,7 +6,6 @@
 package aims;
 
 import db.ConnectSQL;
-import views.account.AccountPanel;
 import views.account.Login;
 
 
