@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Media.Media;
+import model.User.User;
 
 /**
  *
@@ -25,7 +26,16 @@ public class CartItem {
         this.price = price;
         this.quantity = quantily;
         this.user_id = user_id;
-    }    
+    }  
+
+    public int getMedia_id() {
+        return media_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+    
     public String getMediaName(){
         try {
             ResultSet rs = ConnectSQL.sqlQuery("select * from Medias where media_id = " + this.media_id);

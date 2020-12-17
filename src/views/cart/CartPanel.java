@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import aims.FormatNumber;
+import controller.Cart.CartController;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +33,16 @@ public class CartPanel extends JPanel {
     private JButton checkoutButton;
     private int totalBill;
     private User user;
+    private CartController cartController;
 
-    public CartPanel(User user) {
+    public CartPanel(User user, CartController cartController) {
         this.user = user;
+        this.cartController = cartController;
         setLayout(null);
         setSize(1000, 600);
         List<CartItem> cartItems = user.getCartItems();
         if (cartItems != null) {
-            cartList = new CartList(user.getCartItems());
+            cartList = new CartList(user.getCartItems(), cartController);
             deliveryPanel = new DeliveryPanel(user);
             billPanel = new BillPanel();
             checkoutButton = new JButton();
@@ -53,7 +56,20 @@ public class CartPanel extends JPanel {
 
             cartList.getchangeMedia().forEach((button) -> {
                 button.addActionListener((ActionEvent e) -> {
-                    totalBill += Integer.parseInt(button.getName());
+                    if (button.getName().contains("+")) {
+                        int select = JOptionPane.showConfirmDialog(null, "You're sure?");
+                        if (select == JOptionPane.YES_OPTION) {
+                            totalBill -= Integer.parseInt(button.getName());
+                            CartItemPanel cartItemPanel = (CartItemPanel) button.getParent();
+                            CartItem cartItem = cartItemPanel.getCartItem();
+                            cartList.deleteObj(cartItemPanel);
+                            cartController.deleteCartItem(cartItem);
+                            cartList.revalidate();
+                            cartList.repaint();
+                        }                        
+                    } else {
+                        totalBill += Integer.parseInt(button.getName());
+                    }
                     changeBill();
                 });
             });
@@ -70,10 +86,7 @@ public class CartPanel extends JPanel {
                 if (shippingInfo != null) {
 
                     JDialog jDialog = new JDialog();
-                    int ship_fee = 10000;
-                    if (totalBill > 100000) {
-                        ship_fee = 0;
-                    }
+                    int ship_fee = cartController.getShipFee(user.getCartItems());
                     CheckOut checkOut = new CheckOut(shippingInfo, deliveryPanel.getNoteText(), totalBill, ship_fee);
                     jDialog.setSize(650, 700);
                     checkOut.setBounds(0, 0, 650, 700);
@@ -103,7 +116,7 @@ public class CartPanel extends JPanel {
             add(cartList);
             add(deliveryPanel);
             add(billPanel);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Cart empty");
         }
     }

@@ -5,6 +5,7 @@
  */
 package views.cart;
 
+import controller.Cart.CartController;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -24,30 +25,33 @@ import model.Cart.CartItem;
 public class CartList extends JPanel{
     private JPanel cartPanel;    
     private List<JButton> changeMedia;
-    private int deleteTotalPrice;
     private int totalAll = 0;
     public static final int MAX_WIDTH = 650;
     public static final int MAX_HEIGHT = 600;
     private int mediaCount = 0;
-    public CartList(List<CartItem> cartItems) {        
-        
+    private CartController cartController;
+    public CartList(List<CartItem> cartItems,CartController cartController) {        
+        this.cartController = cartController;
         setLayout(new GridLayout(1,0));
         cartPanel = new JPanel(new GridLayout(0,1));
         add(new JScrollPane(cartPanel));
         changeMedia = new ArrayList<JButton>();
         for(CartItem cartItem : cartItems){
-            CartItemPanel cartItemPanel = new CartItemPanel(cartItem);
+            CartItemPanel cartItemPanel = new CartItemPanel(cartItem,cartController);
             this.addObj(cartItemPanel);
             changeMedia.add(cartItemPanel.getMinusMedia());
             changeMedia.add(cartItemPanel.getPlusMedia());
-            cartItemPanel.getdeleteButton().addActionListener((ActionEvent e) -> {
-                int select = JOptionPane.showConfirmDialog(null, "You're sure?");
-                if(select == JOptionPane.YES_OPTION){
-                    this.deleteObj(cartItemPanel);
-                    deleteTotalPrice = cartItemPanel.getTotalPrice();
-                    mediaCount -= 1;
-                }
-            });
+            changeMedia.add(cartItemPanel.getdeleteButton());
+//            cartItemPanel.getdeleteButton().addActionListener((ActionEvent e) -> {
+//                int select = JOptionPane.showConfirmDialog(null, "You're sure?");
+//                if(select == JOptionPane.YES_OPTION){
+//                    this.deleteObj(cartItemPanel);
+//                    cartController.deleteCartItem(cartItem);
+//                    mediaCount -= 1;
+//                    this.revalidate();
+//                    this.repaint();
+//                }
+//            });
             totalAll += cartItemPanel.getTotalPrice();
             mediaCount += 1;
         }  

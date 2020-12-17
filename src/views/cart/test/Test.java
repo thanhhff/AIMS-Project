@@ -5,6 +5,7 @@
  */
 package views.cart.test;
 
+import controller.Cart.CartController;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.User.User;
@@ -34,7 +35,7 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        Test test = new Test(new CartPanel(new User()));
+        Test test = new Test(new CartPanel(new User(),new CartController()));
         
     }
 }
