@@ -64,8 +64,10 @@ public class CartPanel extends JPanel {
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
                             cartController.deleteCartItem(cartItem);
-                            cartList.revalidate();
-                            cartList.repaint();
+                            this.revalidate();
+                            this.repaint();
+//                            cartList.revalidate();
+//                            cartList.repaint();
                         }                        
                     } else {
                         totalBill += Integer.parseInt(button.getName());
