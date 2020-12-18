@@ -15,7 +15,6 @@ public class Media {
     private int price;
 
     public Media() {
-        media_id = 0;
         title = "";
         price = 0;
     }
