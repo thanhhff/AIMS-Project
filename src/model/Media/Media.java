@@ -10,40 +10,53 @@ package model.Media;
  * @author hsnt
  */
 public class Media {
-    private int media_id;
+    private int id;
     private String title;
-    private int price;
     private int value;
-
+    private int price;
+    private int sale_percent;
+    private String category;
+    
     public Media() {
         title = "";
-        value = 0;
         price = 0;
+        value = 0;
+        sale_percent = 0;
+        category = "";
     }
-    
-    public Media(int value, String title, int price) {
-        this.media_id = media_id;
+
+    public Media(String title, int value, int price, int unit_sale, String category) {
         this.title = title;
         this.value = value;
         setPrice(price);
+        this.sale_percent = sale_percent;
+        this.category = category;
     }
-    
-    public int getMediaId() {
-        return media_id;
+
+    public int getId() {
+        return id;
     }
-    
-    public int getPrice() {
-        return price;
-    }
-    
-    public int getValue() {
-        return value;
-    }
-    
+
     public String getTitle() {
         return title;
     }
-    
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     public void setPrice(int price) {
         int value = getValue();
         int min = (int)(value * 0.3);
@@ -56,12 +69,20 @@ public class Media {
             this.price = price;
         }
     }
-    
-    public void setTitle(String title) {
-        this.title = title;
+
+    public int getSalePercent() {
+        return sale_percent;
     }
-    
-    public void setValue(int value) {
-        this.value = value;
+
+    public void setSalePercent(int sale_percent) {
+        this.sale_percent = sale_percent;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
