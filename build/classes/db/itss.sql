@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 13, 2020 lúc 11:55 PM
+-- Thời gian đã tạo: Th12 18, 2020 lúc 01:28 PM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -79,8 +79,8 @@ CREATE TABLE `CartItems` (
 --
 
 INSERT INTO `CartItems` (`media_id`, `price`, `quantity`, `user_id`) VALUES
-(1, 17000, 7, 1),
-(2, 17000, 6, 1);
+(2, 17000, 4, 1),
+(3, 17000, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -978,7 +978,8 @@ CREATE TABLE `Orders` (
   `ship_fee` float NOT NULL,
   `order_state_id` int NOT NULL,
   `shipping_info_id` int NOT NULL,
-  `user_id` int NOT NULL
+  `user_id` int NOT NULL,
+  `cart_number` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
