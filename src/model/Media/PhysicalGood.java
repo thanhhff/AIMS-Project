@@ -13,17 +13,17 @@ public class PhysicalGood extends Media {
     private String barcode;
     private String description;
     private int quantity;
-    private String date;
+    private String input_day;
     private int width;
     private int height;
     private int depth;
 
-    public PhysicalGood(String title, int value, int price, int unit_sale, String category, String barcode, String description, int quantity, String date, int width, int height, int depth) {
-        super(title, value, price, unit_sale, category);
+    public PhysicalGood(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth) {
+        super(title, value, price, sale_percent, category);
         this.barcode = barcode;
         this.description = description;
         this.quantity = quantity;
-        this.date = date;
+        this.input_day = input_day;
         this.width = width;
         this.height = height;
         this.depth = depth;
@@ -54,12 +54,12 @@ public class PhysicalGood extends Media {
         this.quantity = quantity;
     }
 
-    public String getDate() {
-        return date;
+    public String getInputDay() {
+        return input_day;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setInputDay(String input_day) {
+        this.input_day = input_day;
     }
 
     public int getWidth() {
