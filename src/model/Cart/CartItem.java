@@ -59,4 +59,7 @@ public class CartItem {
         this.quantity = quantily;
         ConnectSQL.sqlUpdate("update CartItems set quantity = " + this.quantity + " where user_id = " + user_id + " and media_id = " + media_id);
     }
+    public void delete(){
+        ConnectSQL.sqlQueryUpdate("delete from CartItems where media_id = " + media_id + " and user_id = " + user_id);
+    }
 }

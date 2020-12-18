@@ -78,6 +78,9 @@ public class CartItemPanel extends javax.swing.JPanel {
     public CartItem getCartItem() {
         return cartItem;
     }
+    public int getQuantity(){
+        return Integer.parseInt(quantityLabel.getText());
+    }
        
     /**
      * This method is called from within the constructor to initialize the form.
@@ -241,7 +244,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         int price = Integer.parseInt(priceLabel.getName());
         int total = Integer.parseInt(totalPrice.getName());
         if(quantity == 1){
-            
+     
         }else{
             quantity -= 1;
             quantityLabel.setName(""+quantity);
