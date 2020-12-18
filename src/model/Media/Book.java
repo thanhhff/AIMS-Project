@@ -18,8 +18,8 @@ public class Book extends PhysicalGood {
     private String language;
     private String genre;
     
-    public Book(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth, String author, String cover_type, String publisher, String publication_date, int page_number, String language, String genre) {
-        super(title, value, price, sale_percent, category, barcode, description, quantity, input_day, width, height, depth);
+    public Book(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight, String author, String cover_type, String publisher, String publication_date, int page_number, String language, String genre) {
+        super(title, value, price, sale_percent, category, barcode, description, quantity, input_day, width, height, depth, weight);
         this.author = author;
         this.cover_type = cover_type;
         this.publisher = publisher;

@@ -17,8 +17,9 @@ public class PhysicalGood extends Media {
     private int width;
     private int height;
     private int depth;
+    private int weight;
 
-    public PhysicalGood(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth) {
+    public PhysicalGood(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight) {
         super(title, value, price, sale_percent, category);
         this.barcode = barcode;
         this.description = description;
@@ -27,6 +28,7 @@ public class PhysicalGood extends Media {
         this.width = width;
         this.height = height;
         this.depth = depth;
+        this.weight = weight;
     }
 
 
@@ -86,4 +88,11 @@ public class PhysicalGood extends Media {
         this.depth = depth;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+    
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }
