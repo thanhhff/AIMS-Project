@@ -15,7 +15,39 @@ public class Media {
     private int price;
 
     public Media() {
-        
+        media_id = 0;
+        title = "";
+        price = 0;
     }
     
+    public Media(int media_id, String title, int price) {
+        this.media_id = media_id;
+        this.title = title;
+        this.price = price;
+    }
+    
+    public Media(String title, int price) {
+        this.title = title;
+        this.price = price;
+    }
+    
+    public int getMediaId() {
+        return media_id;
+    }
+    
+    public int getPrice() {
+        return price;
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+    
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
