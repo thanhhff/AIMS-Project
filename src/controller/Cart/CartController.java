@@ -1,9 +1,11 @@
 package controller.Cart;
 
 
+import aims.PaymentService;
 import db.ConnectSQL;
 import java.util.List;
 import model.Cart.CartItem;
+import model.Cart.Order;
 
 
 
@@ -19,7 +21,11 @@ import model.Cart.CartItem;
  * @author hsnt
  */
 public class CartController {
-
+    
+    private PaymentService paymentService;
+    public CartController(PaymentService paymentService){
+        this.paymentService = paymentService;
+    }
     public int getShipFee(List<CartItem> cartItems){
         int totalBill = 0;
         totalBill = cartItems.stream().map((cartItem) -> cartItem.getPrice() * cartItem.getQuantity()).reduce(totalBill, Integer::sum);
@@ -41,4 +47,12 @@ public class CartController {
             cartItem.update(quantily);
         }
     }
+    public void checkOut(int user_id,int ship_fee, String shipping_info, String cart_number){
+        Order order = new Order(user_id, ship_fee, shipping_info, cart_number);
+    }
+    public boolean payment(String card_number, int totalBill){
+        return paymentService.check(card_number, totalBill);
+    }
+    // Send OrderController
+    
 }

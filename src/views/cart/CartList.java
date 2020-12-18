@@ -42,18 +42,8 @@ public class CartList extends JPanel{
             changeMedia.add(cartItemPanel.getMinusMedia());
             changeMedia.add(cartItemPanel.getPlusMedia());
             changeMedia.add(cartItemPanel.getdeleteButton());
-//            cartItemPanel.getdeleteButton().addActionListener((ActionEvent e) -> {
-//                int select = JOptionPane.showConfirmDialog(null, "You're sure?");
-//                if(select == JOptionPane.YES_OPTION){
-//                    this.deleteObj(cartItemPanel);
-//                    cartController.deleteCartItem(cartItem);
-//                    mediaCount -= 1;
-//                    this.revalidate();
-//                    this.repaint();
-//                }
-//            });
             totalAll += cartItemPanel.getTotalPrice();
-            mediaCount += 1;
+            mediaCount++;
         }  
     }
     public void addObj(JPanel object){
@@ -61,6 +51,7 @@ public class CartList extends JPanel{
     }
     public void deleteObj(JPanel object){
         cartPanel.remove(object);
+        mediaCount--;
     }
     public List<JButton> getchangeMedia(){
         return this.changeMedia;
