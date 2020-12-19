@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import javax.swing.JOptionPane;
 import views.MediaList.mediaList;
+import views.account.Login;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
 
@@ -235,10 +236,9 @@ public final class Home extends javax.swing.JFrame {
 
     private void SigoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SigoutMouseClicked
         // TODO add your handling code here:
-        int out = JOptionPane.showConfirmDialog(null, "Are you sure that you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
-        if (out == 0) {
-            System.exit(0);
-        }
+        this.setVisible(false);
+        Login login = new Login();
+        login.setVisible(true);
     }//GEN-LAST:event_SigoutMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
