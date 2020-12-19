@@ -5,7 +5,7 @@
  */
 package views.account;
 
-import controller.User.AccountController;
+import controller.User.UserController;
 import model.User.Account;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ import java.awt.*;
  * @author thanhhff
  */
 public class SignUp extends javax.swing.JFrame {
-    AccountController accController = new AccountController();
+    UserController accController = new UserController();
     /**
      * Creates new form SignUp
      */

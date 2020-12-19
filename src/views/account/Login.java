@@ -8,10 +8,11 @@ package views.account;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import controller.User.AccountController;
+import controller.User.UserController;
 import model.User.Account;
 
 import java.awt.*;
+import views.Admin.Home;
 import views.HomeUser.HomeUser;
 
 
@@ -19,7 +20,7 @@ import views.HomeUser.HomeUser;
  * @author hsnt
  */
 public class Login extends javax.swing.JFrame {
-    AccountController accController = new AccountController();
+    UserController accController = new UserController();
 
     /**
      * Creates new form Lo
@@ -178,10 +179,19 @@ public class Login extends javax.swing.JFrame {
             System.out.println(acc.getUsername() + " " + acc.getPassword());
             if (check == true) {
                 this.setVisible(false);
-
-                HomeUser home = new HomeUser();
-                home.setVisible(true);
-
+                
+                int level = accController.isAdmin(acc);
+                
+                if (level == 0)
+                {
+                    HomeUser home = new HomeUser();
+                    home.setVisible(true);
+                }
+                else 
+                {
+                    Home adminHome = new Home();
+                    adminHome.setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Username or password incorrect.", "Error Login", JOptionPane.ERROR_MESSAGE);
             }

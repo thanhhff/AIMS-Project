@@ -6,6 +6,7 @@
 package aims;
 
 import db.ConnectSQL;
+import model.User.Account;
 import views.account.Login;
 
 
@@ -14,17 +15,16 @@ import views.account.Login;
  * @author thanhhff
  */
 public class AIMS {
-
+    public static Account account;
     /**
      * @param args the command line arguments
      */
 
-
     public static void main(String[] args) {
         // TODO code application logic here
         
-//         Test connect SQL 
-//        ConnectSQL cn = new ConnectSQL();
+        Login login = new Login();
+        login.setVisible(true);
       
     }
     

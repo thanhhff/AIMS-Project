@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.account.User;
+package views.account.UserPanel;
 
+import views.account.ChangePassword;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
-import views.account.AccountInformation;
-import views.account.ChangePassword;
 
 /**
  *
@@ -33,7 +32,6 @@ public class AccountPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        AddressInformation = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         AccountInformation = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
@@ -42,8 +40,6 @@ public class AccountPanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 700));
-
-        AddressInformation.setText("Address Information");
 
         jButton2.setText("Order Management");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +78,6 @@ public class AccountPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddressInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AccountInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 20, Short.MAX_VALUE))
@@ -94,9 +89,7 @@ public class AccountPanel extends javax.swing.JPanel {
                 .addComponent(AccountInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AddressInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
                 .addComponent(ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,7 +158,6 @@ public class AccountPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AccountInformation;
-    private javax.swing.JButton AddressInformation;
     private javax.swing.JButton ChangePassword;
     private javax.swing.JButton Logout;
     private javax.swing.JButton jButton2;
