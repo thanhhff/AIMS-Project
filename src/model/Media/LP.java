@@ -11,14 +11,14 @@ import java.util.ArrayList;
  *
  * @author Toshiba T75
  */
-public class CD extends PhysicalGood {
+public class LP extends PhysicalGood {
     private String artist_name;
     private String record_label_name;
     private String publication_date;
     private String genre;
     private ArrayList<Track> track_list;
     
-    public CD(String title, int value, int price, int sale_percent, int category, String barcode, String description, int quantity, String date, int width, int height, int depth, int weight, String artist, String record_label, String publication_date, String genre) {
+    public LP(String title, int value, int price, int sale_percent, int category, String barcode, String description, int quantity, String date, int width, int height, int depth, int weight, String artist, String record_label, String publication_date, String genre) {
         super(title, value, price, sale_percent, category, barcode, description, quantity, date, width, height, depth, weight);
         this.artist_name = artist;
         this.record_label_name = record_label;
