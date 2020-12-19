@@ -162,6 +162,7 @@ public final class HomeUser extends javax.swing.JFrame {
         
         jpLayout.removeAll();
         jpLayout.setLayout(new BorderLayout());
+        cart.setBounds(0,0, cart.getWidth(), cart.getHeight());
         jpLayout.add(cart);
         jpLayout.updateUI();
 
