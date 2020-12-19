@@ -8,6 +8,7 @@ package views.Admin;
 import views.HomeUser.*;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
+import javax.swing.JOptionPane;
 import views.MediaList.mediaList;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
@@ -115,7 +116,7 @@ public final class Home extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -217,7 +218,7 @@ public final class Home extends javax.swing.JFrame {
     private void AccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountMouseClicked
         // TODO add your handling code here:
         jpLayout.removeAll();
-        AccountPanel accPanel = new AccountPanel();
+        AccountPanelAdmin accPanel = new AccountPanelAdmin();
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(accPanel, BorderLayout.CENTER);
         jpLayout.updateUI();
@@ -234,6 +235,10 @@ public final class Home extends javax.swing.JFrame {
 
     private void SigoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SigoutMouseClicked
         // TODO add your handling code here:
+        int out = JOptionPane.showConfirmDialog(null, "Are you sure that you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (out == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_SigoutMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
