@@ -24,11 +24,19 @@ public class Media {
         sale_percent = 0;
         category = "";
     }
+    
+    public Media(String title, int value, int price, String category) {
+        this.title = title;
+        this.value = value;
+        this.price = price;
+        this.sale_percent = 0;
+        this.category = category;
+    }
 
     public Media(String title, int value, int price, int sale_percent, String category) {
         this.title = title;
         this.value = value;
-        setPrice(price);
+        this.price = price;
         this.sale_percent = sale_percent;
         this.category = category;
     }
@@ -58,16 +66,7 @@ public class Media {
     }
 
     public void setPrice(int price) {
-        int value = getValue();
-        int min = (int)(value * 0.3);
-        int max = (int)(value * 1.5);
-        if (price < min) {
-            this.price = min;
-        } else if (price > max) {
-            this.price = max;
-        } else {
-            this.price = price;
-        }
+        this.price = price;
     }
 
     public int getSalePercent() {
