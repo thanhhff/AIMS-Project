@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 18, 2020 lúc 01:28 PM
+-- Thời gian đã tạo: Th12 18, 2020 lúc 06:51 PM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -74,14 +74,6 @@ CREATE TABLE `CartItems` (
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Đang đổ dữ liệu cho bảng `CartItems`
---
-
-INSERT INTO `CartItems` (`media_id`, `price`, `quantity`, `user_id`) VALUES
-(2, 17000, 4, 1),
-(3, 17000, 4, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -100,7 +92,8 @@ CREATE TABLE `Categories` (
 
 INSERT INTO `Categories` (`category_id`, `category_name`, `is_physical_good?`) VALUES
 (1, 'Book', 1),
-(2, 'DVD', 1);
+(2, 'DVD', 1),
+(3, 'CD', 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +105,8 @@ CREATE TABLE `CDs` (
   `publication_date` timestamp NULL DEFAULT NULL,
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
-  `artist_name` varchar(255) DEFAULT NULL
+  `artist_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -967,6 +961,13 @@ CREATE TABLE `OrderItems` (
   `quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `OrderItems`
+--
+
+INSERT INTO `OrderItems` (`media_id`, `order_id`, `price`, `quantity`) VALUES
+(3, 1, 17000, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -977,10 +978,17 @@ CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
   `ship_fee` float NOT NULL,
   `order_state_id` int NOT NULL,
-  `shipping_info_id` int NOT NULL,
+  `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL,
   `cart_number` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `Orders`
+--
+
+INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`, `user_id`, `cart_number`) VALUES
+(1, 100000, 1, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020');
 
 -- --------------------------------------------------------
 
@@ -992,6 +1000,15 @@ CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `OrderState`
+--
+
+INSERT INTO `OrderState` (`order_state_id`, `order_state_name`) VALUES
+(1, 'Cancel'),
+(2, 'Success'),
+(3, 'Watting for Payment');
 
 -- --------------------------------------------------------
 
@@ -12474,7 +12491,6 @@ ALTER TABLE `OrderItems`
 ALTER TABLE `Orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `fk_Orders_OrderState1_idx` (`order_state_id`),
-  ADD KEY `fk_Orders_ShippingInfos1_idx` (`shipping_info_id`),
   ADD KEY `fk_Orders_Users1_idx` (`user_id`);
 
 --
@@ -12587,13 +12603,13 @@ ALTER TABLE `Medias`
 -- AUTO_INCREMENT cho bảng `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `OrderState`
 --
 ALTER TABLE `OrderState`
-  MODIFY `order_state_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `order_state_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `Sales`
@@ -12703,7 +12719,6 @@ ALTER TABLE `OrderItems`
 --
 ALTER TABLE `Orders`
   ADD CONSTRAINT `fk_Orders_OrderState1` FOREIGN KEY (`order_state_id`) REFERENCES `OrderState` (`order_state_id`),
-  ADD CONSTRAINT `fk_Orders_ShippingInfos1` FOREIGN KEY (`shipping_info_id`) REFERENCES `ShippingInfos` (`shipping_info_id`),
   ADD CONSTRAINT `fk_Orders_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
 
 --
