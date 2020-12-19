@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.account.UserPanel;
+package views.Admin.User;
 
+import views.account.UserPanel.*;
 import static aims.AIMS.account;
 
 /**
  *
  * @author thanhhff
  */
-public class AccountInformation extends javax.swing.JPanel {
+public class ViewInformation extends javax.swing.JPanel {
 
     /**
      * Creates new form AccountInformation
      */
-    public AccountInformation() {
+    public ViewInformation() {
         initComponents();
 //        
 //        int user_id = account.getId();

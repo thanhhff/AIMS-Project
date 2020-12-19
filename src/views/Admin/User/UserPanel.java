@@ -209,6 +209,7 @@ public class UserPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         CreateAccountPanel newAccount = new CreateAccountPanel();
         newAccount.setVisible(true);
+        FillTable();
     }//GEN-LAST:event_AddActionPerformed
 
     private void RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActionPerformed
@@ -246,7 +247,7 @@ public class UserPanel extends javax.swing.JPanel {
         FillTable();
         int[] selectedRows = tbAccount.getSelectedRows();
         if (selectedRows.length <= 0) {
-            JOptionPane.showMessageDialog(null, "You are not select row!");
+            
         } else {
             ArrayList<Integer> ListAccount = new ArrayList<Integer>();
             for (int i : selectedRows) {
@@ -261,15 +262,15 @@ public class UserPanel extends javax.swing.JPanel {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
-        
         int select = tbAccount.getSelectedRow();
         if (select < 0) {
-            JOptionPane.showMessageDialog(null, "Bạn chưa chọn !");
+            JOptionPane.showMessageDialog(null, "You are not select!");
         } else {
             int user_id = (int) tbAccount.getValueAt(select, 0);
-//            EditAccount sua = new EditAccount(true, user_id);
-//            sua.setVisible(true);
+            EditAccountPanel editAcc = new EditAccountPanel(user_id);
+            editAcc.setVisible(true);
         }
+        FillTable();
     }//GEN-LAST:event_EditActionPerformed
 
 

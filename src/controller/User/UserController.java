@@ -59,7 +59,7 @@ public class UserController {
             ResultSet rs = ConnectSQL.sqlQuery(sql);
             while (rs.next())
             {
-                acc = new Account(rs.getInt(1), rs.getInt(4), rs.getString(2));
+                acc = new Account(rs.getInt(1), rs.getInt(4), rs.getString(2), rs.getString(3));
             }
         }catch (SQLException ex) {
         
@@ -98,6 +98,17 @@ public class UserController {
                 return false;
         }
         return check;
+    }
+    
+    public boolean updateAccount(Account acc)
+    {
+        String sql = "UPDATE Users SET password = '" + acc.getPassword() + "', `is_admin?` = '" + acc.getLv() +  "' WHERE user_id = '"  + acc.getId() + "'";
+        
+        int insert = ConnectSQL.sqlUpdate(sql);
+        if (insert == 0)
+            return false;
+        return true;
+        
     }
     
 //    public static void main (String[] args)
