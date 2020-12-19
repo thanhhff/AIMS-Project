@@ -156,15 +156,11 @@ public final class HomeUser extends javax.swing.JFrame {
 
     private void CartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMouseClicked
         // TODO add your handling code here:
-        
         User user = new User(account.getId());
         
-        System.out.println(account.getId());
-        System.out.println(user.getUser_id());
         CartPanel cart = new CartPanel(user, new CartController(new PaymentService()));
         
         jpLayout.removeAll();
-        jpLayout.setBounds(0,0, jpLayout.getWidth(), jpLayout.getHeight());
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(cart);
         jpLayout.updateUI();
