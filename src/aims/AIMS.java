@@ -15,7 +15,7 @@ import views.account.Login;
  * @author thanhhff
  */
 public class AIMS {
-    public static Account account;
+    public static Account account = new Account();
     /**
      * @param args the command line arguments
      */

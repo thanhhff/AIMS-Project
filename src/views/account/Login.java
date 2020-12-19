@@ -5,6 +5,7 @@
  */
 package views.account;
 
+import static aims.AIMS.account;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -160,11 +161,10 @@ public class Login extends javax.swing.JFrame {
         username = txtUsername.getText();
         password = txtPassword.getText();
 
-        Account acc = new Account();
-        acc.setUsername(username);
-        acc.setPassword(password);
+        account.setUsername(username);
+        account.setPassword(password);
 
-        boolean check = accController.CheckLogin(acc);
+        boolean check = accController.CheckLogin(account);
 
         if (username.equals("") || password.equals("")) {
             setNullBorder();
@@ -176,11 +176,10 @@ public class Login extends javax.swing.JFrame {
                 txtPassword.setBorder(lineBorder);
         } else {
             setNullBorder();
-            System.out.println(acc.getUsername() + " " + acc.getPassword());
             if (check == true) {
                 this.setVisible(false);
                 
-                int level = accController.isAdmin(acc);
+                int level = accController.isAdmin(account);
                 
                 if (level == 0)
                 {

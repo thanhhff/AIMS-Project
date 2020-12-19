@@ -50,6 +50,24 @@ public class UserController {
         return level;
     }
     
+    public Account getAccount(int user_id){
+        Account acc = null;
+        
+        String sql = "Select * from Users where user_id = '" + user_id + "'";
+        
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);
+            while (rs.next())
+            {
+                acc = new Account(rs.getInt(1), rs.getInt(4), rs.getString(2));
+            }
+        }catch (SQLException ex) {
+        
+        }
+        
+        return acc;
+    }
+    
     public ArrayList<Account> getListAccount(){
         ArrayList<Account> arrAccount = new ArrayList<>();
     

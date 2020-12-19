@@ -149,9 +149,9 @@ public class AccountPanel extends javax.swing.JPanel {
     private void AccountInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountInformationActionPerformed
         // TODO add your handling code here:
         jpLayout2.removeAll();
-        AccountInformation info = new AccountInformation();
+        AccountInformation accInfo = new AccountInformation();
         jpLayout2.setLayout(new BorderLayout());
-        jpLayout2.add(info, BorderLayout.CENTER);
+        jpLayout2.add(accInfo, BorderLayout.CENTER);
         jpLayout2.updateUI();
     }//GEN-LAST:event_AccountInformationActionPerformed
 
