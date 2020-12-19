@@ -5,11 +5,18 @@
  */
 package views.mediaAdmin;
 
+import controller.Media.*;
+import java.awt.CardLayout;
+import model.Media.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Toshiba T75
  */
 public class MediaAddFrame extends javax.swing.JFrame {
+    
+    Media media;
 
     /**
      * Creates new form MediaAddFrame
@@ -27,21 +34,669 @@ public class MediaAddFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        left_panel = new javax.swing.JPanel();
+        currency_label = new javax.swing.JLabel();
+        currency_label1 = new javax.swing.JLabel();
+        category_label = new javax.swing.JLabel();
+        name_label = new javax.swing.JLabel();
+        media_value = new javax.swing.JFormattedTextField();
+        big_label = new javax.swing.JLabel();
+        media_name = new javax.swing.JTextField();
+        price_label = new javax.swing.JLabel();
+        media_price = new javax.swing.JFormattedTextField();
+        value_label = new javax.swing.JLabel();
+        categories = new javax.swing.JComboBox<>();
+        gotoDetailButton = new javax.swing.JButton();
+        image_path_label = new javax.swing.JLabel();
+        image_path = new javax.swing.JTextField();
+        quantity_label = new javax.swing.JLabel();
+        input_day_label = new javax.swing.JLabel();
+        media_input_day = new javax.swing.JFormattedTextField();
+        barcode_label = new javax.swing.JLabel();
+        media_barcode = new javax.swing.JTextField();
+        weight_label = new javax.swing.JLabel();
+        media_description_label = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        media_description = new javax.swing.JTextArea();
+        width_label = new javax.swing.JLabel();
+        media_quantity = new javax.swing.JFormattedTextField();
+        media_width = new javax.swing.JFormattedTextField();
+        height_label = new javax.swing.JLabel();
+        media_height = new javax.swing.JFormattedTextField();
+        depth_label = new javax.swing.JLabel();
+        media_depth = new javax.swing.JFormattedTextField();
+        media_weight = new javax.swing.JFormattedTextField();
+        detail_panel = new javax.swing.JPanel();
+        detail_label = new javax.swing.JLabel();
+        add_panel = new javax.swing.JPanel();
+        confirmButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        cards = new javax.swing.JPanel();
+        book_panel = new javax.swing.JPanel();
+        author_label = new javax.swing.JLabel();
+        author_name = new javax.swing.JTextField();
+        language_label = new javax.swing.JLabel();
+        languages = new javax.swing.JComboBox<>();
+        publisher_label = new javax.swing.JLabel();
+        publisher = new javax.swing.JTextField();
+        publication_label = new javax.swing.JLabel();
+        publication_date = new javax.swing.JFormattedTextField();
+        page_label = new javax.swing.JLabel();
+        page_number = new javax.swing.JFormattedTextField();
+        cover_label = new javax.swing.JLabel();
+        cover_types = new javax.swing.JComboBox<>();
+        category_label1 = new javax.swing.JLabel();
+        dvd_panel = new javax.swing.JPanel();
+        dvd_label = new javax.swing.JLabel();
+        director_label = new javax.swing.JLabel();
+        writer_name = new javax.swing.JTextField();
+        dvd_studio_label = new javax.swing.JLabel();
+        studio_name = new javax.swing.JTextField();
+        publication_dvd_label = new javax.swing.JLabel();
+        publication_date_dvd = new javax.swing.JFormattedTextField();
+        dvd_runtime_label = new javax.swing.JLabel();
+        dvd_runtime = new javax.swing.JTextField();
+        dvd_language_label = new javax.swing.JLabel();
+        dvd_languages = new javax.swing.JComboBox<>();
+        dvd_type_label = new javax.swing.JLabel();
+        dvd_types = new javax.swing.JComboBox<>();
+        dvd_subtitle_label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        dvd_subtitle = new javax.swing.JTextArea();
+        cd_panel = new javax.swing.JPanel();
+        cd_label = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        currency_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        currency_label.setText("VND");
+
+        currency_label1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        currency_label1.setText("VND");
+
+        category_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        category_label.setText("Category: ");
+
+        name_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        name_label.setText("Media name: ");
+
+        media_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
+        big_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        big_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        big_label.setText("Add New Media");
+
+        media_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                media_nameActionPerformed(evt);
+            }
+        });
+
+        price_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        price_label.setText("Price: ");
+
+        media_price.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
+        value_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        value_label.setText("Value: ");
+
+        categories.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Book", "DVD", "CD", "LP" }));
+        categories.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriesActionPerformed(evt);
+            }
+        });
+
+        gotoDetailButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        gotoDetailButton.setText("More Details");
+        gotoDetailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gotoDetailButtonActionPerformed(evt);
+            }
+        });
+
+        image_path_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        image_path_label.setText("Image path: ");
+
+        quantity_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        quantity_label.setText("Quantity: ");
+
+        input_day_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        input_day_label.setText("Input day: ");
+
+        media_input_day.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+
+        barcode_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        barcode_label.setText("Barcode: ");
+
+        weight_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        weight_label.setText("Weight: ");
+
+        media_description_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        media_description_label.setText("Description: ");
+
+        media_description.setColumns(20);
+        media_description.setRows(5);
+        jScrollPane2.setViewportView(media_description);
+
+        width_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        width_label.setText("Width: ");
+
+        media_quantity.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
+        height_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        height_label.setText("Height:");
+
+        media_height.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        depth_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        depth_label.setText("Depth: ");
+
+        media_weight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
+        javax.swing.GroupLayout left_panelLayout = new javax.swing.GroupLayout(left_panel);
+        left_panel.setLayout(left_panelLayout);
+        left_panelLayout.setHorizontalGroup(
+            left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(left_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(big_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(left_panelLayout.createSequentialGroup()
+                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(name_label)
+                                            .addComponent(value_label))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(media_value)
+                                            .addComponent(media_price)
+                                            .addComponent(categories, javax.swing.GroupLayout.Alignment.TRAILING, 0, 255, Short.MAX_VALUE)
+                                            .addComponent(media_name)))
+                                    .addGroup(left_panelLayout.createSequentialGroup()
+                                        .addComponent(image_path_label)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(media_quantity, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                                            .addComponent(media_barcode)
+                                            .addComponent(media_input_day)
+                                            .addComponent(image_path))))
+                                .addGap(18, 18, 18)
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(currency_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                                    .addComponent(currency_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(7, 7, 7))
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addComponent(price_label)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(category_label)
+                            .addComponent(quantity_label)
+                            .addComponent(input_day_label)
+                            .addComponent(barcode_label)
+                            .addComponent(weight_label)
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(media_description_label)
+                                    .addComponent(width_label, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(gotoDetailButton)
+                                    .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(media_weight, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(left_panelLayout.createSequentialGroup()
+                                                .addComponent(media_width, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(height_label)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(media_height, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(depth_label)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addGap(0, 281, Short.MAX_VALUE))))
+        );
+        left_panelLayout.setVerticalGroup(
+            left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(left_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(big_label)
+                .addGap(43, 43, 43)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name_label)
+                    .addComponent(media_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(media_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(value_label)
+                    .addComponent(currency_label1))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(price_label)
+                    .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(media_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(currency_label)))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(category_label)
+                    .addComponent(categories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(image_path_label)
+                    .addComponent(image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantity_label)
+                    .addComponent(media_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(input_day_label)
+                    .addComponent(media_input_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(barcode_label)
+                    .addComponent(media_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(weight_label)
+                    .addComponent(media_weight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(width_label)
+                    .addComponent(media_width, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(height_label)
+                    .addComponent(media_height, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(depth_label)
+                    .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(media_description_label))
+                .addGap(18, 18, 18)
+                .addComponent(gotoDetailButton)
+                .addContainerGap())
+        );
+
+        detail_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        detail_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        detail_label.setText("Detail Properties");
+
+        javax.swing.GroupLayout detail_panelLayout = new javax.swing.GroupLayout(detail_panel);
+        detail_panel.setLayout(detail_panelLayout);
+        detail_panelLayout.setHorizontalGroup(
+            detail_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detail_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        detail_panelLayout.setVerticalGroup(
+            detail_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detail_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(detail_label)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        confirmButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        confirmButton.setText("Confirm Add");
+
+        backButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        backButton.setText("Back to Home");
+
+        javax.swing.GroupLayout add_panelLayout = new javax.swing.GroupLayout(add_panel);
+        add_panel.setLayout(add_panelLayout);
+        add_panelLayout.setHorizontalGroup(
+            add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, add_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(203, 203, 203)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(441, 441, 441))
+        );
+        add_panelLayout.setVerticalGroup(
+            add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(add_panelLayout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addGroup(add_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        cards.setLayout(new java.awt.CardLayout());
+
+        author_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        author_label.setText("Author name: ");
+
+        author_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                author_nameActionPerformed(evt);
+            }
+        });
+
+        language_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        language_label.setText("Language: ");
+
+        languages.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vietnamese", "English", "Japanese" }));
+
+        publisher_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        publisher_label.setText("Publisher: ");
+
+        publication_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        publication_label.setText("Publication date: ");
+
+        publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+
+        page_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        page_label.setText("Pages: ");
+
+        page_number.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        cover_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        cover_label.setText("Cover type: ");
+
+        cover_types.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paperback", "Hardcover" }));
+        cover_types.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cover_typesActionPerformed(evt);
+            }
+        });
+
+        category_label1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        category_label1.setText("Book Details");
+
+        javax.swing.GroupLayout book_panelLayout = new javax.swing.GroupLayout(book_panel);
+        book_panel.setLayout(book_panelLayout);
+        book_panelLayout.setHorizontalGroup(
+            book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(book_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(book_panelLayout.createSequentialGroup()
+                        .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cover_label)
+                            .addComponent(page_label)
+                            .addComponent(publication_label)
+                            .addComponent(publisher_label)
+                            .addComponent(language_label)
+                            .addComponent(author_label))
+                        .addGap(43, 43, 43)
+                        .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(author_name, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(languages, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(publisher, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(page_number, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cover_types, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(category_label1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        book_panelLayout.setVerticalGroup(
+            book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(book_panelLayout.createSequentialGroup()
+                .addComponent(category_label1)
+                .addGap(40, 40, 40)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(author_label)
+                    .addComponent(author_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(language_label)
+                    .addComponent(languages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(publisher_label)
+                    .addComponent(publisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(publication_label)
+                    .addComponent(publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(page_label)
+                    .addComponent(page_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cover_label)
+                    .addComponent(cover_types, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(255, Short.MAX_VALUE))
+        );
+
+        cards.add(book_panel, "card2");
+
+        dvd_label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        dvd_label.setText("DVD Details");
+
+        director_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        director_label.setText("Director: ");
+
+        dvd_studio_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_studio_label.setText("Studio: ");
+
+        publication_dvd_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        publication_dvd_label.setText("Publication date: ");
+
+        publication_date_dvd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        publication_date_dvd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                publication_date_dvdActionPerformed(evt);
+            }
+        });
+
+        dvd_runtime_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_runtime_label.setText("Runtime: ");
+
+        dvd_language_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_language_label.setText("Language: ");
+
+        dvd_languages.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vietnamese", "English", "Japanese" }));
+
+        dvd_type_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_type_label.setText("DVD Type: ");
+
+        dvd_types.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blu-ray", "HD-DVD" }));
+
+        dvd_subtitle_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_subtitle_label.setText("Subtitle: ");
+
+        dvd_subtitle.setColumns(20);
+        dvd_subtitle.setRows(5);
+        jScrollPane1.setViewportView(dvd_subtitle);
+
+        javax.swing.GroupLayout dvd_panelLayout = new javax.swing.GroupLayout(dvd_panel);
+        dvd_panel.setLayout(dvd_panelLayout);
+        dvd_panelLayout.setHorizontalGroup(
+            dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dvd_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dvd_label)
+                    .addGroup(dvd_panelLayout.createSequentialGroup()
+                        .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(director_label)
+                            .addComponent(dvd_studio_label)
+                            .addComponent(publication_dvd_label)
+                            .addComponent(dvd_runtime_label)
+                            .addComponent(dvd_language_label)
+                            .addComponent(dvd_type_label)
+                            .addComponent(dvd_subtitle_label))
+                        .addGap(64, 64, 64)
+                        .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(writer_name, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(studio_name, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(publication_date_dvd, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dvd_runtime)
+                            .addComponent(dvd_languages, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dvd_types, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))))
+                .addContainerGap(356, Short.MAX_VALUE))
+        );
+        dvd_panelLayout.setVerticalGroup(
+            dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dvd_panelLayout.createSequentialGroup()
+                .addComponent(dvd_label)
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(director_label)
+                    .addComponent(writer_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dvd_studio_label)
+                    .addComponent(studio_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(publication_dvd_label)
+                    .addComponent(publication_date_dvd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dvd_runtime_label)
+                    .addComponent(dvd_runtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dvd_language_label)
+                    .addComponent(dvd_languages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dvd_type_label)
+                    .addComponent(dvd_types, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dvd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dvd_subtitle_label)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 175, Short.MAX_VALUE))
+        );
+
+        cards.add(dvd_panel, "card3");
+
+        cd_label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cd_label.setText("CD Details");
+
+        javax.swing.GroupLayout cd_panelLayout = new javax.swing.GroupLayout(cd_panel);
+        cd_panel.setLayout(cd_panelLayout);
+        cd_panelLayout.setHorizontalGroup(
+            cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cd_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cd_label)
+                .addContainerGap(727, Short.MAX_VALUE))
+        );
+        cd_panelLayout.setVerticalGroup(
+            cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cd_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cd_label)
+                .addContainerGap(511, Short.MAX_VALUE))
+        );
+
+        cards.add(cd_panel, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(add_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(left_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(detail_panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cards, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(detail_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cards, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(left_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(add_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void media_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_media_nameActionPerformed
+
+    private void categoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoriesActionPerformed
+
+    private void gotoDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoDetailButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (media_name.getText().length() == 0 || media_value.getText().length() == 0 || media_price.getText().length() == 0 
+                || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day and barcode!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String title = media_name.getText();
+            int value = Integer.parseInt(media_value.getText());
+            int price = Integer.parseInt(media_price.getText());
+            int category_id = categories.getSelectedIndex() + 1;
+            String category = String.valueOf(categories.getSelectedItem());
+            int quantity = Integer.parseInt(media_quantity.getText());
+            String barcode = media_barcode.getText();
+            String description = media_description.getText();
+            String input_day = media_input_day.getText();
+            
+            int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
+            int height = media_height.getText().length() == 0 ? 0 : Integer.parseInt(media_height.getText());
+            int depth = media_depth.getText().length() == 0 ? 0 : Integer.parseInt(media_depth.getText());
+            int weight = media_weight.getText().length() == 0 ? 0 : Integer.parseInt(media_weight.getText());
+            
+            int min_price = (int)(value * 0.3);
+            int max_price = (int)(value * 1.5);
+            
+            if (value < 0 || price < 0) {
+                JOptionPane.showMessageDialog(null, "Value and price must greater than 0!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (price < min_price || price > max_price) {
+                JOptionPane.showMessageDialog(null, "Price must in the range of 30% and 150% of value!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                switch(category_id) {
+                    case 1:
+                        
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
+            }
+        }
+    }//GEN-LAST:event_gotoDetailButtonActionPerformed
+
+    private void author_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_author_nameActionPerformed
+
+    private void cover_typesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cover_typesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cover_typesActionPerformed
+
+    private void publication_date_dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publication_date_dvdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_publication_date_dvdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +728,84 @@ public class MediaAddFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MediaAddFrame().setVisible(true);
+                MediaAddFrame frame = new MediaAddFrame();
+                frame.setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel add_panel;
+    private javax.swing.JLabel author_label;
+    private javax.swing.JTextField author_name;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel barcode_label;
+    private javax.swing.JLabel big_label;
+    private javax.swing.JPanel book_panel;
+    private javax.swing.JPanel cards;
+    private javax.swing.JComboBox<String> categories;
+    private javax.swing.JLabel category_label;
+    private javax.swing.JLabel category_label1;
+    private javax.swing.JLabel cd_label;
+    private javax.swing.JPanel cd_panel;
+    private javax.swing.JButton confirmButton;
+    private javax.swing.JLabel cover_label;
+    private javax.swing.JComboBox<String> cover_types;
+    private javax.swing.JLabel currency_label;
+    private javax.swing.JLabel currency_label1;
+    private javax.swing.JLabel depth_label;
+    private javax.swing.JLabel detail_label;
+    private javax.swing.JPanel detail_panel;
+    private javax.swing.JLabel director_label;
+    private javax.swing.JLabel dvd_label;
+    private javax.swing.JLabel dvd_language_label;
+    private javax.swing.JComboBox<String> dvd_languages;
+    private javax.swing.JPanel dvd_panel;
+    private javax.swing.JTextField dvd_runtime;
+    private javax.swing.JLabel dvd_runtime_label;
+    private javax.swing.JLabel dvd_studio_label;
+    private javax.swing.JTextArea dvd_subtitle;
+    private javax.swing.JLabel dvd_subtitle_label;
+    private javax.swing.JLabel dvd_type_label;
+    private javax.swing.JComboBox<String> dvd_types;
+    private javax.swing.JButton gotoDetailButton;
+    private javax.swing.JLabel height_label;
+    private javax.swing.JTextField image_path;
+    private javax.swing.JLabel image_path_label;
+    private javax.swing.JLabel input_day_label;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel language_label;
+    private javax.swing.JComboBox<String> languages;
+    private javax.swing.JPanel left_panel;
+    private javax.swing.JTextField media_barcode;
+    private javax.swing.JFormattedTextField media_depth;
+    private javax.swing.JTextArea media_description;
+    private javax.swing.JLabel media_description_label;
+    private javax.swing.JFormattedTextField media_height;
+    private javax.swing.JFormattedTextField media_input_day;
+    private javax.swing.JTextField media_name;
+    private javax.swing.JFormattedTextField media_price;
+    private javax.swing.JFormattedTextField media_quantity;
+    private javax.swing.JFormattedTextField media_value;
+    private javax.swing.JFormattedTextField media_weight;
+    private javax.swing.JFormattedTextField media_width;
+    private javax.swing.JLabel name_label;
+    private javax.swing.JLabel page_label;
+    private javax.swing.JFormattedTextField page_number;
+    private javax.swing.JLabel price_label;
+    private javax.swing.JFormattedTextField publication_date;
+    private javax.swing.JFormattedTextField publication_date_dvd;
+    private javax.swing.JLabel publication_dvd_label;
+    private javax.swing.JLabel publication_label;
+    private javax.swing.JTextField publisher;
+    private javax.swing.JLabel publisher_label;
+    private javax.swing.JLabel quantity_label;
+    private javax.swing.JTextField studio_name;
+    private javax.swing.JLabel value_label;
+    private javax.swing.JLabel weight_label;
+    private javax.swing.JLabel width_label;
+    private javax.swing.JTextField writer_name;
     // End of variables declaration//GEN-END:variables
 }
