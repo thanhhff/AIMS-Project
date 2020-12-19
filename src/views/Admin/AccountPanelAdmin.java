@@ -8,7 +8,7 @@ package views.Admin;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import views.account.UserPanel.AccountInformation;
-import views.account.UserPanel.ChangePassword;
+import views.account.ChangePassword;
 
 /**
  *
