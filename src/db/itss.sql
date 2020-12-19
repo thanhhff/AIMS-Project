@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 18, 2020 lúc 06:51 PM
+-- Thời gian đã tạo: Th12 19, 2020 lúc 11:19 AM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -964,7 +964,9 @@ CREATE TABLE `OrderItems` (
 --
 
 INSERT INTO `OrderItems` (`media_id`, `order_id`, `price`, `quantity`) VALUES
-(3, 1, 17000, 4);
+(3, 1, 17000, 4),
+(1, 1, 17000, 3),
+(3, 3, 17000, 9);
 
 -- --------------------------------------------------------
 
@@ -974,19 +976,20 @@ INSERT INTO `OrderItems` (`media_id`, `order_id`, `price`, `quantity`) VALUES
 
 CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
-  `ship_fee` float NOT NULL,
-  `order_state_id` int NOT NULL,
+  `ship_fee` int NOT NULL,
+  `order_state_id` int NOT NULL DEFAULT '3',
   `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int NOT NULL,
-  `cart_number` varchar(45) DEFAULT NULL
+  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Orders`
 --
 
-INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`, `user_id`, `cart_number`) VALUES
-(1, 100000, 1, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020');
+INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`, `user_id`, `card_number`) VALUES
+(1, 100000, 2, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020'),
+(3, 0, 3, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1009,7 @@ CREATE TABLE `OrderState` (
 INSERT INTO `OrderState` (`order_state_id`, `order_state_name`) VALUES
 (1, 'Cancel'),
 (2, 'Success'),
-(3, 'Watting for Payment');
+(3, 'Delivering');
 
 -- --------------------------------------------------------
 
@@ -12601,7 +12604,7 @@ ALTER TABLE `Medias`
 -- AUTO_INCREMENT cho bảng `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `OrderState`
