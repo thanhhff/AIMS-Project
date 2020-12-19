@@ -187,10 +187,15 @@ public class Login extends javax.swing.JFrame {
                     HomeUser home = new HomeUser();
                     home.setVisible(true);
                 }
-                else 
+                else if (level == 1)
                 {
                     Home adminHome = new Home();
                     adminHome.setVisible(true);
+                }
+                else if (level == 2)
+                {
+                    JOptionPane.showMessageDialog(null, "Your account has been locked for a policy violation.", "Block", JOptionPane.ERROR_MESSAGE);
+                    this.setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Username or password incorrect.", "Error Login", JOptionPane.ERROR_MESSAGE);

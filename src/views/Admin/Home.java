@@ -9,6 +9,7 @@ import views.HomeUser.*;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import javax.swing.JOptionPane;
+import views.Admin.User.UserPanel;
 import views.MediaList.mediaList;
 import views.account.Login;
 import views.account.UserPanel.AccountPanel;
@@ -51,7 +52,7 @@ public final class Home extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        FillInfor = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         Account = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
@@ -120,16 +121,16 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        FillInfor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout FillInforLayout = new javax.swing.GroupLayout(FillInfor);
+        FillInfor.setLayout(FillInforLayout);
+        FillInforLayout.setHorizontalGroup(
+            FillInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1097, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        FillInforLayout.setVerticalGroup(
+            FillInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 692, Short.MAX_VALUE)
         );
 
@@ -141,14 +142,14 @@ public final class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Sidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(FillInfor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jpLayoutLayout.setVerticalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLayoutLayout.createSequentialGroup()
                 .addGroup(jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FillInfor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -255,11 +256,19 @@ public final class Home extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
+       FillInfor.removeAll();
+       UserPanel user = new UserPanel();
+  
+       FillInfor.setLayout(new BorderLayout());
+       FillInfor.add(user, BorderLayout.CENTER);
+       FillInfor.updateUI();
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Account;
+    private javax.swing.JPanel FillInfor;
     private javax.swing.JLabel Home;
     private javax.swing.JPanel Sidebar;
     private javax.swing.JLabel Sigout;
@@ -267,7 +276,6 @@ public final class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpLayout;
     // End of variables declaration//GEN-END:variables

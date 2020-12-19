@@ -6,6 +6,8 @@ import model.User.Account;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class UserController {
 
@@ -47,5 +49,43 @@ public class UserController {
         
         return level;
     }
+    
+    public ArrayList<Account> getListAccount(){
+        ArrayList<Account> arrAccount = new ArrayList<>();
+    
+        String sql = "SELECT * FROM `Users`";
+        
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);
+
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt(1), rs.getInt(4), rs.getString(2));
+                arrAccount.add(acc);
+                
+            }
+        } catch (SQLException ex) {
+        }
+       
+        return arrAccount;
+    }
+    
+    public boolean deleteAccount(ArrayList<Integer> ListAccount){
+        boolean check = true;
+        
+        String sql;
+        for (int user_id : ListAccount) {
+            sql = "Delete From Users Where user_id = '" + user_id + "'";
+            int returnValue = ConnectSQL.sqlUpdate(sql);
+            if (returnValue == 0)
+                return false;
+        }
+        return check;
+    }
+    
+//    public static void main (String[] args)
+//    {
+//        
+//        
+//    }
 
 }
