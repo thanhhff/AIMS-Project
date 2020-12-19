@@ -51,7 +51,6 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="ChangePassword" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="Logout" min="-2" pref="262" max="-2" attributes="0"/>
-                      <Component id="AddressInformation" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="262" max="-2" attributes="0"/>
                       <Component id="AccountInformation" min="-2" pref="262" max="-2" attributes="0"/>
                   </Group>
@@ -66,9 +65,7 @@
                   <Component id="AccountInformation" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="53" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="AddressInformation" min="-2" pref="53" max="-2" attributes="0"/>
-                  <EmptySpace pref="322" max="32767" attributes="0"/>
+                  <EmptySpace pref="393" max="32767" attributes="0"/>
                   <Component id="ChangePassword" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Logout" min="-2" pref="53" max="-2" attributes="0"/>
@@ -78,11 +75,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="AddressInformation">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Address Information"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Order Management"/>
