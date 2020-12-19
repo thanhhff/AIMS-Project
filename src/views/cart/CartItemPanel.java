@@ -6,6 +6,7 @@
 package views.cart;
 
 import aims.FormatNumber;
+import controller.Cart.CartController;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -28,8 +29,9 @@ public class CartItemPanel extends javax.swing.JPanel {
 	public static final int WIDTH = 630;
 	public static final int HEIGHT = 190;
         private CartItem cartItem;
-    public CartItemPanel(CartItem cartItem) {
-
+        private CartController cartController;
+    public CartItemPanel(CartItem cartItem,CartController cartController) {
+        this.cartController = cartController;
         initComponents();
         this.cartItem = cartItem;
         
@@ -58,6 +60,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         }
         plusMedia.setName(priceLabel.getName());
         minusMedia.setName("-"+priceLabel.getName());
+        setValueButtonDelete();
     }
        public JButton getdeleteButton(){
            return this.deleteButton;
@@ -71,6 +74,14 @@ public class CartItemPanel extends javax.swing.JPanel {
        public int getTotalPrice(){
            return Integer.parseInt(totalPrice.getName());
        }
+
+    public CartItem getCartItem() {
+        return cartItem;
+    }
+    public int getQuantity(){
+        return Integer.parseInt(quantityLabel.getText());
+    }
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,6 +119,11 @@ public class CartItemPanel extends javax.swing.JPanel {
         deleteButton.setContentAreaFilled(false);
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.setFocusPainted(false);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         quantityLabel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         quantityLabel.setText("8");
@@ -219,8 +235,8 @@ public class CartItemPanel extends javax.swing.JPanel {
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
         totalPrice.setName("" + (price*quantity));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-        this.cartItem.update(this.cartItem.getQuantity() + 1);
-        
+        this.cartController.updateQuantity(cartItem, this.cartItem.getQuantity() + 1);
+        setValueButtonDelete();
     }//GEN-LAST:event_plusMediaActionPerformed
 
     private void minusMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusMediaActionPerformed
@@ -228,18 +244,25 @@ public class CartItemPanel extends javax.swing.JPanel {
         int price = Integer.parseInt(priceLabel.getName());
         int total = Integer.parseInt(totalPrice.getName());
         if(quantity == 1){
-            
+     
         }else{
             quantity -= 1;
             quantityLabel.setName(""+quantity);
             quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
             totalPrice.setName("" + (price*quantity));
             totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-            this.cartItem.update(this.cartItem.getQuantity() - 1);
+            this.cartController.updateQuantity(cartItem, this.cartItem.getQuantity() - 1);
+            setValueButtonDelete();
         }
     }//GEN-LAST:event_minusMediaActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        setValueButtonDelete();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void setValueButtonDelete(){
+        deleteButton.setName("+" + totalPrice.getName());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel imageLabel;

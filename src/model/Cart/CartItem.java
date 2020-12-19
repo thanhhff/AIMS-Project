@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Media.Media;
+import model.User.User;
 
 /**
  *
@@ -25,7 +26,16 @@ public class CartItem {
         this.price = price;
         this.quantity = quantily;
         this.user_id = user_id;
-    }    
+    }  
+
+    public int getMedia_id() {
+        return media_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+    
     public String getMediaName(){
         try {
             ResultSet rs = ConnectSQL.sqlQuery("select * from Medias where media_id = " + this.media_id);
@@ -48,5 +58,8 @@ public class CartItem {
     public void update(int quantily){
         this.quantity = quantily;
         ConnectSQL.sqlUpdate("update CartItems set quantity = " + this.quantity + " where user_id = " + user_id + " and media_id = " + media_id);
+    }
+    public void delete(){
+        ConnectSQL.sqlQueryUpdate("delete from CartItems where media_id = " + media_id + " and user_id = " + user_id);
     }
 }

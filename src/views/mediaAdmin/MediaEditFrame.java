@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package views.mediaAdmin;
+import controller.Media.MediaController;
+import model.Media.Media;
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 
 /**
  *

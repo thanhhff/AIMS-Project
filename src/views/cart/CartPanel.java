@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import aims.FormatNumber;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import controller.Cart.CartController;
 import java.util.List;
 import model.Cart.CartItem;
 import model.Cart.ShippingInfo;
@@ -32,14 +31,16 @@ public class CartPanel extends JPanel {
     private JButton checkoutButton;
     private int totalBill;
     private User user;
+    private CartController cartController;
 
-    public CartPanel(User user) {
+    public CartPanel(User user, CartController cartController) {
         this.user = user;
+        this.cartController = cartController;
         setLayout(null);
         setSize(1000, 600);
         List<CartItem> cartItems = user.getCartItems();
         if (cartItems != null) {
-            cartList = new CartList(user.getCartItems());
+            cartList = new CartList(user.getCartItems(), cartController);
             deliveryPanel = new DeliveryPanel(user);
             billPanel = new BillPanel();
             checkoutButton = new JButton();
@@ -53,7 +54,29 @@ public class CartPanel extends JPanel {
 
             cartList.getchangeMedia().forEach((button) -> {
                 button.addActionListener((ActionEvent e) -> {
-                    totalBill += Integer.parseInt(button.getName());
+                    if (button.getName().contains("+")) {
+                        int select = JOptionPane.showConfirmDialog(null, "You're sure?");
+                        if (select == JOptionPane.YES_OPTION) {
+                            totalBill -= Integer.parseInt(button.getName());
+                            CartItemPanel cartItemPanel = (CartItemPanel) button.getParent();
+                            CartItem cartItem = cartItemPanel.getCartItem();
+                            cartList.deleteObj(cartItemPanel);
+                            cartController.deleteCartItem(cartItem);
+                            this.revalidate();
+                            this.repaint();
+                        }                        
+                    } else {
+                        int price = Integer.parseInt(button.getName());
+                        CartItemPanel cartItemPanel = (CartItemPanel) button.getParent();
+                        if(price < 0 && cartItemPanel.getQuantity() == 1){
+                            CartItem cartItem = cartItemPanel.getCartItem();
+                            cartList.deleteObj(cartItemPanel);
+                            cartController.deleteCartItem(cartItem);
+                            this.revalidate();
+                            this.repaint();
+                        } 
+                        totalBill += price;
+                    }
                     changeBill();
                 });
             });
@@ -67,13 +90,10 @@ public class CartPanel extends JPanel {
 
             checkoutButton.addActionListener((ActionEvent e) -> {
                 ShippingInfo shippingInfo = deliveryPanel.getSelected();
-                if (shippingInfo != null) {
+                if (shippingInfo != null && cartList.getMediaCount() != 0) {
 
                     JDialog jDialog = new JDialog();
-                    int ship_fee = 10000;
-                    if (totalBill > 100000) {
-                        ship_fee = 0;
-                    }
+                    int ship_fee = cartController.getShipFee(user.getCartItems());
                     CheckOut checkOut = new CheckOut(shippingInfo, deliveryPanel.getNoteText(), totalBill, ship_fee);
                     jDialog.setSize(650, 700);
                     checkOut.setBounds(0, 0, 650, 700);
@@ -86,7 +106,17 @@ public class CartPanel extends JPanel {
                     });
                     checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
                         if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
-
+                            if(cartController.payment(checkOut.getCardNumber(), totalBill)){
+                                String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
+                                        + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
+                                        + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
+                                cartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
+                                JOptionPane.showMessageDialog(null, "Order successfull");
+                                jDialog.dispose();
+                                this.getParent().remove(this);
+                            }else{                               
+                                JOptionPane.showMessageDialog(null, "The card number is incorrect or the account balance is not enough to make the transaction.");
+                            }
                         } else {
                             JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number : XXXXXX_groupXX_2020.\n Date: MM/YY.\n CVV has 3 number.");
                         }
@@ -95,7 +125,7 @@ public class CartPanel extends JPanel {
                     jDialog.setModal(true);
                     jDialog.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please import address");
+                    JOptionPane.showMessageDialog(null, "Please import address or Add Media to Cart");
                 }
             });
 
@@ -103,7 +133,7 @@ public class CartPanel extends JPanel {
             add(cartList);
             add(deliveryPanel);
             add(billPanel);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Cart empty");
         }
     }
