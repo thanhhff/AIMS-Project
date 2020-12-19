@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.account.User;
+package views.account.UserPanel;
 
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
-import views.account.AccountInformation;
-import views.account.ChangePassword;
 
 /**
  *

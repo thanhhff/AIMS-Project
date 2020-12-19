@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.account.test;
-import views.account.SignUp;
+package views.account;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import model.User.User;
+import views.account.Login;
+import views.cart.CartPanel;
 
 /**
  *
  * @author thanhhff
  */
-public class TestSignUp {
+public class TestLogin {
+    
     public static void main(String[] args) { 
-        SignUp frmSignUp = new SignUp();
-        frmSignUp.setVisible(true);
+        Login frmLogin = new Login();
+        frmLogin.setVisible(true);
     }
 }

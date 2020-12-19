@@ -5,11 +5,10 @@
  */
 package views.Admin;
 
-import views.account.User.*;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
-import views.account.AccountInformation;
-import views.account.ChangePassword;
+import views.account.UserPanel.AccountInformation;
+import views.account.UserPanel.ChangePassword;
 
 /**
  *

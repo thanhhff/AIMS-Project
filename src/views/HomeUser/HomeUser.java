@@ -8,7 +8,7 @@ package views.HomeUser;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import views.MediaList.mediaList;
-import views.account.User.AccountPanel;
+import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
 
 /**
