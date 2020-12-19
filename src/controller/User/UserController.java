@@ -27,7 +27,7 @@ public class UserController {
     }
 
     public int CreateAccount(Account acc) {
-        String sql = "INSERT INTO Users (email, password) VALUES ('" + acc.getUsername() + "', '" + acc.getPassword() + "')";
+        String sql = "INSERT INTO Users (email, password, `is_admin?`) VALUES ('" + acc.getUsername() + "', '" + acc.getPassword() + "', '" + acc.getLv() + "')";
         int insert = ConnectSQL.sqlUpdate(sql);
 
         return insert;

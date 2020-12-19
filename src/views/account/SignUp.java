@@ -169,8 +169,7 @@ public class SignUp extends javax.swing.JFrame {
             Account acc = new Account();
             acc.setUsername(username);
             acc.setPassword(password);
-
-            System.out.println(acc.getUsername() + "" + acc.getPassword());
+            acc.setLv(0);
 
             int check = accController.CreateAccount(acc);
             if (check == 1)
