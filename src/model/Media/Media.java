@@ -25,7 +25,7 @@ public class Media {
         category = "";
     }
 
-    public Media(String title, int value, int price, int unit_sale, String category) {
+    public Media(String title, int value, int price, int sale_percent, String category) {
         this.title = title;
         this.value = value;
         setPrice(price);
