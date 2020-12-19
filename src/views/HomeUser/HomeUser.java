@@ -26,6 +26,7 @@ public final class HomeUser extends javax.swing.JFrame {
      */
     public HomeUser() {
         initComponents();
+        setLayout(null);
         fill();
     }
     
@@ -156,7 +157,7 @@ public final class HomeUser extends javax.swing.JFrame {
 
     private void CartMouseClicked(java.awt.event.MouseEvent evt) {                                  
         // TODO add your handling code here:
-        User user = new User(account.getId());
+        User user = new User();
         
         CartPanel cart = new CartPanel(user, new CartController(new PaymentService()));
         
