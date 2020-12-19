@@ -111,6 +111,19 @@ public class UserController {
         
     }
     
+     public boolean blockAccount(ArrayList<Integer> ListAccount, int is_admin){
+        boolean check = true;
+        
+        String sql;
+        for (int user_id : ListAccount) {
+            sql = "UPDATE Users SET `is_admin?` = '" + is_admin + "' Where user_id = '" + user_id + "'";
+            int returnValue = ConnectSQL.sqlUpdate(sql);
+            if (returnValue == 0)
+                return false;
+        }
+        return check;
+    }
+    
 //    public static void main (String[] args)
 //    {
 //        

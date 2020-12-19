@@ -85,6 +85,8 @@ public class UserPanel extends javax.swing.JPanel {
         Remove = new javax.swing.JButton();
         totalNumber = new javax.swing.JLabel();
         View = new javax.swing.JButton();
+        Block = new javax.swing.JButton();
+        UnBlock = new javax.swing.JButton();
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/login.png"))); // NOI18N
 
@@ -159,6 +161,20 @@ public class UserPanel extends javax.swing.JPanel {
             }
         });
 
+        Block.setText("Block");
+        Block.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlockActionPerformed(evt);
+            }
+        });
+
+        UnBlock.setText("Un Block");
+        UnBlock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UnBlockActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,39 +183,41 @@ public class UserPanel extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(totalNumber)
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Block, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(UnBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Remove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(View, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Edit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(View, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Block, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UnBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Remove, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(totalNumber)
                 .addContainerGap(367, Short.MAX_VALUE))
         );
@@ -273,12 +291,72 @@ public class UserPanel extends javax.swing.JPanel {
         FillTable();
     }//GEN-LAST:event_EditActionPerformed
 
+    private void BlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlockActionPerformed
+        // TODO add your handling code here:
+        int[] selectedRows = tbAccount.getSelectedRows();
+        
+        if (selectedRows.length <= 0) {
+            JOptionPane.showMessageDialog(null, "You are not select row!");
+        } else {
+            ArrayList<Integer> ListAccount = new ArrayList<Integer>();
+            String sp = "";
+            
+             for (int i : selectedRows) {
+                int ma = (int) tbAccount.getValueAt(i, 0);
+                ListAccount.add(ma);
+                String userName = (String) tbAccount.getValueAt(i, 1);
+                sp += userName + "\n";
+            }
+            int qs;
+            qs = JOptionPane.showConfirmDialog(null, "Block this account:\n " + sp, "Block Account", JOptionPane.YES_NO_OPTION);
+            if (qs == JOptionPane.YES_OPTION) {
+                boolean delete = userAccount.blockAccount(ListAccount, 2);
+                if (delete == true) {
+                    FillTable();
+                } else
+                    JOptionPane.showMessageDialog(null, "Can not block this account!");
+
+            }
+        }
+    }//GEN-LAST:event_BlockActionPerformed
+
+    private void UnBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnBlockActionPerformed
+        // TODO add your handling code here:
+        int[] selectedRows = tbAccount.getSelectedRows();
+        
+        if (selectedRows.length <= 0) {
+            JOptionPane.showMessageDialog(null, "You are not select row!");
+        } else {
+            ArrayList<Integer> ListAccount = new ArrayList<Integer>();
+            String sp = "";
+            
+             for (int i : selectedRows) {
+                int ma = (int) tbAccount.getValueAt(i, 0);
+                ListAccount.add(ma);
+                String userName = (String) tbAccount.getValueAt(i, 1);
+                sp += userName + "\n";
+            }
+            int qs;
+            qs = JOptionPane.showConfirmDialog(null, "Un Block this account:\n " + sp, "Un Block Account", JOptionPane.YES_NO_OPTION);
+            if (qs == JOptionPane.YES_OPTION) {
+                boolean delete = userAccount.blockAccount(ListAccount, 0);
+                if (delete == true) {
+                    FillTable();
+                } else
+                    JOptionPane.showMessageDialog(null, "Can not unblock this account!");
+
+            }
+        }
+    }//GEN-LAST:event_UnBlockActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
+    private javax.swing.JButton Block;
     private javax.swing.JDialog CreateAccount;
     private javax.swing.JButton Edit;
     private javax.swing.JButton Remove;
+    private javax.swing.JButton UnBlock;
     private javax.swing.JButton View;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
