@@ -1037,7 +1037,8 @@ CREATE TABLE `PhysicalGoods` (
   `depth` int NOT NULL 0,
   `size` varchar(45) DEFAULT '0',
   `input_day` timestamp NOT NULL,
-  `media_id` bigint NOT NULL
+  `media_id` bigint NOT NULL,
+  `weight` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
