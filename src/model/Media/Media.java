@@ -16,6 +16,7 @@ public abstract class Media {
     private int price;
     private int sale_percent;
     private int category_id;
+    private String image_path;
     
     public Media() {
         title = "";
@@ -23,22 +24,25 @@ public abstract class Media {
         value = 0;
         sale_percent = 0;
         category_id = 0;
+        image_path = "";
     }
     
-    public Media(String title, int value, int price, int category) {
+    public Media(String title, int value, int price, int category, String image_path) {
         this.title = title;
         this.value = value;
         this.price = price;
         this.sale_percent = 0;
         this.category_id = category;
+        this.image_path = image_path;
     }
 
-    public Media(String title, int value, int price, int sale_percent, int category) {
+    public Media(String title, int value, int price, int sale_percent, int category, String image_path) {
         this.title = title;
         this.value = value;
         this.price = price;
         this.sale_percent = sale_percent;
         this.category_id = category;
+        this.image_path = image_path;
     }
 
     public int getId() {
@@ -83,5 +87,13 @@ public abstract class Media {
 
     public void setCategory(int category_id) {
         this.category_id = category_id;
+    }
+    
+    public String getImagePath() {
+        return image_path;
+    }
+    
+    public void setImagePath(String image_path) {
+        this.image_path = image_path;
     }
 }

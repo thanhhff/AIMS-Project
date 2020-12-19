@@ -18,8 +18,8 @@ public class LP extends PhysicalGood {
     private String genre;
     private ArrayList<Track> track_list;
     
-    public LP(String title, int value, int price, int sale_percent, int category, String barcode, String description, int quantity, String date, int width, int height, int depth, int weight, String artist, String record_label, String publication_date, String genre) {
-        super(title, value, price, sale_percent, category, barcode, description, quantity, date, width, height, depth, weight);
+    public LP(String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String date, int width, int height, int depth, int weight, String artist, String record_label, String publication_date, String genre) {
+        super(title, value, price, sale_percent, category, image_path, barcode, description, quantity, date, width, height, depth, weight);
         this.artist_name = artist;
         this.record_label_name = record_label;
         this.publication_date = publication_date;
