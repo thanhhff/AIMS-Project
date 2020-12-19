@@ -8,9 +8,12 @@ package views.HomeUser;
 import static aims.AIMS.account;
 import aims.PaymentService;
 import controller.Cart.CartController;
+import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Media.Media;
 import model.User.User;
 import views.MediaList.mediaList;
 import views.account.UserPanel.AccountPanel;
@@ -32,7 +35,9 @@ public final class HomeUser extends javax.swing.JFrame {
     }
 
     public void fill() {
-        mediaList media = new mediaList();
+        ArrayList<Media> list = new ArrayList<Media>();
+        SearchController.SearchRandom(list);
+        mediaList media = new mediaList(list);
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(media, BorderLayout.CENTER);
         jpLayout.updateUI();
@@ -149,7 +154,9 @@ public final class HomeUser extends javax.swing.JFrame {
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         jpLayout.removeAll();
-        mediaList media = new mediaList();
+        ArrayList<Media> list = new ArrayList<Media>();
+        SearchController.SearchRandom(list);
+        mediaList media = new mediaList(list);
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(media, BorderLayout.CENTER);
         jpLayout.updateUI();

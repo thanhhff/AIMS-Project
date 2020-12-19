@@ -2,3 +2,5 @@
 ./build/
 
 *.class
+/nbproject/private/
+/build/

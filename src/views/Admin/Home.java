@@ -5,10 +5,13 @@
  */
 package views.Admin;
 
+import controller.Search.SearchController;
 import views.HomeUser.*;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Media.Media;
 import views.Admin.User.UserPanel;
 import views.MediaList.mediaList;
 import views.account.Login;
@@ -31,7 +34,9 @@ public final class Home extends javax.swing.JFrame {
     
     public void fill()
     {
-        mediaList media = new mediaList();
+       ArrayList<Media> list = new ArrayList<Media>();
+        SearchController.SearchRandom(list);
+        mediaList media = new mediaList(list);
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(media, BorderLayout.CENTER);
         jpLayout.updateUI();
@@ -229,7 +234,9 @@ public final class Home extends javax.swing.JFrame {
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
         // TODO add your handling code here:
         jpLayout.removeAll();
-        mediaList media = new mediaList();
+        ArrayList<Media> list = new ArrayList<Media>();
+        SearchController.SearchRandom(list);
+        mediaList media = new mediaList(list);
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(media, BorderLayout.CENTER);
         jpLayout.updateUI();
