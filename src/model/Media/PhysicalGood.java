@@ -19,7 +19,7 @@ public abstract class PhysicalGood extends Media {
     private int depth;
     private int weight;
 
-    public PhysicalGood(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight) {
+    public PhysicalGood(String title, int value, int price, int sale_percent, int category, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight) {
         super(title, value, price, sale_percent, category);
         this.barcode = barcode;
         this.description = description;

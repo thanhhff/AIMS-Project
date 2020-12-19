@@ -18,7 +18,7 @@ public class CD extends PhysicalGood {
     private String genre;
     private ArrayList<Track> track_list;
     
-    public CD(String title, int value, int price, int sale_percent, String category, String barcode, String description, int quantity, String date, int dimension_x, int dimension_y, int dimension_z, int weight, String artist, String record_label, String publication_date, String genre) {
+    public CD(String title, int value, int price, int sale_percent, int category, String barcode, String description, int quantity, String date, int dimension_x, int dimension_y, int dimension_z, int weight, String artist, String record_label, String publication_date, String genre) {
         super(title, value, price, sale_percent, category, barcode, description, quantity, date, dimension_x, dimension_y, dimension_z, weight);
         this.artist_name = artist;
         this.record_label_name = record_label;
