@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.HomeAdmin;
+package views.Admin;
 
 import views.HomeUser.*;
 import java.awt.BorderLayout;
@@ -23,7 +23,7 @@ public final class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        fill();
+//        fill();
     }
     
     public void fill()

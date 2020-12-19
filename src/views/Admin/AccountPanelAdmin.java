@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views.account.Admin;
+package views.Admin;
 
 import views.account.User.*;
 import java.awt.BorderLayout;
