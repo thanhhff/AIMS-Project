@@ -92,7 +92,9 @@ CREATE TABLE `Categories` (
 
 INSERT INTO `Categories` (`category_id`, `category_name`, `is_physical_good?`) VALUES
 (1, 'Book', 1),
-(2, 'DVD', 1);
+(2, 'DVD', 1),
+(3, 'CD', 1),
+(4, 'LP', 1);
 
 -- --------------------------------------------------------
 
@@ -104,9 +106,18 @@ CREATE TABLE `CDs` (
   `publication_date` timestamp NULL DEFAULT NULL,
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
-  `artist_name` varchar(255) DEFAULT NULL
+  `artist_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
+CREATE TABLE `LPs` (
+  `publication_date` timestamp NULL DEFAULT NULL,
+  `media_id` bigint NOT NULL,
+  `record_label_name` varchar(255) DEFAULT NULL,
+  `artist_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 -- --------------------------------------------------------
 
 --
@@ -1021,7 +1032,9 @@ CREATE TABLE `PhysicalGoods` (
   `barcode` int NOT NULL,
   `description` text,
   `quantity` int NOT NULL DEFAULT '0',
-  `dimension` float NOT NULL DEFAULT '0',
+  `width` int NOT NULL DEFAULT 0,
+  `height` int NOT NULL 0,
+  `depth` int NOT NULL 0,
   `size` varchar(45) DEFAULT '0',
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL
