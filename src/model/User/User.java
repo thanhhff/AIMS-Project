@@ -10,9 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Cart.CartItem;
+import model.Cart.Order;
 import model.Cart.ShippingInfo;
 
 /**
@@ -65,6 +64,29 @@ public class User {
             return index == 0 ? null : cartItems;
             
         } catch (NumberFormatException | SQLException e) {
+        }
+        return null;
+    }
+    public List<Order> getOrders(){
+        try {
+            int index = 0;
+            List<Order> orders = new ArrayList<Order>();
+            ResultSet rs = ConnectSQL.sqlQuery("select * from Orders where user_id = " + this.user_id);
+            while(rs.next()){
+                int order_id = Integer.parseInt(rs.getString("order_id"));
+                int ship_fee = Integer.parseInt(rs.getString("ship_fee"));
+                int order_state_id = Integer.parseInt(rs.getString("order_state_id"));
+                String shipping_info = rs.getString("shipping_info");
+                String card_number = rs.getString("card_number");
+                Order order = new Order(order_id, order_state_id, user_id, ship_fee, shipping_info, card_number);
+                orders.add(order);
+                index++;
+            }
+            
+            return index == 0 ? null : orders;
+            
+        } catch (NumberFormatException | SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }

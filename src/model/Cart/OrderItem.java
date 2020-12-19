@@ -1,6 +1,7 @@
 package model.Cart;
 
 import db.ConnectSQL;
+import model.Media.Media;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +30,16 @@ public class OrderItem {
                 + "(`order_id`,`media_id`,`price`,`quantity`) "
                 + "values("+ order_id+ ","+ media_id+ ","+ price+ ","+ quantity+ ")");
     }
-    
+    public String getMediaTitle(){
+        return Media.getTitlebyID(media_id);
+    }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
 }

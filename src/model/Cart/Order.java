@@ -8,8 +8,8 @@ package model.Cart;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import model.User.User;
 
 /**
@@ -17,21 +17,22 @@ import model.User.User;
  * @author hsnt
  */
 public class Order {
-    private static final int CANCEL = 1;
-    private static final int SUCCESS = 1;
+    public static final int CANCEL = 1;
+    public static final int SUCCESS = 2;
+    public static final int DELIVERING = 3;
     private int order_id;
     private int ship_fee;
     private int order_state_id;
     private String shipping_info;
     private int user_id;
-    private String cart_number;
+    private String card_number;
     
-    public Order(int user_id,int ship_fee, String shipping_info, String cart_number){
+    public Order(int user_id,int ship_fee, String shipping_info, String card_number){
         this.user_id = user_id;
         this.ship_fee = ship_fee;
         this.shipping_info = shipping_info;
-        this.cart_number = cart_number;
-        this.order_state_id = SUCCESS;
+        this.card_number = card_number;
+        this.order_state_id = DELIVERING;
         save();
         this.order_id = getID();
         User user = new User(user_id);
@@ -41,10 +42,18 @@ public class Order {
             cartItem.delete();
         }
     }
+    public Order(int order_id,int order_state_id,int user_id,int ship_fee, String shipping_info, String card_number){
+        this.user_id = user_id;
+        this.ship_fee = ship_fee;
+        this.shipping_info = shipping_info;
+        this.card_number = card_number;
+        this.order_state_id = order_state_id;
+        this.order_id = order_id;
+    }
     public void save(){
         ConnectSQL.sqlQueryUpdate("insert into Orders "
-                + "(`ship_fee`,`order_state_id`,`user_id`,`shipping_info`,`cart_number`) "
-                + "values("+ ship_fee+ ","+ order_state_id+ ","+ user_id+ ",'"+ shipping_info+ "','"+ cart_number+ "')");
+                + "(`ship_fee`,`order_state_id`,`user_id`,`shipping_info`,`card_number`) "
+                + "values("+ ship_fee+ ","+ order_state_id+ ","+ user_id+ ",'"+ shipping_info+ "','"+ card_number+ "')");
     }
     private int getID(){
         try {
@@ -69,5 +78,45 @@ public class Order {
     public String getShipping_info() {
         return shipping_info;
     }
-    
+    public int getTotalBill(){
+        ResultSet rs = ConnectSQL.sqlQuery("select sum(price*quantity) as sum from OrderItems where order_id = " + order_id);
+        try {
+            while(rs.next()){
+                return Integer.parseInt(rs.getString("sum"));
+            }
+            return 0;
+        } catch (SQLException ex) {
+            return 0;
+        }
+    }
+    public String getState(){
+        switch(this.order_state_id){
+            case DELIVERING:
+                return "Delivering";
+            case CANCEL:
+                return "Cancel";
+            case SUCCESS:
+                return "Success";
+        }
+        return null;
+    }
+    public List<OrderItem> getOrderItems(){
+        try {
+            int index = 0;
+            List<OrderItem> orderItems = new ArrayList<OrderItem>();
+            ResultSet rs = ConnectSQL.sqlQuery("select * from OrderItems where order_id = " + order_id);
+            while(rs.next()){
+                int media_id = Integer.parseInt(rs.getString("media_id"));
+                int price = Integer.parseInt(rs.getString("price"));
+                int quantity = Integer.parseInt(rs.getString("quantity"));
+                OrderItem orderItem = new OrderItem(media_id, order_id, price, quantity);
+                orderItems.add(orderItem);
+                index++;
+            }
+            return index == 0 ? null : orderItems;
+            
+        } catch (NumberFormatException | SQLException e) {
+        }
+        return null;
+    }
 }
