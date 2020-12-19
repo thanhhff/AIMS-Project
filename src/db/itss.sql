@@ -862,8 +862,7 @@ CREATE TABLE `DVDs` (
   `studio_name` varchar(255) DEFAULT NULL,
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
-  `writer_name` varchar(255) DEFAULT NULL,
-  `director` varchar(255) DEFAULT NULL
+  `writer_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
