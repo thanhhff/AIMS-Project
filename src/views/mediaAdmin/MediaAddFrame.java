@@ -673,9 +673,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
             } else {
                 switch(category_id) {
                     case 1:
-                        
+                        book_panel.setVisible(true);
+                        dvd_panel.setVisible(false);
                         break;
                     case 2:
+                        book_panel.setVisible(false);
+                        dvd_panel.setVisible(true);
                         break;
                     case 3:
                         break;
