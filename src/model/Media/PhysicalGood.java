@@ -9,7 +9,7 @@ package model.Media;
  *
  * @author Toshiba T75
  */
-public class PhysicalGood extends Media {
+public abstract class PhysicalGood extends Media {
     private String barcode;
     private String description;
     private int quantity;
