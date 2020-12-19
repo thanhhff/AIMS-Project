@@ -34,11 +34,11 @@ public class CartController {
         }
         return 100000;
     }
+    public void addCartItem(int user_id, int media_id, int price){
+        CartItem.creat(user_id, media_id, price);
+    }
     public void deleteCartItem(CartItem cartItem){
-        int user_id = cartItem.getUser_id();
-        int media_id = cartItem.getMedia_id();
-        ConnectSQL.sqlQueryUpdate(
-                "delete from CartItems where media_id = " + media_id + " and user_id = " + user_id); 
+        cartItem.delete();
     }
     public void updateQuantity(CartItem cartItem,int quantily){
         if(quantily == 0){
@@ -53,6 +53,5 @@ public class CartController {
     public boolean payment(String card_number, int totalBill){
         return paymentService.check(card_number, totalBill);
     }
-    // Send OrderController
     
 }
