@@ -8,7 +8,7 @@ package views.account;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import controller.User.AccountController;
+import controller.User.UserController;
 import model.User.Account;
 
 import java.awt.*;
@@ -19,7 +19,7 @@ import views.HomeUser.HomeUser;
  * @author hsnt
  */
 public class Login extends javax.swing.JFrame {
-    AccountController accController = new AccountController();
+    UserController accController = new UserController();
 
     /**
      * Creates new form Lo
