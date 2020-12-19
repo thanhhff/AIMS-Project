@@ -5,6 +5,12 @@
  */
 package model.Media;
 
+import db.ConnectSQL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author hsnt
@@ -32,7 +38,17 @@ public class Media {
         this.sale_percent = sale_percent;
         this.category = category;
     }
-
+    public static String getTitlebyID(int media_id){
+        ResultSet rs = ConnectSQL.sqlQuery("Select * from Medias where media_id = " + media_id);
+        try {
+            while(rs.next()){
+                return rs.getString("title");
+            }
+            return null;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
     public int getId() {
         return id;
     }
