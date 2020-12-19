@@ -21,8 +21,8 @@ import model.Media.Media;
 public class mediaList extends JPanel{
        JPanel mediaList;
       public  mediaList(ArrayList<Media> listMedia) {
-         setLayout(new GridLayout(5,4));
-         mediaList = new JPanel(new GridLayout(5,4));
+         setLayout(new GridLayout(2,10));
+         mediaList = new JPanel(new GridLayout(2,10));
          add(new JScrollPane(mediaList));
         ArrayList<mediaItem> listItemPanel = new ArrayList<mediaItem>();
         for(int i = 0 ; i < listMedia.size(); i++)
