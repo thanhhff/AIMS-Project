@@ -105,6 +105,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         dvd_subtitle = new javax.swing.JTextArea();
         cd_panel = new javax.swing.JPanel();
         cd_label = new javax.swing.JLabel();
+        lp_panel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -599,6 +600,19 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
         cards.add(cd_panel, "card4");
 
+        javax.swing.GroupLayout lp_panelLayout = new javax.swing.GroupLayout(lp_panel);
+        lp_panel.setLayout(lp_panelLayout);
+        lp_panelLayout.setHorizontalGroup(
+            lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 832, Short.MAX_VALUE)
+        );
+        lp_panelLayout.setVerticalGroup(
+            lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
+        );
+
+        cards.add(lp_panel, "card5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -639,6 +653,33 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
     private void categoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesActionPerformed
         // TODO add your handling code here:
+        int category_id = categories.getSelectedIndex() + 1;
+        switch(category_id) {
+            case 1:
+                book_panel.setVisible(true);
+                dvd_panel.setVisible(false);
+                cd_panel.setVisible(false);
+                lp_panel.setVisible(false);
+                break;
+            case 2:
+                book_panel.setVisible(false);
+                dvd_panel.setVisible(true);
+                cd_panel.setVisible(false);
+                lp_panel.setVisible(false);
+                break;
+            case 3:
+                book_panel.setVisible(false);
+                dvd_panel.setVisible(false);
+                cd_panel.setVisible(true);
+                lp_panel.setVisible(false);
+                break;
+            case 4:
+                book_panel.setVisible(false);
+                dvd_panel.setVisible(false);
+                cd_panel.setVisible(false);
+                lp_panel.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_categoriesActionPerformed
 
     private void gotoDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoDetailButtonActionPerformed
@@ -671,20 +712,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
             } else if (price < min_price || price > max_price) {
                 JOptionPane.showMessageDialog(null, "Price must in the range of 30% and 150% of value!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                switch(category_id) {
-                    case 1:
-                        book_panel.setVisible(true);
-                        dvd_panel.setVisible(false);
-                        break;
-                    case 2:
-                        book_panel.setVisible(false);
-                        dvd_panel.setVisible(true);
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                }
+                
             }
         }
     }//GEN-LAST:event_gotoDetailButtonActionPerformed
@@ -782,6 +810,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JLabel language_label;
     private javax.swing.JComboBox<String> languages;
     private javax.swing.JPanel left_panel;
+    private javax.swing.JPanel lp_panel;
     private javax.swing.JTextField media_barcode;
     private javax.swing.JFormattedTextField media_depth;
     private javax.swing.JTextArea media_description;
