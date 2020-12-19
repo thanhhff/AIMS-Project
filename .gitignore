@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 *.class
 ./build/
+=======
+build/
+ConnectSQL.java
+/dist/
+>>>>>>> b08c5701bfa83e80faea9de172297788a1eddb0d

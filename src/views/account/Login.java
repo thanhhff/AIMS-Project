@@ -180,6 +180,7 @@ public class Login extends javax.swing.JFrame {
                 this.setVisible(false);
                 
                 int level = accController.isAdmin(account);
+                account.setLv(level);
                 
                 if (level == 0)
                 {
