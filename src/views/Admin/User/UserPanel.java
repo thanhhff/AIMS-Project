@@ -41,12 +41,13 @@ public class UserPanel extends javax.swing.JPanel {
                 accountNumber += 1;
                 
                 String lvStatus = "";
-                switch (acc.getLv()) {
-                    case 0 -> lvStatus = "User";
-                    case 1 -> lvStatus = "Admin";
-                    case 2 -> lvStatus = "Block";
-                    default -> {
-                    }
+                
+                if (acc.getLv() == 0){
+                    lvStatus = "User";
+                } else if (acc.getLv() == 1){
+                    lvStatus = "Admin";
+                } else if (acc.getLv() == 2){
+                    lvStatus = "Block";
                 }
                 tbmodel.addRow(new Object[]{acc.getId(), acc.getUsername(), lvStatus});
             }
