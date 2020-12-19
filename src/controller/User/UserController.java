@@ -42,12 +42,28 @@ public class UserController {
             
             while (rs.next()) {
                level = rs.getInt(1);
-               System.out.println(level);
             }
         } catch (SQLException ex) {
         }
         
         return level;
+    }
+    
+    public int getUserID(Account acc)
+    {
+        int user_id = 1;
+        String sql = "SELECT user_id from Users WHERE email = '" + acc.getUsername() + "'";
+        
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);
+            
+            while (rs.next()) {
+               user_id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+        }
+        
+        return user_id;
     }
     
     public Account getAccount(int user_id){

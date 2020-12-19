@@ -181,6 +181,7 @@ public class Login extends javax.swing.JFrame {
                 
                 int level = accController.isAdmin(account);
                 account.setLv(level);
+                account.setId(accController.getUserID(account));
                 
                 if (level == 0)
                 {
