@@ -30,5 +30,22 @@ public class UserController {
 
         return insert;
     }
+    
+    public int isAdmin(Account acc){
+        int level = 0;
+        String sql = "SELECT `is_admin?` FROM Users WHERE email = '" + acc.getUsername() + "'";
+        
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);
+            
+            while (rs.next()) {
+               level = rs.getInt(1);
+               System.out.println(level);
+            }
+        } catch (SQLException ex) {
+        }
+        
+        return level;
+    }
 
 }
