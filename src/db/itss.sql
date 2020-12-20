@@ -12752,6 +12752,9 @@ ALTER TABLE `Orders`
 ALTER TABLE `PhysicalGoods`
   ADD CONSTRAINT `fk_PhysicalGoods_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
+ALTER TABLE `LPs`
+ADD CONSTRAINT `fk_LP_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
 --
 -- Các ràng buộc cho bảng `ShippingInfos`
 --
