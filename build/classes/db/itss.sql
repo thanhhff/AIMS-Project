@@ -12865,5 +12865,8 @@ INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`,
 INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, NULL, NULL, 3, 0, NULL, 0, NULL, NULL);
 INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, NULL, NULL, 12, 0, NULL, 0, NULL, NULL);
 
+<<<<<<< HEAD
 INSERT INTO `itss`.`dvdtypes` values (1, 'Blu-ray');
 INSERT INTO `itss`.`dvdtypes` values (2, 'HD-DVD');
+=======
+>>>>>>> 1b7a86cc3befd38f182c975656bdfa8d237f64b1

@@ -262,20 +262,17 @@ public class UserPanel extends javax.swing.JPanel {
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         // TODO add your handling code here:
-        FillTable();
-        int[] selectedRows = tbAccount.getSelectedRows();
-        if (selectedRows.length <= 0) {
-            
+        int select = tbAccount.getSelectedRow();
+        if (select < 0) {
+            // pass
+//            JOptionPane.showMessageDialog(null, "You are not select!");
         } else {
-            ArrayList<Integer> ListAccount = new ArrayList<Integer>();
-            for (int i : selectedRows) {
-                int ma = (int) tbAccount.getValueAt(i, 0);
-                ListAccount.add(ma);
-                String userName = (String) tbAccount.getValueAt(i, 1);
-                
-                
+            int user_id = (int) tbAccount.getValueAt(select, 0);
+            ViewInformation viewAcc = new ViewInformation(user_id);
+            viewAcc.setVisible(true);
             }
-        }
+        FillTable();
+
     }//GEN-LAST:event_ViewActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed

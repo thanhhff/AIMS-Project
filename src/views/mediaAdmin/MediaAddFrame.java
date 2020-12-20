@@ -487,7 +487,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         publication_dvd_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         publication_dvd_label.setText("Publication date: ");
 
-        publication_date_dvd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        publication_date_dvd.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
         publication_date_dvd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 publication_date_dvdActionPerformed(evt);
@@ -741,13 +741,24 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int pages = Integer.parseInt(page_number.getText());
                         int cover_type_id = cover_types.getSelectedIndex() + 1;
                         String genre = book_genre.getText();
-                        int media_id = Media.getMaxID() + 1;
-                        String image_path = String.valueOf(media_id) + ".png";
-                        Book book = new Book(media_id, title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
+                        int book_id = Media.getMaxID() + 1;
+                        String image_path = String.valueOf(book_id) + ".png";
+                        Book book = new Book(book_id, title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
                         BookController.insertBook(book);
                         
                         break;
                     case 2:
+                        String director = writer_name.getText();
+                        String studio = studio_name.getText();
+                        String dvd_publication_date = publication_date_dvd.getText();
+                        int runtime = Integer.parseInt(dvd_runtime.getText());
+                        int dvd_language_id = dvd_languages.getSelectedIndex() + 1;
+                        int dvd_type_id = dvd_types.getSelectedIndex() + 1;
+                        String subtitle = dvd_subtitle.getText();
+                        int dvd_id = Media.getMaxID() + 1;
+                        String dvd_image_path = String.valueOf(dvd_id) + ".png";
+                        DVD dvd = new DVD(dvd_id, title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
+                        DVDController.insertDVD(dvd);
                         break;
                     case 3:
                         break;

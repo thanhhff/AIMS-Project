@@ -5,8 +5,18 @@
  */
 package views.Admin.Sales;
 
+import aims.FormatNumber;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import model.Media.Media;
+import model.Sale.MediaSale;
 
 /**
  *
@@ -17,13 +27,68 @@ public class MediaSalePanel extends javax.swing.JPanel {
     /**
      * Creates new form MediaSalePanel
      */
+    public static int WIDTH = 788;
+    public static int HEIGHT = 637;
+    private List<MediaSaleItemPanel> mediaSaleItemPanels;
+    private List<MediaSale> mediaSales;
     public MediaSalePanel(List<Media> medias) {
         initComponents();
+        setSize(WIDTH, HEIGHT);
+        mediaSales = new ArrayList<MediaSale>();
         MediaSaleList  mediaSaleList = new MediaSaleList(medias);
         mediaSaleList.setBounds(40, 80, mediaSaleList.getWidth(), mediaSaleList.getHeight());
+        mediaSaleItemPanels = mediaSaleList.getMediaSaleItemPanels();
+        changeValue(30, 150, mediaSaleItemPanels);
         add(mediaSaleList);
     }
+    public List<MediaSale> getMediaSales(){
+        return mediaSales;
+    }
+    public String getStartDay(){
+        return start_day.getText();
+    }
+    public String getEndDay(){
+        return end_day.getText();
+    }
+    private int getValueNumber(JTextField textField) {
+        try {
+            int value = Integer.parseInt(textField.getText());
+            return value;
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+    }
+    private void changeValue( int min, int max, List<MediaSaleItemPanel> mediaSaleItemPanels) {
+        percentAll.getDocument().addDocumentListener(new DocumentListener() {
+           
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
 
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+//                System.out.println("Test");
+                int precent = getValueNumber(percentAll);
+                if (precent == 0) {
+
+                } else if (precent == -1 || precent < min || precent > max) {
+                    percentAll.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+                } else {
+                    percentAll.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));                    
+                    for(MediaSaleItemPanel mediaSaleItemPanel: mediaSaleItemPanels){
+                        mediaSaleItemPanel.setSaleValue(precent);
+                    }
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,30 +99,27 @@ public class MediaSalePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        start_day = new javax.swing.JTextField();
+        end_day = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        percentAll = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        submit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(788, 633));
         setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Media Saling");
         add(jLabel1);
         jLabel1.setBounds(330, 12, 110, 21);
-
-        jTextField1.setText("jTextField1");
-        add(jTextField1);
-        jTextField1.setBounds(128, 51, 169, 23);
-
-        jTextField2.setText("jTextField2");
-        add(jTextField2);
-        jTextField2.setBounds(390, 51, 169, 23);
+        add(start_day);
+        start_day.setBounds(128, 51, 169, 23);
+        add(end_day);
+        end_day.setBounds(390, 51, 169, 23);
 
         jLabel2.setText("Start date: ");
         add(jLabel2);
@@ -71,35 +133,49 @@ public class MediaSalePanel extends javax.swing.JPanel {
         add(jLabel4);
         jLabel4.setBounds(591, 54, 79, 17);
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField3.setText("0");
-        add(jTextField3);
-        jTextField3.setBounds(682, 51, 41, 23);
+        percentAll.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        percentAll.setText("0");
+        add(percentAll);
+        percentAll.setBounds(682, 51, 41, 23);
 
         jLabel5.setText("%");
         add(jLabel5);
         jLabel5.setBounds(735, 54, 13, 17);
 
-        jButton1.setText("Submit");
-        add(jButton1);
-        jButton1.setBounds(240, 598, 76, 35);
+        submit.setText("Submit");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+        add(submit);
+        submit.setBounds(230, 590, 90, 35);
 
         jButton2.setText("Cancel");
         add(jButton2);
-        jButton2.setBounds(498, 598, 76, 35);
+        jButton2.setBounds(490, 590, 76, 35);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        for(MediaSaleItemPanel mediaSaleItemPanel : mediaSaleItemPanels){
+            if(mediaSaleItemPanel.isStatus()){
+                mediaSales.add(mediaSaleItemPanel.getMediaSale());
+                System.out.println(mediaSaleItemPanel.getMediaSale());
+            }
+        }      
+    }//GEN-LAST:event_submitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField end_day;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField percentAll;
+    private javax.swing.JTextField start_day;
+    private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,19 +8,25 @@ package views.HomeUser;
 
 
 import static aims.AIMS.account;
+import controller.Cart.CartController;
 
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.Cart.ShippingInfo;
 import model.Media.Media;
 import model.User.User;
 import views.MediaList.mediaListPanel;
 import views.MediaList.mediaList;
 import views.MediaList.mediaListPanel;
+import views.account.Login;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
+import views.cart.CheckOut;
 
 /**
  *
@@ -61,6 +67,7 @@ public final class HomeUser extends javax.swing.JFrame {
         Account = new javax.swing.JLabel();
         Cart = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
+        SignOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +79,17 @@ public final class HomeUser extends javax.swing.JFrame {
         );
         jpLayoutLayout.setVerticalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGap(0, 707, Short.MAX_VALUE)
         );
 
-        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass.png"))); // NOI18N
+        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass-2.png"))); // NOI18N
         search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchMouseClicked(evt);
             }
         });
 
-        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/user-resize1.png"))); // NOI18N
+        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/manage-account.png"))); // NOI18N
         Account.setText("Account");
         Account.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,7 +97,7 @@ public final class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart.png"))); // NOI18N
+        Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart-2.png"))); // NOI18N
         Cart.setText("Cart");
         Cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,22 +112,32 @@ public final class HomeUser extends javax.swing.JFrame {
             }
         });
 
+        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/signout.png"))); // NOI18N
+        SignOut.setText("Sign Out");
+        SignOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignOutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(19, 19, 19)
                 .addComponent(Home)
                 .addGap(36, 36, 36)
                 .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 593, Short.MAX_VALUE)
-                .addComponent(Cart, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, Short.MAX_VALUE)
+                .addComponent(Cart, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Account)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(SignOut)
+                .addGap(32, 32, 32))
             .addComponent(jpLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -130,19 +147,23 @@ public final class HomeUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Account, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(search))
-                        .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Home)
-                    .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Account, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SignOut))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(search))
+                            .addComponent(Home)
+                            .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -174,7 +195,50 @@ public final class HomeUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cart empty");
         } else {
             CartPanel cart = new CartPanel(user);
+            cart.getCheckOut().addActionListener((ActionEvent e) -> {
+                ShippingInfo shippingInfo = cart.getDelivery().getSelected();
+                if (shippingInfo != null && cart.getCartList().getMediaCount() != 0) {
 
+                    JDialog jDialog = new JDialog();
+                    int ship_fee = CartController.getShipFee(user.getCartItems());
+                    CheckOut checkOut = new CheckOut(shippingInfo, cart.getDelivery().getNoteText(), cart.getTotal(), ship_fee);
+                    jDialog.setSize(650, 700);
+                    checkOut.setBounds(0, 0, 650, 700);
+                    jDialog.setUndecorated(true);
+                    jDialog.add(checkOut);
+                    jDialog.setLocationRelativeTo(null);
+
+                    checkOut.getcancelButton().addActionListener((ActionEvent e1) -> {
+                        jDialog.dispose();
+                    });
+                    checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
+                        if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
+                            if(CartController.payment(checkOut.getCardNumber(), cart.getTotal())){
+                                String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
+                                        + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
+                                        + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
+                                CartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
+                                JOptionPane.showMessageDialog(null, "Order successfull");
+                                jDialog.dispose();
+                                jpLayout.removeAll();
+                                mediaListPanel media = new  mediaListPanel();  
+                                jpLayout.setLayout(new BorderLayout());
+                                jpLayout.add(media, BorderLayout.CENTER);
+                                jpLayout.updateUI();
+                            }else{                               
+                                JOptionPane.showMessageDialog(null, "The card number is incorrect or the account balance is not enough to make the transaction.");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number : XXXXXX_groupXX_2020.\n Date: MM/YY.\n CVV has 3 number.");
+                        }
+                    });
+
+                    jDialog.setModal(true);
+                    jDialog.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import address or Add Media to Cart");
+                }
+            });
             jpLayout.removeAll();
             jpLayout.setLayout(new BorderLayout());
             cart.setBounds(0, 0, jpLayout.getWidth(), jpLayout.getHeight());
@@ -196,11 +260,23 @@ public final class HomeUser extends javax.swing.JFrame {
         jpLayout.updateUI();
     }//GEN-LAST:event_searchMouseClicked
 
+    private void SignOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignOutMouseClicked
+        // TODO add your handling code here:
+        
+        int out = JOptionPane.showConfirmDialog(null, "Are you sure that you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (out == 0) {
+            this.setVisible(false);
+            Login login = new Login();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_SignOutMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Account;
     private javax.swing.JLabel Cart;
     private javax.swing.JLabel Home;
+    private javax.swing.JLabel SignOut;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpLayout;
     private javax.swing.JLabel search;

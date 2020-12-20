@@ -31,7 +31,7 @@ public class CartPanel extends JPanel {
     private JButton checkoutButton;
     private int totalBill;
     private User user;
-
+    
     public CartPanel(User user) {
         this.user = user;
         setLayout(null);
@@ -84,46 +84,7 @@ public class CartPanel extends JPanel {
             checkoutButton.setFocusPainted(false);
             checkoutButton.setBounds(CartList.MAX_WIDTH + 30, 12 + DeliveryPanel.HEIGHT + 30 + 30 + BillPanel.HEIGHT, DeliveryPanel.WIDTH, 35);
 
-            checkoutButton.addActionListener((ActionEvent e) -> {
-                ShippingInfo shippingInfo = deliveryPanel.getSelected();
-                if (shippingInfo != null && cartList.getMediaCount() != 0) {
-
-                    JDialog jDialog = new JDialog();
-                    int ship_fee = CartController.getShipFee(user.getCartItems());
-                    CheckOut checkOut = new CheckOut(shippingInfo, deliveryPanel.getNoteText(), totalBill, ship_fee);
-                    jDialog.setSize(650, 700);
-                    checkOut.setBounds(0, 0, 650, 700);
-                    jDialog.setUndecorated(true);
-                    jDialog.add(checkOut);
-                    jDialog.setLocationRelativeTo(null);
-
-                    checkOut.getcancelButton().addActionListener((ActionEvent e1) -> {
-                        jDialog.dispose();
-                    });
-                    checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
-                        if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
-                            if(CartController.payment(checkOut.getCardNumber(), totalBill)){
-                                String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
-                                        + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
-                                        + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
-                                CartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
-                                JOptionPane.showMessageDialog(null, "Order successfull");
-                                jDialog.dispose();
-                                this.getParent().remove(this);
-                            }else{                               
-                                JOptionPane.showMessageDialog(null, "The card number is incorrect or the account balance is not enough to make the transaction.");
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number : XXXXXX_groupXX_2020.\n Date: MM/YY.\n CVV has 3 number.");
-                        }
-                    });
-
-                    jDialog.setModal(true);
-                    jDialog.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Please import address or Add Media to Cart");
-                }
-            });
+            
 
             add(checkoutButton);
             add(cartList);
@@ -133,7 +94,18 @@ public class CartPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Cart empty");
         }
     }
-
+    public DeliveryPanel getDelivery(){
+        return deliveryPanel;
+    }
+    public CartList getCartList(){
+        return cartList;
+    }
+    public JButton getCheckOut(){
+        return checkoutButton;
+    }
+    public int getTotal(){
+        return totalBill;
+    }
     private void changeBill() {
         billPanel.getTotalBillLabel().setName("" + totalBill);
         billPanel.getTotalBillLabel().setText(FormatNumber.formatString("" + totalBill) + " VND");

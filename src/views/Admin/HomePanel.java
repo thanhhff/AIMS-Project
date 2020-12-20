@@ -5,8 +5,12 @@
  */
 package views.Admin;
 
+import static aims.AIMS.account;
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
+import model.User.User;
 import views.Admin.User.UserPanel;
+import views.order.OrderList;
 
 /**
  *
@@ -142,6 +146,17 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        User user = new User(account.getId());
+        FillInfor.removeAll();
+        if (user.getAllOrders() == null) {
+            JOptionPane.showMessageDialog(null, "Order empty");
+        } else {
+        OrderList orderList = new OrderList(user.getAllOrders());
+        FillInfor.setLayout(new BorderLayout());
+        FillInfor.add(orderList, BorderLayout.CENTER);
+        FillInfor.updateUI();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

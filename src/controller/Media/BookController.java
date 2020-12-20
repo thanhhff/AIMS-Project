@@ -5,11 +5,7 @@
  */
 package controller.Media;
 import model.Media.Book;
-import db.ConnectSQL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
