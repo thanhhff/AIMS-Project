@@ -61,6 +61,7 @@ public final class HomeUser extends javax.swing.JFrame {
         Account = new javax.swing.JLabel();
         Cart = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +73,17 @@ public final class HomeUser extends javax.swing.JFrame {
         );
         jpLayoutLayout.setVerticalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGap(0, 707, Short.MAX_VALUE)
         );
 
-        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass.png"))); // NOI18N
+        search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass-2.png"))); // NOI18N
         search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchMouseClicked(evt);
             }
         });
 
-        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/user-resize1.png"))); // NOI18N
+        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/manage-account.png"))); // NOI18N
         Account.setText("Account");
         Account.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,7 +91,7 @@ public final class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart.png"))); // NOI18N
+        Cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/shopping-cart-2.png"))); // NOI18N
         Cart.setText("Cart");
         Cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,22 +106,27 @@ public final class HomeUser extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/signout.png"))); // NOI18N
+        jLabel1.setText("Sign Out");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(19, 19, 19)
                 .addComponent(Home)
                 .addGap(36, 36, 36)
                 .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 593, Short.MAX_VALUE)
-                .addComponent(Cart, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, Short.MAX_VALUE)
+                .addComponent(Cart, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Account)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32))
             .addComponent(jpLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -130,19 +136,23 @@ public final class HomeUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Account, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(search))
-                        .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(Home)
-                    .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Account, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(search))
+                            .addComponent(Home)
+                            .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -201,6 +211,7 @@ public final class HomeUser extends javax.swing.JFrame {
     private javax.swing.JLabel Account;
     private javax.swing.JLabel Cart;
     private javax.swing.JLabel Home;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpLayout;
     private javax.swing.JLabel search;
