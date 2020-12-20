@@ -95,7 +95,7 @@ public class Book extends PhysicalGood {
     
     public static ArrayList<Book> getAllBooks() {
         ArrayList<Book> books = new ArrayList<Book>();
-        String query = "SELECT `medias`.title, `medias`.value, `medias`.price, `medias`.category_id, `medias`.image_path, `physicalgoods`.*, `books`.* FROM `books` LEFT JOIN `physicalgoods` ON `books`.media_id = `physicalgoods`.media_id LEFT JOIN `medias` ON `physicalgoods`.media_id = `medias`.media_id;";
+        String query = "SELECT `Medias`.title, `Medias`.value, `Medias`.price, `Medias`.category_id, `Medias`.image_path, `Physicalgoods`.*, `Books`.* FROM `Books` LEFT JOIN `Physicalgoods` ON `Books`.media_id = `Physicalgoods`.media_id LEFT JOIN `Medias` ON `Physicalgoods`.media_id = `Medias`.media_id;";
 
         try {
             ResultSet rs = ConnectSQL.sqlQuery(query);
