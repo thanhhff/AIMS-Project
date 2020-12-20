@@ -6,7 +6,10 @@
 package views.cart.test;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import model.Media.Book;
+import model.Media.Media;
 import model.User.User;
+import views.Admin.Sales.MediaSaleItemPanel;
 
 import views.cart.CartPanel;
 
@@ -33,7 +36,11 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        Test test = new Test(new CartPanel(new User()));
-        
+//        Test test = new Test(new CartPanel(new User()));
+        Media media = new Book();
+        media.setValue(100000);
+//        media.setCategory("Book");
+        media.setTitle("Conan tapj 47");
+        Test test = new Test(new MediaSaleItemPanel(media));
     }
 }
