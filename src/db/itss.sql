@@ -12777,4 +12777,4 @@ insert into medias values (4, 'MLCB', 25000, 30000, 1, NULL);
 
 insert into physicalgoods (description, quantity, input_day, media_id, width, height, depth, weight, barcode) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
 
-insert into books (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep');
+insert into books (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name, genre) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science);
