@@ -4,3 +4,4 @@
 *.class
 /nbproject/private/
 /build/
+src/db/ConnectSQL.java
