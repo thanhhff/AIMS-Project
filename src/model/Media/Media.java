@@ -162,4 +162,8 @@ public abstract class Media {
             return 0;
         }
     }
+
+    public int getQuantity(){
+        return 0;
+    }
 }
