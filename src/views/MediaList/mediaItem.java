@@ -25,6 +25,7 @@ public class mediaItem extends javax.swing.JPanel {
     public mediaItem(Media media) {
         this.media = media;
         initComponents();
+        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
         jLabel1.setText(media.getTitle());
         jLabel3.setText(String.valueOf(media.getPrice()) + " VND");
         
@@ -72,8 +73,6 @@ public class mediaItem extends javax.swing.JPanel {
         });
 
         jLabel62.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-
-        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("jLabel1");

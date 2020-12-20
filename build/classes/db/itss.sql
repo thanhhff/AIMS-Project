@@ -59,7 +59,8 @@ CREATE TABLE `Books` (
   `publisher_name` varchar(255) DEFAULT NULL,
   `language_id` int NOT NULL,
 <<<<<<< HEAD
-  `author_name` varchar(255) DEFAULT NULL
+  `author_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 =======
   `author_name` varchar(255) DEFAULT NULL,
@@ -939,7 +940,9 @@ CREATE TABLE `Medias` (
   `title` varchar(255) NOT NULL,
   `value` int NOT NULL DEFAULT '0',
   `price` int NOT NULL DEFAULT '0',
-  `category_id` int NOT NULL
+  `category_id` int NOT NULL,
+  `image_path` varchar(255),
+  `sale_percent` int DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
@@ -12774,12 +12777,19 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-insert into covertypes values (1, 'Paperback');
+insert into `Covertypes` values (1, 'Paperback');
 
-insert into covertypes values (2, 'Hardcover');
+insert into `Covertypes` values (2, 'Hardcover');
 
-insert into medias values (4, 'MLCB', 25000, 30000, 1, NULL);
+insert into `Medias` values (4, 'MLCB', 25000, 30000, 1, NULL);
+insert into `Medias` values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
+insert into `Medias` values (6, 'Programming in Java', 30000, 30000, 1, 'images/');
 
-insert into physicalgoods (description, quantity, input_day, media_id, width, height, depth, weight, barcode) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming.', 10, '2020-12-20', 5, 20, 20, 8, 200, 'code');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in java.', 10, '2020-12-20', 6, 20, 20, 8, 200, 'code1010');
 
-insert into books (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name, genre) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science);
+
+insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
+insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
+insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
