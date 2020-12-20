@@ -5,4 +5,8 @@
 /nbproject/private/
 /build/
 
+<<<<<<< HEAD
 /dist/
+=======
+src/db/ConnectSQL.java
+>>>>>>> e680217ecb3e7beb03ca53939d34d4a453accb53

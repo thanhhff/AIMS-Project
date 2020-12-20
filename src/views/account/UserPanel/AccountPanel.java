@@ -5,9 +5,12 @@
  */
 package views.account.UserPanel;
 
+import static aims.AIMS.account;
 import views.account.ChangePassword;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
+import model.User.User;
+import views.order.OrderList;
 
 /**
  *
@@ -139,6 +142,14 @@ public class AccountPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        User user = new User(account.getId());
+        jpLayout2.removeAll();
+        
+        OrderList orderList = new OrderList(user.getOrders());
+        
+        jpLayout2.setLayout(new BorderLayout());
+        jpLayout2.add(orderList, BorderLayout.CENTER);
+        jpLayout2.updateUI();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed
