@@ -747,7 +747,16 @@ public class MediaAddFrame extends javax.swing.JFrame {
             } else if (price < min_price || price > max_price) {
                 JOptionPane.showMessageDialog(null, "Price must in the range of 30% and 150% of value!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                
+                switch (category_id) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
             }
         }
     }//GEN-LAST:event_confirmButtonActionPerformed

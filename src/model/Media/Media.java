@@ -137,10 +137,10 @@ public abstract class Media {
     public static int getNumberOfMedia() {
         try {
             int result = 0;
-            String query = "SELECT COUNT(*) FROM `medias`;";
+            String query = "SELECT COUNT(*) FROM `Medias`;";
             ResultSet rs = ConnectSQL.sqlQuery(query);
 
-            while (rs.next()) {
+            if (rs.next()) {
                 result = rs.getInt(1);
             }
 
@@ -151,9 +151,25 @@ public abstract class Media {
         
     }
     
+    public static int getMaxID() {
+        try {
+            int result = 0;
+            String query = "SELECT MAX(media_id) FROM `Medias`;";
+            ResultSet rs = ConnectSQL.sqlQuery(query);
+            
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            return result;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
     public static int insertMedia(String title, int value, int price, int sale_percent, int category_id, String image_path) {
-        String media_query = "INSERT INTO `medias` (title, value, price, sale_percent, category_id, image_path) VALUES ('" + title + "', " + value + ", " + price + ", " + sale_percent
+        String media_query = "INSERT INTO `Medias` (title, value, price, sale_percent, category_id, image_path) VALUES ('" + title + "', " + value + ", " + price + ", " + sale_percent
                                 + ", " + category_id + ", '" + image_path + "');";
+        
         
         try {
             int result = ConnectSQL.sqlUpdate(media_query);
