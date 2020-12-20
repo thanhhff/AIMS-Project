@@ -29,9 +29,7 @@ public class CartItemPanel extends javax.swing.JPanel {
 	public static final int WIDTH = 630;
 	public static final int HEIGHT = 190;
         private CartItem cartItem;
-        private CartController cartController;
-    public CartItemPanel(CartItem cartItem,CartController cartController) {
-        this.cartController = cartController;
+    public CartItemPanel(CartItem cartItem) {
         initComponents();
         this.cartItem = cartItem;
         
@@ -235,7 +233,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
         totalPrice.setName("" + (price*quantity));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-        this.cartController.updateQuantity(cartItem, this.cartItem.getQuantity() + 1);
+        CartController.updateQuantity(cartItem, this.cartItem.getQuantity() + 1);
         setValueButtonDelete();
     }//GEN-LAST:event_plusMediaActionPerformed
 
@@ -251,7 +249,7 @@ public class CartItemPanel extends javax.swing.JPanel {
             quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
             totalPrice.setName("" + (price*quantity));
             totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-            this.cartController.updateQuantity(cartItem, this.cartItem.getQuantity() - 1);
+            CartController.updateQuantity(cartItem, this.cartItem.getQuantity() - 1);
             setValueButtonDelete();
         }
     }//GEN-LAST:event_minusMediaActionPerformed

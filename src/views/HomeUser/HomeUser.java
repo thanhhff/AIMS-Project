@@ -6,8 +6,6 @@
 package views.HomeUser;
 
 import static aims.AIMS.account;
-import aims.PaymentService;
-import controller.Cart.CartController;
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
@@ -168,7 +166,7 @@ public final class HomeUser extends javax.swing.JFrame {
         if (user.getCartItems() == null) {
             JOptionPane.showMessageDialog(null, "Cart empty");
         } else {
-            CartPanel cart = new CartPanel(user, new CartController(new PaymentService()));
+            CartPanel cart = new CartPanel(user);
 
             jpLayout.removeAll();
             jpLayout.setLayout(new BorderLayout());

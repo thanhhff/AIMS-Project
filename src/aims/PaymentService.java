@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class PaymentService {
 
-    public boolean check(String cart_number, int totalBill){
+    public static boolean check(String cart_number, int totalBill){
         List<String> data =  new ArrayList<String>();
         boolean flag = false;
         try {
@@ -55,7 +55,7 @@ public class PaymentService {
             return flag;
         }
     }
-    public boolean refund(String cart_number, int totalBill){
+    public static boolean refund(String cart_number, int totalBill){
         List<String> data =  new ArrayList<String>();
         boolean flag = false;
         try {
@@ -87,7 +87,7 @@ public class PaymentService {
             return flag;
         }
     }
-    public void reset(){
+    public static void reset(){
         List<String> data =  new ArrayList<String>();
         try {
             File myObj = new File("src/aims/card.txt");

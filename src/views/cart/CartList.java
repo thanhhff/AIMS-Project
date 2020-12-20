@@ -29,15 +29,13 @@ public class CartList extends JPanel{
     public static final int MAX_WIDTH = 650;
     public static final int MAX_HEIGHT = 600;
     private int mediaCount = 0;
-    private CartController cartController;
-    public CartList(List<CartItem> cartItems,CartController cartController) {        
-        this.cartController = cartController;
+    public CartList(List<CartItem> cartItems) {  
         setLayout(new GridLayout(1,0));
         cartPanel = new JPanel(new GridLayout(0,1));
         add(new JScrollPane(cartPanel));
         changeMedia = new ArrayList<JButton>();
         for(CartItem cartItem : cartItems){
-            CartItemPanel cartItemPanel = new CartItemPanel(cartItem,cartController);
+            CartItemPanel cartItemPanel = new CartItemPanel(cartItem);
             this.addObj(cartItemPanel);
             changeMedia.add(cartItemPanel.getMinusMedia());
             changeMedia.add(cartItemPanel.getPlusMedia());

@@ -13,14 +13,7 @@ import aims.PaymentService;
  */
 public class OrderController {
     
-    private PaymentService paymentService;
-    
-    public OrderController(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
-    
-    
-    public boolean refund(String card_number, int totalBill){
-        return paymentService.refund(card_number, totalBill);
+    public static boolean refund(String card_number, int totalBill){
+        return PaymentService.refund(card_number, totalBill);
     }
 }
