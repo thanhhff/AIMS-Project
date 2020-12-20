@@ -58,7 +58,8 @@ CREATE TABLE `Books` (
   `cover_type_id` int NOT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
   `language_id` int NOT NULL,
-  `author_name` varchar(255) DEFAULT NULL
+  `author_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -12767,3 +12768,13 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+insert into covertypes values (1, 'Paperback');
+
+insert into covertypes values (2, 'Hardcover');
+
+insert into medias values (4, 'MLCB', 25000, 30000, 1, NULL);
+
+insert into physicalgoods (description, quantity, input_day, media_id, width, height, depth, weight, barcode) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
+
+insert into books (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep');
