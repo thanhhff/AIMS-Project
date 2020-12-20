@@ -19,6 +19,7 @@ import model.User.User;
 import views.MediaList.mediaListPanel;
 import views.MediaList.mediaList;
 import views.MediaList.mediaListPanel;
+import views.account.Login;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
 
@@ -61,7 +62,7 @@ public final class HomeUser extends javax.swing.JFrame {
         Account = new javax.swing.JLabel();
         Cart = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        SignOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,8 +107,13 @@ public final class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/signout.png"))); // NOI18N
-        jLabel1.setText("Sign Out");
+        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/signout.png"))); // NOI18N
+        SignOut.setText("Sign Out");
+        SignOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignOutMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +131,7 @@ public final class HomeUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Account)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(SignOut)
                 .addGap(32, 32, 32))
             .addComponent(jpLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -141,7 +147,7 @@ public final class HomeUser extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Account, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Cart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
+                        .addComponent(SignOut))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -206,12 +212,23 @@ public final class HomeUser extends javax.swing.JFrame {
         jpLayout.updateUI();
     }//GEN-LAST:event_searchMouseClicked
 
+    private void SignOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignOutMouseClicked
+        // TODO add your handling code here:
+        
+        int out = JOptionPane.showConfirmDialog(null, "Are you sure that you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (out == 0) {
+            this.setVisible(false);
+            Login login = new Login();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_SignOutMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Account;
     private javax.swing.JLabel Cart;
     private javax.swing.JLabel Home;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel SignOut;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpLayout;
     private javax.swing.JLabel search;
