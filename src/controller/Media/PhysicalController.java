@@ -16,7 +16,4 @@ public class PhysicalController {
         return PhysicalGood.insertPhysical(description, quantity, input_day, media_id, width, height, depth, weight, barcode);
     }
     
-    public static void deletePhysical(int media_id) {
-        PhysicalGood.deleteMedia(media_id);
-    }
 }

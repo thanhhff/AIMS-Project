@@ -116,12 +116,4 @@ public abstract class PhysicalGood extends Media {
         }
     }
     
-    public static void deletePhysical(int media_id) {
-        String delete_query = "DELETE FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ConnectSQL.sqlQueryUpdate(delete_query);
-        } catch(Exception e) {
-            
-        }
-    }
 }
