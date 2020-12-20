@@ -162,7 +162,7 @@ public final class HomeUser extends javax.swing.JFrame {
 
     private void CartMouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
-        User user = new User();
+        User user = new User(account.getId());
         if (user.getCartItems() == null) {
             JOptionPane.showMessageDialog(null, "Cart empty");
         } else {
