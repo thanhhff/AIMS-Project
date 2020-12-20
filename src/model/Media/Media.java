@@ -33,7 +33,8 @@ public abstract class Media {
         image_path = "";
     }
     
-    public Media(String title, int value, int price, int category, String image_path) {
+    public Media(int id, String title, int value, int price, int category, String image_path) {
+        this.id = id;
         this.title = title;
         this.value = value;
         this.price = price;
@@ -42,7 +43,8 @@ public abstract class Media {
         this.image_path = image_path;
     }
 
-    public Media(String title, int value, int price, int sale_percent, int category, String image_path) {
+    public Media(int id, String title, int value, int price, int sale_percent, int category, String image_path) {
+        this.id = id;
         this.title = title;
         this.value = value;
         this.price = price;
