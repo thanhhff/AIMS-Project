@@ -36,8 +36,8 @@ public class MediaController {
         int category_id = media.getCategoryId();
         String image_path = media.getImagePath();
         int sale_percent = media.getSalePercent();
-        String media_query = "INSERT INTO `medias` (title, value, price, category_id, image_path) VALUES ('" + title + "', " + value + ", " + price + ", " + sale_percent
-                                + ", " + category_id + ", '" + image_path + "';";
+        String media_query = "INSERT INTO `medias` (title, value, price, sale_percent, category_id, image_path) VALUES ('" + title + "', " + value + ", " + price + ", " + sale_percent
+                                + ", " + category_id + ", '" + image_path + "');";
         
         return ConnectSQL.sqlUpdate(media_query);
     }
