@@ -179,7 +179,12 @@ public abstract class Media {
         }
     }
 
-    public int getQuantity(){
-        return 0;
+    public static void deleteMedia(int media_id) {
+        String delete_query = "DELETE FROM `Medias` WHERE media_id = " + media_id + ";";
+        try {
+            ConnectSQL.sqlQueryUpdate(delete_query);
+        } catch (Exception e) {
+            
+        }
     }
 }

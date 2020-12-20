@@ -24,6 +24,10 @@ public class MediaController {
     public static int insertMedia(String title, int value, int price, int sale_percent, int category_id, String image_path) {
         return Media.insertMedia(title, value, price, sale_percent, category_id, image_path);
     }
+    
+    public static void deleteMedia(int media_id) {
+        Media.deleteMedia(media_id);
+    }
 
      public static void sortLowMediaPrice(ArrayList<Media> list)
      {
