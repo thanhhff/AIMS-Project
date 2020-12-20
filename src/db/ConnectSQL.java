@@ -12,11 +12,10 @@ public class ConnectSQL {
     private static Connection conn = null;
     private static final String DB_URL = "jdbc:mysql://localhost:3306/itss?autoReconnect=true&useSSL=false";
     private static final String USERNAME = "root";
-<<<<<<< HEAD
+
+
     private static final String PASSWORD = "";
-=======
-    private static final String PASSWORD = "root";
->>>>>>> 1d79c54eeffaa7d2a87bb330f7ef8a37b762f622
+
     private static Statement st = null;
 
     public ConnectSQL() {
