@@ -45,7 +45,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
         media_price = new javax.swing.JFormattedTextField();
         value_label = new javax.swing.JLabel();
         categories = new javax.swing.JComboBox<>();
-        gotoDetailButton = new javax.swing.JButton();
         quantity_label = new javax.swing.JLabel();
         input_day_label = new javax.swing.JLabel();
         media_input_day = new javax.swing.JFormattedTextField();
@@ -147,14 +146,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
             }
         });
 
-        gotoDetailButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        gotoDetailButton.setText("More Details");
-        gotoDetailButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gotoDetailButtonActionPerformed(evt);
-            }
-        });
-
         quantity_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         quantity_label.setText("Quantity: ");
 
@@ -237,22 +228,20 @@ public class MediaAddFrame extends javax.swing.JFrame {
                                     .addComponent(media_description_label)
                                     .addComponent(width_label, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
-                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(gotoDetailButton)
-                                    .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(media_weight, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(left_panelLayout.createSequentialGroup()
-                                                .addComponent(media_width, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(height_label)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(media_height, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(depth_label)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(media_weight, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(left_panelLayout.createSequentialGroup()
+                                            .addComponent(media_width, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(height_label)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(media_height, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(depth_label)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 281, Short.MAX_VALUE))))
         );
         left_panelLayout.setVerticalGroup(
@@ -307,9 +296,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(media_description_label))
-                .addGap(18, 18, 18)
-                .addComponent(gotoDetailButton)
-                .addContainerGap())
+                .addGap(56, 56, 56))
         );
 
         detail_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -687,10 +674,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
         setVisiblePanels(category_id);
     }//GEN-LAST:event_categoriesActionPerformed
 
-    private void gotoDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoDetailButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gotoDetailButtonActionPerformed
-
     private void author_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_author_nameActionPerformed
@@ -842,7 +825,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JLabel dvd_type_label;
     private javax.swing.JComboBox<String> dvd_types;
     private javax.swing.JLabel genre_label;
-    private javax.swing.JButton gotoDetailButton;
     private javax.swing.JLabel height_label;
     private javax.swing.JLabel input_day_label;
     private javax.swing.JScrollPane jScrollPane1;
