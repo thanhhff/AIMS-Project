@@ -11,21 +11,21 @@ package model.Media;
  */
 public class Book extends PhysicalGood {
     private String author;
-    private String cover_type;
+    private int cover_type_id;
     private String publisher;
     private String publication_date;
     private int page_number;
-    private String language;
+    private int language_id;
     private String genre;
     
-    public Book(String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight, String author, String cover_type, String publisher, String publication_date, int page_number, String language, String genre) {
+    public Book(String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight, String author, int cover_type_id, String publisher, String publication_date, int page_number, int language, String genre) {
         super(title, value, price, sale_percent, category, image_path, barcode, description, quantity, input_day, width, height, depth, weight);
         this.author = author;
-        this.cover_type = cover_type;
+        this.cover_type_id = cover_type_id;
         this.publisher = publisher;
         this.publication_date = publication_date;
         this.page_number = page_number;
-        this.language = language;
+        this.language_id = language;
         this.genre = genre;
     }
     
@@ -37,12 +37,12 @@ public class Book extends PhysicalGood {
         this.author = author;
     }
 
-    public String getCoverType() {
-        return cover_type;
+    public int getCoverTypeID() {
+        return cover_type_id;
     }
 
-    public void setCoverType(String cover) {
-        this.cover_type = cover;
+    public void setCoverTypeId(int cover_type_id) {
+        this.cover_type_id = cover_type_id;
     }
 
     public String getPublisher() {
@@ -69,12 +69,12 @@ public class Book extends PhysicalGood {
         this.page_number = page_number;
     }
 
-    public String getLanguage() {
-        return language;
+    public int getLanguageId() {
+        return language_id;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setLanguage(int language) {
+        this.language_id = language;
     }
 
     public String getGenre() {

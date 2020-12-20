@@ -36,7 +36,7 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        Test test = new Test(new CartPanel(new User(),new CartController(new PaymentService())));
+        Test test = new Test(new CartPanel(new User()));
         
     }
 }

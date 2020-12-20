@@ -651,9 +651,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_media_nameActionPerformed
 
-    private void categoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesActionPerformed
-        // TODO add your handling code here:
-        int category_id = categories.getSelectedIndex() + 1;
+    private void setVisiblePanels(int category_id) {
         switch(category_id) {
             case 1:
                 book_panel.setVisible(true);
@@ -680,6 +678,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 lp_panel.setVisible(true);
                 break;
         }
+    }
+    
+    private void categoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriesActionPerformed
+        // TODO add your handling code here:
+        int category_id = categories.getSelectedIndex() + 1;
+        setVisiblePanels(category_id);
     }//GEN-LAST:event_categoriesActionPerformed
 
     private void gotoDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoDetailButtonActionPerformed

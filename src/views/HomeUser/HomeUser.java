@@ -5,6 +5,10 @@
  */
 package views.HomeUser;
 
+
+
+import static aims.AIMS.account;
+
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
@@ -163,6 +167,8 @@ public final class HomeUser extends javax.swing.JFrame {
 
     private void CartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMouseClicked
         // TODO add your handling code here:
+
+
 
     }//GEN-LAST:event_CartMouseClicked
 
