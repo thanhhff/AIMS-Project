@@ -10,6 +10,7 @@ import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Media.Media;
 
 /**
@@ -17,7 +18,11 @@ import model.Media.Media;
  * @author User
  */
 public class mediaListPanel extends javax.swing.JPanel {
-     ArrayList<Media> list = new ArrayList<Media>();
+     private ArrayList<Media> list = new ArrayList<Media>();
+     private int status;  // 1 random, 2 search, 3 book, 4 cd, 5 dvd, 6 lp
+     private int page; // so thu tu trang
+     private String searchStr = null;
+     
     /**
      * Creates new form categoryPanel
      */
@@ -27,9 +32,10 @@ public class mediaListPanel extends javax.swing.JPanel {
         fill();
     }
      public mediaListPanel(String search) {
-        initComponents();
+         searchStr = search;
+         initComponents();
         //setLayout(null);
-        fill(search);
+         fill(search);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +44,9 @@ public class mediaListPanel extends javax.swing.JPanel {
      */
     
     public void fill()
-    {
+    {   
+        status = 1;
+        page = 1;
         list.removeAll(list);
         SearchController.SearchRandom(list);
         mediaList media = new mediaList(list);
@@ -48,6 +56,8 @@ public class mediaListPanel extends javax.swing.JPanel {
     }
     public void fill(String search)
     {
+        status = 2;
+        page = 1;
         list.removeAll(list);
         SearchController.SearchUser(list,search);
         mediaList media = new mediaList(list);
@@ -66,8 +76,8 @@ public class mediaListPanel extends javax.swing.JPanel {
         cd = new javax.swing.JButton();
         dvd = new javax.swing.JButton();
         lp = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Sau = new javax.swing.JButton();
+        truoc = new javax.swing.JButton();
         high = new javax.swing.JButton();
         low = new javax.swing.JButton();
 
@@ -113,9 +123,19 @@ public class mediaListPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Sau");
+        Sau.setText("Sau");
+        Sau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SauActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Trước");
+        truoc.setText("Trước");
+        truoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                truocActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -124,9 +144,9 @@ public class mediaListPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(truoc)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Sau, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -149,8 +169,8 @@ public class mediaListPanel extends javax.swing.JPanel {
                 .addComponent(lp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Sau)
+                    .addComponent(truoc))
                 .addContainerGap())
         );
 
@@ -211,6 +231,8 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookActionPerformed
         // TODO add your handling code here:
+        status = 3;
+        page = 1;
         mediaListPanel.removeAll();
          list.removeAll(list);
         SearchController.SearchBook(list);
@@ -222,6 +244,8 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void cdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdActionPerformed
         // TODO add your handling code here:
+        status = 4;
+        page = 1;
         mediaListPanel.removeAll();
        list.removeAll(list);
         SearchController.SearchCd(list);
@@ -233,6 +257,8 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dvdActionPerformed
         // TODO add your handling code here:
+        status = 5;
+        page = 1;
         mediaListPanel.removeAll();
       list.removeAll(list);
         SearchController.SearchDvd(list);
@@ -248,6 +274,8 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void lpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lpActionPerformed
         // TODO add your handling code here:
+        status = 6;
+        page = 1;
         mediaListPanel.removeAll();
         list.removeAll(list);
         SearchController.SearchLp(list);
@@ -278,18 +306,70 @@ public class mediaListPanel extends javax.swing.JPanel {
         mediaListPanel.updateUI();
     }//GEN-LAST:event_lowActionPerformed
 
+    private void SauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauActionPerformed
+        // TODO add your handling code here:
+         ArrayList<Media> list_tmp = new ArrayList<Media>();
+         mediaListPanel.removeAll();
+         //list.removeAll(list);
+         SearchController.SearchNext(list_tmp, searchStr, status, page);
+         if(list_tmp.size() != 0)
+         {  
+             list.removeAll(list);
+             for(int i = 0 ; i < list_tmp.size(); i++)
+             {
+                 list.add(list_tmp.get(i));
+             }
+            page +=1;
+            mediaList media = new mediaList(list);
+            mediaListPanel.setLayout(new BorderLayout());
+            mediaListPanel.add(media, BorderLayout.CENTER);
+            mediaListPanel.updateUI();
+         }
+         else
+               JOptionPane.showMessageDialog(null, "Không còn sản phẩm", "Error", JOptionPane.ERROR_MESSAGE);
+        
+    }//GEN-LAST:event_SauActionPerformed
+
+    private void truocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truocActionPerformed
+        // TODO add your handling code here:
+        if(page != 1)
+        {
+         ArrayList<Media> list_tmp = new ArrayList<Media>();
+         mediaListPanel.removeAll();
+         SearchController.SearchPrevious(list_tmp, searchStr, status, page);    
+         if(list.size() != 0)
+         {
+            list.removeAll(list);
+             for(int i = 0 ; i < list_tmp.size(); i++)
+             {
+                 list.add(list_tmp.get(i));
+             } 
+            page -=1;
+            mediaList media = new mediaList(list);
+            mediaListPanel.setLayout(new BorderLayout());
+            mediaListPanel.add(media, BorderLayout.CENTER);
+            mediaListPanel.updateUI();
+         }
+         else
+               JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+         
+    }//GEN-LAST:event_truocActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Sau;
     private javax.swing.JButton book;
     private javax.swing.JButton cd;
     private javax.swing.JButton dvd;
     private javax.swing.JButton high;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton low;
     private javax.swing.JButton lp;
     private javax.swing.JPanel mediaListPanel;
+    private javax.swing.JButton truoc;
     // End of variables declaration//GEN-END:variables
 }
