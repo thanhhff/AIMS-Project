@@ -86,6 +86,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
         cover_label = new javax.swing.JLabel();
         cover_types = new javax.swing.JComboBox<>();
         category_label1 = new javax.swing.JLabel();
+        genre_label = new javax.swing.JLabel();
+        book_genre = new javax.swing.JTextField();
         dvd_panel = new javax.swing.JPanel();
         dvd_label = new javax.swing.JLabel();
         director_label = new javax.swing.JLabel();
@@ -348,6 +350,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
         confirmButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         confirmButton.setText("Confirm Add");
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         backButton.setText("Back to Home");
@@ -415,6 +422,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
         category_label1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         category_label1.setText("Book Details");
 
+        genre_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        genre_label.setText("Genre: ");
+
         javax.swing.GroupLayout book_panelLayout = new javax.swing.GroupLayout(book_panel);
         book_panel.setLayout(book_panelLayout);
         book_panelLayout.setHorizontalGroup(
@@ -422,6 +432,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
             .addGroup(book_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(category_label1)
                     .addGroup(book_panelLayout.createSequentialGroup()
                         .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cover_label)
@@ -429,17 +440,18 @@ public class MediaAddFrame extends javax.swing.JFrame {
                             .addComponent(publication_label)
                             .addComponent(publisher_label)
                             .addComponent(language_label)
-                            .addComponent(author_label))
+                            .addComponent(author_label)
+                            .addComponent(genre_label))
                         .addGap(43, 43, 43)
-                        .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(author_name, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(languages, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(publisher, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(page_number, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cover_types, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(category_label1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(author_name, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(languages, 0, 372, Short.MAX_VALUE)
+                            .addComponent(publisher, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(publication_date, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(page_number, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                            .addComponent(cover_types, 0, 372, Short.MAX_VALUE)
+                            .addComponent(book_genre))))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         book_panelLayout.setVerticalGroup(
             book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,7 +481,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cover_label)
                     .addComponent(cover_types, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(book_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genre_label)
+                    .addComponent(book_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         cards.add(book_panel, "card2");
@@ -688,7 +704,22 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
     private void gotoDetailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gotoDetailButtonActionPerformed
         // TODO add your handling code here:
-        
+    }//GEN-LAST:event_gotoDetailButtonActionPerformed
+
+    private void author_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_author_nameActionPerformed
+
+    private void cover_typesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cover_typesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cover_typesActionPerformed
+
+    private void publication_date_dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publication_date_dvdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_publication_date_dvdActionPerformed
+
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+        // TODO add your handling code here:
         if (media_name.getText().length() == 0 || media_value.getText().length() == 0 || media_price.getText().length() == 0 
                 || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day and barcode!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -719,19 +750,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 
             }
         }
-    }//GEN-LAST:event_gotoDetailButtonActionPerformed
-
-    private void author_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_author_nameActionPerformed
-
-    private void cover_typesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cover_typesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cover_typesActionPerformed
-
-    private void publication_date_dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publication_date_dvdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_publication_date_dvdActionPerformed
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -777,6 +796,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel barcode_label;
     private javax.swing.JLabel big_label;
+    private javax.swing.JTextField book_genre;
     private javax.swing.JPanel book_panel;
     private javax.swing.JPanel cards;
     private javax.swing.JComboBox<String> categories;
@@ -804,6 +824,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JLabel dvd_subtitle_label;
     private javax.swing.JLabel dvd_type_label;
     private javax.swing.JComboBox<String> dvd_types;
+    private javax.swing.JLabel genre_label;
     private javax.swing.JButton gotoDetailButton;
     private javax.swing.JLabel height_label;
     private javax.swing.JTextField image_path;

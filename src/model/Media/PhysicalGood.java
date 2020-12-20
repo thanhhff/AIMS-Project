@@ -5,6 +5,8 @@
  */
 package model.Media;
 
+import db.ConnectSQL;
+
 /**
  *
  * @author Toshiba T75
@@ -98,5 +100,14 @@ public abstract class PhysicalGood extends Media {
     
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+    
+    public static int insertPhysical(String description, int quantity, String input_day, int media_id, int width, int height, int depth, int weight, String barcode) {
+        
+        
+        String physical_query = "INSERT INTO `physicalgoods` (description, quantity, input_day, media_id, width, height, depth, weight, barcode) VALUES ('" +
+                    description + "', " + quantity + ", '" + input_day + "', " + media_id + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
+        
+        return ConnectSQL.sqlUpdate(physical_query);
     }
 }
