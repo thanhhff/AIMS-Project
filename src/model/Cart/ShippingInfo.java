@@ -8,6 +8,10 @@ package model.Cart;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -74,5 +78,73 @@ public class ShippingInfo {
                 "Insert into ShippingInfos (`user_id`,`ward_id`,`name`,`phone`) "
                 + "values (" + user_id + "," + ward.getWard_id() + ",'" + name + "','" + phone + "')");
 
+    }
+    public static List<String> getProvinces(){
+        List<String> provinces = new ArrayList<String>();
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select * from Provinces");
+            while (rs.next()) {
+                String name = rs.getString("province_name");
+                provinces.add(name);
+            }
+            
+        } catch (SQLException ex) {
+            
+        }
+        return provinces.isEmpty() ? null: provinces;
+    }
+    public static List<String> getDistricts(String province){
+        List<String> districts = new ArrayList<String>();
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select * from Districts where province_id = " + getProvinceID(province));
+            while (rs.next()) {
+                String name = rs.getString("district_name");
+                districts.add(name);
+            }
+            
+        } catch (SQLException ex) {
+            
+        }
+        return districts.isEmpty() ? null: districts;
+    }
+    public static List<String> getWards(String district){
+        List<String> wards = new ArrayList<String>();
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select * from Wards where district_id = " + getDistrictID(district));
+            while (rs.next()) {
+                String name = rs.getString("ward_name");
+                wards.add(name);
+            }
+            
+        } catch (SQLException ex) {
+            
+        }
+        return wards.isEmpty() ? null: wards;
+    }
+    public static int getProvinceID(String province){
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select province_id from Provinces where province_name like '" + province + "'");
+            String idProvince = "";
+            while (rs.next()) {
+                idProvince = rs.getString("province_id");
+            }
+            return Integer.parseInt(idProvince);
+        } catch (SQLException ex) {
+            
+        }
+        return 0;
+    }
+    public static int getDistrictID(String district){
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select district_id from Districts where district_name like '" + district + "'");
+            String idDistrict = "";
+            while (rs.next()) {
+                idDistrict = rs.getString("district_id");
+            }
+            return Integer.parseInt(idDistrict);
+        } catch (SQLException ex) {
+            
+        }
+        return 0;
     }
 }

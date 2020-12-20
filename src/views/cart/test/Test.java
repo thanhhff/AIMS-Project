@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package views.cart.test;
-
-import aims.PaymentService;
-import controller.Cart.CartController;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.User.User;

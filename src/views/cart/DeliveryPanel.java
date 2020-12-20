@@ -171,6 +171,33 @@ public class DeliveryPanel extends javax.swing.JPanel {
             shippingPanel.getCancel().addActionListener((ActionEvent e) -> {
                 jDialog.dispose();
             });
+            shippingPanel.getNewShipping().addActionListener((ActionEvent e) -> {
+                JDialog jDialog1 = new JDialog();
+                ChangeAddress changeAddress = new ChangeAddress(user);
+                jDialog1.setSize(ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+                changeAddress.setBounds(0, 0, ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+                jDialog1.setUndecorated(true);
+                jDialog1.add(changeAddress);
+                jDialog1.setLocationRelativeTo(null);
+                changeAddress.getSubmitButton().addActionListener((ActionEvent e1) -> {
+                if (changeAddress.getNameNew().equals("") || changeAddress.getPhoneNew().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Plese import name and phone number");
+                } else {
+                    ShippingInfo  shippingInfo = changeAddress.getShippingInfo();
+                    setShippingInfo(shippingInfo);
+                    shippingInfo.create();
+                    jDialog1.dispose();
+                    jDialog.dispose();
+                }
+                });
+                changeAddress.getCancelButton().addActionListener((ActionEvent e2) -> {
+                    jDialog1.dispose();
+                });
+
+                jDialog1.setModal(true);
+
+                jDialog1.setVisible(true);
+            });
 
             jDialog.setModal(true);
 

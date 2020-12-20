@@ -6,14 +6,18 @@
 package controller.Cart;
 
 import aims.PaymentService;
-
+import model.Cart.Order;
 /**
  *
  * @author hsnt
  */
 public class OrderController {
     
-    public static boolean refund(String card_number, int totalBill){
-        return PaymentService.refund(card_number, totalBill);
+    public static boolean refund(Order order){
+        if(PaymentService.refund(order.getCard_number(), order.getTotalBill())){
+            order.cancel();
+            return true;
+        }
+        return false;
     }
 }
