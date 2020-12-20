@@ -14,7 +14,7 @@ public class ConnectSQL {
     private static final String USERNAME = "root";
 
 
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "root";
 
     private static Statement st = null;
 
