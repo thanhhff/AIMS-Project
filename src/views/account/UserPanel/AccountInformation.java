@@ -36,13 +36,14 @@ public class AccountInformation extends javax.swing.JPanel {
         String accType = "null";
         if (account.getLv() == 0){
             accType = "User";
+            fillShippingInfor();
         } else if (account.getLv() == 1)
         {
             accType = "Admin";
+            ShippingInfor.hide();
         }
         AccountType.setText("Account Type: " + accType);
        
-        fillShippingInfor();
     }
     
     public void fillShippingInfor()
