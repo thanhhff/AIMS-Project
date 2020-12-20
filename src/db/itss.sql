@@ -12676,7 +12676,7 @@ ALTER TABLE `Addresses`
 ALTER TABLE `Books`
   ADD CONSTRAINT `fk_Books_CoverTypes1` FOREIGN KEY (`cover_type_id`) REFERENCES `CoverTypes` (`cover_type_id`),
   ADD CONSTRAINT `fk_Books_Languages1` FOREIGN KEY (`language_id`) REFERENCES `Languages` (`language_id`),
-  ADD CONSTRAINT `fk_Books_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
+  ADD CONSTRAINT `fk_Books_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`)ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Các ràng buộc cho bảng `CartItems`
@@ -12689,7 +12689,7 @@ ALTER TABLE `CartItems`
 -- Các ràng buộc cho bảng `CDs`
 --
 ALTER TABLE `CDs`
-  ADD CONSTRAINT `fk_CDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
+  ADD CONSTRAINT `fk_CDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Các ràng buộc cho bảng `Districts`
@@ -12703,7 +12703,7 @@ ALTER TABLE `Districts`
 ALTER TABLE `DVDs`
   ADD CONSTRAINT `fk_DVDs_DVDTypes1` FOREIGN KEY (`dvd_type_id`) REFERENCES `DVDTypes` (`dvd_type_id`),
   ADD CONSTRAINT `fk_DVDs_Languages1` FOREIGN KEY (`language_id`) REFERENCES `Languages` (`language_id`),
-  ADD CONSTRAINT `fk_DVDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
+  ADD CONSTRAINT `fk_DVDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`)ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Các ràng buộc cho bảng `EGoods`
@@ -12750,7 +12750,7 @@ ALTER TABLE `Orders`
 -- Các ràng buộc cho bảng `PhysicalGoods`
 --
 ALTER TABLE `PhysicalGoods`
-  ADD CONSTRAINT `fk_PhysicalGoods_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
+  ADD CONSTRAINT `fk_PhysicalGoods_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Các ràng buộc cho bảng `ShippingInfos`
