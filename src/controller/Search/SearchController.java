@@ -21,7 +21,7 @@ public class SearchController {
     {   
         
         String sql;
-        sql = "SELECT* FROM medias ORDER BY media_id DESC LIMIT 0,20";
+        sql = "SELECT* FROM Medias ORDER BY media_id DESC LIMIT 0,20";
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);
             
