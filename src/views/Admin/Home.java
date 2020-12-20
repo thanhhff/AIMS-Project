@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import model.Media.Media;
 import views.Admin.User.UserPanel;
 import views.MediaList.mediaList;
+import views.MediaList.mediaListPanel;
 import views.account.Login;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
@@ -29,6 +30,7 @@ public final class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        setLayout(null);
 //        fill();
     }
     
@@ -234,9 +236,7 @@ public final class Home extends javax.swing.JFrame {
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
         // TODO add your handling code here:
         jpLayout.removeAll();
-        ArrayList<Media> list = new ArrayList<Media>();
-        SearchController.SearchRandom(list);
-        mediaList media = new mediaList(list);
+        mediaListPanel media = new  mediaListPanel();
         jpLayout.setLayout(new BorderLayout());
         jpLayout.add(media, BorderLayout.CENTER);
         jpLayout.updateUI();
