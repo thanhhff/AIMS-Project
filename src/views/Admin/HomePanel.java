@@ -153,7 +153,7 @@ public class HomePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Order empty");
         } else {
         OrderList orderList = new OrderList(user.getAllOrders());
-        FillInfor.setLayout(new BorderLayout());
+//        FillInfor.setLayout(new BorderLayout());
         FillInfor.add(orderList, BorderLayout.CENTER);
         FillInfor.updateUI();
         }
