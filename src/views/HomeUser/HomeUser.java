@@ -8,12 +8,16 @@ package views.HomeUser;
 
 
 import static aims.AIMS.account;
+import controller.Cart.CartController;
 
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import model.Cart.ShippingInfo;
 import model.Media.Media;
 import model.User.User;
 import views.MediaList.mediaListPanel;
@@ -22,6 +26,7 @@ import views.MediaList.mediaListPanel;
 import views.account.Login;
 import views.account.UserPanel.AccountPanel;
 import views.cart.CartPanel;
+import views.cart.CheckOut;
 
 /**
  *
@@ -190,7 +195,50 @@ public final class HomeUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cart empty");
         } else {
             CartPanel cart = new CartPanel(user);
+            cart.getCheckOut().addActionListener((ActionEvent e) -> {
+                ShippingInfo shippingInfo = cart.getDelivery().getSelected();
+                if (shippingInfo != null && cart.getCartList().getMediaCount() != 0) {
 
+                    JDialog jDialog = new JDialog();
+                    int ship_fee = CartController.getShipFee(user.getCartItems());
+                    CheckOut checkOut = new CheckOut(shippingInfo, cart.getDelivery().getNoteText(), cart.getTotal(), ship_fee);
+                    jDialog.setSize(650, 700);
+                    checkOut.setBounds(0, 0, 650, 700);
+                    jDialog.setUndecorated(true);
+                    jDialog.add(checkOut);
+                    jDialog.setLocationRelativeTo(null);
+
+                    checkOut.getcancelButton().addActionListener((ActionEvent e1) -> {
+                        jDialog.dispose();
+                    });
+                    checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
+                        if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
+                            if(CartController.payment(checkOut.getCardNumber(), cart.getTotal())){
+                                String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
+                                        + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
+                                        + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
+                                CartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
+                                JOptionPane.showMessageDialog(null, "Order successfull");
+                                jDialog.dispose();
+                                jpLayout.removeAll();
+                                mediaListPanel media = new  mediaListPanel();  
+                                jpLayout.setLayout(new BorderLayout());
+                                jpLayout.add(media, BorderLayout.CENTER);
+                                jpLayout.updateUI();
+                            }else{                               
+                                JOptionPane.showMessageDialog(null, "The card number is incorrect or the account balance is not enough to make the transaction.");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Card Imput Error.\nCard Number : XXXXXX_groupXX_2020.\n Date: MM/YY.\n CVV has 3 number.");
+                        }
+                    });
+
+                    jDialog.setModal(true);
+                    jDialog.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please import address or Add Media to Cart");
+                }
+            });
             jpLayout.removeAll();
             jpLayout.setLayout(new BorderLayout());
             cart.setBounds(0, 0, jpLayout.getWidth(), jpLayout.getHeight());
