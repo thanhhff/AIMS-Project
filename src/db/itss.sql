@@ -94,7 +94,8 @@ INSERT INTO `Categories` (`category_id`, `category_name`, `is_physical_good?`) V
 (1, 'Book', 1),
 (2, 'DVD', 1),
 (3, 'CD', 1),
-(4, 'LP', 1);
+(4, 'LP', 1),
+(5, 'Ebook', 0);
 
 -- --------------------------------------------------------
 
