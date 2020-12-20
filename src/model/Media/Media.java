@@ -42,7 +42,14 @@ public abstract class Media {
         this.category_id = category;
         this.image_path = image_path;
     }
-
+     public Media(int id, String title, int value, int price, int category) {
+        this.id = id;
+        this.title = title;
+        this.value = value;
+        this.price = price;
+        this.sale_percent = 0;
+        this.category_id = category;
+    }
     public Media(int id, String title, int value, int price, int sale_percent, int category, String image_path) {
         this.id = id;
         this.title = title;
@@ -51,6 +58,15 @@ public abstract class Media {
         this.sale_percent = sale_percent;
         this.category_id = category;
         this.image_path = image_path;
+    }
+    public void updateMedia(Media media)
+    {
+        this.id = media.getId();
+        this.title = media.getTitle();
+        this.value = media.getValue();
+        this.price = media.getPrice();
+        this.sale_percent = media.getSalePercent();
+        this.category_id = media.getCategoryId();
     }
     public static String getTitlebyID(int media_id){
         ResultSet rs = ConnectSQL.sqlQuery("Select * from Medias where media_id = " + media_id);

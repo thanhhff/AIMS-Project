@@ -5,6 +5,7 @@
  */
 package views.MediaList;
 
+import controller.Media.MediaController;
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,7 @@ import model.Media.Media;
  * @author User
  */
 public class mediaListPanel extends javax.swing.JPanel {
-
+     ArrayList<Media> list = new ArrayList<Media>();
     /**
      * Creates new form categoryPanel
      */
@@ -38,7 +39,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     
     public void fill()
     {
-        ArrayList<Media> list = new ArrayList<Media>();
+        list.removeAll(list);
         SearchController.SearchRandom(list);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -47,7 +48,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     }
     public void fill(String search)
     {
-        ArrayList<Media> list = new ArrayList<Media>();
+        list.removeAll(list);
         SearchController.SearchUser(list,search);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -65,6 +66,8 @@ public class mediaListPanel extends javax.swing.JPanel {
         cd = new javax.swing.JButton();
         dvd = new javax.swing.JButton();
         lp = new javax.swing.JButton();
+        high = new javax.swing.JButton();
+        low = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Category");
@@ -73,11 +76,11 @@ public class mediaListPanel extends javax.swing.JPanel {
         mediaListPanel.setLayout(mediaListPanelLayout);
         mediaListPanelLayout.setHorizontalGroup(
             mediaListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 782, Short.MAX_VALUE)
         );
         mediaListPanelLayout.setVerticalGroup(
             mediaListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         book.setText("Book");
@@ -135,16 +138,38 @@ public class mediaListPanel extends javax.swing.JPanel {
                 .addContainerGap(108, Short.MAX_VALUE))
         );
 
+        high.setText("Cao");
+        high.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                highActionPerformed(evt);
+            }
+        });
+
+        low.setText("Thấp");
+        low.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(high, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(low, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)))
                 .addComponent(mediaListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -158,6 +183,10 @@ public class mediaListPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(high)
+                            .addComponent(low))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -167,7 +196,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     private void bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookActionPerformed
         // TODO add your handling code here:
         mediaListPanel.removeAll();
-        ArrayList<Media> list = new ArrayList<Media>();
+         list.removeAll(list);
         SearchController.SearchBook(list);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -178,7 +207,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     private void cdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdActionPerformed
         // TODO add your handling code here:
         mediaListPanel.removeAll();
-        ArrayList<Media> list = new ArrayList<Media>();
+       list.removeAll(list);
         SearchController.SearchCd(list);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -189,7 +218,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     private void dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dvdActionPerformed
         // TODO add your handling code here:
         mediaListPanel.removeAll();
-        ArrayList<Media> list = new ArrayList<Media>();
+      list.removeAll(list);
         SearchController.SearchDvd(list);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -204,7 +233,7 @@ public class mediaListPanel extends javax.swing.JPanel {
     private void lpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lpActionPerformed
         // TODO add your handling code here:
         mediaListPanel.removeAll();
-        ArrayList<Media> list = new ArrayList<Media>();
+        list.removeAll(list);
         SearchController.SearchLp(list);
         mediaList media = new mediaList(list);
         mediaListPanel.setLayout(new BorderLayout());
@@ -212,13 +241,36 @@ public class mediaListPanel extends javax.swing.JPanel {
         mediaListPanel.updateUI();
     }//GEN-LAST:event_lpActionPerformed
 
+    private void highActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highActionPerformed
+        // TODO add your handling code here:
+        mediaListPanel.removeAll();
+        MediaController.sortHighMediaPrice(list);
+        mediaList media = new mediaList(list);
+        mediaListPanel.setLayout(new BorderLayout());
+        mediaListPanel.add(media, BorderLayout.CENTER);
+        mediaListPanel.updateUI();
+        
+    }//GEN-LAST:event_highActionPerformed
+
+    private void lowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowActionPerformed
+        // TODO add your handling code here:
+        mediaListPanel.removeAll();
+        MediaController.sortLowMediaPrice(list);
+        mediaList media = new mediaList(list);
+        mediaListPanel.setLayout(new BorderLayout());
+        mediaListPanel.add(media, BorderLayout.CENTER);
+        mediaListPanel.updateUI();
+    }//GEN-LAST:event_lowActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton book;
     private javax.swing.JButton cd;
     private javax.swing.JButton dvd;
+    private javax.swing.JButton high;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton low;
     private javax.swing.JButton lp;
     private javax.swing.JPanel mediaListPanel;
     // End of variables declaration//GEN-END:variables

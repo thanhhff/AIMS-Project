@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import db.ConnectSQL;
+import java.util.ArrayList;
 
 
 /**
@@ -40,4 +41,35 @@ public class MediaController {
         
         return ConnectSQL.sqlUpdate(media_query);
     }
+
+     public static void sortLowMediaPrice(ArrayList<Media> list)
+     {
+       int i, j;
+            for (i = (list.size()-1); i >= 0; i--) {
+                for (j = 1; j <= i; j++){
+                    if (list.get(j-1).getPrice() > list.get(j).getPrice())
+                    {   
+                        Media media = new Media() {};
+                        media.updateMedia(list.get(j));
+                        list.get(j).updateMedia( list.get(j-1));
+                        list.get(j-1).updateMedia(media);
+                    }
+                }
+            }
+     }
+      public static void sortHighMediaPrice(ArrayList<Media> list)
+     {
+       int i, j;
+            for (i = (list.size()-1); i >= 0; i--) {
+                for (j = 1; j <= i; j++){
+                    if (list.get(j-1).getPrice() < list.get(j).getPrice())
+                    {   
+                        Media media = new Media() {};
+                        media.updateMedia(list.get(j));
+                        list.get(j).updateMedia( list.get(j-1));
+                        list.get(j-1).updateMedia(media);
+                    }
+                }
+            }
+     }
 }
