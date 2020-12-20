@@ -31,7 +31,8 @@ public class CartPanel extends JPanel {
     private JButton checkoutButton;
     private int totalBill;
     private User user;
-
+    
+    private JButton endCheckoutButton;
     public CartPanel(User user) {
         this.user = user;
         setLayout(null);

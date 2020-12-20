@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 package views.cart.test;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.Media.Book;
 import model.Media.Media;
 import model.User.User;
 import views.Admin.Sales.MediaSaleItemPanel;
+import views.Admin.Sales.MediaSalePanel;
 
 import views.cart.CartPanel;
 
@@ -41,6 +44,14 @@ public class Test {
         media.setValue(100000);
 //        media.setCategory("Book");
         media.setTitle("Conan tapj 47");
-        Test test = new Test(new MediaSaleItemPanel(media));
+        List<Media> medias = new ArrayList<Media>();
+        medias.add(media);
+        medias.add(media);
+        medias.add(media);
+        medias.add(media);
+        medias.add(media);
+        medias.add(media);
+        medias.add(media);
+        Test test = new Test(new MediaSalePanel(medias));
     }
 }
