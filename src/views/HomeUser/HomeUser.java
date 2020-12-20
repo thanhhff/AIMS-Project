@@ -13,7 +13,9 @@ import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Media.Media;
+import model.User.User;
 import views.MediaList.mediaListPanel;
 import views.MediaList.mediaList;
 import views.MediaList.mediaListPanel;
@@ -167,7 +169,18 @@ public final class HomeUser extends javax.swing.JFrame {
 
     private void CartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CartMouseClicked
         // TODO add your handling code here:
+             User user = new User(account.getId());
+        if (user.getCartItems() == null) {
+            JOptionPane.showMessageDialog(null, "Cart empty");
+        } else {
+            CartPanel cart = new CartPanel(user);
 
+            jpLayout.removeAll();
+            jpLayout.setLayout(new BorderLayout());
+            cart.setBounds(0, 0, jpLayout.getWidth(), jpLayout.getHeight());
+            jpLayout.add(cart);
+            jpLayout.updateUI();
+        }
 
 
     }//GEN-LAST:event_CartMouseClicked
