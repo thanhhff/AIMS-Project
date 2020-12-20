@@ -72,44 +72,37 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="big_label" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="name_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="value_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="name_label" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="media_name" min="-2" pref="255" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="media_value" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="media_price" max="32767" attributes="0"/>
-                                              <Component id="categories" alignment="1" pref="255" max="32767" attributes="0"/>
-                                              <Component id="media_name" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="image_path_label" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="media_quantity" pref="258" max="32767" attributes="0"/>
                                               <Component id="media_barcode" max="32767" attributes="0"/>
                                               <Component id="media_input_day" max="32767" attributes="0"/>
-                                              <Component id="image_path" max="32767" attributes="0"/>
+                                              <Component id="categories" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
+                                              <Component id="media_price" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="value_label" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="media_value" min="-2" pref="255" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="price_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="currency_label1" pref="44" max="32767" attributes="0"/>
-                                      <Component id="currency_label" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="currency_label1" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="currency_label" min="-2" pref="44" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="price_label" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -157,19 +150,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="big_label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="name_label" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="media_name" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="media_value" min="-2" max="-2" attributes="0"/>
-                      <Component id="value_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="currency_label1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="media_value" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="currency_label1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="value_label" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="price_label" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="media_price" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -180,11 +173,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="category_label" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="categories" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="image_path_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="image_path" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -263,7 +251,7 @@
         <Component class="javax.swing.JFormattedTextField" name="media_value">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="0"/>
+              <Format format="###0" subtype="-1" type="0"/>
             </Property>
           </Properties>
         </Component>
@@ -292,7 +280,7 @@
         <Component class="javax.swing.JFormattedTextField" name="media_price">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="0"/>
+              <Format format="###0" subtype="-1" type="0"/>
             </Property>
           </Properties>
         </Component>
@@ -333,16 +321,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gotoDetailButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="image_path_label">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="13" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Image path: "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="image_path">
-        </Component>
         <Component class="javax.swing.JLabel" name="quantity_label">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -362,7 +340,7 @@
         <Component class="javax.swing.JFormattedTextField" name="media_input_day">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="1"/>
+              <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
             </Property>
           </Properties>
         </Component>
@@ -686,7 +664,7 @@
             <Component class="javax.swing.JFormattedTextField" name="publication_date">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format subtype="1" type="1"/>
+                  <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
                 </Property>
               </Properties>
             </Component>
@@ -873,7 +851,7 @@
             <Component class="javax.swing.JFormattedTextField" name="publication_date_dvd">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format subtype="1" type="1"/>
+                  <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
                 </Property>
               </Properties>
               <Events>
