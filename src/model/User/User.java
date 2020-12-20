@@ -90,4 +90,29 @@ public class User {
         }
         return null;
     }
+    
+    public List<Order> getAllOrders(){
+        try {
+            int index = 0;
+            List<Order> orders = new ArrayList<Order>();
+            ResultSet rs = ConnectSQL.sqlQuery("select * from Orders");
+            while(rs.next()){
+                int order_id = Integer.parseInt(rs.getString("order_id"));
+                int ship_fee = Integer.parseInt(rs.getString("ship_fee"));
+                int order_state_id = Integer.parseInt(rs.getString("order_state_id"));
+                String shipping_info = rs.getString("shipping_info");
+                int userID = Integer.parseInt(rs.getString("user_id"));
+                String card_number = rs.getString("card_number");
+                Order order = new Order(order_id, order_state_id, userID, ship_fee, shipping_info, card_number);
+                orders.add(order);
+                index++;
+            }
+            
+            return index == 0 ? null : orders;
+            
+        } catch (NumberFormatException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
