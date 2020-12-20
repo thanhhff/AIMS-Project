@@ -6,8 +6,11 @@
 package views.order;
 
 import aims.FormatNumber;
+import controller.Cart.OrderController;
 import java.awt.Color;
 import java.awt.Component;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Cart.Order;
 
@@ -19,21 +22,25 @@ public class OrderDetalPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form OrderDetalPanel
+     *
      * @param order
      */
     public static int WIDTH = 570;
     public static int HEIGHT = 330;
     private JPanel mainJPanel = new JPanel();
+    private Order order;
+
     public OrderDetalPanel(Order order) {
-        setSize(WIDTH,HEIGHT);
+        this.order = order;
+        setSize(WIDTH, HEIGHT);
         initComponents();
         totalBillPanel.setText(FormatNumber.formatString("" + order.getTotalBill()));
         shipping_feePanel.setText(FormatNumber.formatString("" + order.getShip_fee()));
         totalPanel.setText(FormatNumber.formatString("" + (order.getTotalBill() + order.getShip_fee())));
-        if(order.getOrder_state_id() != Order.DELIVERING){
+        if (order.getOrder_state_id() != Order.DELIVERING) {
             refundButton.setVisible(false);
         }
-        switch(order.getOrder_state_id()){
+        switch (order.getOrder_state_id()) {
             case Order.CANCEL:
                 statePanel.setForeground(Color.RED);
                 break;
@@ -110,6 +117,11 @@ public class OrderDetalPanel extends javax.swing.JPanel {
         refundButton.setContentAreaFilled(false);
         refundButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         refundButton.setFocusPainted(false);
+        refundButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refundButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -168,6 +180,29 @@ public class OrderDetalPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void refundButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundButtonActionPerformed
+        if (OrderController.refund(order)) {
+            JOptionPane.showMessageDialog(null, "Refund successfully");
+            switch (order.getOrder_state_id()) {
+                case Order.CANCEL:
+                    statePanel.setForeground(Color.RED);
+                    break;
+                case Order.SUCCESS:
+                    statePanel.setForeground(Color.GREEN);
+                    break;
+                case Order.DELIVERING:
+                    statePanel.setForeground(Color.YELLOW);
+                    break;
+            }
+            statePanel.setText(order.getState());
+            refundButton.setVisible(false);
+            this.revalidate();
+            this.repaint();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_refundButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

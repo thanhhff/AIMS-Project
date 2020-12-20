@@ -42,6 +42,7 @@ public class Order {
             cartItem.delete();
         }
     }
+    
     public Order(int order_id,int order_state_id,int user_id,int ship_fee, String shipping_info, String card_number){
         this.user_id = user_id;
         this.ship_fee = ship_fee;
@@ -50,6 +51,15 @@ public class Order {
         this.order_state_id = order_state_id;
         this.order_id = order_id;
     }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public String getCard_number() {
+        return card_number;
+    }
+    
     public void save(){
         ConnectSQL.sqlQueryUpdate("insert into Orders "
                 + "(`ship_fee`,`order_state_id`,`user_id`,`shipping_info`,`card_number`) "
@@ -99,6 +109,10 @@ public class Order {
                 return "Success";
         }
         return null;
+    }
+    public void cancel(){
+        this.order_state_id = CANCEL;
+        ConnectSQL.sqlQueryUpdate("Update Orders set order_state_id = " + CANCEL + " where order_id = " + order_id + " and order_state_id = " + DELIVERING);
     }
     public List<OrderItem> getOrderItems(){
         try {
