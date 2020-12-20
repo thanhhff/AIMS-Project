@@ -3,16 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaListPanel.java</file>
-            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaItem.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Media/Media.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/controller/Media/BookController.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/HomeUser/HomeUser.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/conan-resize2.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Media/Book.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/controller/Media/MediaController.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/db/ConnectSQL.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/account/Login.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/login.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaItem.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/conan-resize.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/logo-resize-1.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaList.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/cart/CartItemPanel.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaListPanel.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/controller/Cart/CartController.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/logo-resize.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/db/itss.sql</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/login-online-shopping.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/minus.png</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/images/conan-resize3.png</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaTest.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/HomeUser/TestHomeUser.java</file>
-            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/MediaList/mediaList.java</file>
-            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/Admin/Home.java</file>
+            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Cart/CartItem.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/controller/Search/SearchController.java</file>
-            <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/db/itss.sql</file>
         </group>
     </open-files>
 </project-private>
