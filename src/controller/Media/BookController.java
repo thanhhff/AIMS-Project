@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,22 +50,60 @@ public class BookController {
             String author_name = rs.getString(22);
             String genre = rs.getString(23);
             int sale_percent = 0;
-// Book(title,value,price,sale_percent,category,image_path,barcode,description,quantity,input_day,width,height,depth,weight,author,cover_type,publisher,publication_date,page_number,language,genre) {
-
-            Book book = new Book(title, value, price, sale_percent, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author_name, cover_type_id, publisher_name, publication_date, page_number, language_id, genre);
+            Book book = new Book(media_id, title, value, price, sale_percent, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author_name, cover_type_id, publisher_name, publication_date, page_number, language_id, genre);
             books.add(book);
         }
         
         return books;
     }
     
-    public static int createBook(Book book) {
-        int id = book.getId();
+    
+    
+    public static int createBook(Book book) throws SQLException {
         String title = book.getTitle();
         int value = book.getValue();
         int price = book.getPrice();
-        int category_id = 1;
+        int sale_percent = book.getSalePercent();
+        int category_id = book.getCategoryId();
         String image_path = book.getImagePath();
+        String barcode = book.getBarcode();
+        String description = book.getDescription();
+        int quantity = book.getQuantity();
+        String input_day = book.getInputDay();
+        int width = book.getWeight();
+        int height = book.getHeight();
+        int depth = book.getDepth();
+        int weight = book.getWeight();
+        String author_name = book.getAuthor();
+        int cover_type_id = book.getCoverTypeID();
+        String publisher_name = book.getPublisher();
+        String publication_date = book.getPublication_date();
+        int page_number = book.getPageNumber();
+        int language_id = book.getLanguageId();
+        String genre = book.getGenre();
+        
+        int media_id = MediaController.getNumberOfMedia() + 1;
+        book.setId(media_id);
+        
+        int media_result = MediaController.insertMedia(title, value, price, sale_percent, category_id, image_path);
+        if (media_result == 0) {
+            JOptionPane.showMessageDialog(null, "Cannot insert into Medias table!");
+            return 0;
+        }
+        
+        int physical_result = PhysicalController.insertPhysical(description, quantity, input_day, media_id, width, height, depth, weight, barcode);
+        if (physical_result == 0) {
+            JOptionPane.showMessageDialog(null, "Cannot insert into Physicalgoods table!");
+            return 0;
+        }
+        
+        String book_query = "INSERT INTO Books (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name, genre VALUES ('"
+                + publication_date + "', " + page_number + ", " + media_id + ", " + cover_type_id + ", '" + publisher_name + "', " + language_id + ", '" + author_name +"', '" + genre + "');";
+        int book_result = ConnectSQL.sqlUpdate(book_query);
+        if (book_result == 0) {
+            JOptionPane.showMessageDialog(null, "Cannot insert into Books table!");
+            return 0;
+        }
         
         return 0;
     }

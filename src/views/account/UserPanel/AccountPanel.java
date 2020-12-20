@@ -20,6 +20,15 @@ public class AccountPanel extends javax.swing.JPanel {
      */
     public AccountPanel() {
         initComponents();
+        fill();
+    }
+    
+    public void fill(){
+        jpLayout2.removeAll();
+        AccountInformation accInfo = new AccountInformation();
+        jpLayout2.setLayout(new BorderLayout());
+        jpLayout2.add(accInfo, BorderLayout.CENTER);
+        jpLayout2.updateUI();
     }
 
     /**
@@ -89,7 +98,7 @@ public class AccountPanel extends javax.swing.JPanel {
                 .addComponent(AccountInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
                 .addComponent(ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,8 +129,11 @@ public class AccountPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpLayout2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jpLayout2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -148,11 +160,7 @@ public class AccountPanel extends javax.swing.JPanel {
 
     private void AccountInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountInformationActionPerformed
         // TODO add your handling code here:
-        jpLayout2.removeAll();
-        AccountInformation accInfo = new AccountInformation();
-        jpLayout2.setLayout(new BorderLayout());
-        jpLayout2.add(accInfo, BorderLayout.CENTER);
-        jpLayout2.updateUI();
+        fill();
     }//GEN-LAST:event_AccountInformationActionPerformed
 
 

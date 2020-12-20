@@ -60,8 +60,7 @@ public class CartPanel extends JPanel {
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
                             CartController.deleteCartItem(cartItem);
-                            this.revalidate();
-                            this.repaint();
+                            this.updateUI();
                         }                        
                     } else {
                         int price = Integer.parseInt(button.getName());
@@ -70,8 +69,7 @@ public class CartPanel extends JPanel {
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
                             CartController.deleteCartItem(cartItem);
-                            this.revalidate();
-                            this.repaint();
+                            this.updateUI();
                         } 
                         totalBill += price;
                     }

@@ -27,6 +27,7 @@ public class ChangeAddress extends javax.swing.JPanel {
     private User user;
     public static final int WIDTH = 500;
     public static final int HEIGHT = 450;
+
     public ChangeAddress(User user) {
         this.user = user;
         initComponents();
@@ -34,74 +35,62 @@ public class ChangeAddress extends javax.swing.JPanel {
         cancelButton.setFocusPainted(false);
         setProvince();
         setDistrict(provinceBox.getSelectedItem().toString());
-        setWard(districtBox.getSelectedItem().toString());       
+        setWard(districtBox.getSelectedItem().toString());
     }
-    public String getNameNew(){
+
+    public String getNameNew() {
         return nameText.getText();
     }
-    public String getPhoneNew(){
+
+    public String getPhoneNew() {
         return phoneText.getText();
     }
-    public JButton getCancelButton(){
+
+    public JButton getCancelButton() {
         return this.cancelButton;
     }
-    public ShippingInfo getShippingInfo(){
+
+    public ShippingInfo getShippingInfo() {
         String name = getNameNew();
         String phone = getPhoneNew();
         Ward ward = Ward.getWardbyName(wardBox.getSelectedItem().toString());
-        ShippingInfo shippingInfo = new ShippingInfo(name, phone, user.getUser_id() , ward);
+        ShippingInfo shippingInfo = new ShippingInfo(name, phone, user.getUser_id(), ward);
         return shippingInfo;
     }
-    public JButton getSubmitButton(){
+
+    public JButton getSubmitButton() {
         return this.submitButton;
     }
+
     private void setProvince() {
-        try {
-            flag_province = false;
-            ResultSet rs = ConnectSQL.sqlQuery("Select * from Provinces");
-            while (rs.next()) {
-                String name = rs.getString("province_name");
-                provinceBox.addItem(name);
-            }
-            flag_province = true;
-        } catch (SQLException e) {
+        flag_province = false;
+        for (String name : ShippingInfo.getProvinces()) {
+            provinceBox.addItem(name);
+        }
+        flag_province = true;
+    }
+
+    private void setDistrict(String province) {
+
+        flag_district = false;
+
+        districtBox.removeAllItems();
+        for (String name : ShippingInfo.getDistricts(province)) {
+            districtBox.addItem(name);
+        }
+        flag_district = true;
+
+    }
+
+    private void setWard(String district) {
+
+        wardBox.removeAllItems();
+        for (String name : ShippingInfo.getWards(district)) {
+            wardBox.addItem(name);
         }
 
     }
-    private void setDistrict(String province){
-        try {
-            flag_district = false;
-            ResultSet rs = ConnectSQL.sqlQuery("Select province_id from Provinces where province_name like '" + province + "'");
-            String idProvince = "";
-            while (rs.next()) {
-                idProvince = rs.getString("province_id");
-            }
-            rs = ConnectSQL.sqlQuery("Select * from Districts where province_id = " + idProvince );
-            districtBox.removeAllItems();
-            while (rs.next()) {
-                String name = rs.getString("district_name");
-                districtBox.addItem(name);
-            }
-            flag_district = true;
-        } catch (SQLException e) {
-        }
-    }
-    private void setWard(String district){
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery("Select district_id from Districts where district_name like '" + district + "'");
-            String idDistrict = "";
-            while (rs.next()) {
-                idDistrict = rs.getString("district_id");
-            }
-            rs = ConnectSQL.sqlQuery("Select * from Wards where District_id = " + idDistrict );
-            wardBox.removeAllItems();
-            while (rs.next()) {
-                String name = rs.getString("ward_name");
-                wardBox.addItem(name);
-            }
-        } catch (SQLException e) {
-        }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -233,7 +222,7 @@ public class ChangeAddress extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void provinceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceBoxActionPerformed
-        if(flag_province){
+        if (flag_province) {
             setDistrict(provinceBox.getSelectedItem().toString());
         }
     }//GEN-LAST:event_provinceBoxActionPerformed
@@ -243,14 +232,14 @@ public class ChangeAddress extends javax.swing.JPanel {
     }//GEN-LAST:event_phoneTextActionPerformed
 
     private void wardBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wardBoxActionPerformed
-       
+
     }//GEN-LAST:event_wardBoxActionPerformed
 
     private void districtBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtBoxActionPerformed
-        if(flag_district){
+        if (flag_district) {
             setWard(districtBox.getSelectedItem().toString());
         }
-        
+
     }//GEN-LAST:event_districtBoxActionPerformed
 
 

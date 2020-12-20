@@ -5,10 +5,6 @@
  */
 package controller.Media;
 import model.Media.Media;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import db.ConnectSQL;
 import java.util.ArrayList;
 
 
@@ -17,29 +13,12 @@ import java.util.ArrayList;
  * @author Toshiba T75
  */
 public class MediaController {
-    public static int getNumberOfMedia() throws SQLException {
-        int result = 0;
-        String query = "SELECT COUNT(*) FROM `medias`;";
-        ResultSet rs = ConnectSQL.sqlQuery(query);
-        
-        while (rs.next()) {
-            result = rs.getInt(1);
-        }
-        
-        return result;
+    public static int getNumberOfMedia() {
+        return Media.getNumberOfMedia();
     }
     
-    public static int createMedia(Media media) {
-        String title = media.getTitle();
-        int value = media.getValue();
-        int price = media.getPrice();
-        int category_id = media.getCategoryId();
-        String image_path = media.getImagePath();
-        int sale_percent = media.getSalePercent();
-        String media_query = "INSERT INTO `medias` (title, value, price, sale_percent, category_id, image_path) VALUES ('" + title + "', " + value + ", " + price + ", " + sale_percent
-                                + ", " + category_id + ", '" + image_path + "');";
-        
-        return ConnectSQL.sqlUpdate(media_query);
+    public static int insertMedia(String title, int value, int price, int sale_percent, int category_id, String image_path) {
+        return Media.insertMedia(title, value, price, sale_percent, category_id, image_path);
     }
 
      public static void sortLowMediaPrice(ArrayList<Media> list)

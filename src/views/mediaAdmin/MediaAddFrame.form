@@ -527,6 +527,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Confirm Add"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="backButton">
           <Properties>
@@ -555,7 +558,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Component id="category_label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cover_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="page_label" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -563,20 +567,21 @@
                                   <Component id="publisher_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="language_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="author_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="genre_label" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="author_name" min="-2" pref="372" max="-2" attributes="0"/>
-                                  <Component id="languages" min="-2" pref="372" max="-2" attributes="0"/>
-                                  <Component id="publisher" min="-2" pref="372" max="-2" attributes="0"/>
-                                  <Component id="publication_date" min="-2" pref="372" max="-2" attributes="0"/>
-                                  <Component id="page_number" min="-2" pref="372" max="-2" attributes="0"/>
-                                  <Component id="cover_types" min="-2" pref="372" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="author_name" pref="372" max="32767" attributes="0"/>
+                                  <Component id="languages" pref="372" max="32767" attributes="0"/>
+                                  <Component id="publisher" pref="372" max="32767" attributes="0"/>
+                                  <Component id="publication_date" pref="372" max="32767" attributes="0"/>
+                                  <Component id="page_number" pref="372" max="32767" attributes="0"/>
+                                  <Component id="cover_types" pref="372" max="32767" attributes="0"/>
+                                  <Component id="book_genre" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="category_label1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="292" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -614,7 +619,12 @@
                           <Component id="cover_label" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cover_types" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="255" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="genre_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="book_genre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="215" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -726,6 +736,16 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Book Details"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="genre_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Genre: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="book_genre">
             </Component>
           </SubComponents>
         </Container>

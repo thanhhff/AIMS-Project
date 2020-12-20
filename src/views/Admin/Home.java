@@ -11,6 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import model.Media.Media;
 import views.Admin.User.UserPanel;
 import views.MediaList.mediaList;
@@ -30,17 +31,16 @@ public final class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        setLayout(null);
-//        fill();
+//        setLayout(null);
+        fill();
     }
     
     public void fill()
     {
-       ArrayList<Media> list = new ArrayList<Media>();
-        SearchController.SearchRandom(list);
-        mediaList media = new mediaList(list);
+        jpLayout.removeAll();
+        HomePanel homePanel = new HomePanel();
         jpLayout.setLayout(new BorderLayout());
-        jpLayout.add(media, BorderLayout.CENTER);
+        jpLayout.add(homePanel, BorderLayout.CENTER);
         jpLayout.updateUI();
     }
 
@@ -54,12 +54,6 @@ public final class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jpLayout = new javax.swing.JPanel();
-        Sidebar = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        FillInfor = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         Account = new javax.swing.JLabel();
         Home = new javax.swing.JLabel();
@@ -67,98 +61,15 @@ public final class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Sidebar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton1.setText("Product");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Sales");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Order");
-        jButton3.setToolTipText("");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("User");
-        jButton4.setToolTipText("");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout SidebarLayout = new javax.swing.GroupLayout(Sidebar);
-        Sidebar.setLayout(SidebarLayout);
-        SidebarLayout.setHorizontalGroup(
-            SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SidebarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        SidebarLayout.setVerticalGroup(
-            SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SidebarLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        FillInfor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout FillInforLayout = new javax.swing.GroupLayout(FillInfor);
-        FillInfor.setLayout(FillInforLayout);
-        FillInforLayout.setHorizontalGroup(
-            FillInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1097, Short.MAX_VALUE)
-        );
-        FillInforLayout.setVerticalGroup(
-            FillInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jpLayoutLayout = new javax.swing.GroupLayout(jpLayout);
         jpLayout.setLayout(jpLayoutLayout);
         jpLayoutLayout.setHorizontalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpLayoutLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Sidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FillInfor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 1400, Short.MAX_VALUE)
         );
         jpLayoutLayout.setVerticalGroup(
             jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLayoutLayout.createSequentialGroup()
-                .addGroup(jpLayoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FillInfor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
         Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/user-resize1.png"))); // NOI18N
@@ -234,55 +145,24 @@ public final class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_AccountMouseClicked
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        // TODO add your handling code here:
-        jpLayout.removeAll();
-        mediaListPanel media = new  mediaListPanel();
-        jpLayout.setLayout(new BorderLayout());
-        jpLayout.add(media, BorderLayout.CENTER);
-        jpLayout.updateUI();
+        fill();
     }//GEN-LAST:event_HomeMouseClicked
 
     private void SigoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SigoutMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Login login = new Login();
-        login.setVisible(true);
+        int out = JOptionPane.showConfirmDialog(null, "Are you sure that you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (out == 0) {
+            this.setVisible(false);
+            Login login = new Login();
+            login.setVisible(true);
+        }
     }//GEN-LAST:event_SigoutMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        
-       FillInfor.removeAll();
-       UserPanel user = new UserPanel();
-  
-       FillInfor.setLayout(new BorderLayout());
-       FillInfor.add(user, BorderLayout.CENTER);
-       FillInfor.updateUI();
-    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Account;
-    private javax.swing.JPanel FillInfor;
     private javax.swing.JLabel Home;
-    private javax.swing.JPanel Sidebar;
     private javax.swing.JLabel Sigout;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel jpLayout;
     // End of variables declaration//GEN-END:variables

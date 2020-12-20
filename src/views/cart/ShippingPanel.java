@@ -46,6 +46,11 @@ public class ShippingPanel extends javax.swing.JPanel {
     public ShippingInfo selectedInfo(){
         return shippingList.selectedInfo();
     }
+
+    public JButton getNewShipping() {
+        return newShipping;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +63,7 @@ public class ShippingPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        newShipping = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Shipping Infomation");
@@ -68,28 +74,38 @@ public class ShippingPanel extends javax.swing.JPanel {
         cancelButton.setText("Cancel");
         cancelButton.setFocusPainted(false);
 
+        newShipping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/new.png"))); // NOI18N
+        newShipping.setBorderPainted(false);
+        newShipping.setContentAreaFilled(false);
+        newShipping.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        newShipping.setFocusPainted(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(0, 132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(34, 34, 34))
+                        .addGap(97, 97, 97)
+                        .addComponent(newShipping, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(submitButton)
                         .addGap(92, 92, 92)
-                        .addComponent(cancelButton)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addComponent(cancelButton)
+                        .addGap(114, 114, 114))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(412, 412, 412)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(newShipping, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 407, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitButton)
                     .addComponent(cancelButton))
@@ -101,6 +117,7 @@ public class ShippingPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton newShipping;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }
