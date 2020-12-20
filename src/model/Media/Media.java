@@ -133,4 +133,7 @@ public abstract class Media {
     public void setImagePath(String image_path) {
         this.image_path = image_path;
     }
+    public int getQuantity(){
+        return 0;
+    }
 }
