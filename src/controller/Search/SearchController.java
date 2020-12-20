@@ -226,7 +226,6 @@ public class SearchController {
             }
            
         } catch (SQLException ex) {
-            
         }
     }
 }
