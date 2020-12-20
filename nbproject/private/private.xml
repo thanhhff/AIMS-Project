@@ -3,29 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/account/SignUp.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Book.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/Cart/CartController.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/Media/MediaController.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/User/AccountController.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/PhysicalGood.java</file>
-=======
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CartPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Media/Media.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/controller/Cart/OrderController.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/test/Test.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Media/PhysicalGood.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CartList.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/controller/Media/MediaController.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/AIMS.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/HomeUser/TestHomeUser.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CartItemPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/controller/User/AccountController.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/controller/User/UserController.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/MediaList/mediaList.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/controller/Cart/CartController.java</file>
->>>>>>> 10f76bc078ce6c073efb605ed3568392dbf436bb
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Media.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaAddFrame.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/db/itss.sql</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/db/ConnectSQL.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/Media/BookController.java</file>
         </group>
     </open-files>
 </project-private>
