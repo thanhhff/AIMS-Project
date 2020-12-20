@@ -59,7 +59,8 @@ CREATE TABLE `Books` (
   `publisher_name` varchar(255) DEFAULT NULL,
   `language_id` int NOT NULL,
 <<<<<<< HEAD
-  `author_name` varchar(255) DEFAULT NULL
+  `author_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 =======
   `author_name` varchar(255) DEFAULT NULL,
@@ -939,7 +940,9 @@ CREATE TABLE `Medias` (
   `title` varchar(255) NOT NULL,
   `value` int NOT NULL DEFAULT '0',
   `price` int NOT NULL DEFAULT '0',
-  `category_id` int NOT NULL
+  `category_id` int NOT NULL,
+  `image_path` varchar(255),
+  `sale_percent` int DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
