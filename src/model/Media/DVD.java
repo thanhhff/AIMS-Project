@@ -18,6 +18,10 @@ public class DVD extends PhysicalGood {
     private String dvd_type;
     private String writer_name;
     
+    public DVD() {
+        
+    }
+    
     public DVD(int id, String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String date, int width, int height, int depth, int weight, String type, String director, int runtime, String studio, String language, String subtitle, String publication_date) {
         super(id, title, value, price, sale_percent, category, image_path, barcode, description, quantity, date, width, height, depth, weight);
         this.dvd_type = type;
