@@ -72,7 +72,7 @@ public final class Home extends javax.swing.JFrame {
             .addGap(0, 700, Short.MAX_VALUE)
         );
 
-        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/user-resize1.png"))); // NOI18N
+        Account.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/manage-account.png"))); // NOI18N
         Account.setText("Account");
         Account.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -87,6 +87,7 @@ public final class Home extends javax.swing.JFrame {
             }
         });
 
+        Sigout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/signout.png"))); // NOI18N
         Sigout.setText("Sigout");
         Sigout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,7 +105,7 @@ public final class Home extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(Home)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1065, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1001, Short.MAX_VALUE)
                         .addComponent(Account)
                         .addGap(43, 43, 43)
                         .addComponent(Sigout)
