@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Cart.ShippingInfo;
+import model.Cart.Ward;
 
 public class UserController {
 
@@ -138,6 +140,18 @@ public class UserController {
                 return false;
         }
         return check;
+    }
+     
+      public ShippingInfo getShipInfor(int user_id) {
+        ShippingInfo shipInfor = null;
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("select * from ShippingInfos where user_id = " + user_id);
+            while (rs.next()) {
+                shipInfor = new ShippingInfo(rs.getString("name"), rs.getString("phone"), Integer.parseInt(rs.getString("user_id")), new Ward(Integer.parseInt(rs.getString("ward_id"))));
+            }
+        } catch (SQLException ex) {
+        }
+        return shipInfor;
     }
     
 //    public static void main (String[] args)

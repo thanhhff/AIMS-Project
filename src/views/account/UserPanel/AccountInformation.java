@@ -6,24 +6,33 @@
 package views.account.UserPanel;
 
 import static aims.AIMS.account;
+import controller.User.UserController;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import model.Cart.ShippingInfo;
+import model.User.User;
+import views.cart.ChangeAddress;
+import views.cart.ShippingList;
+import views.cart.ShippingPanel;
 
 /**
  *
  * @author thanhhff
  */
 public class AccountInformation extends javax.swing.JPanel {
-
+    UserController userController = new UserController();
+    User user = new User(account.getId());
     /**
      * Creates new form AccountInformation
      */
     public AccountInformation() {
         initComponents();
-//        
-//        int user_id = account.getId();
-        
+        ShipInforButton.hide();
 
         Username.setText("Username: " + account.getUsername());
-        
         String accType = "null";
         if (account.getLv() == 0){
             accType = "User";
@@ -31,13 +40,31 @@ public class AccountInformation extends javax.swing.JPanel {
         {
             accType = "Admin";
         }
-        
         AccountType.setText("Account Type: " + accType);
+       
+        fillShippingInfor();
+    }
+    
+    public void fillShippingInfor()
+    {
+          // Shipping Infor
+        ShippingInfo shipInfor = userController.getShipInfor(account.getId());
         
-        
-        
-        
-//        System.out.println(user_id);
+        if (shipInfor == null)
+        {
+            txtName.setText("Name: null");
+            txtPhone.setText("Phone: null");
+            txtAddress.setText("Address: null");
+            ShipInforButton.show();
+            ShipInforButton.setText("Add");
+        } else 
+        {
+            txtName.setText("Name: " + shipInfor.getName());
+            txtPhone.setText("Phone: " + shipInfor.getPhone());
+            txtAddress.setText("Address: " + shipInfor.getWardObject().getWard() + "-" + shipInfor.getWardObject().getDistrict() + "-" + shipInfor.getWardObject().getProvince());
+            ShipInforButton.show();
+            ShipInforButton.setText("Change");
+        }
     }
 
     /**
@@ -52,11 +79,11 @@ public class AccountInformation extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         Username = new javax.swing.JLabel();
         AccountType = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        Name = new javax.swing.JLabel();
-        Phone = new javax.swing.JLabel();
-        Address = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        ShippingInfor = new javax.swing.JPanel();
+        txtName = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JLabel();
+        ShipInforButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 18))); // NOI18N
 
@@ -75,7 +102,7 @@ public class AccountInformation extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AccountType)
                     .addComponent(Username))
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addContainerGap(433, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,45 +111,52 @@ public class AccountInformation extends javax.swing.JPanel {
                 .addComponent(Username)
                 .addGap(18, 18, 18)
                 .addComponent(AccountType)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Shipping Information"));
+        ShippingInfor.setBorder(javax.swing.BorderFactory.createTitledBorder("Shipping Information"));
 
-        Name.setText("Name:");
+        txtName.setText("Name:");
 
-        Phone.setText("Phone:");
+        txtPhone.setText("Phone:");
 
-        Address.setText("Address:");
+        txtAddress.setText("Address:");
 
-        jToggleButton1.setText("Edit");
+        ShipInforButton.setText("jButton1");
+        ShipInforButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShipInforButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Address)
-                    .addComponent(Phone)
-                    .addComponent(Name))
+        javax.swing.GroupLayout ShippingInforLayout = new javax.swing.GroupLayout(ShippingInfor);
+        ShippingInfor.setLayout(ShippingInforLayout);
+        ShippingInforLayout.setHorizontalGroup(
+            ShippingInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ShippingInforLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(ShippingInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtAddress)
+                    .addComponent(txtPhone)
+                    .addComponent(txtName))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ShippingInforLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ShipInforButton)
+                .addGap(20, 20, 20))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Name)
-                .addGap(18, 18, 18)
-                .addComponent(Phone)
-                .addGap(18, 18, 18)
-                .addComponent(Address)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+        ShippingInforLayout.setVerticalGroup(
+            ShippingInforLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ShippingInforLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(txtName)
+                .addGap(26, 26, 26)
+                .addComponent(txtPhone)
+                .addGap(32, 32, 32)
+                .addComponent(txtAddress)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(ShipInforButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -130,32 +164,62 @@ public class AccountInformation extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShippingInfor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(ShippingInfor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ShipInforButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShipInforButtonActionPerformed
+        // TODO add your handling code here:
+  
+            JDialog jDialog = new JDialog();
+            ChangeAddress changeAddress = new ChangeAddress(user);
+            jDialog.setSize(ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+            changeAddress.setBounds(0, 0, ChangeAddress.WIDTH, ChangeAddress.HEIGHT);
+            jDialog.setUndecorated(true);
+            jDialog.add(changeAddress);
+            jDialog.setLocationRelativeTo(null);
+
+            changeAddress.getSubmitButton().addActionListener((ActionEvent e) -> {
+                if (changeAddress.getNameNew().equals("") || changeAddress.getPhoneNew().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Plese import name and phone number");
+                } else {
+                    ShippingInfo  shippingInfo = changeAddress.getShippingInfo();
+ 
+                    shippingInfo.create();
+                    jDialog.dispose();
+                }
+            });
+            changeAddress.getCancelButton().addActionListener((ActionEvent e) -> {
+                jDialog.dispose();
+            });
+
+            jDialog.setModal(true);
+
+            jDialog.setVisible(true);
+            fillShippingInfor();
+    }//GEN-LAST:event_ShipInforButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccountType;
-    private javax.swing.JLabel Address;
-    private javax.swing.JLabel Name;
-    private javax.swing.JLabel Phone;
+    private javax.swing.JButton ShipInforButton;
+    private javax.swing.JPanel ShippingInfor;
     private javax.swing.JLabel Username;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel txtAddress;
+    private javax.swing.JLabel txtName;
+    private javax.swing.JLabel txtPhone;
     // End of variables declaration//GEN-END:variables
 }
