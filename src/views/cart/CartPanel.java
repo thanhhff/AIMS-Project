@@ -31,16 +31,14 @@ public class CartPanel extends JPanel {
     private JButton checkoutButton;
     private int totalBill;
     private User user;
-    private CartController cartController;
 
-    public CartPanel(User user, CartController cartController) {
+    public CartPanel(User user) {
         this.user = user;
-        this.cartController = cartController;
         setLayout(null);
         setSize(1000, 600);
         List<CartItem> cartItems = user.getCartItems();
         if (cartItems != null) {
-            cartList = new CartList(user.getCartItems(), cartController);
+            cartList = new CartList(user.getCartItems());
             deliveryPanel = new DeliveryPanel(user);
             billPanel = new BillPanel();
             checkoutButton = new JButton();
@@ -61,7 +59,7 @@ public class CartPanel extends JPanel {
                             CartItemPanel cartItemPanel = (CartItemPanel) button.getParent();
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
-                            cartController.deleteCartItem(cartItem);
+                            CartController.deleteCartItem(cartItem);
                             this.revalidate();
                             this.repaint();
                         }                        
@@ -71,7 +69,7 @@ public class CartPanel extends JPanel {
                         if(price < 0 && cartItemPanel.getQuantity() == 1){
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
-                            cartController.deleteCartItem(cartItem);
+                            CartController.deleteCartItem(cartItem);
                             this.revalidate();
                             this.repaint();
                         } 
@@ -93,7 +91,7 @@ public class CartPanel extends JPanel {
                 if (shippingInfo != null && cartList.getMediaCount() != 0) {
 
                     JDialog jDialog = new JDialog();
-                    int ship_fee = cartController.getShipFee(user.getCartItems());
+                    int ship_fee = CartController.getShipFee(user.getCartItems());
                     CheckOut checkOut = new CheckOut(shippingInfo, deliveryPanel.getNoteText(), totalBill, ship_fee);
                     jDialog.setSize(650, 700);
                     checkOut.setBounds(0, 0, 650, 700);
@@ -106,11 +104,11 @@ public class CartPanel extends JPanel {
                     });
                     checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
                         if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
-                            if(cartController.payment(checkOut.getCardNumber(), totalBill)){
+                            if(CartController.payment(checkOut.getCardNumber(), totalBill)){
                                 String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
                                         + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
                                         + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
-                                cartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
+                                CartController.checkOut(user.getUser_id(), ship_fee, shipping_info , checkOut.getCardNumber());
                                 JOptionPane.showMessageDialog(null, "Order successfull");
                                 jDialog.dispose();
                                 this.getParent().remove(this);

@@ -27,7 +27,6 @@ public class CartItem {
         this.quantity = quantily;
         this.user_id = user_id;
     }  
-
     public int getMedia_id() {
         return media_id;
     }
@@ -61,5 +60,23 @@ public class CartItem {
     }
     public void delete(){
         ConnectSQL.sqlQueryUpdate("delete from CartItems where media_id = " + media_id + " and user_id = " + user_id);
+    }
+    public static void creat(int user_id, int media_id, int price){
+        try {
+            boolean flag = false;
+            ResultSet rs = ConnectSQL.sqlQuery("Select * from CartItems where media_id = " + media_id + " and user_id = " + user_id);
+            int quantity  = 1;
+            while(rs.next()){
+                quantity += Integer.parseInt(rs.getString("quantity"));
+                flag = true;
+            }
+            if(flag){
+                ConnectSQL.sqlUpdate("update CartItems set quantity = " + quantity + " where user_id = " + user_id + " and media_id = " + media_id);
+            }else{
+                ConnectSQL.sqlQueryUpdate("insert into CartItems (media_id,user_id, quantity, price) "
+                        + "values ("+media_id + "," + user_id + ","+quantity + "," +price +")");
+            }
+        } catch (Exception e) {
+        }
     }
 }
