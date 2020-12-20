@@ -9,12 +9,12 @@ package views.mediaAdmin;
  *
  * @author Toshiba T75
  */
-public class EditBookPanel extends javax.swing.JPanel {
+public class EditDvdPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form EditBookPanel
      */
-    public EditBookPanel() {
+    public EditDvdPanel() {
         initComponents();
     }
 
@@ -27,35 +27,36 @@ public class EditBookPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        book_big_label = new javax.swing.JLabel();
-        book_author_label = new javax.swing.JLabel();
-        author_name = new javax.swing.JTextField();
+        dvd_big_label = new javax.swing.JLabel();
+        director_label = new javax.swing.JLabel();
+        director = new javax.swing.JTextField();
         language_label = new javax.swing.JLabel();
         languages = new javax.swing.JComboBox<>();
-        publisher_label = new javax.swing.JLabel();
-        publisher_name = new javax.swing.JTextField();
+        runtime_label = new javax.swing.JLabel();
         publication_label = new javax.swing.JLabel();
         publication_date = new javax.swing.JFormattedTextField();
-        page_label = new javax.swing.JLabel();
-        page_number = new javax.swing.JFormattedTextField();
-        cover_label = new javax.swing.JLabel();
-        covers = new javax.swing.JComboBox<>();
-        genre_label = new javax.swing.JLabel();
-        genre = new javax.swing.JTextField();
+        studio_label = new javax.swing.JLabel();
+        dvd_type_label = new javax.swing.JLabel();
+        dvd_types = new javax.swing.JComboBox<>();
+        subtitle_label = new javax.swing.JLabel();
         confirmButton = new javax.swing.JButton();
+        runtime = new javax.swing.JFormattedTextField();
+        studio_name = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subtitle = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(600, 550));
 
-        book_big_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        book_big_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        book_big_label.setText("EDIT BOOK");
+        dvd_big_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        dvd_big_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dvd_big_label.setText("EDIT DVD");
 
-        book_author_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        book_author_label.setText("Author: ");
+        director_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        director_label.setText("Director: : ");
 
-        author_name.addActionListener(new java.awt.event.ActionListener() {
+        director.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                author_nameActionPerformed(evt);
+                directorActionPerformed(evt);
             }
         });
 
@@ -64,29 +65,33 @@ public class EditBookPanel extends javax.swing.JPanel {
 
         languages.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vietnamese", "English", "Japanese" }));
 
-        publisher_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        publisher_label.setText("Publisher: ");
+        runtime_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        runtime_label.setText("Runtime: ");
 
         publication_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         publication_label.setText("Publication date: ");
 
         publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
-        page_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        page_label.setText("Pages: ");
+        studio_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        studio_label.setText("Studio: ");
 
-        page_number.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        dvd_type_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        dvd_type_label.setText("DVD type: ");
 
-        cover_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        cover_label.setText("Cover type: ");
+        dvd_types.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blu-ray", "HD-DVD" }));
 
-        covers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paperback", "Hardcover" }));
-
-        genre_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        genre_label.setText("Genre: ");
+        subtitle_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        subtitle_label.setText("Subtitle: ");
 
         confirmButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         confirmButton.setText("Confirm Edit");
+
+        runtime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
+
+        subtitle.setColumns(20);
+        subtitle.setRows(5);
+        jScrollPane1.setViewportView(subtitle);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +100,7 @@ public class EditBookPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(book_big_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dvd_big_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(publication_label)
@@ -103,25 +108,25 @@ public class EditBookPanel extends javax.swing.JPanel {
                                 .addComponent(languages, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(book_author_label)
+                                        .addComponent(director_label)
                                         .addComponent(language_label)
-                                        .addComponent(publisher_label))
+                                        .addComponent(runtime_label))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(84, 84, 84)
-                                            .addComponent(author_name, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(director, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(genre)
-                                                .addComponent(covers, 0, 291, Short.MAX_VALUE)
-                                                .addComponent(page_number)
+                                                .addComponent(jScrollPane1)
+                                                .addComponent(studio_name)
+                                                .addComponent(dvd_types, 0, 291, Short.MAX_VALUE)
                                                 .addComponent(publication_date)
-                                                .addComponent(publisher_name))))))
-                            .addComponent(page_label)
-                            .addComponent(cover_label)
-                            .addComponent(genre_label))
-                        .addGap(0, 111, Short.MAX_VALUE)))
+                                                .addComponent(runtime))))))
+                            .addComponent(studio_label)
+                            .addComponent(dvd_type_label)
+                            .addComponent(subtitle_label))
+                        .addGap(0, 129, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(248, 248, 248)
@@ -132,63 +137,64 @@ public class EditBookPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(book_big_label)
+                .addComponent(dvd_big_label)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(book_author_label)
-                    .addComponent(author_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(director_label)
+                    .addComponent(director, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(language_label)
                     .addComponent(languages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(publisher_label)
-                    .addComponent(publisher_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(runtime_label)
+                    .addComponent(runtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(publication_label)
                     .addComponent(publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(page_label)
-                    .addComponent(page_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studio_label)
+                    .addComponent(studio_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cover_label)
-                    .addComponent(covers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dvd_type_label)
+                    .addComponent(dvd_types, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(genre_label)
-                    .addComponent(genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subtitle_label)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(confirmButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void author_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_author_nameActionPerformed
+    private void directorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_directorActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_author_nameActionPerformed
+    }//GEN-LAST:event_directorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField author_name;
-    private javax.swing.JLabel book_author_label;
-    private javax.swing.JLabel book_big_label;
     private javax.swing.JButton confirmButton;
-    private javax.swing.JLabel cover_label;
-    private javax.swing.JComboBox<String> covers;
-    private javax.swing.JTextField genre;
-    private javax.swing.JLabel genre_label;
+    private javax.swing.JTextField director;
+    private javax.swing.JLabel director_label;
+    private javax.swing.JLabel dvd_big_label;
+    private javax.swing.JLabel dvd_type_label;
+    private javax.swing.JComboBox<String> dvd_types;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel language_label;
     private javax.swing.JComboBox<String> languages;
-    private javax.swing.JLabel page_label;
-    private javax.swing.JFormattedTextField page_number;
     private javax.swing.JFormattedTextField publication_date;
     private javax.swing.JLabel publication_label;
-    private javax.swing.JLabel publisher_label;
-    private javax.swing.JTextField publisher_name;
+    private javax.swing.JFormattedTextField runtime;
+    private javax.swing.JLabel runtime_label;
+    private javax.swing.JLabel studio_label;
+    private javax.swing.JTextField studio_name;
+    private javax.swing.JTextArea subtitle;
+    private javax.swing.JLabel subtitle_label;
     // End of variables declaration//GEN-END:variables
 }

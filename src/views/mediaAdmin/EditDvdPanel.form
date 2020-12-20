@@ -24,7 +24,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="book_big_label" alignment="0" max="32767" attributes="0"/>
+                  <Component id="dvd_big_label" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="publication_label" min="-2" max="-2" attributes="0"/>
@@ -32,33 +32,33 @@
                               <Component id="languages" min="-2" pref="291" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="book_author_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="director_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="language_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="publisher_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="runtime_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                          <Component id="author_name" min="-2" pref="291" max="-2" attributes="0"/>
+                                          <Component id="director" min="-2" pref="291" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="genre" max="32767" attributes="0"/>
-                                              <Component id="covers" pref="291" max="32767" attributes="0"/>
-                                              <Component id="page_number" max="32767" attributes="0"/>
+                                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                              <Component id="studio_name" max="32767" attributes="0"/>
+                                              <Component id="dvd_types" pref="291" max="32767" attributes="0"/>
                                               <Component id="publication_date" max="32767" attributes="0"/>
-                                              <Component id="publisher_name" max="32767" attributes="0"/>
+                                              <Component id="runtime" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="page_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cover_label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="genre_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="studio_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dvd_type_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="subtitle_label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="111" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="129" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -74,11 +74,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="book_big_label" min="-2" max="-2" attributes="0"/>
+              <Component id="dvd_big_label" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="book_author_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="author_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="director_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="director" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -87,8 +87,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="publisher_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="publisher_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="runtime_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="runtime" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -97,20 +97,20 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="page_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="page_number" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="studio_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="studio_name" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cover_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="covers" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dvd_type_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dvd_types" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="genre_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="genre" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="subtitle_label" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="194" max="32767" attributes="0"/>
+              <EmptySpace pref="116" max="32767" attributes="0"/>
               <Component id="confirmButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -118,26 +118,26 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="book_big_label">
+    <Component class="javax.swing.JLabel" name="dvd_big_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="24" style="3"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="EDIT BOOK"/>
+        <Property name="text" type="java.lang.String" value="EDIT DVD"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="book_author_label">
+    <Component class="javax.swing.JLabel" name="director_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Author: "/>
+        <Property name="text" type="java.lang.String" value="Director: : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="author_name">
+    <Component class="javax.swing.JTextField" name="director">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="author_nameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="directorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="language_label">
@@ -162,15 +162,13 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="publisher_label">
+    <Component class="javax.swing.JLabel" name="runtime_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Publisher: "/>
+        <Property name="text" type="java.lang.String" value="Runtime: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="publisher_name">
     </Component>
     <Component class="javax.swing.JLabel" name="publication_label">
       <Properties>
@@ -187,35 +185,28 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="page_label">
+    <Component class="javax.swing.JLabel" name="studio_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pages: "/>
+        <Property name="text" type="java.lang.String" value="Studio: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="page_number">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format subtype="1" type="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="cover_label">
+    <Component class="javax.swing.JLabel" name="dvd_type_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cover type: "/>
+        <Property name="text" type="java.lang.String" value="DVD type: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="covers">
+    <Component class="javax.swing.JComboBox" name="dvd_types">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="Paperback"/>
-            <StringItem index="1" value="Hardcover"/>
+            <StringItem index="0" value="Blu-ray"/>
+            <StringItem index="1" value="HD-DVD"/>
           </StringArray>
         </Property>
       </Properties>
@@ -223,15 +214,13 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="genre_label">
+    <Component class="javax.swing.JLabel" name="subtitle_label">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="13" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Genre: "/>
+        <Property name="text" type="java.lang.String" value="Subtitle: "/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="genre">
     </Component>
     <Component class="javax.swing.JButton" name="confirmButton">
       <Properties>
@@ -241,5 +230,29 @@
         <Property name="text" type="java.lang.String" value="Confirm Edit"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JFormattedTextField" name="runtime">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="###0" subtype="-1" type="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="studio_name">
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="subtitle">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
