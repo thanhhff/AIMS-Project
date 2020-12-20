@@ -5,6 +5,10 @@
  */
 package model.Media;
 
+import db.ConnectSQL;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 /**
  *
  * @author Toshiba T75
@@ -87,5 +91,56 @@ public class Book extends PhysicalGood {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+    
+    public static ArrayList<Book> getAllBooks() {
+        ArrayList<Book> books = new ArrayList<Book>();
+        String query = "SELECT `medias`.title, `medias`.value, `medias`.price, `medias`.category_id, `medias`.image_path, `physicalgoods`.*, `books`.* FROM `books` LEFT JOIN `physicalgoods` ON `books`.media_id = `physicalgoods`.media_id LEFT JOIN `medias` ON `physicalgoods`.media_id = `medias`.media_id;";
+
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(query);
+        
+            while (rs.next()) {
+                String title = rs.getString(1);
+                int value = rs.getInt(2);
+                int price = rs.getInt(3);
+                int category_id = rs.getInt(4);
+                String image_path = rs.getString(5);
+                String description = rs.getString(6);
+                int quantity = rs.getInt(7);
+                String input_day = rs.getString(9);
+                int media_id = rs.getInt(10);
+                int width = rs.getInt(11);
+                int height = rs.getInt(12);
+                int depth = rs.getInt(13);
+                int weight = rs.getInt(14);
+                String barcode = rs.getString(15);
+                String publication_date = rs.getString(16);
+                int page_number = rs.getInt(17);
+                int cover_type_id = rs.getInt(19);
+                String publisher_name = rs.getString(20);
+                int language_id = rs.getInt(21);
+                String author_name = rs.getString(22);
+                String genre = rs.getString(23);
+                int sale_percent = 0;
+                Book book = new Book(media_id, title, value, price, sale_percent, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author_name, cover_type_id, publisher_name, publication_date, page_number, language_id, genre);
+                books.add(book);
+            }
+            return books;
+        } catch (Exception e) {
+            return books;
+        }
+    }
+    
+    public int insertBook() {
+        String book_query = "INSERT INTO `Books` (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name, genre) VALUES ('"
+                + publication_date + "', " + page_number + ", " + this.getId() + ", " + cover_type_id + ", '" + publisher + "', " + language_id + ", '" + author +"', '" + genre + "');";
+        
+        try {
+            int result = ConnectSQL.sqlUpdate(book_query);
+            return result;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }

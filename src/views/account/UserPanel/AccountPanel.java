@@ -145,11 +145,16 @@ public class AccountPanel extends javax.swing.JPanel {
         User user = new User(account.getId());
         jpLayout2.removeAll();
         
-        OrderList orderList = new OrderList(user.getOrders());
+        if (user.getOrders() == null) {
+            JOptionPane.showMessageDialog(null, "Order empty");
+        } else {
         
+        OrderList orderList = new OrderList(user.getOrders());
         jpLayout2.setLayout(new BorderLayout());
         jpLayout2.add(orderList, BorderLayout.CENTER);
         jpLayout2.updateUI();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordActionPerformed

@@ -25,6 +25,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jpLayout2" alignment="0" max="32767" attributes="0"/>
@@ -32,6 +33,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+=======
+          <Component id="jPanel1" max="32767" attributes="0"/>
+          <Component id="jpLayout2" alignment="0" max="32767" attributes="0"/>
+>>>>>>> b2cd266006192052ed9744233ed062714564866e
       </Group>
     </DimensionLayout>
   </Layout>
@@ -70,7 +75,11 @@
                   <Component id="AccountInformation" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="53" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace pref="387" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="393" max="32767" attributes="0"/>
+>>>>>>> b2cd266006192052ed9744233ed062714564866e
                   <Component id="ChangePassword" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Logout" min="-2" pref="53" max="-2" attributes="0"/>

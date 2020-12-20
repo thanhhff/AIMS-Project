@@ -12792,6 +12792,7 @@ insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`,
 
 insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
 insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
+<<<<<<< HEAD
 insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
 INSERT INTO `itss`.`medias`(`media_id`, `title`, `value`, `price`, `category_id`) VALUES (11, 'Conan tập 93', 15000, 15000, 1);
@@ -12865,3 +12866,6 @@ INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`,
 INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, NULL, NULL, 3, 0, NULL, 0, NULL, NULL);
 INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, NULL, NULL, 12, 0, NULL, 0, NULL, NULL);
 
+=======
+insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
+>>>>>>> b2cd266006192052ed9744233ed062714564866e

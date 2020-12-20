@@ -17,6 +17,10 @@ public class MediaController {
         return Media.getNumberOfMedia();
     }
     
+    public static int getMaxID() {
+        return Media.getMaxID();
+    }
+    
     public static int insertMedia(String title, int value, int price, int sale_percent, int category_id, String image_path) {
         return Media.insertMedia(title, value, price, sale_percent, category_id, image_path);
     }

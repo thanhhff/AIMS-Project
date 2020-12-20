@@ -6,7 +6,6 @@
 package views.mediaAdmin;
 
 import controller.Media.*;
-import java.awt.CardLayout;
 import model.Media.*;
 import javax.swing.JOptionPane;
 
@@ -47,8 +46,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
         value_label = new javax.swing.JLabel();
         categories = new javax.swing.JComboBox<>();
         gotoDetailButton = new javax.swing.JButton();
-        image_path_label = new javax.swing.JLabel();
-        image_path = new javax.swing.JTextField();
         quantity_label = new javax.swing.JLabel();
         input_day_label = new javax.swing.JLabel();
         media_input_day = new javax.swing.JFormattedTextField();
@@ -123,7 +120,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         name_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         name_label.setText("Media name: ");
 
-        media_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        media_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
 
         big_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         big_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,7 +135,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         price_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         price_label.setText("Price: ");
 
-        media_price.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        media_price.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###0"))));
 
         value_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         value_label.setText("Value: ");
@@ -158,16 +155,13 @@ public class MediaAddFrame extends javax.swing.JFrame {
             }
         });
 
-        image_path_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        image_path_label.setText("Image path: ");
-
         quantity_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         quantity_label.setText("Quantity: ");
 
         input_day_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         input_day_label.setText("Input day: ");
 
-        media_input_day.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        media_input_day.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
         barcode_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         barcode_label.setText("Barcode: ");
@@ -208,34 +202,29 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(big_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(left_panelLayout.createSequentialGroup()
-                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(left_panelLayout.createSequentialGroup()
-                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(left_panelLayout.createSequentialGroup()
                                             .addComponent(name_label)
-                                            .addComponent(value_label))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(media_value)
-                                            .addComponent(media_price)
-                                            .addComponent(categories, javax.swing.GroupLayout.Alignment.TRAILING, 0, 255, Short.MAX_VALUE)
-                                            .addComponent(media_name)))
-                                    .addGroup(left_panelLayout.createSequentialGroup()
-                                        .addComponent(image_path_label)
-                                        .addGap(18, 18, 18)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(media_name, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(media_quantity, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                                             .addComponent(media_barcode)
                                             .addComponent(media_input_day)
-                                            .addComponent(image_path))))
+                                            .addComponent(categories, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(media_price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(left_panelLayout.createSequentialGroup()
+                                            .addComponent(value_label)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(media_value, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(price_label))
                                 .addGap(18, 18, 18)
-                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(currency_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                                    .addComponent(currency_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(currency_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(currency_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(7, 7, 7))
-                    .addGroup(left_panelLayout.createSequentialGroup()
-                        .addComponent(price_label)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(left_panelLayout.createSequentialGroup()
                         .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(category_label)
@@ -271,17 +260,17 @@ public class MediaAddFrame extends javax.swing.JFrame {
             .addGroup(left_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(big_label)
-                .addGap(43, 43, 43)
+                .addGap(83, 83, 83)
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_label)
                     .addComponent(media_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(media_value, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(value_label)
-                    .addComponent(currency_label1))
-                .addGap(18, 18, 18)
-                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(currency_label1)
+                    .addComponent(value_label))
+                .addGap(21, 21, 21)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(price_label)
                     .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(media_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,10 +279,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(category_label)
                     .addComponent(categories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(image_path_label)
-                    .addComponent(image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quantity_label)
@@ -402,7 +387,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         publication_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         publication_label.setText("Publication date: ");
 
-        publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
         page_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         page_label.setText("Pages: ");
@@ -747,7 +732,28 @@ public class MediaAddFrame extends javax.swing.JFrame {
             } else if (price < min_price || price > max_price) {
                 JOptionPane.showMessageDialog(null, "Price must in the range of 30% and 150% of value!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                
+                switch (category_id) {
+                    case 1:
+                        String author = author_name.getText();
+                        int language_id = languages.getSelectedIndex() + 1;
+                        String publisher_name = publisher.getText();
+                        String publication_day = publication_date.getText();
+                        int pages = Integer.parseInt(page_number.getText());
+                        int cover_type_id = cover_types.getSelectedIndex() + 1;
+                        String genre = book_genre.getText();
+                        int media_id = Media.getMaxID() + 1;
+                        String image_path = String.valueOf(media_id) + ".png";
+                        Book book = new Book(media_id, title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
+                        BookController.insertBook(book);
+                        
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
             }
         }
     }//GEN-LAST:event_confirmButtonActionPerformed
@@ -827,8 +833,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JLabel genre_label;
     private javax.swing.JButton gotoDetailButton;
     private javax.swing.JLabel height_label;
-    private javax.swing.JTextField image_path;
-    private javax.swing.JLabel image_path_label;
     private javax.swing.JLabel input_day_label;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

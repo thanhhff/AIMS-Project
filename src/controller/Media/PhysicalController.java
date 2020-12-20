@@ -5,7 +5,6 @@
  */
 package controller.Media;
 
-import db.ConnectSQL;
 import model.Media.PhysicalGood;
 
 /**

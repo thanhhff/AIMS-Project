@@ -29,7 +29,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="Home" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="1065" max="32767" attributes="0"/>
+                      <EmptySpace pref="1001" max="32767" attributes="0"/>
                       <Component id="Account" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="Sigout" min="-2" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
     <Component class="javax.swing.JLabel" name="Account">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/views/images/user-resize1.png"/>
+          <Image iconType="3" name="/views/images/manage-account.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Account"/>
       </Properties>
@@ -112,6 +112,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="Sigout">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/views/images/signout.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sigout"/>
       </Properties>
       <Events>
