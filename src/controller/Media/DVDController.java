@@ -22,4 +22,32 @@ public class DVDController {
         int physicalResult = PhysicalController.insertPhysical(dvd.getDescription(), dvd.getQuantity(), dvd.getInputDay(), dvd.getId(), dvd.getWidth(), dvd.getHeight(), dvd.getDepth(), dvd.getWeight(), dvd.getBarcode());
         int dvdResult = dvd.insertDVD();
     }
+    
+    public static String getPublicationDateFromDB(int media_id) {
+        return DVD.getPublicationDateFromDB(media_id);
+    }
+    
+    public static String getSubtitleFromDB(int media_id) {
+        return DVD.getSubtitleFromDB(media_id);
+    }
+    
+    public static String getStudioNameFromDB(int media_id) {
+        return DVD.getStudioNameFromDB(media_id);
+    }
+    
+    public static String getWriterNameFromDB(int media_id) {
+        return DVD.getWriterNameFromDB(media_id);
+    }
+    
+    public static int getRuntimeFromDB(int media_id) {
+        return DVD.getRuntimeFromDB(media_id);
+    }
+    
+    public static int getLanguageIdFromDB(int media_id) {
+        return DVD.getLanguageIdFromDB(media_id);
+    }
+    
+    public static int getDvdTypeIdFromDB(int media_id) {
+        return DVD.getDvdTypeIdFromDB(media_id);
+    }
 }

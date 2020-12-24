@@ -142,4 +142,74 @@ public class DVD extends PhysicalGood {
             return 0;
         }
     }
+    
+    public static String getPublicationDateFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getPublicationDate();
+            }
+        }
+        return null;
+    }
+    
+    public static String getSubtitleFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getSubtitle();
+            }
+        }
+        return null;
+    }
+    
+    public static String getStudioNameFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getStudioName();
+            }
+        }
+        return null;
+    }
+    
+    public static String getWriterNameFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getWriterName();
+            }
+        }
+        return null;
+    }
+    
+    public static int getRuntimeFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getRunTime();
+            }
+        }
+        return -1;
+    }
+    
+    public static int getLanguageIdFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getLanguageId();
+            }
+        }
+        return -1;
+    }
+    
+    public static int getDvdTypeIdFromDB(int media_id) {
+        ArrayList<DVD> dvds = DVD.getAllDVD();
+        for (DVD dvd: dvds) {
+            if (dvd.getId() == media_id) {
+                return dvd.getDvdTypeId();
+            }
+        }
+        return -1;
+    }
 }
