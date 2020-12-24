@@ -192,7 +192,7 @@ public abstract class Media {
         String select_query = "SELECT title FROM `Medias` WHERE media_id = " + media_id + ";";
         try {
             ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            String title = "";
+            String title = null;
             if (rs.next()) {
                 title = rs.getString(1);
             }
