@@ -11,6 +11,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import model.Media.Media;
@@ -29,13 +30,12 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
     private MediaSale mediaSale;
     private Media media;
     private boolean status_pecent = false;
-    private boolean status_quantity =  false;
     public static final int WIDTH = 576;
     public static final int HEIGHT = 142;
 
-    public MediaSaleItemPanel(Media media) {
-        initComponents();
+    public MediaSaleItemPanel(Media md) {
         setSize(WIDTH, HEIGHT);
+<<<<<<< HEAD
         this.media = media;
         mediaSale = new MediaSale(media.getId());
         mediaTitle.setText(media.getTitle());
@@ -53,14 +53,34 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
         newPriceLabel.setText(priceLabel.getText());
         changeValue( 30, 150);
         
+=======
+        if(md instanceof  PhysicalGood){
+            PhysicalGood media = (PhysicalGood) md;
+            initComponents(); 
+            this.media = media;
+            mediaSale = new MediaSale(media.getId());
+            mediaTitle.setText(media.getTitle());
+            categoryLabel.setText(media.getCategoryId() + "");
+            valueLabel.setText(FormatNumber.formatString(media.getValue() + ""));
+            valueLabel.setName(media.getValue() + "");
+            priceLabel.setText(FormatNumber.formatString(media.getPrice() + ""));
+            priceLabel.setName(media.getPrice() + "");
+            quantityLabel.setText(media.getQuantity() + "");
+            newPriceLabel.setText(priceLabel.getText());
+            changeValue(30, 150);  
+            quantitySale.removeAllItems();
+            for(int i = 1 ; i <=  media.getQuantity() ; i ++){
+                quantitySale.addItem("" + i);
+            }
+        }
+>>>>>>> f71d2be0f00180daa8677144d9f8444ee42ec62c
     }
 
     public boolean isStatus() {
-        return status_pecent && status_quantity;
-    }
-    
+        return status_pecent ;
+    }   
     public int getQuantitySale(){
-        return getValueNumber(quantitySale);
+        return Integer.parseInt(quantitySale.getSelectedItem().toString());
     }
     public int getPrecentSale(){
         return getValueNumber(precentLabel);
@@ -95,11 +115,11 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         precentLabel = new javax.swing.JTextField();
-        quantitySale = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         newPriceLabel = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        quantitySale = new javax.swing.JComboBox<>();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -139,9 +159,6 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             }
         });
 
-        quantitySale.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        quantitySale.setText("0");
-
         jLabel9.setText("%");
 
         jLabel10.setText("New Price : ");
@@ -152,6 +169,12 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
         newPriceLabel.setText("jLabel11");
 
         jLabel12.setText("VND");
+
+        quantitySale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantitySaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,25 +200,29 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
                         .addGap(12, 12, 12)
                         .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(6, 6, 6)
-                        .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(6, 6, 6)
+                                .addComponent(priceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(46, 46, 46)
+                                .addComponent(quantityLabel)))
                         .addGap(75, 75, 75)
-                        .addComponent(jLabel8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
                         .addGap(18, 18, 18)
-                        .addComponent(quantitySale, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(46, 46, 46)
-                        .addComponent(quantityLabel)
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel10)
-                        .addGap(29, 29, 29)
-                        .addComponent(newPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel12))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(newPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12))
+                            .addComponent(quantitySale, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,27 +244,40 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jLabel7)
                             .addComponent(jLabel9))))
-                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(priceLabel)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(quantitySale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(priceLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(quantitySale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(quantityLabel)
-                    .addComponent(jLabel10)
-                    .addComponent(newPriceLabel)
-                    .addComponent(jLabel12)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(newPriceLabel)
+                        .addComponent(jLabel12)))
+                .addGap(4, 4, 4))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void precentLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precentLabelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precentLabelActionPerformed
+
+    private void quantitySaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantitySaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quantitySaleActionPerformed
     private int getValueNumber(JTextField textField) {
         try {
             int value = Integer.parseInt(textField.getText());
@@ -263,7 +303,6 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             }
 
             public void warn() {
-//                System.out.println("Test");
                 int precent = getValueNumber(precentLabel);
                 if (precent == 0) {
 
@@ -275,37 +314,6 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
                     precentLabel.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
                     newPriceLabel.setText(FormatNumber.formatString("" + (media.getValue() * precent / 100)));
                     status_pecent = true;
-                }
-            }
-        });
-    }
-    private void changeQuantity(int min, int max) {
-        quantitySale.getDocument().addDocumentListener(new DocumentListener() {
-           
-            public void changedUpdate(DocumentEvent e) {
-//                warn();
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-//                warn();
-            }
-
-            public void insertUpdate(DocumentEvent e) {
-                warn();
-            }
-
-            public void warn() {
-//                System.out.println("Test");
-                int precent = getValueNumber(precentLabel);
-                if (precent == 0) {
-
-                } else if (precent == -1 || precent < min || precent > max) {
-                    quantitySale.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
-                    status_quantity = false;
-                } else {
-                    quantitySale.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
-                    quantitySale.setText(precent + "");
-                    status_quantity = true;
                 }
             }
         });
@@ -350,7 +358,7 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
     private javax.swing.JTextField precentLabel;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JLabel quantityLabel;
-    private javax.swing.JTextField quantitySale;
+    private javax.swing.JComboBox<String> quantitySale;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

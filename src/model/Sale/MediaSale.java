@@ -21,6 +21,22 @@ public class MediaSale {
         this.quantity = quantity;
         this.percent = percent;
     }
+
+    public int getSale_id() {
+        return sale_id;
+    }
+
+    public int getMedia_id() {
+        return media_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getPercent() {
+        return percent;
+    }
     public MediaSale(int media_id) {
         this.media_id =  media_id;
     }

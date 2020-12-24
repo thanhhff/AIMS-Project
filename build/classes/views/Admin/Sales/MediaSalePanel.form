@@ -36,6 +36,7 @@
         </Constraint>
       </Constraints>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JTextField" name="start_day">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -50,6 +51,8 @@
         </Constraint>
       </Constraints>
     </Component>
+=======
+>>>>>>> f71d2be0f00180daa8677144d9f8444ee42ec62c
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Start date: "/>
@@ -114,13 +117,30 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="cancel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="490" y="590" width="-1" height="-1"/>
+<<<<<<< HEAD
+=======
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="org.jdatepicker.JDatePicker" name="start_day">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="120" y="50" width="180" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="org.jdatepicker.JDatePicker" name="end_day">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="390" y="50" width="180" height="-1"/>
+>>>>>>> f71d2be0f00180daa8677144d9f8444ee42ec62c
         </Constraint>
       </Constraints>
     </Component>
