@@ -44,10 +44,15 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
         valueLabel.setName(media.getValue() + "");
         priceLabel.setText(FormatNumber.formatString(media.getPrice() + ""));
         priceLabel.setName(media.getPrice() + "");
-        quantityLabel.setText(media.getQuantity() + "");
+        if (media instanceof PhysicalGood) {
+            PhysicalGood physical = (PhysicalGood) media;
+            quantityLabel.setText(physical.getQuantity() + "");
+            changeQuantity(0, physical.getQuantity());
+        }
+        
         newPriceLabel.setText(priceLabel.getText());
         changeValue( 30, 150);
-        changeQuantity(0, media.getQuantity());
+        
     }
 
     public boolean isStatus() {
