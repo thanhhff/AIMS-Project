@@ -143,4 +143,74 @@ public class Book extends PhysicalGood {
             return 0;
         }
     }
+    
+    public static String getPublicationDateFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getPublication_date();
+            }
+        }
+        return null;
+    }
+    
+    public static int getPageNumberFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getPageNumber();
+            }
+        }
+        return -1;
+    }
+    
+    public static int getCoverTypeIdFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getCoverTypeID();
+            }
+        }
+        return -1;
+    }
+    
+    public static int getLanguageIdFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getLanguageId();
+            }
+        }
+        return -1;
+    }
+    
+    public static String getPublisherNameFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getPublisher();
+            }
+        }
+        return null;
+    }
+    
+    public static String getAuthorNameFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getAuthor();
+            }
+        }
+        return null;
+    }
+    
+    public static String getGenreFromDB(int media_id) {
+        ArrayList<Book> books = Book.getAllBooks();
+        for (Book book: books) {
+            if (book.getId() == media_id) {
+                return book.getGenre();
+            }
+        }
+        return null;
+    }
 }

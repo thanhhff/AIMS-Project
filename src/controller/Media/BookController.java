@@ -28,4 +28,32 @@ public class BookController {
         int physicalResult = PhysicalController.insertPhysical(book.getDescription(), book.getQuantity(), book.getInputDay(), book.getId(), book.getWidth(), book.getHeight(), book.getDepth(), book.getWeight(), book.getBarcode());
         int bookResult = book.insertBook();
     }
+    
+    public static String getPublicationDateFromDB(int media_id) {
+        return Book.getPublicationDateFromDB(media_id);
+    }
+    
+    public static int getPageNumberFromDB(int media_id) {
+        return Book.getPageNumberFromDB(media_id);
+    }
+    
+    public static int getCoverTypeIdFromDB(int media_id) {
+        return Book.getCoverTypeIdFromDB(media_id);
+    }
+    
+    public static int getLanguageIdFromDB(int media_id) {
+        return Book.getLanguageIdFromDB(media_id);
+    }
+    
+    public static String getPublisherNameFromDB(int media_id) {
+        return Book.getPublisherNameFromDB(media_id);
+    }
+    
+    public static String getAuthorNameFromDB(int media_id) {
+        return Book.getAuthorNameFromDB(media_id);
+    }
+    
+    public static String getGenreFromDB(int media_id) {
+        return Book.getGenreFromDB(media_id);
+    }
 }
