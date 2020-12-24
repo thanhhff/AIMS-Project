@@ -5,6 +5,7 @@
  */
 package model.Sale;
 
+import aims.DateService;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,8 +21,8 @@ public class Sale {
     private String start_day;
     private String end_day;
     public  Sale(String start_day, String end_day, List<MediaSale> mediaSales){
-        this.start_day = start_day;
-        this.end_day = end_day;
+        this.start_day = DateService.converTimestamp(start_day, "yyyy/MM/dd").toString();
+        this.end_day = DateService.converTimestamp(end_day, "yyyy/MM/dd").toString();
         save();
         this.sale_id = getID();
         for(MediaSale mediaSale : mediaSales){

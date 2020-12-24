@@ -5,13 +5,20 @@
  */
 package views.Admin.Sales;
 
+import aims.DateService;
 import aims.FormatNumber;
+import controller.Sale.SalesController;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -39,16 +46,34 @@ public class MediaSalePanel extends javax.swing.JPanel {
         mediaSaleList.setBounds(40, 80, mediaSaleList.getWidth(), mediaSaleList.getHeight());
         mediaSaleItemPanels = mediaSaleList.getMediaSaleItemPanels();
         changeValue(30, 150, mediaSaleItemPanels);
+        start_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay());
+        start_day.getModel().setSelected(true);
+        end_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay() + 7);
+        end_day.getModel().setSelected(true);
         add(mediaSaleList);
     }
     public List<MediaSale> getMediaSales(){
         return mediaSales;
     }
-    public String getStartDay(){
-        return start_day.getText();
+    private boolean checkDay(){
+        if(DateService.compareDate(getEndDate() , getStartDate(), "yyyy/MM/dd") == 1){
+            return true;
+        }
+        return false;
     }
-    public String getEndDay(){
-        return end_day.getText();
+    public JButton getCancel() {
+        return cancel;
+    }
+
+    public JButton getSubmit() {
+        return submit;
+    }
+    
+    public String getStartDate(){
+        return this.start_day.getFormattedTextField().getText();
+    }
+    public String getEndDate(){
+        return this.end_day.getFormattedTextField().getText();
     }
     private int getValueNumber(JTextField textField) {
         try {
@@ -57,6 +82,25 @@ public class MediaSalePanel extends javax.swing.JPanel {
         } catch (NumberFormatException e) {
             return -1;
         }
+    }
+    private void addPlaceholder(JTextField obj, String string){
+        obj.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (obj.getText().equals(string)) {
+                    obj.setText("");
+                    obj.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (obj.getText().isEmpty()) {
+                    obj.setForeground(Color.GRAY);
+                    obj.setText(string);
+                }
+            }
+        });
     }
     private void changeValue( int min, int max, List<MediaSaleItemPanel> mediaSaleItemPanels) {
         percentAll.getDocument().addDocumentListener(new DocumentListener() {
@@ -99,15 +143,15 @@ public class MediaSalePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        start_day = new javax.swing.JTextField();
-        end_day = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         percentAll = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        start_day = new org.jdatepicker.JDatePicker();
+        end_day = new org.jdatepicker.JDatePicker();
 
         setMinimumSize(new java.awt.Dimension(788, 633));
         setLayout(null);
@@ -116,10 +160,6 @@ public class MediaSalePanel extends javax.swing.JPanel {
         jLabel1.setText("Media Saling");
         add(jLabel1);
         jLabel1.setBounds(330, 12, 110, 21);
-        add(start_day);
-        start_day.setBounds(128, 51, 169, 23);
-        add(end_day);
-        end_day.setBounds(390, 51, 169, 23);
 
         jLabel2.setText("Start date: ");
         add(jLabel2);
@@ -151,31 +191,44 @@ public class MediaSalePanel extends javax.swing.JPanel {
         add(submit);
         submit.setBounds(230, 590, 90, 35);
 
-        jButton2.setText("Cancel");
-        add(jButton2);
-        jButton2.setBounds(490, 590, 76, 35);
+        cancel.setText("Cancel");
+        add(cancel);
+        cancel.setBounds(490, 590, 76, 35);
+        add(start_day);
+        start_day.setBounds(120, 50, 180, 40);
+        add(end_day);
+        end_day.setBounds(390, 50, 180, 37);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        for(MediaSaleItemPanel mediaSaleItemPanel : mediaSaleItemPanels){
-            if(mediaSaleItemPanel.isStatus()){
-                mediaSales.add(mediaSaleItemPanel.getMediaSale());
-                System.out.println(mediaSaleItemPanel.getMediaSale());
+        if(checkDay()){
+            mediaSales.removeAll(mediaSales);
+            for (MediaSaleItemPanel mediaSaleItemPanel : mediaSaleItemPanels) {
+                if (mediaSaleItemPanel.isStatus()) {
+                    mediaSales.add(mediaSaleItemPanel.getMediaSale());
+                }
             }
-        }      
+            int select = JOptionPane.showConfirmDialog(null, "Sale " + mediaSales.size() + " media(s)");
+            if (select == JOptionPane.YES_OPTION && mediaSales.size() > 0) {
+                SalesController.create(mediaSales, getStartDate(), getEndDate());
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
+        }
+        
     }//GEN-LAST:event_submitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField end_day;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cancel;
+    private org.jdatepicker.JDatePicker end_day;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField percentAll;
-    private javax.swing.JTextField start_day;
+    private org.jdatepicker.JDatePicker start_day;
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }
