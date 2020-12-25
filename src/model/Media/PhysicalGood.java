@@ -37,6 +37,18 @@ public abstract class PhysicalGood extends Media {
         this.depth = depth;
         this.weight = weight;
     }
+    
+    public PhysicalGood(String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight) {
+        super(title, value, price, sale_percent, category, image_path);
+        this.barcode = barcode;
+        this.description = description;
+        this.quantity = quantity;
+        this.input_day = input_day;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+        this.weight = weight;
+    }
 
 
     public String getBarcode() {

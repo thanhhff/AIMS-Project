@@ -42,6 +42,17 @@ public abstract class Media {
         this.category_id = category;
         this.image_path = image_path;
     }
+    
+//    (title, value, price, sale_percent, category, image_path)
+    public Media(String title, int value, int price, int sale_percent, int category, String image_path) {
+        this.title = title;
+        this.value = value;
+        this.price = price;
+        this.sale_percent = 0;
+        this.category_id = category;
+        this.image_path = image_path;
+    }
+    
      public Media(int id, String title, int value, int price, int category) {
         this.id = id;
         this.title = title;

@@ -42,4 +42,12 @@ public class Track {
         this.track_name = track_name;
     }
     
+    public void insertTrack() {
+        String query = "INSERT INTO `Tracks` VALUES (" + track_id + ", '" + track_name + "');";
+        try {
+            ConnectSQL.sqlQueryUpdate(query);
+        } catch (Exception e) {
+            
+        }
+    }
 }

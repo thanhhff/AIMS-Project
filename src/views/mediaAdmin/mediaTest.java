@@ -14,18 +14,10 @@ import java.util.ArrayList;
  */
 public class mediaTest {
     public static void main(String[] args)  {
-        DVD dvd = new DVD();
-        dvd.setTitle("Test Insert DVD new");
-        dvd.setValue(10000);
-        dvd.setPrice(100000);
-        dvd.setCategory(1);
-        dvd.setQuantity(10);
-        dvd.setInputDay("2020-10-10");
-        dvd.setBarcode("testdvdcode");
-        dvd.setLanguageId(1);
-        dvd.setDvdTypeID(1);
-//        dvd.setPublicationDate("2020-10-10");
-        
-        MediaController.insert(dvd);
+        String track_list = "Chung ta cua hien tai,Chay ngay di";
+        String[] splitArr = track_list.split(",");
+        for (String s: splitArr) {
+            System.out.println(s);
+        }
     }
 }
