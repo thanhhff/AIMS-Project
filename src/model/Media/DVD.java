@@ -95,7 +95,7 @@ public class DVD extends PhysicalGood {
     
     private void insertDVD() {
         String query = "INSERT INTO `Dvds` (publication_date, runtime, subtitle, media_id, language_id, studio_name, dvd_type_id, writer_name) VALUES ('" 
-                + publication_date + "', " + runtime + ", '" + subtitle + "', " + this.getId() + ", " + language_id + ", '" + studio_name + "', " + dvd_type_id + ", '" + writer_name + "';";
+                + publication_date + "', " + runtime + ", '" + subtitle + "', " + this.getId() + ", " + language_id + ", '" + studio_name + "', " + dvd_type_id + ", '" + writer_name + "');";
         try {
             ConnectSQL.sqlQueryUpdate(query);
         } catch (Exception e) {
@@ -105,7 +105,8 @@ public class DVD extends PhysicalGood {
 
     @Override
     public void insert() {
-        
+        this.insertPhysical();
+        this.insertDVD();
     }
     
     

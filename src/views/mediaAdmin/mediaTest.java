@@ -14,19 +14,18 @@ import java.util.ArrayList;
  */
 public class mediaTest {
     public static void main(String[] args)  {
-        Book book = new Book();
-        book.setTitle("Test Insert Book");
-        book.setValue(10000);
-        book.setPrice(100000);
-        book.setCategory(1);
-        book.setQuantity(10);
-        book.setInputDay("2020-10-10");
-        book.setBarcode("testbookcode");
-        book.setPageNumber(100);
-        book.setCoverTypeId(1);
-        book.setLanguage(1);
-        book.setPublication_date("2020-10-10");
+        DVD dvd = new DVD();
+        dvd.setTitle("Test Insert DVD new");
+        dvd.setValue(10000);
+        dvd.setPrice(100000);
+        dvd.setCategory(1);
+        dvd.setQuantity(10);
+        dvd.setInputDay("2020-10-10");
+        dvd.setBarcode("testdvdcode");
+        dvd.setLanguageId(1);
+        dvd.setDvdTypeID(1);
+//        dvd.setPublicationDate("2020-10-10");
         
-        MediaController.insert(book);
+        MediaController.insert(dvd);
     }
 }
