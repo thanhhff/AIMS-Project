@@ -215,7 +215,7 @@ public class MediaSalePanel extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
         }
-        
+
     }//GEN-LAST:event_submitActionPerformed
 
 

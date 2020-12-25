@@ -7,11 +7,8 @@ package views.Admin.Sales;
 
 import aims.FormatNumber;
 import java.awt.Color;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import model.Media.Media;
@@ -53,6 +50,7 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             for(int i = 1 ; i <=  media.getQuantity() ; i ++){
                 quantitySale.addItem("" + i);
             }
+            
         }
     }
 
