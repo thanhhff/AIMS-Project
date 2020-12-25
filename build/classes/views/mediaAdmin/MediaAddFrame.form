@@ -79,17 +79,20 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="media_name" min="-2" pref="255" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="media_quantity" pref="258" max="32767" attributes="0"/>
-                                              <Component id="media_barcode" max="32767" attributes="0"/>
-                                              <Component id="media_input_day" max="32767" attributes="0"/>
-                                              <Component id="categories" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
-                                              <Component id="media_price" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="media_price" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="value_label" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="media_value" min="-2" pref="255" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="media_weight" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="media_barcode" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="media_input_day" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="media_quantity" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="categories" alignment="1" pref="255" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Component id="price_label" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -119,24 +122,21 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jScrollPane2" min="-2" pref="259" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="media_weight" min="-2" pref="258" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="media_width" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="height_label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="media_height" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="depth_label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="media_depth" min="-2" pref="30" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="media_width" min="-2" pref="28" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="height_label" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="media_height" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="depth_label" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="media_depth" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -930,10 +930,29 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cd_label" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="727" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cd_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="artist_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cd_genre_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="record_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cd_publication_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="artist_name" max="32767" attributes="0"/>
+                                  <Component id="cd_genre" max="32767" attributes="0"/>
+                                  <Component id="record_name" max="32767" attributes="0"/>
+                                  <Component id="cd_publication_date" pref="312" max="32767" attributes="0"/>
+                                  <Component id="tracks_list" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="365" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -942,7 +961,32 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cd_label" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="511" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="artist_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="artist_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cd_genre_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cd_genre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="record_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="record_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cd_publication_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cd_publication_date" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tracks_list" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="311" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -956,9 +1000,67 @@
                 <Property name="text" type="java.lang.String" value="CD Details"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="artist_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Artist name: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="artist_name">
+            </Component>
+            <Component class="javax.swing.JLabel" name="cd_genre_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Genre: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="cd_genre">
+            </Component>
+            <Component class="javax.swing.JLabel" name="record_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Record label: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="record_name">
+            </Component>
+            <Component class="javax.swing.JLabel" name="cd_publication_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Publication date: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="cd_publication_date">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tracks: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tracks_list">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="lp_panel">
+          <Properties>
+            <Property name="autoscrolls" type="boolean" value="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card5"/>
@@ -968,15 +1070,132 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="832" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lp_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lp_artist_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lp_genre_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lp_record_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lp_publication_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lp_tracks_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lp_artist_name" max="32767" attributes="0"/>
+                                  <Component id="lp_genre" max="32767" attributes="0"/>
+                                  <Component id="lp_record" max="32767" attributes="0"/>
+                                  <Component id="lp_publication_date" max="32767" attributes="0"/>
+                                  <Component id="lp_tracks_list" pref="314" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="365" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="546" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lp_label" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lp_artist_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lp_artist_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lp_genre_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lp_genre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lp_record_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lp_record" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lp_publication_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lp_publication_date" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lp_tracks_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lp_tracks_list" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="311" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lp_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="LP Details:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lp_artist_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Artist name: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="lp_artist_name">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lp_genre_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Genre: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="lp_genre">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lp_record_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Record label: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="lp_record">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lp_publication_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Publication date: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="lp_publication_date">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lp_tracks_label">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tracks: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="lp_tracks_list">
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
