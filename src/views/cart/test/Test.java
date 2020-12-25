@@ -11,11 +11,7 @@ import javax.swing.JPanel;
 import model.Media.Book;
 import model.Media.Media;
 import model.Media.PhysicalGood;
-import model.User.User;
-import views.Admin.Sales.MediaSaleItemPanel;
-import views.Admin.Sales.MediaSalePanel;
-
-import views.cart.CartPanel;
+import views.mediaAdmin.MediaPanel;
 
 
 
@@ -56,6 +52,6 @@ public class Test {
         medias.add(media);
         medias.add(media);
         medias.add(media);
-        Test test = new Test(new MediaSalePanel(medias));
+        Test test = new Test(new MediaPanel(medias));
     }
 }
