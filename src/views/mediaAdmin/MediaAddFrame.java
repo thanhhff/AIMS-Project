@@ -103,7 +103,28 @@ public class MediaAddFrame extends javax.swing.JFrame {
         dvd_subtitle = new javax.swing.JTextArea();
         cd_panel = new javax.swing.JPanel();
         cd_label = new javax.swing.JLabel();
+        artist_label = new javax.swing.JLabel();
+        artist_name = new javax.swing.JTextField();
+        cd_genre_label = new javax.swing.JLabel();
+        cd_genre = new javax.swing.JTextField();
+        record_label = new javax.swing.JLabel();
+        record_name = new javax.swing.JTextField();
+        cd_publication_label = new javax.swing.JLabel();
+        cd_publication_date = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tracks_list = new javax.swing.JTextField();
         lp_panel = new javax.swing.JPanel();
+        lp_label = new javax.swing.JLabel();
+        lp_artist_label = new javax.swing.JLabel();
+        lp_artist_name = new javax.swing.JTextField();
+        lp_genre_label = new javax.swing.JLabel();
+        lp_genre = new javax.swing.JTextField();
+        lp_record_label = new javax.swing.JLabel();
+        lp_record = new javax.swing.JTextField();
+        lp_publication_label = new javax.swing.JLabel();
+        lp_publication_date = new javax.swing.JFormattedTextField();
+        lp_tracks_label = new javax.swing.JLabel();
+        lp_tracks_list = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -569,34 +590,149 @@ public class MediaAddFrame extends javax.swing.JFrame {
         cd_label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         cd_label.setText("CD Details");
 
+        artist_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        artist_label.setText("Artist name: ");
+
+        cd_genre_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        cd_genre_label.setText("Genre: ");
+
+        record_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        record_label.setText("Record label: ");
+
+        cd_publication_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        cd_publication_label.setText("Publication date: ");
+
+        cd_publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel1.setText("Tracks: ");
+
         javax.swing.GroupLayout cd_panelLayout = new javax.swing.GroupLayout(cd_panel);
         cd_panel.setLayout(cd_panelLayout);
         cd_panelLayout.setHorizontalGroup(
             cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cd_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cd_label)
-                .addContainerGap(727, Short.MAX_VALUE))
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cd_label)
+                    .addGroup(cd_panelLayout.createSequentialGroup()
+                        .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(artist_label)
+                            .addComponent(cd_genre_label)
+                            .addComponent(record_label)
+                            .addComponent(cd_publication_label)
+                            .addComponent(jLabel1))
+                        .addGap(30, 30, 30)
+                        .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(artist_name)
+                            .addComponent(cd_genre)
+                            .addComponent(record_name)
+                            .addComponent(cd_publication_date, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                            .addComponent(tracks_list))))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         cd_panelLayout.setVerticalGroup(
             cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cd_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cd_label)
-                .addContainerGap(511, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(artist_label)
+                    .addComponent(artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cd_genre_label)
+                    .addComponent(cd_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(record_label)
+                    .addComponent(record_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cd_publication_label)
+                    .addComponent(cd_publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cd_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tracks_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         cards.add(cd_panel, "card4");
+
+        lp_panel.setAutoscrolls(true);
+
+        lp_label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lp_label.setText("LP Details:");
+
+        lp_artist_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lp_artist_label.setText("Artist name: ");
+
+        lp_genre_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lp_genre_label.setText("Genre: ");
+
+        lp_record_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lp_record_label.setText("Record label: ");
+
+        lp_publication_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lp_publication_label.setText("Publication date: ");
+
+        lp_publication_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
+
+        lp_tracks_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lp_tracks_label.setText("Tracks: ");
 
         javax.swing.GroupLayout lp_panelLayout = new javax.swing.GroupLayout(lp_panel);
         lp_panel.setLayout(lp_panelLayout);
         lp_panelLayout.setHorizontalGroup(
             lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 832, Short.MAX_VALUE)
+            .addGroup(lp_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lp_label)
+                    .addGroup(lp_panelLayout.createSequentialGroup()
+                        .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lp_artist_label)
+                            .addComponent(lp_genre_label)
+                            .addComponent(lp_record_label)
+                            .addComponent(lp_publication_label)
+                            .addComponent(lp_tracks_label))
+                        .addGap(28, 28, 28)
+                        .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lp_artist_name)
+                            .addComponent(lp_genre)
+                            .addComponent(lp_record)
+                            .addComponent(lp_publication_date)
+                            .addComponent(lp_tracks_list, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         lp_panelLayout.setVerticalGroup(
             lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGroup(lp_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lp_label)
+                .addGap(18, 18, 18)
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lp_artist_label)
+                    .addComponent(lp_artist_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lp_genre_label)
+                    .addComponent(lp_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lp_record_label)
+                    .addComponent(lp_record, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lp_publication_label)
+                    .addComponent(lp_publication_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(lp_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lp_tracks_label)
+                    .addComponent(lp_tracks_list, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         cards.add(lp_panel, "card5");
@@ -791,6 +927,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add_panel;
+    private javax.swing.JLabel artist_label;
+    private javax.swing.JTextField artist_name;
     private javax.swing.JLabel author_label;
     private javax.swing.JTextField author_name;
     private javax.swing.JButton backButton;
@@ -802,8 +940,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> categories;
     private javax.swing.JLabel category_label;
     private javax.swing.JLabel category_label1;
+    private javax.swing.JTextField cd_genre;
+    private javax.swing.JLabel cd_genre_label;
     private javax.swing.JLabel cd_label;
     private javax.swing.JPanel cd_panel;
+    private javax.swing.JFormattedTextField cd_publication_date;
+    private javax.swing.JLabel cd_publication_label;
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel cover_label;
     private javax.swing.JComboBox<String> cover_types;
@@ -827,12 +969,24 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JLabel genre_label;
     private javax.swing.JLabel height_label;
     private javax.swing.JLabel input_day_label;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel language_label;
     private javax.swing.JComboBox<String> languages;
     private javax.swing.JPanel left_panel;
+    private javax.swing.JLabel lp_artist_label;
+    private javax.swing.JTextField lp_artist_name;
+    private javax.swing.JTextField lp_genre;
+    private javax.swing.JLabel lp_genre_label;
+    private javax.swing.JLabel lp_label;
     private javax.swing.JPanel lp_panel;
+    private javax.swing.JFormattedTextField lp_publication_date;
+    private javax.swing.JLabel lp_publication_label;
+    private javax.swing.JTextField lp_record;
+    private javax.swing.JLabel lp_record_label;
+    private javax.swing.JLabel lp_tracks_label;
+    private javax.swing.JTextField lp_tracks_list;
     private javax.swing.JTextField media_barcode;
     private javax.swing.JFormattedTextField media_depth;
     private javax.swing.JTextArea media_description;
@@ -856,7 +1010,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JTextField publisher;
     private javax.swing.JLabel publisher_label;
     private javax.swing.JLabel quantity_label;
+    private javax.swing.JLabel record_label;
+    private javax.swing.JTextField record_name;
     private javax.swing.JTextField studio_name;
+    private javax.swing.JTextField tracks_list;
     private javax.swing.JLabel value_label;
     private javax.swing.JLabel weight_label;
     private javax.swing.JLabel width_label;
