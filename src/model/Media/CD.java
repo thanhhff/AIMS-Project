@@ -5,6 +5,8 @@
  */
 package model.Media;
 
+import db.ConnectSQL;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -73,5 +75,9 @@ public class CD extends PhysicalGood {
     
     public void removeTrackList() {
         this.track_list = new ArrayList<>();
+    }
+    
+    public void insert() {
+        
     }
 }

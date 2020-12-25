@@ -863,7 +863,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int book_id = Media.getMaxID() + 1;
                         String image_path = String.valueOf(book_id) + ".png";
                         Book book = new Book(book_id, title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
-                        BookController.insertBook(book);
+                        MediaController.insert(book);
                         
                         break;
                     case 2:
@@ -877,7 +877,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int dvd_id = Media.getMaxID() + 1;
                         String dvd_image_path = String.valueOf(dvd_id) + ".png";
                         DVD dvd = new DVD(dvd_id, title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
-                        DVDController.insertDVD(dvd);
+                        MediaController.insert(dvd);
                         break;
                     case 3:
                         break;

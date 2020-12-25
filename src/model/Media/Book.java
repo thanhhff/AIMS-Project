@@ -132,85 +132,18 @@ public class Book extends PhysicalGood {
         }
     }
     
-    public int insertBook() {
+    private void insertBook() {
         String book_query = "INSERT INTO `Books` (publication_date, page_number, media_id, cover_type_id, publisher_name, language_id, author_name, genre) VALUES ('"
                 + publication_date + "', " + page_number + ", " + this.getId() + ", " + cover_type_id + ", '" + publisher + "', " + language_id + ", '" + author +"', '" + genre + "');";
         
         try {
-            int result = ConnectSQL.sqlUpdate(book_query);
-            return result;
+            ConnectSQL.sqlQueryUpdate(book_query);
         } catch (Exception e) {
-            return 0;
         }
     }
     
-    public static String getPublicationDateFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getPublication_date();
-            }
-        }
-        return null;
-    }
-    
-    public static int getPageNumberFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getPageNumber();
-            }
-        }
-        return -1;
-    }
-    
-    public static int getCoverTypeIdFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getCoverTypeID();
-            }
-        }
-        return -1;
-    }
-    
-    public static int getLanguageIdFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getLanguageId();
-            }
-        }
-        return -1;
-    }
-    
-    public static String getPublisherNameFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getPublisher();
-            }
-        }
-        return null;
-    }
-    
-    public static String getAuthorNameFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getAuthor();
-            }
-        }
-        return null;
-    }
-    
-    public static String getGenreFromDB(int media_id) {
-        ArrayList<Book> books = Book.getAllBooks();
-        for (Book book: books) {
-            if (book.getId() == media_id) {
-                return book.getGenre();
-            }
-        }
-        return null;
+    public void insert() {
+        this.insertPhysical();
+        this.insertBook();
     }
 }

@@ -103,17 +103,15 @@ public abstract class PhysicalGood extends Media {
         this.weight = weight;
     }
     
-    public static int insertPhysical(String description, int quantity, String input_day, int media_id, int width, int height, int depth, int weight, String barcode) {
-        
+    protected void insertPhysical() {
+        this.setId(this.insertMedia());
         
         String physical_query = "INSERT INTO `Physicalgoods` (description, quantity, input_day, media_id, width, height, depth, weight, barcode) VALUES ('" +
-                    description + "', " + quantity + ", '" + input_day + "', " + media_id + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
+                    description + "', " + quantity + ", '" + input_day + "', " + this.getId() + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
         
         try {
-            int result = ConnectSQL.sqlUpdate(physical_query);
-            return result;
+            ConnectSQL.sqlQueryUpdate(physical_query);
         } catch (Exception e) {
-            return 0;
         }
     }
     

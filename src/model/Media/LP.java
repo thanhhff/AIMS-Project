@@ -74,4 +74,9 @@ public class LP extends PhysicalGood {
     public void removeTrackList() {
         this.track_list = new ArrayList<>();
     }
+    
+    public void insert() {
+        this.insertPhysical();
+        
+    }
 }
