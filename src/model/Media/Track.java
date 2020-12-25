@@ -17,6 +17,15 @@ public class Track {
         this.track_name = track_name;
     }
     
+    public Track(int track_id, String track_name) {
+        this.track_id = track_id;
+        this.track_name = track_name;
+    }
+    
+    public void setTrackId(int id) {
+        this.track_id = id;
+    }
+    
     public int getTrackId() {
         return track_id;
     }

@@ -59,4 +59,20 @@ public class MediaController {
                 }
             }
      }
+      
+    public static String getTitleFromDB(int media_id) {
+        return Media.getTitleFromDB(media_id);
+    }
+    
+    public static int getValueFromDB(int media_id) {
+        return Media.getValueFromDB(media_id);
+    }
+    
+    public static int getPriceFromDB(int media_id) {
+        return Media.getPriceFromDB(media_id);
+    }
+    
+    public static int getCategoryIdFromDB(int media_id) {
+        return Media.getCategoryIdFromDB(media_id);
+    }
 }

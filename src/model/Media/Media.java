@@ -187,4 +187,60 @@ public abstract class Media {
             
         }
     }
+    
+    public static String getTitleFromDB(int media_id) {
+        String select_query = "SELECT title FROM `Medias` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            String title = null;
+            if (rs.next()) {
+                title = rs.getString(1);
+            }
+            return title;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public static int getValueFromDB(int media_id) {
+        String select_query = "SELECT value FROM `Medias` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int value = -1;
+            if (rs.next()) {
+                value = rs.getInt(1);
+            }
+            return value;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getPriceFromDB(int media_id) {
+        String select_query = "SELECT price FROM `Medias` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int price = -1;
+            if (rs.next()) {
+                price = rs.getInt(1);
+            }
+            return price;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getCategoryIdFromDB(int media_id) {
+        String select_query = "SELECT category_id FROM `Medias` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int category_id = -1;
+            if (rs.next()) {
+                category_id = rs.getInt(1);
+            }
+            return category_id;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
 }

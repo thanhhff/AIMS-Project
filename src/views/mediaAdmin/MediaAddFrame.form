@@ -79,17 +79,20 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="media_name" min="-2" pref="255" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="media_quantity" pref="258" max="32767" attributes="0"/>
-                                              <Component id="media_barcode" max="32767" attributes="0"/>
-                                              <Component id="media_input_day" max="32767" attributes="0"/>
-                                              <Component id="categories" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
-                                              <Component id="media_price" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="media_price" alignment="1" min="-2" pref="255" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="value_label" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="media_value" min="-2" pref="255" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="media_weight" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="media_barcode" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="media_input_day" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="media_quantity" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="categories" alignment="1" pref="255" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Component id="price_label" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -119,24 +122,21 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jScrollPane2" min="-2" pref="259" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="media_weight" min="-2" pref="258" max="-2" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Component id="media_width" min="-2" pref="31" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="height_label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="media_height" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="depth_label" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="media_depth" min="-2" pref="30" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="media_width" min="-2" pref="28" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="height_label" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="media_height" min="-2" pref="30" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="depth_label" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="media_depth" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

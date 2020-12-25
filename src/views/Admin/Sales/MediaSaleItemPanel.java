@@ -32,6 +32,25 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
 
     public MediaSaleItemPanel(Media md) {
         setSize(WIDTH, HEIGHT);
+<<<<<<< HEAD
+        this.media = media;
+        mediaSale = new MediaSale(media.getId());
+        mediaTitle.setText(media.getTitle());
+        categoryLabel.setText(media.getCategoryId() + "");
+        valueLabel.setText(FormatNumber.formatString(media.getValue() + ""));
+        valueLabel.setName(media.getValue() + "");
+        priceLabel.setText(FormatNumber.formatString(media.getPrice() + ""));
+        priceLabel.setName(media.getPrice() + "");
+        if (media instanceof PhysicalGood) {
+            PhysicalGood physical = (PhysicalGood) media;
+            quantityLabel.setText(physical.getQuantity() + "");
+            changeQuantity(0, physical.getQuantity());
+        }
+        
+        newPriceLabel.setText(priceLabel.getText());
+        changeValue( 30, 150);
+        
+=======
         if(md instanceof  PhysicalGood){
             PhysicalGood media = (PhysicalGood) md;
             initComponents(); 
@@ -52,6 +71,7 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             }
             
         }
+>>>>>>> f71d2be0f00180daa8677144d9f8444ee42ec62c
     }
 
     public boolean isStatus() {

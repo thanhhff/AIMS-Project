@@ -6,6 +6,7 @@
 package model.Media;
 
 import db.ConnectSQL;
+import java.sql.ResultSet;
 
 /**
  *
@@ -113,6 +114,118 @@ public abstract class PhysicalGood extends Media {
             return result;
         } catch (Exception e) {
             return 0;
+        }
+    }
+    
+    public static String getDescriptionFromDB(int media_id) {
+        String select_query = "SELECT description FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            String description = null;
+            if (rs.next()){
+                description = rs.getString(1);
+            }
+            return description;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public static int getQuantityFromDB(int media_id) {
+        String select_query = "SELECT quantity FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int quantity = -1;
+            if (rs.next()) {
+                quantity = rs.getInt(1);
+            }
+            return quantity;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getWidthFromDB(int media_id) {
+        String select_query = "SELECT width FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int width = -1;
+            if (rs.next()) {
+                width = rs.getInt(1);
+            }
+            return width;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getHeightFromDB(int media_id) {
+        String select_query = "SELECT height FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int result = -1;
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            return result;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getDepthFromDB(int media_id) {
+        String select_query = "SELECT depth FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int result = -1;
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            return result;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static int getWeightFromDB(int media_id) {
+        String select_query = "SELECT weight FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            int result = -1;
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+            return result;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    
+    public static String getBarCodeFromDB(int media_id) {
+        String select_query = "SELECT barcode FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            String barcode = null;
+            if (rs.next()){
+                barcode = rs.getString(1);
+            }
+            return barcode;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    public static String getInputDayFromDB(int media_id) {
+        String select_query = "SELECT input_day FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(select_query);
+            String input_day = null;
+            if (rs.next()){
+                input_day = rs.getString(1);
+            }
+            return input_day;
+        } catch (Exception e) {
+            return null;
         }
     }
     
