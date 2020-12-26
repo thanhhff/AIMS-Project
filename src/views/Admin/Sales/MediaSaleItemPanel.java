@@ -45,7 +45,9 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             priceLabel.setName(media.getPrice() + "");
             quantityLabel.setText(media.getQuantity() + "");
             newPriceLabel.setText(priceLabel.getText());
-            changeValue(30, 150);  
+            int min_sale = (int) media.getValue() * 30 / 100;
+            int max_sale = (int) media.getValue() * 150 / 100;
+            changeValue(min_sale, max_sale);  
             quantitySale.removeAllItems();
             for(int i = 1 ; i <=  media.getQuantity() ; i ++){
                 quantitySale.addItem("" + i);
@@ -282,15 +284,16 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
 
             public void warn() {
                 int precent = getValueNumber(precentLabel);
+                int sale = Math.round(precent * media.getPrice() / 100);
                 if (precent == 0) {
 
-                } else if (precent == -1 || precent < min || precent > max) {
+                } else if (precent == -1 || sale < min || sale > max) {
                     precentLabel.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                     newPriceLabel.setText("NaN");
                     status_pecent = false;
                 } else {
                     precentLabel.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
-                    newPriceLabel.setText(FormatNumber.formatString("" + (media.getValue() * precent / 100)));
+                    newPriceLabel.setText(FormatNumber.formatString("" + sale));
                     status_pecent = true;
                 }
             }
