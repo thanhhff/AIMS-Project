@@ -42,7 +42,8 @@ public class MediaPanel extends javax.swing.JPanel {
     public MediaPanel(List<Media> medias) {
         initComponents();
         setSize(WIDTH, HEIGHT);
-        medias = new ArrayList<Media>();
+        this.medias = new ArrayList<Media>();
+        this.medias = medias;
         MediaList mediaList = new MediaList(medias);
         mediaList.setBounds(40, 80, mediaList.getWidth(), mediaList.getHeight());
         mediaItemPanels = mediaList.getMediaItemPanels();     

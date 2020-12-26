@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package views.cart.test;
+import controller.Media.MediaController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import model.Media.Book;
 import model.Media.Media;
 import model.Media.PhysicalGood;
+import views.Admin.Sales.MediaSalePanel;
 import views.mediaAdmin.MediaPanel;
 
 
@@ -36,6 +38,8 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        ArrayList<Media> medias = new ArrayList<>();
+        List<Media> medias = MediaController.getAllMedia();
+//        new Test(new MediaPanel(medias));
+        new Test(new MediaSalePanel(medias));
     }
 }

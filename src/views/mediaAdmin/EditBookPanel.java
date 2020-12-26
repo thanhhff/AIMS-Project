@@ -5,6 +5,10 @@
  */
 package views.mediaAdmin;
 
+import javax.swing.JButton;
+import model.Media.Book;
+import model.Media.Media;
+
 /**
  *
  * @author Toshiba T75
@@ -14,8 +18,21 @@ public class EditBookPanel extends javax.swing.JPanel {
     /**
      * Creates new form EditBookPanel
      */
-    public EditBookPanel() {
+    private Book book;
+    public EditBookPanel(Media media) {
         initComponents();
+        book = (Book) media;
+        author_name.setText(book.getAuthor());
+        languages.setSelectedIndex(book.getLanguageId()-1);
+        publisher_name.setText(book.getPublisher());
+        publication_date.setText(book.getPublication_date().split(" ")[0]);
+        page_number.setText(book.getPageNumber()+"");
+        covers.setSelectedIndex(book.getCoverTypeID());
+        genre.setText(book.getGenre());
+    }
+    
+    public JButton getExitButton() {
+        return this.exit_button;
     }
 
     /**
@@ -43,7 +60,9 @@ public class EditBookPanel extends javax.swing.JPanel {
         genre_label = new javax.swing.JLabel();
         genre = new javax.swing.JTextField();
         confirmButton = new javax.swing.JButton();
+        exit_button = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setPreferredSize(new java.awt.Dimension(600, 550));
 
         book_big_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -88,6 +107,9 @@ public class EditBookPanel extends javax.swing.JPanel {
         confirmButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         confirmButton.setText("Confirm Edit");
 
+        exit_button.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        exit_button.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,11 +143,13 @@ public class EditBookPanel extends javax.swing.JPanel {
                             .addComponent(page_label)
                             .addComponent(cover_label)
                             .addComponent(genre_label))
-                        .addGap(0, 111, Short.MAX_VALUE)))
+                        .addGap(0, 127, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
+                .addGap(182, 182, 182)
                 .addComponent(confirmButton)
+                .addGap(36, 36, 36)
+                .addComponent(exit_button)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,8 +185,10 @@ public class EditBookPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(genre_label)
                     .addComponent(genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
-                .addComponent(confirmButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmButton)
+                    .addComponent(exit_button))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -180,6 +206,7 @@ public class EditBookPanel extends javax.swing.JPanel {
     private javax.swing.JButton confirmButton;
     private javax.swing.JLabel cover_label;
     private javax.swing.JComboBox<String> covers;
+    private javax.swing.JButton exit_button;
     private javax.swing.JTextField genre;
     private javax.swing.JLabel genre_label;
     private javax.swing.JLabel language_label;
