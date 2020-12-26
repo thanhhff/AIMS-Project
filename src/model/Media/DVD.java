@@ -120,5 +120,18 @@ public class DVD extends PhysicalGood {
         this.insertDVD();
     }
     
+    private void updateDVD() {
+        String query = "UPDATE `Dvds` SET publication_date = '" + publication_date + "', runtime = " + runtime + ", subtitle = '" + subtitle + "', language_id = " +
+                language_id + ", studio_name = '" + studio_name + "', dvd_type_id = " + dvd_type_id + ", writer_name = '" + writer_name + "' WHERE media_id = " + this.getId() + ";";
+        try {
+            ConnectSQL.sqlQueryUpdate(query);
+        } catch (Exception e) {
+            
+        }
+    }
     
+    public void update() {
+        this.updatePhysical();
+        this.updateDVD();
+    }
 }

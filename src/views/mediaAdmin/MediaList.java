@@ -23,25 +23,25 @@ public class MediaList extends JPanel{
     public static int WIDTH = 700;
     public static int HEIGHT = 500;
     private JPanel mediaJPanel;
-    private List<MediaItemPanel> mediaSaleItemPanels;
+    private List<MediaItemPanel> mediaItemPanels;
 
     public MediaList(List<Media> medias) {
         setLayout(new GridLayout(1,0));
         mediaJPanel = new JPanel(new GridLayout(0,1));
-        mediaSaleItemPanels = new ArrayList<MediaItemPanel>();
+        mediaItemPanels = new ArrayList<MediaItemPanel>();
         add(new JScrollPane(mediaJPanel));
         for(Media media : medias){
-            MediaItemPanel mediaSaleItemPanel = new MediaItemPanel(media);
-            mediaSaleItemPanels.add(mediaSaleItemPanel);
-            this.addObj(mediaSaleItemPanel); 
+            MediaItemPanel mediaItemPanel = new MediaItemPanel(media);
+            mediaItemPanels.add(mediaItemPanel);
+            this.addObj(mediaItemPanel); 
         } 
         setSize(WIDTH,HEIGHT);
     }
     public void addObj(JPanel object){
         mediaJPanel.add(object);
     }
-    public List<MediaItemPanel> getMediaSaleItemPanels(){
-        return mediaSaleItemPanels;
+    public List<MediaItemPanel> getMediaItemPanels(){
+        return mediaItemPanels;
     }
     
 }

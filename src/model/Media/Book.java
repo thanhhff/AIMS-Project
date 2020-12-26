@@ -157,4 +157,21 @@ public class Book extends PhysicalGood {
         this.insertPhysical();
         this.insertBook();
     }
+    
+    private void updateBook() {
+        String book_query = "UPDATE `Books` SET publication_date = '" + publication_date + "', page_number = " + page_number + ", cover_type_id = '" +
+                cover_type_id + "', publisher_name = '" + publisher + "', language_id = " + language_id + ", author_name = '" + author + "', genre = '" + genre + 
+                " WHERE media_id = " + this.getId();
+        try {
+            ConnectSQL.sqlQueryUpdate(book_query);
+        } catch (Exception e) {
+            
+        }
+        
+    }
+    
+    public void update() {
+        this.updatePhysical();
+        this.updateBook();
+    }
 }

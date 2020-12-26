@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
@@ -18,6 +19,7 @@ import javax.swing.event.DocumentListener;
 import model.Media.Media;
 import model.Media.PhysicalGood;
 import model.Sale.MediaSale;
+import model.Media.*;
 
 /**
  *
@@ -100,6 +102,11 @@ public class MediaItemPanel extends javax.swing.JPanel {
 
         editButton.setText("Edit");
         editButton.setFocusPainted(false);
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Category : ");
 
@@ -169,6 +176,29 @@ public class MediaItemPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+        int category_id = media.getCategoryId();
+        switch (category_id) {
+            case 1:
+                Book book = (Book) media;
+                JPanel book_edit_panel = new EditBookPanel();
+                book_edit_panel.setVisible(true);
+                break;
+            case 2:
+                DVD dvd = (DVD) media;
+                JPanel dvd_edit_panel = new EditDvdPanel();
+                dvd_edit_panel.setVisible(true);
+                break;
+            case 3:
+                CD cd = (CD) media;
+                break;
+            case 4:
+                LP lp = (LP) media;
+                break;
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
     private int getValueNumber(JTextField textField) {
         try {
             int value = Integer.parseInt(textField.getText());

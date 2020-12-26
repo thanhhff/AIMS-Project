@@ -191,6 +191,18 @@ public abstract class Media {
     
     public abstract void insert();
     
+    protected void updateMedia() {
+        String media_query = "UPDATE `Medias` SET title = '" + getTitle() + "', value = " + getValue() + ", price = " + getPrice() + 
+                ", category_id = " + getCategoryId() + ", image_path = '" + getImagePath() + "' WHERE media_id = " + this.getId() + ";";
+        
+        try {
+            ConnectSQL.sqlQueryUpdate(media_query);
+        } catch (Exception e) {
+        }
+    }
+    
+    public abstract void update();
+    
     public static void deleteMedia(int media_id) {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = " + media_id + ";";
         try {

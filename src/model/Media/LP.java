@@ -95,4 +95,19 @@ public class LP extends PhysicalGood {
         this.insertPhysical();
         this.insertLP();
     }
+    
+    private void updateLP() {
+        String query = "UPDATE `Lps` SET publication_date = '" + publication_date + "', record_label_name = '" + record_label_name + "', artist_name = '" + artist_name + "', genre = '" + genre 
+                + "', track_list = '" + track_list + "' WHERE media_id = " + this.getId();
+        try {
+            ConnectSQL.sqlQueryUpdate(query);
+        } catch (Exception e) {
+            
+        }
+      }
+    
+    public void update() {
+        this.updatePhysical();
+        this.updateLP();
+    }
 }

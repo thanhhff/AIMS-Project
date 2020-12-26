@@ -28,6 +28,10 @@ public class MediaController {
     public static void deleteMedia(int media_id) {
         Media.deleteMedia(media_id);
     }
+    
+    public static void update(Media media) {
+        media.update();
+    }
 
 //     public static void sortLowMediaPrice(ArrayList<Media> list)
 //     {

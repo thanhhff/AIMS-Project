@@ -97,6 +97,20 @@ public class CD extends PhysicalGood {
     public void insert() {
         this.insertPhysical();
         this.insertCD();
-        
+    }
+    
+    private void updateCD() {
+        String query = "UPDATE `Cds` SET publication_date = '" + publication_date + "', record_label_name = '" + record_label_name + "', artist_name = '" + artist_name + "', genre = '" + genre 
+                + "', track_list = '" + track_list + "' WHERE media_id = " + this.getId();
+        try {
+            ConnectSQL.sqlQueryUpdate(query);
+        } catch (Exception e) {
+            
+        }
+      }
+    
+    public void update() {
+        this.updatePhysical();
+        this.updateCD();
     }
 }
