@@ -39,6 +39,7 @@ public class MediaPanel extends javax.swing.JPanel {
     public static int HEIGHT = 637;
     private List<MediaItemPanel> mediaItemPanels;
     private List<Media> medias;
+    private MediaAddFrame media_frame;
     public MediaPanel(List<Media> medias) {
         initComponents();
         setSize(WIDTH, HEIGHT);
@@ -66,6 +67,7 @@ public class MediaPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        add_button = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(788, 633));
         setLayout(null);
@@ -73,11 +75,29 @@ public class MediaPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Media List");
         add(jLabel1);
-        jLabel1.setBounds(330, 12, 170, 21);
+        jLabel1.setBounds(330, 12, 170, 24);
+
+        add_button.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        add_button.setText("Add");
+        add_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_buttonActionPerformed(evt);
+            }
+        });
+        add(add_button);
+        add_button.setBounds(670, 40, 79, 25);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
+        // TODO add your handling code here:
+        media_frame = new MediaAddFrame();
+        media_frame.setLocationRelativeTo(null);
+        media_frame.setVisible(true);
+    }//GEN-LAST:event_add_buttonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_button;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

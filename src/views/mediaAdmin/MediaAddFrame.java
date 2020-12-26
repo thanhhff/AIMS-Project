@@ -43,22 +43,77 @@ public class MediaAddFrame extends javax.swing.JFrame {
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
+                media_quantity.setText(book.getQuantity() + "");
+                media_input_day.setText(book.getInputDay().split(" ")[0]);
+                media_barcode.setText(book.getBarcode());
+                media_weight.setText(book.getWeight() + "");
+                media_width.setText(book.getWidth() + "");
+                media_height.setText(book.getHeight()+"");
+                media_depth.setText(book.getDepth()+"");
+                media_description.setText(book.getDescription());
+                author_name.setText(book.getAuthor());
+                languages.setSelectedIndex(book.getLanguageId()-1);
+                publisher.setText(book.getPublisher());
+                publication_date.setText(book.getPublication_date().split(" ")[0]);
+                page_number.setText(book.getPageNumber()+"");
+                book_genre.setText(book.getGenre());
                 setVisiblePanels(category_id);
                 break;
             case 2:
                 DVD dvd = (DVD) md;
+                media_quantity.setText(dvd.getQuantity() + "");
+                media_input_day.setText(dvd.getInputDay().split(" ")[0]);
+                media_barcode.setText(dvd.getBarcode());
+                media_weight.setText(dvd.getWeight() + "");
+                media_width.setText(dvd.getWidth() + "");
+                media_height.setText(dvd.getHeight()+"");
+                media_depth.setText(dvd.getDepth()+"");
+                media_description.setText(dvd.getDescription());
+                writer_name.setText(dvd.getWriterName());
+                studio_name.setText(dvd.getStudioName());
+                publication_date_dvd.setText(dvd.getPublicationDate().split(" ")[0]);
+                dvd_runtime.setText(dvd.getRunTime()+"");
+                dvd_languages.setSelectedIndex(dvd.getLanguageId()-1);
+                dvd_types.setSelectedIndex(dvd.getDvdTypeId()-1);
+                dvd_subtitle.setText(dvd.getSubtitle());
                 setVisiblePanels(category_id);
                 break;
             case 3:
                 CD cd = (CD) md;
+                media_quantity.setText(cd.getQuantity() + "");
+                media_input_day.setText(cd.getInputDay().split(" ")[0]);
+                media_barcode.setText(cd.getBarcode());
+                media_weight.setText(cd.getWeight() + "");
+                media_width.setText(cd.getWidth() + "");
+                media_height.setText(cd.getHeight()+"");
+                media_depth.setText(cd.getDepth()+"");
+                media_description.setText(cd.getDescription());
+                artist_name.setText(cd.getArtistName());
+                cd_genre.setText(cd.getGenre());
+                record_name.setText(cd.getRecordLabelName());
+                cd_publication_date.setText(cd.getPublicationDate().split(" ")[0]);
+                tracks_list.setText(cd.getTrackList());
                 setVisiblePanels(category_id);
                 break;
             case 4:
                 LP lp = (LP) md;
+                media_quantity.setText(lp.getQuantity() + "");
+                media_input_day.setText(lp.getInputDay().split(" ")[0]);
+                media_barcode.setText(lp.getBarcode());
+                media_weight.setText(lp.getWeight() + "");
+                media_width.setText(lp.getWidth() + "");
+                media_height.setText(lp.getHeight()+"");
+                media_depth.setText(lp.getDepth()+"");
+                media_description.setText(lp.getDescription());
+                lp_artist_name.setText(lp.getArtistName());
+                lp_genre.setText(lp.getGenre());
+                lp_record.setText(lp.getRecordLabelName());
+                lp_publication_date.setText(lp.getPublicationDate().split(" ")[0]);
+                lp_tracks_list.setText(lp.getTrackList());
+                
                 setVisiblePanels(category_id);
                 break;
         }
-        
        
         
     }
