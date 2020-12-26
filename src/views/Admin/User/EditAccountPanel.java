@@ -173,9 +173,6 @@ public class EditAccountPanel extends javax.swing.JFrame {
 
     private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
-        
-        
-        
         String password, newPassword, confirmPassword;
         password = txtPassword.getText();
         newPassword = txtNewPassword.getText();

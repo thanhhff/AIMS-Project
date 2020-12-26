@@ -37,19 +37,20 @@ public class MediaPanel extends javax.swing.JPanel {
      */
     public static int WIDTH = 788;
     public static int HEIGHT = 637;
-    private List<MediaItemPanel> mediaSaleItemPanels;
-    private List<MediaSale> mediaSales;
+    private List<MediaItemPanel> mediaItemPanels;
+    private List<Media> medias;
     public MediaPanel(List<Media> medias) {
         initComponents();
         setSize(WIDTH, HEIGHT);
-        mediaSales = new ArrayList<MediaSale>();
-        MediaList  mediaSaleList = new MediaList(medias);
-        mediaSaleList.setBounds(40, 80, mediaSaleList.getWidth(), mediaSaleList.getHeight());
-        mediaSaleItemPanels = mediaSaleList.getMediaSaleItemPanels();     
-        add(mediaSaleList);
+        medias = new ArrayList<Media>();
+        MediaList mediaList = new MediaList(medias);
+        mediaList.setBounds(40, 80, mediaList.getWidth(), mediaList.getHeight());
+        mediaItemPanels = mediaList.getMediaItemPanels();     
+        add(mediaList);
     }
-    public List<MediaSale> getMediaSales(){
-        return mediaSales;
+    
+    public List<Media> getMedias(){
+        return medias;
     }
     
     

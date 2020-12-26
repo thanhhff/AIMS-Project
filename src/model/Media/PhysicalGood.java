@@ -37,6 +37,18 @@ public abstract class PhysicalGood extends Media {
         this.depth = depth;
         this.weight = weight;
     }
+    
+    public PhysicalGood(String title, int value, int price, int sale_percent, int category, String image_path, String barcode, String description, int quantity, String input_day, int width, int height, int depth, int weight) {
+        super(title, value, price, sale_percent, category, image_path);
+        this.barcode = barcode;
+        this.description = description;
+        this.quantity = quantity;
+        this.input_day = input_day;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+        this.weight = weight;
+    }
 
 
     public String getBarcode() {
@@ -103,129 +115,27 @@ public abstract class PhysicalGood extends Media {
         this.weight = weight;
     }
     
-    public static int insertPhysical(String description, int quantity, String input_day, int media_id, int width, int height, int depth, int weight, String barcode) {
-        
+    protected void insertPhysical() {
+        this.setId(this.insertMedia());
         
         String physical_query = "INSERT INTO `Physicalgoods` (description, quantity, input_day, media_id, width, height, depth, weight, barcode) VALUES ('" +
-                    description + "', " + quantity + ", '" + input_day + "', " + media_id + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
+                    description + "', " + quantity + ", '" + input_day + "', " + this.getId() + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
         
         try {
-            int result = ConnectSQL.sqlUpdate(physical_query);
-            return result;
+            ConnectSQL.sqlQueryUpdate(physical_query);
         } catch (Exception e) {
-            return 0;
         }
     }
     
-    public static String getDescriptionFromDB(int media_id) {
-        String select_query = "SELECT description FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
+    protected void updatePhysical() {
+        this.updateMedia();
+        String physical_query = "UPDATE `Physicalgoods` SET description = `" + getDescription() + "', quantity = " + getQuantity() + ", input_day = '" + 
+                getInputDay() + "', width = " + getWidth() + ", height = " + getHeight() + ", depth = " + getDepth() + ", weigth = " + getWeight() 
+                + ", barcode = '" + getBarcode() + " WHERE media_id = " + this.getId();
         try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            String description = null;
-            if (rs.next()){
-                description = rs.getString(1);
-            }
-            return description;
+            ConnectSQL.sqlQueryUpdate(physical_query);
         } catch (Exception e) {
-            return null;
-        }
-    }
-    
-    public static int getQuantityFromDB(int media_id) {
-        String select_query = "SELECT quantity FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            int quantity = -1;
-            if (rs.next()) {
-                quantity = rs.getInt(1);
-            }
-            return quantity;
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-    
-    public static int getWidthFromDB(int media_id) {
-        String select_query = "SELECT width FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            int width = -1;
-            if (rs.next()) {
-                width = rs.getInt(1);
-            }
-            return width;
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-    
-    public static int getHeightFromDB(int media_id) {
-        String select_query = "SELECT height FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            int result = -1;
-            if (rs.next()) {
-                result = rs.getInt(1);
-            }
-            return result;
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-    
-    public static int getDepthFromDB(int media_id) {
-        String select_query = "SELECT depth FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            int result = -1;
-            if (rs.next()) {
-                result = rs.getInt(1);
-            }
-            return result;
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-    
-    public static int getWeightFromDB(int media_id) {
-        String select_query = "SELECT weight FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            int result = -1;
-            if (rs.next()) {
-                result = rs.getInt(1);
-            }
-            return result;
-        } catch (Exception e) {
-            return -1;
-        }
-    }
-    
-    public static String getBarCodeFromDB(int media_id) {
-        String select_query = "SELECT barcode FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            String barcode = null;
-            if (rs.next()){
-                barcode = rs.getString(1);
-            }
-            return barcode;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-    
-    public static String getInputDayFromDB(int media_id) {
-        String select_query = "SELECT input_day FROM `Physicalgoods` WHERE media_id = " + media_id + ";";
-        try {
-            ResultSet rs = ConnectSQL.sqlQuery(select_query);
-            String input_day = null;
-            if (rs.next()){
-                input_day = rs.getString(1);
-            }
-            return input_day;
-        } catch (Exception e) {
-            return null;
+            
         }
     }
     

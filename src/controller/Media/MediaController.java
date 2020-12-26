@@ -21,58 +21,46 @@ public class MediaController {
         return Media.getMaxID();
     }
     
-    public static int insertMedia(String title, int value, int price, int sale_percent, int category_id, String image_path) {
-        return Media.insertMedia(title, value, price, sale_percent, category_id, image_path);
+    public static void insert(Media media) {
+        media.insert();
     }
     
     public static void deleteMedia(int media_id) {
         Media.deleteMedia(media_id);
     }
+    
+    public static void update(Media media) {
+        media.update();
+    }
 
-     public static void sortLowMediaPrice(ArrayList<Media> list)
-     {
-       int i, j;
-            for (i = (list.size()-1); i >= 0; i--) {
-                for (j = 1; j <= i; j++){
-                    if (list.get(j-1).getPrice() > list.get(j).getPrice())
-                    {   
-                        Media media = new Media() {};
-                        media.updateMedia(list.get(j));
-                        list.get(j).updateMedia( list.get(j-1));
-                        list.get(j-1).updateMedia(media);
-                    }
-                }
-            }
-     }
-      public static void sortHighMediaPrice(ArrayList<Media> list)
-     {
-       int i, j;
-            for (i = (list.size()-1); i >= 0; i--) {
-                for (j = 1; j <= i; j++){
-                    if (list.get(j-1).getPrice() < list.get(j).getPrice())
-                    {   
-                        Media media = new Media() {};
-                        media.updateMedia(list.get(j));
-                        list.get(j).updateMedia( list.get(j-1));
-                        list.get(j-1).updateMedia(media);
-                    }
-                }
-            }
-     }
-      
-    public static String getTitleFromDB(int media_id) {
-        return Media.getTitleFromDB(media_id);
-    }
-    
-    public static int getValueFromDB(int media_id) {
-        return Media.getValueFromDB(media_id);
-    }
-    
-    public static int getPriceFromDB(int media_id) {
-        return Media.getPriceFromDB(media_id);
-    }
-    
-    public static int getCategoryIdFromDB(int media_id) {
-        return Media.getCategoryIdFromDB(media_id);
-    }
+//     public static void sortLowMediaPrice(ArrayList<Media> list)
+//     {
+//       int i, j;
+//            for (i = (list.size()-1); i >= 0; i--) {
+//                for (j = 1; j <= i; j++){
+//                    if (list.get(j-1).getPrice() > list.get(j).getPrice())
+//                    {   
+//                        Media media = new Media() {};
+//                        media.updateMedia(list.get(j));
+//                        list.get(j).updateMedia( list.get(j-1));
+//                        list.get(j-1).updateMedia(media);
+//                    }
+//                }
+//            }
+//     }
+//      public static void sortHighMediaPrice(ArrayList<Media> list)
+//     {
+//       int i, j;
+//            for (i = (list.size()-1); i >= 0; i--) {
+//                for (j = 1; j <= i; j++){
+//                    if (list.get(j-1).getPrice() < list.get(j).getPrice())
+//                    {   
+//                        Media media = new Media() {};
+//                        media.updateMedia(list.get(j));
+//                        list.get(j).updateMedia( list.get(j-1));
+//                        list.get(j-1).updateMedia(media);
+//                    }
+//                }
+//            }
+//     }
 }
