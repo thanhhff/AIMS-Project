@@ -6,6 +6,7 @@
 package views.mediaAdmin;
 
 import controller.Media.*;
+import java.awt.Component;
 import model.Media.*;
 import javax.swing.JOptionPane;
 
@@ -29,10 +30,22 @@ public class MediaAddFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public MediaAddFrame(Media md) {
+    public MediaAddFrame(Media md, boolean isEdit) {
         flag = false;
         initComponents();
-        big_label.setText("Edit Media");
+        if (isEdit) {
+            big_label.setText("Edit Media");
+        } else {
+            big_label.setText("View Media");
+            media_name.setEditable(false);
+            media_value.setEditable(false);
+            media_value.setEditable(false);
+            media_price.setEditable(false);
+            categories.setEditable(false);
+            categories.setEnabled(false);
+            confirmButton.setVisible(false);
+        }
+        
         this.media = md;
         this.media.setId(md.getId());
         media_name.setText(md.getTitle());
@@ -43,6 +56,24 @@ public class MediaAddFrame extends javax.swing.JFrame {
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    author_name.setEditable(false);
+                    languages.setEditable(false);
+                    languages.setEnabled(false);
+                    publisher.setEditable(false);
+                    publication_date.setEditable(false);
+                    page_number.setEditable(false);
+                    book_genre.setEditable(false);
+                    cover_types.setEnabled(false);
+                }
                 media_quantity.setText(book.getQuantity() + "");
                 media_input_day.setText(book.getInputDay().split(" ")[0]);
                 media_barcode.setText(book.getBarcode());
@@ -57,10 +88,30 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 publication_date.setText(book.getPublication_date().split(" ")[0]);
                 page_number.setText(book.getPageNumber()+"");
                 book_genre.setText(book.getGenre());
+                cover_types.setSelectedIndex(book.getCoverTypeID()-1);
                 setVisiblePanels(category_id);
+                
                 break;
             case 2:
                 DVD dvd = (DVD) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    writer_name.setEditable(false);
+                    studio_name.setEditable(false);
+                    publication_date_dvd.setEditable(false);
+                    dvd_runtime.setEditable(false);
+                    dvd_languages.setEditable(false);
+                    dvd_languages.setEnabled(false);
+                    dvd_types.setEnabled(false);
+                    dvd_subtitle.setEditable(false);
+                }
                 media_quantity.setText(dvd.getQuantity() + "");
                 media_input_day.setText(dvd.getInputDay().split(" ")[0]);
                 media_barcode.setText(dvd.getBarcode());
@@ -80,6 +131,21 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 break;
             case 3:
                 CD cd = (CD) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    artist_name.setEditable(false);
+                    cd_genre.setEditable(false);
+                    record_name.setEditable(false);
+                    cd_publication_date.setEditable(false);
+                    tracks_list.setEditable(false);
+                }
                 media_quantity.setText(cd.getQuantity() + "");
                 media_input_day.setText(cd.getInputDay().split(" ")[0]);
                 media_barcode.setText(cd.getBarcode());
@@ -97,6 +163,21 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 break;
             case 4:
                 LP lp = (LP) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    lp_artist_name.setEditable(false);
+                    lp_genre.setEditable(false);
+                    lp_record.setEditable(false);
+                    lp_publication_date.setEditable(false);
+                    lp_tracks_list.setEditable(false);
+                }
                 media_quantity.setText(lp.getQuantity() + "");
                 media_input_day.setText(lp.getInputDay().split(" ")[0]);
                 media_barcode.setText(lp.getBarcode());
@@ -861,6 +942,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addComponent(add_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        left_panel.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

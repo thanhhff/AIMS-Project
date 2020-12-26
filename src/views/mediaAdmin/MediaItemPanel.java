@@ -27,7 +27,6 @@ public class MediaItemPanel extends javax.swing.JPanel {
         setSize(WIDTH, HEIGHT);
         this.media = md;
         initComponents();
-        this.media = media;
         mediaTitle.setText(media.getTitle());
         int category_index = media.getCategoryId() - 1;
         String[] categories = {"Book", "DVD", "CD", "LP"};
@@ -86,10 +85,20 @@ public class MediaItemPanel extends javax.swing.JPanel {
         showButton.setText("Show");
         showButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showButton.setFocusPainted(false);
+        showButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.setFocusPainted(false);
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         editButton.setText("Edit");
         editButton.setFocusPainted(false);
@@ -176,30 +185,96 @@ public class MediaItemPanel extends javax.swing.JPanel {
         switch (category_id) {
             case 1:
                 Book book = (Book) media;
-                media_frame = new MediaAddFrame(book);
+                media_frame = new MediaAddFrame(book, true);
                 
                 break;
             case 2:
                 DVD dvd = (DVD) media;
-                media_frame = new MediaAddFrame(dvd);
+                media_frame = new MediaAddFrame(dvd, true);
                 
                 break;
             case 3:
                 CD cd = (CD) media;
-                media_frame = new MediaAddFrame(cd);
+                media_frame = new MediaAddFrame(cd, true);
                 break;
             case 4:
                 LP lp = (LP) media;
-                media_frame = new MediaAddFrame(lp);
+                media_frame = new MediaAddFrame(lp, true);
                 break;
             default:
                 Book new_book = (Book) media;
-                media_frame = new MediaAddFrame(new_book);
+                media_frame = new MediaAddFrame(new_book, true);
         }
         media_frame.setLocationRelativeTo(null);
 //        media_frame.setModal(true);
         media_frame.setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        int category_id = media.getCategoryId();
+        MediaAddFrame media_frame;
+        
+        switch (category_id) {
+            case 1:
+                Book book = (Book) media;
+                media_frame = new MediaAddFrame(book, true);
+                
+                break;
+            case 2:
+                DVD dvd = (DVD) media;
+                media_frame = new MediaAddFrame(dvd, true);
+                
+                break;
+            case 3:
+                CD cd = (CD) media;
+                media_frame = new MediaAddFrame(cd, true);
+                break;
+            case 4:
+                LP lp = (LP) media;
+                media_frame = new MediaAddFrame(lp, true);
+                break;
+            default:
+                Book new_book = (Book) media;
+                media_frame = new MediaAddFrame(new_book, true);
+        }
+        media_frame.setLocationRelativeTo(null);
+//        media_frame.setModal(true);
+        media_frame.setVisible(true);
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
+        // TODO add your handling code here:
+        int category_id = media.getCategoryId();
+        MediaAddFrame media_frame;
+        
+        switch (category_id) {
+            case 1:
+                Book book = (Book) media;
+                media_frame = new MediaAddFrame(book, false);
+                
+                break;
+            case 2:
+                DVD dvd = (DVD) media;
+                media_frame = new MediaAddFrame(dvd, false);
+                
+                break;
+            case 3:
+                CD cd = (CD) media;
+                media_frame = new MediaAddFrame(cd, false);
+                break;
+            case 4:
+                LP lp = (LP) media;
+                media_frame = new MediaAddFrame(lp, false);
+                break;
+            default:
+                Book new_book = (Book) media;
+                media_frame = new MediaAddFrame(new_book, false);
+        }
+        media_frame.setLocationRelativeTo(null);
+//        media_frame.setModal(true);
+        media_frame.setVisible(true);
+    }//GEN-LAST:event_showButtonActionPerformed
     private int getValueNumber(JTextField textField) {
         try {
             int value = Integer.parseInt(textField.getText());
