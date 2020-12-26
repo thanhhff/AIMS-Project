@@ -8,9 +8,12 @@ package views.mediaAdmin;
 import views.Admin.Sales.*;
 import aims.FormatNumber;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -180,16 +183,28 @@ public class MediaItemPanel extends javax.swing.JPanel {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         int category_id = media.getCategoryId();
+//        System.out.println(category_id);
+        JDialog jDialog1 = new JDialog();
+        
+        
+        
         switch (category_id) {
             case 1:
                 Book book = (Book) media;
-                JPanel book_edit_panel = new EditBookPanel();
-                book_edit_panel.setVisible(true);
+                EditBookPanel book_edit_panel = new EditBookPanel(media);
+                jDialog1.setSize(600, 550);
+                book_edit_panel.setBounds(0,0,600,550);
+                
+                jDialog1.add(book_edit_panel);
+                book_edit_panel.getExitButton().addActionListener((ActionEvent ae) -> {
+                    jDialog1.dispose();
+                });
                 break;
             case 2:
                 DVD dvd = (DVD) media;
                 JPanel dvd_edit_panel = new EditDvdPanel();
                 dvd_edit_panel.setVisible(true);
+                
                 break;
             case 3:
                 CD cd = (CD) media;
@@ -198,6 +213,10 @@ public class MediaItemPanel extends javax.swing.JPanel {
                 LP lp = (LP) media;
                 break;
         }
+        jDialog1.setUndecorated(true);
+        jDialog1.setLocationRelativeTo(null);
+        jDialog1.setModal(true);
+        jDialog1.setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
     private int getValueNumber(JTextField textField) {
         try {

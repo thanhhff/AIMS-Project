@@ -6,6 +6,7 @@
 package controller.Media;
 import model.Media.Media;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -31,6 +32,10 @@ public class MediaController {
     
     public static void update(Media media) {
         media.update();
+    }
+    
+    public static List<Media> getAllMedia() {
+        return Media.getAllMedia();
     }
 
 //     public static void sortLowMediaPrice(ArrayList<Media> list)
