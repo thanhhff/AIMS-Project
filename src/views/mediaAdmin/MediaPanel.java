@@ -50,6 +50,7 @@ public class MediaPanel extends javax.swing.JPanel {
         add(mediaList);
     }
     
+    
     public List<Media> getMedias(){
         return medias;
     }

@@ -5,23 +5,9 @@
  */
 package views.mediaAdmin;
 
-import views.Admin.Sales.*;
 import aims.FormatNumber;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import javax.swing.BorderFactory;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import model.Media.Media;
-import model.Media.PhysicalGood;
-import model.Sale.MediaSale;
 import model.Media.*;
 
 /**
@@ -43,7 +29,9 @@ public class MediaItemPanel extends javax.swing.JPanel {
         initComponents();
         this.media = media;
         mediaTitle.setText(media.getTitle());
-        categoryLabel.setText(media.getCategoryId() + "");
+        int category_index = media.getCategoryId() - 1;
+        String[] categories = {"Book", "DVD", "CD", "LP"};
+        categoryLabel.setText(categories[category_index]);
         valueLabel.setText(FormatNumber.formatString(media.getValue() + ""));
         valueLabel.setName(media.getValue() + "");
         priceLabel.setText(FormatNumber.formatString(media.getPrice() + ""));
@@ -81,7 +69,7 @@ public class MediaItemPanel extends javax.swing.JPanel {
 
         categoryLabel.setText("jLabel1");
 
-        valueLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        valueLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         valueLabel.setText("jLabel1");
 
         jLabel2.setText("(VND)");
@@ -90,7 +78,7 @@ public class MediaItemPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Price: ");
 
-        priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        priceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         priceLabel.setText("jLabel5");
 
         jLabel5.setText("(VND)");
@@ -183,40 +171,34 @@ public class MediaItemPanel extends javax.swing.JPanel {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         int category_id = media.getCategoryId();
-//        System.out.println(category_id);
-        JDialog jDialog1 = new JDialog();
-        
-        
+        MediaAddFrame media_frame;
         
         switch (category_id) {
             case 1:
                 Book book = (Book) media;
-                EditBookPanel book_edit_panel = new EditBookPanel(media);
-                jDialog1.setSize(600, 550);
-                book_edit_panel.setBounds(0,0,600,550);
+                media_frame = new MediaAddFrame(book);
                 
-                jDialog1.add(book_edit_panel);
-                book_edit_panel.getExitButton().addActionListener((ActionEvent ae) -> {
-                    jDialog1.dispose();
-                });
                 break;
             case 2:
                 DVD dvd = (DVD) media;
-                JPanel dvd_edit_panel = new EditDvdPanel();
-                dvd_edit_panel.setVisible(true);
+                media_frame = new MediaAddFrame(dvd);
                 
                 break;
             case 3:
                 CD cd = (CD) media;
+                media_frame = new MediaAddFrame(cd);
                 break;
             case 4:
                 LP lp = (LP) media;
+                media_frame = new MediaAddFrame(lp);
                 break;
+            default:
+                Book new_book = (Book) media;
+                media_frame = new MediaAddFrame(new_book);
         }
-        jDialog1.setUndecorated(true);
-        jDialog1.setLocationRelativeTo(null);
-        jDialog1.setModal(true);
-        jDialog1.setVisible(true);
+        media_frame.setLocationRelativeTo(null);
+//        media_frame.setModal(true);
+        media_frame.setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
     private int getValueNumber(JTextField textField) {
         try {

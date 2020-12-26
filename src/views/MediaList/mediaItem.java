@@ -18,24 +18,24 @@ import model.Media.Media;
  * @author User
  */
 public class mediaItem extends javax.swing.JPanel {
-    Media media = new Media() {};
-    /**
-     * Creates new form mediaItem
-     */
-    public mediaItem(Media media) {
-        this.media = media;
-        initComponents();
-        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
-        jLabel1.setText(media.getTitle());
-        jLabel3.setText(String.valueOf(media.getPrice()) + " VND");
-        
-    }
-    public JLabel getNameLabel(){
-        return this.jLabel1;
-    }
-    public JLabel getPriceLabel(){
-        return this.jLabel3;
-    }
+//    Media media = new Media() {};
+//    /**
+//     * Creates new form mediaItem
+//     */
+//    public mediaItem(Media media) {
+//        this.media = media;
+//        initComponents();
+//        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
+//        jLabel1.setText(media.getTitle());
+//        jLabel3.setText(String.valueOf(media.getPrice()) + " VND");
+//        
+//    }
+//    public JLabel getNameLabel(){
+//        return this.jLabel1;
+//    }
+//    public JLabel getPriceLabel(){
+//        return this.jLabel3;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,11 +168,11 @@ public class mediaItem extends javax.swing.JPanel {
 
     private void addCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCartButtonActionPerformed
         // TODO add your handling code here:
-        CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
-        if(Integer.parseInt(quantityLabel.getText()) != 0)
-        JOptionPane.showMessageDialog(null, "Thêm giỏ hàng thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        else
-           JOptionPane.showMessageDialog(null, "Bạn phải chọn số lượng!", "Error", JOptionPane.ERROR_MESSAGE);
+//        CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
+//        if(Integer.parseInt(quantityLabel.getText()) != 0)
+//        JOptionPane.showMessageDialog(null, "Thêm giỏ hàng thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+//        else
+//           JOptionPane.showMessageDialog(null, "Bạn phải chọn số lượng!", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_addCartButtonActionPerformed
 
     private void plusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusMedia1MouseClicked

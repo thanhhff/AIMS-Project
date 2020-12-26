@@ -34,7 +34,7 @@ public class MediaController {
         media.update();
     }
     
-    public static List<Media> getAllMedia() {
+    public static ArrayList<Media> getAllMedia() {
         return Media.getAllMedia();
     }
 

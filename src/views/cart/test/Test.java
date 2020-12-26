@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import model.Media.Book;
 import model.Media.Media;
-import model.Media.PhysicalGood;
-import views.Admin.Sales.MediaSalePanel;
 import views.mediaAdmin.MediaPanel;
 
 
@@ -38,8 +35,8 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        List<Media> medias = MediaController.getAllMedia();
-//        new Test(new MediaPanel(medias));
-        new Test(new MediaSalePanel(medias));
+        ArrayList<Media> medias = Media.getAllMedia();
+        new Test(new MediaPanel(medias));
+//        new Test(new MediaSalePanel(medias));
     }
 }

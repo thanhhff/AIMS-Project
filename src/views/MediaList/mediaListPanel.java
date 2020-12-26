@@ -45,25 +45,25 @@ public class mediaListPanel extends javax.swing.JPanel {
     
     public void fill()
     {   
-        status = 1;
-        page = 1;
-        list.removeAll(list);
-        SearchController.SearchRandom(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 1;
+//        page = 1;
+//        list.removeAll(list);
+//        SearchController.SearchRandom(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }
     public void fill(String search)
     {
-        status = 2;
-        page = 1;
-        list.removeAll(list);
-        SearchController.SearchUser(list,search);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 2;
+//        page = 1;
+//        list.removeAll(list);
+//        SearchController.SearchUser(list,search);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -229,41 +229,41 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookActionPerformed
         // TODO add your handling code here:
-        status = 3;
-        page = 1;
-        mediaListPanel.removeAll();
-         list.removeAll(list);
-        SearchController.SearchBook(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 3;
+//        page = 1;
+//        mediaListPanel.removeAll();
+//         list.removeAll(list);
+//        SearchController.SearchBook(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }//GEN-LAST:event_bookActionPerformed
 
     private void cdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdActionPerformed
         // TODO add your handling code here:
-        status = 4;
-        page = 1;
-        mediaListPanel.removeAll();
-       list.removeAll(list);
-        SearchController.SearchCd(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 4;
+//        page = 1;
+//        mediaListPanel.removeAll();
+//       list.removeAll(list);
+//        SearchController.SearchCd(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }//GEN-LAST:event_cdActionPerformed
 
     private void dvdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dvdActionPerformed
         // TODO add your handling code here:
-        status = 5;
-        page = 1;
-        mediaListPanel.removeAll();
-      list.removeAll(list);
-        SearchController.SearchDvd(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 5;
+//        page = 1;
+//        mediaListPanel.removeAll();
+//      list.removeAll(list);
+//        SearchController.SearchDvd(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }//GEN-LAST:event_dvdActionPerformed
 
     private void jButton5bookrformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -272,88 +272,88 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void lpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lpActionPerformed
         // TODO add your handling code here:
-        status = 6;
-        page = 1;
-        mediaListPanel.removeAll();
-        list.removeAll(list);
-        SearchController.SearchLp(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        status = 6;
+//        page = 1;
+//        mediaListPanel.removeAll();
+//        list.removeAll(list);
+//        SearchController.SearchLp(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }//GEN-LAST:event_lpActionPerformed
 
     private void highActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highActionPerformed
         // TODO add your handling code here:
-        mediaListPanel.removeAll();
-        MediaController.sortHighMediaPrice(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        mediaListPanel.removeAll();
+//        MediaController.sortHighMediaPrice(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
         
     }//GEN-LAST:event_highActionPerformed
 
     private void lowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lowActionPerformed
         // TODO add your handling code here:
-        mediaListPanel.removeAll();
-        MediaController.sortLowMediaPrice(list);
-        mediaList media = new mediaList(list);
-        mediaListPanel.setLayout(new BorderLayout());
-        mediaListPanel.add(media, BorderLayout.CENTER);
-        mediaListPanel.updateUI();
+//        mediaListPanel.removeAll();
+//        MediaController.sortLowMediaPrice(list);
+//        mediaList media = new mediaList(list);
+//        mediaListPanel.setLayout(new BorderLayout());
+//        mediaListPanel.add(media, BorderLayout.CENTER);
+//        mediaListPanel.updateUI();
     }//GEN-LAST:event_lowActionPerformed
 
     private void SauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauActionPerformed
         // TODO add your handling code here:
-         ArrayList<Media> list_tmp = new ArrayList<Media>();
-         mediaListPanel.removeAll();
-         //list.removeAll(list);
-         SearchController.SearchNext(list_tmp, searchStr, status, page);
-         if(list_tmp.size() != 0)
-         {  
-             list.removeAll(list);
-             for(int i = 0 ; i < list_tmp.size(); i++)
-             {
-                 list.add(list_tmp.get(i));
-             }
-            page +=1;
-            mediaList media = new mediaList(list);
-            mediaListPanel.setLayout(new BorderLayout());
-            mediaListPanel.add(media, BorderLayout.CENTER);
-            mediaListPanel.updateUI();
-         }
-         else
-               JOptionPane.showMessageDialog(null, "Không còn sản phẩm", "Error", JOptionPane.ERROR_MESSAGE);
+//         ArrayList<Media> list_tmp = new ArrayList<Media>();
+//         mediaListPanel.removeAll();
+//         //list.removeAll(list);
+//         SearchController.SearchNext(list_tmp, searchStr, status, page);
+//         if(list_tmp.size() != 0)
+//         {  
+//             list.removeAll(list);
+//             for(int i = 0 ; i < list_tmp.size(); i++)
+//             {
+//                 list.add(list_tmp.get(i));
+//             }
+//            page +=1;
+//            mediaList media = new mediaList(list);
+//            mediaListPanel.setLayout(new BorderLayout());
+//            mediaListPanel.add(media, BorderLayout.CENTER);
+//            mediaListPanel.updateUI();
+//         }
+//         else
+//               JOptionPane.showMessageDialog(null, "Không còn sản phẩm", "Error", JOptionPane.ERROR_MESSAGE);
         
     }//GEN-LAST:event_SauActionPerformed
 
     private void truocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_truocActionPerformed
         // TODO add your handling code here:
-        if(page != 1)
-        {
-         ArrayList<Media> list_tmp = new ArrayList<Media>();
-         mediaListPanel.removeAll();
-         SearchController.SearchPrevious(list_tmp, searchStr, status, page);    
-         if(list.size() != 0)
-         {
-            list.removeAll(list);
-             for(int i = 0 ; i < list_tmp.size(); i++)
-             {
-                 list.add(list_tmp.get(i));
-             } 
-            page -=1;
-            mediaList media = new mediaList(list);
-            mediaListPanel.setLayout(new BorderLayout());
-            mediaListPanel.add(media, BorderLayout.CENTER);
-            mediaListPanel.updateUI();
-         }
-         else
-               JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else
-            JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
-         
+//        if(page != 1)
+//        {
+//         ArrayList<Media> list_tmp = new ArrayList<Media>();
+//         mediaListPanel.removeAll();
+//         SearchController.SearchPrevious(list_tmp, searchStr, status, page);    
+//         if(list.size() != 0)
+//         {
+//            list.removeAll(list);
+//             for(int i = 0 ; i < list_tmp.size(); i++)
+//             {
+//                 list.add(list_tmp.get(i));
+//             } 
+//            page -=1;
+//            mediaList media = new mediaList(list);
+//            mediaListPanel.setLayout(new BorderLayout());
+//            mediaListPanel.add(media, BorderLayout.CENTER);
+//            mediaListPanel.updateUI();
+//         }
+//         else
+//               JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+//        else
+//            JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+//         
     }//GEN-LAST:event_truocActionPerformed
 
 
