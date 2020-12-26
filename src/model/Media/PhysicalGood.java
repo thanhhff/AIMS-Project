@@ -130,8 +130,8 @@ public abstract class PhysicalGood extends Media {
     protected void updatePhysical() {
         this.updateMedia();
         String physical_query = "UPDATE `Physicalgoods` SET description = '" + getDescription() + "', quantity = " + getQuantity() + ", input_day = '" + 
-                getInputDay() + "', width = " + getWidth() + ", height = " + getHeight() + ", depth = " + getDepth() + ", weigth = " + getWeight() 
-                + ", barcode = '" + getBarcode() + " WHERE media_id = " + this.getId();
+                getInputDay() + "', width = " + getWidth() + ", height = " + getHeight() + ", depth = " + getDepth() + ", weight = " + getWeight() 
+                + ", barcode = '" + getBarcode() + "' WHERE media_id = " + this.getId();
         try {
             ConnectSQL.sqlQueryUpdate(physical_query);
         } catch (Exception e) {

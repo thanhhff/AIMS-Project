@@ -6,6 +6,8 @@
 package views.mediaAdmin;
 
 import aims.FormatNumber;
+import controller.Media.MediaController;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Media.Media;
 import model.Media.*;
@@ -25,7 +27,8 @@ public class MediaItemPanel extends javax.swing.JPanel {
 
     public MediaItemPanel(Media md) {
         setSize(WIDTH, HEIGHT);
-        this.media = md;
+        media = md;
+        media.setId(md.getId());
         initComponents();
         mediaTitle.setText(media.getTitle());
         int category_index = media.getCategoryId() - 1;
@@ -213,34 +216,11 @@ public class MediaItemPanel extends javax.swing.JPanel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         int category_id = media.getCategoryId();
-        MediaAddFrame media_frame;
-        
-        switch (category_id) {
-            case 1:
-                Book book = (Book) media;
-                media_frame = new MediaAddFrame(book, true);
-                
-                break;
-            case 2:
-                DVD dvd = (DVD) media;
-                media_frame = new MediaAddFrame(dvd, true);
-                
-                break;
-            case 3:
-                CD cd = (CD) media;
-                media_frame = new MediaAddFrame(cd, true);
-                break;
-            case 4:
-                LP lp = (LP) media;
-                media_frame = new MediaAddFrame(lp, true);
-                break;
-            default:
-                Book new_book = (Book) media;
-                media_frame = new MediaAddFrame(new_book, true);
+        int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
+        if (isDelete == 0) {
+            MediaController.deleteMedia(media.getId());
         }
-        media_frame.setLocationRelativeTo(null);
-//        media_frame.setModal(true);
-        media_frame.setVisible(true);
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed

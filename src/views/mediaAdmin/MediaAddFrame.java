@@ -35,6 +35,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         initComponents();
         if (isEdit) {
             big_label.setText("Edit Media");
+            categories.setEnabled(false);
         } else {
             big_label.setText("View Media");
             media_name.setEditable(false);
@@ -46,8 +47,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
             confirmButton.setVisible(false);
         }
         
-        this.media = md;
-        this.media.setId(md.getId());
+        media = md;
+        media.setId(md.getId());
         media_name.setText(md.getTitle());
         media_value.setText(md.getValue() + "");
         media_price.setText(md.getPrice() + "");
@@ -1040,10 +1041,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String genre = book_genre.getText();
                         int book_id = Media.getMaxID() + 1;
                         String image_path = String.valueOf(book_id) + ".png";
-//                        Book book = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
                         media = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
-                        
-//                        MediaController.insert(book);
                         
                         break;
                     case 2:
@@ -1056,9 +1054,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String subtitle = dvd_subtitle.getText();
                         int dvd_id = Media.getMaxID() + 1;
                         String dvd_image_path = String.valueOf(dvd_id) + ".png";
-//                        DVD dvd = new DVD(title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
                         media = new DVD(title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
-//                        MediaController.insert(dvd);
                         break;
                     case 3:
                         String artist = artist_name.getText();
@@ -1068,10 +1064,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String track_list = tracks_list.getText();
                         int cd_id = Media.getMaxID() + 1;
                         String cd_image_path = String.valueOf(cd_id) + ".png";
-//                        CD cd = new CD(title, value, price, 0, category_id, cd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
                         media = new CD(title, value, price, 0, category_id, cd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
-                      
-//                        MediaController.insert(cd);
                         
                         break;
                     case 4:
@@ -1082,10 +1075,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String lp_tracks = lp_tracks_list.getText();
                         int lp_id = Media.getMaxID() + 1;
                         String lp_image_path = String.valueOf(lp_id) + ".png";
-//                        LP lp = new LP(title, value, price, 0, category_id, lp_image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
                         media = new LP(title, value, price, 0, category_id, lp_image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
-
-//                        MediaController.insert(lp);
                         break;
                 }
                 if (flag) {
