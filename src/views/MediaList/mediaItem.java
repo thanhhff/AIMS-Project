@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Cart.CartItem;
 import model.Media.Media;
+import model.Media.MediaItem;
+import model.Media.PhysicalGood;
 
 /**
  *
@@ -19,11 +21,11 @@ import model.Media.Media;
  */
 public class mediaItem extends javax.swing.JPanel {
 //    Media media = new Media() {};
-    Media media;
+    MediaItem media;
 //    /**
 //     * Creates new form mediaItem
 //     */
-    public mediaItem(Media media) {
+    public mediaItem(MediaItem media) {
         this.media = media;
         initComponents();
         jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N

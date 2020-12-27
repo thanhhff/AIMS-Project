@@ -49,7 +49,7 @@ public abstract class PhysicalGood extends Media {
         this.depth = depth;
         this.weight = weight;
     }
-
+ 
 
     public String getBarcode() {
         return barcode;

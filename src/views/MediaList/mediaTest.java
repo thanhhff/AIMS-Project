@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.Media.Media;
+import model.Media.MediaItem;
+import model.Media.PhysicalGood;
 
 /**
  *
@@ -30,7 +32,12 @@ public class mediaTest {
         jFrame.setVisible(true);
     }
      public static void main(String[] args) {
-
+       MediaItem media = new MediaItem() {};
+       media.setCategory(0);
+       media.setPrice(15000);
+       media.setTitle("conan");
+       media.setId(3);
+       
        mediaListPanel mediaItem = new  mediaListPanel();  
        mediaTest test = new mediaTest(mediaItem);
     }

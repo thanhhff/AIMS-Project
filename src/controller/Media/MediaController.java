@@ -38,13 +38,13 @@ public class MediaController {
         return Media.getAllMedia();
     }
 
-     public static ArrayList<Media> sortLowMediaPrice(ArrayList<Media> list)
+     public static ArrayList<MediaItem> sortLowMediaPrice(ArrayList<MediaItem> list)
      {
        ArrayList<Integer> indexes = new ArrayList<Integer>();
        for (int i = 0; i < list.size(); i++) {
            indexes.add(i);
        }
-       ArrayList<Media> results = new ArrayList<Media>();
+       ArrayList<MediaItem> results = new ArrayList<MediaItem>();
        for (int i = 0; i < list.size()-1; i++) {
            for (int j = i+1; j < list.size(); j++) {
                if (list.get(j).getPrice() < list.get(i).getPrice()) {
@@ -61,13 +61,13 @@ public class MediaController {
        
        return results;
      }
-      public static ArrayList<Media> sortHighMediaPrice(ArrayList<Media> list)
+      public static ArrayList<MediaItem> sortHighMediaPrice(ArrayList<MediaItem> list)
      {
        ArrayList<Integer> indexes = new ArrayList<Integer>();
        for (int i = 0; i < list.size(); i++) {
            indexes.add(i);
        }
-       ArrayList<Media> results = new ArrayList<Media>();
+       ArrayList<MediaItem> results = new ArrayList<MediaItem>();
        for (int i = 0; i < list.size()-1; i++) {
            for (int j = i+1; j < list.size(); j++) {
                if (list.get(j).getPrice() > list.get(i).getPrice()) {

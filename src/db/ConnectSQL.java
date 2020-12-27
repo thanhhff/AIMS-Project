@@ -10,11 +10,7 @@ import javax.swing.JOptionPane;
 public class ConnectSQL {
 
     private static Connection conn = null;
-<<<<<<< HEAD
     private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_db?autoReconnect=true&useSSL=false";
-=======
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_test?autoReconnect=true&useSSL=false";
->>>>>>> 94c06ed1744023e6adca7db2f94bd706d068b641
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     private static Statement st = null;

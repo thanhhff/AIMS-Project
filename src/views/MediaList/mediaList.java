@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import model.Media.Media;
+import model.Media.MediaItem;
 
 /**
  *
@@ -20,7 +21,7 @@ import model.Media.Media;
  */
 public class mediaList extends JPanel{
        JPanel mediaListPanel;
-      public  mediaList(ArrayList<Media> listMedia) {
+      public  mediaList(ArrayList<MediaItem> listMedia) {
          setLayout(new GridLayout(0,1));
          setSize(1000,600);
        //  mediaListPanel.setSize(840, 590);

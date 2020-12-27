@@ -2,17 +2,10 @@
 -- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
 -- M�y ch?: localhost:3306
--- Th?i gian ?� t?o: Th12 27, 2020 l�c 08:47 PM
+-- Th?i gian ?� t?o: Th12 27, 2020 l�c 10:12 PM
 -- Phi�n b?n m�y ph?c v?: 8.0.22-0ubuntu0.20.04.3
 -- Phi�n b?n PHP: 7.4.3
-=======
--- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 27, 2020 lúc 10:12 PM
--- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
--- Phiên bản PHP: 7.4.3
->>>>>>> 94c06ed1744023e6adca7db2f94bd706d068b641
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -1015,13 +1008,6 @@ CREATE TABLE `Medias` (
 --
 
 INSERT INTO `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`, `sale_percent`) VALUES
-<<<<<<< HEAD
-(1, 'Conan t?p 93', 15000, 17000, 1, NULL, 0),
-(2, 'Conan t?p 94', 15000, 17000, 1, NULL, 0),
-(3, 'Conan t?p 95', 15000, 17000, 1, NULL, 0),
-(4, 'MLCB', 25000, 30000, 1, NULL, 0),
-=======
->>>>>>> 94c06ed1744023e6adca7db2f94bd706d068b641
 (5, 'Programming in Python', 20000, 30000, 1, 'images/', 0),
 (6, 'Programming in Java', 30000, 30000, 1, 'images/', 0),
 (7, 'Programming in C#', 20000, 20000, 2, 'images/', 0),
@@ -1075,9 +1061,9 @@ CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
   `ship_fee` int NOT NULL,
   `order_state_id` int NOT NULL DEFAULT '3',
-  `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `shipping_info` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
-  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+  `card_number` varchar(45)  DEFAULT NULL
 ) ;
 
 --
@@ -1128,7 +1114,7 @@ CREATE TABLE `PhysicalGoods` (
 ) ;
 
 --
--- Đang đổ dữ liệu cho bảng `PhysicalGoods`
+-- ?ang ?? d? li?u cho b?ng `PhysicalGoods`
 --
 
 INSERT INTO `PhysicalGoods` (`barcode`, `description`, `quantity`, `width`, `height`, `depth`, `size`, `input_day`, `media_id`, `weight`) VALUES
@@ -1242,7 +1228,7 @@ CREATE TABLE `ShippingInfos` (
   `shipping_info_id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `delivery_instruction` varchar(45)  DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
 ) ;

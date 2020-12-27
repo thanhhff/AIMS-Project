@@ -12,13 +12,14 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Media.Media;
+import model.Media.MediaItem;
 
 /**
  *
  * @author User
  */
 public class mediaListPanel extends javax.swing.JPanel {
-     private ArrayList<Media> list = new ArrayList<Media>();
+     private ArrayList<MediaItem> list = new ArrayList<MediaItem>();
      private int status;  // 1 random, 2 search, 3 book, 4 cd, 5 dvd, 6 lp
      private int page; // so thu tu trang
      private String searchStr = null;
@@ -306,7 +307,7 @@ public class mediaListPanel extends javax.swing.JPanel {
 
     private void SauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SauActionPerformed
         // TODO add your handling code here:
-         ArrayList<Media> list_tmp = new ArrayList<Media>();
+         ArrayList<MediaItem> list_tmp = new ArrayList<MediaItem>();
          mediaListPanel.removeAll();
          //list.removeAll(list);
          SearchController.SearchNext(list_tmp, searchStr, status, page);
@@ -332,7 +333,7 @@ public class mediaListPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(page != 1)
         {
-         ArrayList<Media> list_tmp = new ArrayList<Media>();
+         ArrayList<MediaItem> list_tmp = new ArrayList<MediaItem>();
          mediaListPanel.removeAll();
          SearchController.SearchPrevious(list_tmp, searchStr, status, page);    
          if(list.size() != 0)
