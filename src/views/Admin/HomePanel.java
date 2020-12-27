@@ -29,6 +29,17 @@ public class HomePanel extends javax.swing.JPanel {
      */
     public HomePanel() {
         initComponents();
+        fill();
+    }
+    
+    public void fill()
+    {
+        FillInfor.removeAll();
+        ArrayList<Media> medias = Media.getAllMedia();
+        MediaPanel mediaPanel = new MediaPanel(medias);
+        FillInfor.setLayout(new BorderLayout());
+        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+        FillInfor.updateUI();
     }
 
     /**
@@ -41,43 +52,43 @@ public class HomePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         Sidebar = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        SaleButton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonProduct = new javax.swing.JButton();
+        jButtonSale = new javax.swing.JButton();
+        jButtonOrder = new javax.swing.JButton();
+        jButtonUser = new javax.swing.JButton();
         FillInfor = new javax.swing.JPanel();
 
         Sidebar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setText("Product");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProduct.setText("Product");
+        jButtonProduct.setToolTipText("");
+        jButtonProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonProductActionPerformed(evt);
             }
         });
 
-        SaleButton.setText("Sales");
-        SaleButton.setToolTipText("");
-        SaleButton.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSale.setText("Sales");
+        jButtonSale.setToolTipText("");
+        jButtonSale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaleButtonActionPerformed(evt);
+                jButtonSaleActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Order");
-        jButton3.setToolTipText("");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonOrder.setText("Order");
+        jButtonOrder.setToolTipText("");
+        jButtonOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonOrderActionPerformed(evt);
             }
         });
 
-        jButton4.setText("User");
-        jButton4.setToolTipText("");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUser.setText("User");
+        jButtonUser.setToolTipText("");
+        jButtonUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonUserActionPerformed(evt);
             }
         });
 
@@ -88,23 +99,23 @@ public class HomePanel extends javax.swing.JPanel {
             .addGroup(SidebarLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSale, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         SidebarLayout.setVerticalGroup(
             SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SidebarLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(SaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSale, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(420, Short.MAX_VALUE))
         );
 
@@ -142,17 +153,12 @@ public class HomePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
         // TODO add your handling code here:
-        FillInfor.removeAll();
-        ArrayList<Media> medias = Media.getAllMedia();
-        MediaPanel mediaPanel = new MediaPanel(medias);
-        FillInfor.setLayout(new BorderLayout());
-        FillInfor.add(mediaPanel, BorderLayout.CENTER);
-        FillInfor.updateUI();
-    }//GEN-LAST:event_jButton1ActionPerformed
+       fill();
+    }//GEN-LAST:event_jButtonProductActionPerformed
 
-    private void SaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleButtonActionPerformed
+    private void jButtonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaleActionPerformed
         // TODO add your handling code here:
         FillInfor.removeAll();
         
@@ -162,9 +168,9 @@ public class HomePanel extends javax.swing.JPanel {
         FillInfor.setLayout(new BorderLayout());
         FillInfor.add(salePanel, BorderLayout.CENTER);
         FillInfor.updateUI();
-    }//GEN-LAST:event_SaleButtonActionPerformed
+    }//GEN-LAST:event_jButtonSaleActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
         // TODO add your handling code here:
         
         User user = new User(account.getId());
@@ -177,9 +183,9 @@ public class HomePanel extends javax.swing.JPanel {
         FillInfor.add(orderList, BorderLayout.CENTER);
         FillInfor.updateUI();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonOrderActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserActionPerformed
         // TODO add your handling code here:
 
         FillInfor.removeAll();
@@ -188,15 +194,15 @@ public class HomePanel extends javax.swing.JPanel {
         FillInfor.setLayout(new BorderLayout());
         FillInfor.add(user, BorderLayout.CENTER);
         FillInfor.updateUI();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonUserActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FillInfor;
-    private javax.swing.JButton SaleButton;
     private javax.swing.JPanel Sidebar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonOrder;
+    private javax.swing.JButton jButtonProduct;
+    private javax.swing.JButton jButtonSale;
+    private javax.swing.JButton jButtonUser;
     // End of variables declaration//GEN-END:variables
 }
