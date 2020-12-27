@@ -120,7 +120,13 @@ public class Order {
             List<OrderItem> orderItems = new ArrayList<OrderItem>();
             ResultSet rs = ConnectSQL.sqlQuery("select * from OrderItems where order_id = " + order_id);
             while(rs.next()){
-                int media_id = Integer.parseInt(rs.getString("media_id"));
+                int media_id;
+                if(rs.getString("media_id") == null){
+                    media_id = -1;
+                }else{
+                    media_id = Integer.parseInt(rs.getString("media_id"));
+                }
+                 
                 int price = Integer.parseInt(rs.getString("price"));
                 int quantity = Integer.parseInt(rs.getString("quantity"));
                 OrderItem orderItem = new OrderItem(media_id, order_id, price, quantity);
