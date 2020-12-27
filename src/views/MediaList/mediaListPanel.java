@@ -333,7 +333,7 @@ public class mediaListPanel extends javax.swing.JPanel {
             mediaListPanel.updateUI();
          }
          else
-               JOptionPane.showMessageDialog(null, "Không còn sản phẩm", "Error", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "No more products", "Error", JOptionPane.ERROR_MESSAGE);
         
     }//GEN-LAST:event_SauActionPerformed
 
@@ -358,10 +358,10 @@ public class mediaListPanel extends javax.swing.JPanel {
             mediaListPanel.updateUI();
          }
          else
-               JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "You are on the first page", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else
-            JOptionPane.showMessageDialog(null, "Bạn đang ở trang đầu tiên", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You are on the first page", "Error", JOptionPane.ERROR_MESSAGE);
          
     }//GEN-LAST:event_truocActionPerformed
 
