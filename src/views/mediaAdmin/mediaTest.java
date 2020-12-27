@@ -33,6 +33,5 @@ public class mediaTest {
     public static void main(String[] args) { 
         ArrayList<Media> medias = Media.getAllMedia();
         new mediaTest(new MediaPanel(medias));
-//        new Test(new MediaSalePanel(medias));
     }
 }

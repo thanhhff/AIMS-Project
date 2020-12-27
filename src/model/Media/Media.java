@@ -214,7 +214,7 @@ public abstract class Media {
     public static ArrayList<Media> getAllMedia() {
         ArrayList<Media> medias = new ArrayList<Media>();
         
-        String query = "SELECT * FROM `Medias`, `PhysicalGoods` WHERE `Medias`.`media_id` = `Physicalgoods`.`media_id`;";
+        String query = "SELECT * FROM `Medias`, `PhysicalGoods` WHERE `Medias`.`media_id` = `PhysicalGoods`.`media_id`;";
         try {
             ResultSet rs = ConnectSQL.sqlQuery(query);
             while (rs.next()) {
