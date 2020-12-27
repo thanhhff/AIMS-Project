@@ -7,8 +7,11 @@ package views.Admin;
 
 import static aims.AIMS.account;
 import java.awt.BorderLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Media.Media;
 import model.User.User;
+import views.Admin.Sales.MediaSalePanel;
 import views.Admin.User.UserPanel;
 import views.order.OrderList;
 
@@ -36,7 +39,7 @@ public class HomePanel extends javax.swing.JPanel {
 
         Sidebar = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        SaleButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         FillInfor = new javax.swing.JPanel();
@@ -51,11 +54,11 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Sales");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        SaleButton.setText("Sales");
+        SaleButton.setToolTipText("");
+        SaleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                SaleButtonActionPerformed(evt);
             }
         });
 
@@ -84,7 +87,7 @@ public class HomePanel extends javax.swing.JPanel {
                 .addGroup(SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -94,7 +97,7 @@ public class HomePanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SaleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -140,9 +143,17 @@ public class HomePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void SaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        FillInfor.removeAll();
+        
+        List<Media> medias = Media.getAllMedia();
+        MediaSalePanel salePanel = new MediaSalePanel(medias);
+        
+        FillInfor.setLayout(new BorderLayout());
+        FillInfor.add(salePanel, BorderLayout.CENTER);
+        FillInfor.updateUI();
+    }//GEN-LAST:event_SaleButtonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -173,9 +184,9 @@ public class HomePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FillInfor;
+    private javax.swing.JButton SaleButton;
     private javax.swing.JPanel Sidebar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
