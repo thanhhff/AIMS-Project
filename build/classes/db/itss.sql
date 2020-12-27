@@ -12819,5 +12819,9 @@ insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 
 
 
-INSERT INTO `DvdTypes` values (1, 'Blu-ray');
-INSERT INTO `DvdTypes` values (2, 'HD-DVD');
+INSERT INTO `DVDTypes` values (1, 'Blu-ray');
+INSERT INTO `DVDTypes` values (2, 'HD-DVD');
+
+INSERT INTO `Languages` values (1, 'Vietnames');
+INSERT INTO `Languages` values (2, 'English');
+INSERT INTO `Languages` values (3, 'Japanese');
