@@ -12774,9 +12774,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-insert into `Covertypes` values (1, 'Paperback');
+insert into `CoverTypes` values (1, 'Paperback');
 
-insert into `Covertypes` values (2, 'Hardcover');
+insert into `CoverTypes` values (2, 'Hardcover');
 
 insert into `Medias` values (4, 'MLCB', 25000, 30000, 1, NULL);
 insert into `Medias` values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
