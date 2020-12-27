@@ -3,8 +3,6 @@ package model.Cart;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -63,6 +61,17 @@ public class Ward {
             return null;
         } catch (SQLException ex) {
             return null;
+        }
+    }
+    public int getDistrictID() {
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("select * from Wards join Districts using (district_id) where ward_id = " + ward_id);
+            while (rs.next()) {
+                return Integer.parseInt(rs.getString("district_id"));
+            }
+            return -1;
+        } catch (SQLException ex) {
+            return -1;
         }
     }
     public String getProvince(){

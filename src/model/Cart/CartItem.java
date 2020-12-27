@@ -8,8 +8,7 @@ package model.Cart;
 import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Media.Media;
-import model.User.User;
+import java.util.List;
 
 /**
  *
@@ -21,6 +20,20 @@ public class CartItem {
     private int price;
     private int user_id;
     
+    public static int getShipFee(List<CartItem> cartItems,int district_id){
+        
+        int totalBill = 0;
+        totalBill = cartItems.stream().map((cartItem) -> cartItem.getPrice() * cartItem.getQuantity()).reduce(totalBill, Integer::sum);
+        if(totalBill >= 100000){
+            return 0;
+        }
+        if(ShippingInfo.checkShip(district_id)){
+            
+        }else{
+            
+        }
+        return 10000;
+    }
     public CartItem(int media_id,int quantily, int price,int user_id) {
         this.media_id = media_id;
         this.price = price;
@@ -30,7 +43,7 @@ public class CartItem {
     public int getMedia_id() {
         return media_id;
     }
-
+    
     public int getUser_id() {
         return user_id;
     }
