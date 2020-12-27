@@ -12800,6 +12800,15 @@ insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`,
 insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
 insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
 
+
+
+INSERT INTO `DVDTypes` values (1, 'Blu-ray');
+INSERT INTO `DVDTypes` values (2, 'HD-DVD');
+
+INSERT INTO `Languages` values (1, 'Vietnames');
+INSERT INTO `Languages` values (2, 'English');
+INSERT INTO `Languages` values (3, 'Japanese');
+
 INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
 INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
 
@@ -12814,10 +12823,3 @@ insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
 
-
-INSERT INTO `DVDTypes` values (1, 'Blu-ray');
-INSERT INTO `DVDTypes` values (2, 'HD-DVD');
-
-INSERT INTO `Languages` values (1, 'Vietnames');
-INSERT INTO `Languages` values (2, 'English');
-INSERT INTO `Languages` values (3, 'Japanese');
