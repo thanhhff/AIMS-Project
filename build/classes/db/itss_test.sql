@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -43,7 +43,7 @@ CREATE TABLE `Addresses` (
   `address_id` int NOT NULL,
   `note` varchar(45) NOT NULL,
   `ward_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `Books` (
   `language_id` int NOT NULL,
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Books`
@@ -81,7 +81,7 @@ CREATE TABLE `CartItems` (
   `price` int NOT NULL,
   `quantity` int NOT NULL,
   `user_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE `Categories` (
   `category_id` int NOT NULL,
   `category_name` varchar(45) NOT NULL,
   `is_physical_good?` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Categories`
@@ -119,7 +119,7 @@ CREATE TABLE `CDs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `CDs`
@@ -138,7 +138,7 @@ INSERT INTO `CDs` (`publication_date`, `media_id`, `record_label_name`, `artist_
 CREATE TABLE `CoverTypes` (
   `cover_type_id` int NOT NULL,
   `cover_type_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `CoverTypes`
@@ -158,7 +158,7 @@ CREATE TABLE `Districts` (
   `district_id` int NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `province_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Districts`
@@ -891,7 +891,7 @@ CREATE TABLE `DVDs` (
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
   `writer_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDs`
@@ -910,7 +910,7 @@ INSERT INTO `DVDs` (`publication_date`, `runtime`, `subtitle`, `media_id`, `lang
 CREATE TABLE `DVDTypes` (
   `dvd_type_id` int NOT NULL,
   `dvd_type_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDTypes`
@@ -929,7 +929,7 @@ INSERT INTO `DVDTypes` (`dvd_type_id`, `dvd_type_name`) VALUES
 CREATE TABLE `EGoods` (
   `media_id` bigint NOT NULL,
   `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -943,7 +943,7 @@ CREATE TABLE `HistoryActions` (
   `note` varchar(45) DEFAULT NULL,
   `user_id` int NOT NULL,
   `media_id` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -954,7 +954,7 @@ CREATE TABLE `HistoryActions` (
 CREATE TABLE `Languages` (
   `language_id` int NOT NULL,
   `language_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Languages`
@@ -978,7 +978,7 @@ CREATE TABLE `LPs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `LPs`
@@ -1001,7 +1001,7 @@ CREATE TABLE `Medias` (
   `category_id` int NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `sale_percent` int DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Medias`
@@ -1027,7 +1027,7 @@ CREATE TABLE `MediaSales` (
   `media_id` bigint NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `percent` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -1040,7 +1040,7 @@ CREATE TABLE `OrderItems` (
   `order_id` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderItems`
@@ -1064,7 +1064,7 @@ CREATE TABLE `Orders` (
   `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int DEFAULT NULL,
   `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Orders`
@@ -1083,7 +1083,7 @@ INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`,
 CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderState`
@@ -1111,7 +1111,7 @@ CREATE TABLE `PhysicalGoods` (
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `PhysicalGoods`
@@ -1135,7 +1135,7 @@ INSERT INTO `PhysicalGoods` (`barcode`, `description`, `quantity`, `width`, `hei
 CREATE TABLE `Provinces` (
   `province_id` int NOT NULL,
   `province_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Provinces`
@@ -1216,7 +1216,7 @@ CREATE TABLE `Sales` (
   `sale_id` int NOT NULL,
   `start_day` timestamp NOT NULL,
   `end_day` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -1231,7 +1231,7 @@ CREATE TABLE `ShippingInfos` (
   `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `ShippingInfos`
@@ -1251,7 +1251,7 @@ INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_inst
 CREATE TABLE `TrackLists` (
   `track_id` int NOT NULL,
   `media_id` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -1262,7 +1262,7 @@ CREATE TABLE `TrackLists` (
 CREATE TABLE `Tracks` (
   `track_id` int NOT NULL,
   `track_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -1275,7 +1275,7 @@ CREATE TABLE `Users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Users`
@@ -1295,7 +1295,7 @@ CREATE TABLE `Wards` (
   `ward_id` int NOT NULL,
   `ward_name` varchar(45) NOT NULL,
   `district_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Đang đổ dữ liệu cho bảng `Wards`
