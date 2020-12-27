@@ -53,10 +53,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButton4" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                      <Component id="SaleButton" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jButtonUser" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jButtonOrder" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jButtonSale" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jButtonProduct" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
@@ -66,53 +66,53 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jButtonProduct" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="SaleButton" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jButtonSale" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jButtonOrder" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jButtonUser" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace pref="420" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonProduct">
           <Properties>
             <Property name="text" type="java.lang.String" value="Product"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonProductActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="SaleButton">
+        <Component class="javax.swing.JButton" name="jButtonSale">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sales"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaleButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaleActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="jButtonOrder">
           <Properties>
             <Property name="text" type="java.lang.String" value="Order"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOrderActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="jButtonUser">
           <Properties>
             <Property name="text" type="java.lang.String" value="User"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUserActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
