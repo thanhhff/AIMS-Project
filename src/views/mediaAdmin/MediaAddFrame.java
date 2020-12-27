@@ -528,6 +528,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         backButton.setText("Back to Home");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout add_panelLayout = new javax.swing.GroupLayout(add_panel);
         add_panel.setLayout(add_panelLayout);
@@ -1100,6 +1105,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_confirmButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
