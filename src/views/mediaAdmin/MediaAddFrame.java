@@ -1276,11 +1276,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
     }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-         setVisible(false);
-=======
+
         this.dispose();
->>>>>>> 5c71ae104ec33c3cf76c999d236f4b56193fd7ac
+
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
