@@ -2,10 +2,17 @@
 -- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- M�y ch?: localhost:3306
 -- Th?i gian ?� t?o: Th12 27, 2020 l�c 08:47 PM
 -- Phi�n b?n m�y ph?c v?: 8.0.22-0ubuntu0.20.04.3
 -- Phi�n b?n PHP: 7.4.3
+=======
+-- Máy chủ: localhost:3306
+-- Thời gian đã tạo: Th12 27, 2020 lúc 10:12 PM
+-- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
+-- Phiên bản PHP: 7.4.3
+>>>>>>> 94c06ed1744023e6adca7db2f94bd706d068b641
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +38,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -43,7 +50,7 @@ CREATE TABLE `Addresses` (
   `address_id` int NOT NULL,
   `note` varchar(45) NOT NULL,
   `ward_id` int NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -60,14 +67,13 @@ CREATE TABLE `Books` (
   `language_id` int NOT NULL,
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Books`
 --
 
 INSERT INTO `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) VALUES
-('2018-10-09 17:00:00', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science'),
 ('2018-12-19 17:00:00', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming'),
 ('2018-12-19 17:00:00', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
@@ -82,7 +88,7 @@ CREATE TABLE `CartItems` (
   `price` int NOT NULL,
   `quantity` int NOT NULL,
   `user_id` int DEFAULT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -94,7 +100,7 @@ CREATE TABLE `Categories` (
   `category_id` int NOT NULL,
   `category_name` varchar(45) NOT NULL,
   `is_physical_good?` tinyint(1) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Categories`
@@ -120,7 +126,7 @@ CREATE TABLE `CDs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `CDs`
@@ -139,7 +145,7 @@ INSERT INTO `CDs` (`publication_date`, `media_id`, `record_label_name`, `artist_
 CREATE TABLE `CoverTypes` (
   `cover_type_id` int NOT NULL,
   `cover_type_name` varchar(45) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `CoverTypes`
@@ -159,7 +165,7 @@ CREATE TABLE `Districts` (
   `district_id` int NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `province_id` int NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Districts`
@@ -892,7 +898,7 @@ CREATE TABLE `DVDs` (
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
   `writer_name` varchar(255) DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `DVDs`
@@ -911,7 +917,7 @@ INSERT INTO `DVDs` (`publication_date`, `runtime`, `subtitle`, `media_id`, `lang
 CREATE TABLE `DVDTypes` (
   `dvd_type_id` int NOT NULL,
   `dvd_type_name` varchar(45) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `DVDTypes`
@@ -930,7 +936,7 @@ INSERT INTO `DVDTypes` (`dvd_type_id`, `dvd_type_name`) VALUES
 CREATE TABLE `EGoods` (
   `media_id` bigint NOT NULL,
   `content` text
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -944,7 +950,7 @@ CREATE TABLE `HistoryActions` (
   `note` varchar(45) DEFAULT NULL,
   `user_id` int NOT NULL,
   `media_id` bigint NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -955,7 +961,7 @@ CREATE TABLE `HistoryActions` (
 CREATE TABLE `Languages` (
   `language_id` int NOT NULL,
   `language_name` varchar(45) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Languages`
@@ -979,7 +985,7 @@ CREATE TABLE `LPs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `LPs`
@@ -1002,17 +1008,20 @@ CREATE TABLE `Medias` (
   `category_id` int NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `sale_percent` int DEFAULT '0'
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Medias`
 --
 
 INSERT INTO `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`, `sale_percent`) VALUES
+<<<<<<< HEAD
 (1, 'Conan t?p 93', 15000, 17000, 1, NULL, 0),
 (2, 'Conan t?p 94', 15000, 17000, 1, NULL, 0),
 (3, 'Conan t?p 95', 15000, 17000, 1, NULL, 0),
 (4, 'MLCB', 25000, 30000, 1, NULL, 0),
+=======
+>>>>>>> 94c06ed1744023e6adca7db2f94bd706d068b641
 (5, 'Programming in Python', 20000, 30000, 1, 'images/', 0),
 (6, 'Programming in Java', 30000, 30000, 1, 'images/', 0),
 (7, 'Programming in C#', 20000, 20000, 2, 'images/', 0),
@@ -1031,8 +1040,8 @@ CREATE TABLE `MediaSales` (
   `sale_id` int NOT NULL,
   `media_id` bigint NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
-  `percent` decimal(2,2) NOT NULL DEFAULT '0.00'
-);
+  `percent` int NOT NULL
+) ;
 
 -- --------------------------------------------------------
 
@@ -1045,16 +1054,16 @@ CREATE TABLE `OrderItems` (
   `order_id` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `OrderItems`
 --
 
 INSERT INTO `OrderItems` (`media_id`, `order_id`, `price`, `quantity`) VALUES
-(3, 1, 17000, 4),
-(1, 1, 17000, 3),
-(3, 3, 17000, 9);
+(NULL, 1, 17000, 4),
+(NULL, 1, 17000, 3),
+(NULL, 3, 17000, 9);
 
 -- --------------------------------------------------------
 
@@ -1069,7 +1078,7 @@ CREATE TABLE `Orders` (
   `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int DEFAULT NULL,
   `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Orders`
@@ -1088,7 +1097,7 @@ INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`,
 CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `OrderState`
@@ -1116,7 +1125,20 @@ CREATE TABLE `PhysicalGoods` (
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int DEFAULT NULL
-);
+) ;
+
+--
+-- Đang đổ dữ liệu cho bảng `PhysicalGoods`
+--
+
+INSERT INTO `PhysicalGoods` (`barcode`, `description`, `quantity`, `width`, `height`, `depth`, `size`, `input_day`, `media_id`, `weight`) VALUES
+('code', 'Book about programming.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 5, 200),
+('code1010', 'Book about programming in java.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 6, 200),
+('code1010', 'Book about programming in C#.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 7, 200),
+('code1010', 'Book about programming in C.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 8, 200),
+('code1010', 'Book about programming in Rust.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 9, 200),
+('code1010', 'Book about programming in Go.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 10, 200),
+('code1010', 'Book about programming in Javascript.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 11, 200);
 
 -- --------------------------------------------------------
 
@@ -1127,7 +1149,7 @@ CREATE TABLE `PhysicalGoods` (
 CREATE TABLE `Provinces` (
   `province_id` int NOT NULL,
   `province_name` varchar(45) NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Provinces`
@@ -1208,7 +1230,7 @@ CREATE TABLE `Sales` (
   `sale_id` int NOT NULL,
   `start_day` timestamp NOT NULL,
   `end_day` timestamp NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -1223,7 +1245,7 @@ CREATE TABLE `ShippingInfos` (
   `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `ShippingInfos`
@@ -1243,7 +1265,7 @@ INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_inst
 CREATE TABLE `TrackLists` (
   `track_id` int NOT NULL,
   `media_id` bigint NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -1254,7 +1276,7 @@ CREATE TABLE `TrackLists` (
 CREATE TABLE `Tracks` (
   `track_id` int NOT NULL,
   `track_name` varchar(45) NOT NULL
-);
+) ;
 
 -- --------------------------------------------------------
 
@@ -1267,7 +1289,7 @@ CREATE TABLE `Users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Users`
@@ -1287,7 +1309,7 @@ CREATE TABLE `Wards` (
   `ward_id` int NOT NULL,
   `ward_name` varchar(45) NOT NULL,
   `district_id` int NOT NULL
-);
+) ;
 
 --
 -- ?ang ?? d? li?u cho b?ng `Wards`
@@ -12712,7 +12734,7 @@ ALTER TABLE `OrderState`
 -- AUTO_INCREMENT cho b?ng `Sales`
 --
 ALTER TABLE `Sales`
-  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho b?ng `ShippingInfos`
@@ -12807,8 +12829,8 @@ ALTER TABLE `Medias`
 -- C�c r�ng bu?c cho b?ng `MediaSales`
 --
 ALTER TABLE `MediaSales`
-  ADD CONSTRAINT `fk_MediaSales_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
-  ADD CONSTRAINT `fk_MediaSales_Sales1` FOREIGN KEY (`sale_id`) REFERENCES `Sales` (`sale_id`);
+  ADD CONSTRAINT `fk_MediaSales_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_MediaSales_Sales1` FOREIGN KEY (`sale_id`) REFERENCES `Sales` (`sale_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 --
 -- C�c r�ng bu?c cho b?ng `OrderItems`
