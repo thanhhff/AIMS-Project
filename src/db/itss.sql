@@ -109,7 +109,8 @@ CREATE TABLE `CDs` (
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
   `artist_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
+  `genre` varchar(255) DEFAULT NULL,
+  `track_list` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 
@@ -118,7 +119,8 @@ CREATE TABLE `LPs` (
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
   `artist_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
+  `genre` varchar(255) DEFAULT NULL,
+  `track_list` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 -- --------------------------------------------------------
 
@@ -12813,5 +12815,9 @@ insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 
 
 
-INSERT INTO `DvdTypes` values (1, 'Blu-ray');
-INSERT INTO `DvdTypes` values (2, 'HD-DVD');
+INSERT INTO `DVDTypes` values (1, 'Blu-ray');
+INSERT INTO `DVDTypes` values (2, 'HD-DVD');
+
+INSERT INTO `Languages` values (1, 'Vietnames');
+INSERT INTO `Languages` values (2, 'English');
+INSERT INTO `Languages` values (3, 'Japanese');
