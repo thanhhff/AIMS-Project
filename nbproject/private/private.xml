@@ -3,25 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/cart/test/Test.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/EditDvdPanel.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaList.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Book.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Media.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaAddFrame.java</file>
-            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/EditBookPanel.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaItemPanel.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/Media/MediaController.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/PhysicalGood.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/mediaTest.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaPanel.java</file>
-=======
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Media/Media.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/test/Test.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CheckOut.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSaleItemPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/DateService.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSalePanel.java</file>
->>>>>>> 7031c0e90c74015c3461aae55d15dc34019393ec
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/cart/DeliveryPanel.java</file>
         </group>
     </open-files>
 </project-private>
