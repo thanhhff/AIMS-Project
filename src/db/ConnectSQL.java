@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 public class ConnectSQL {
 
     private static Connection conn = null;
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_db?autoReconnect=true&useSSL=false";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_test?autoReconnect=true&useSSL=false";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "root";
     private static Statement st = null;
 
     public ConnectSQL() {
@@ -21,6 +21,7 @@ public class ConnectSQL {
             System.out.println("Kết nối SQL thành công !");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Lỗi ConnectSQL: kết nối tới SQL thất bại !");
+            System.exit(0);
         }
     }
 
@@ -31,6 +32,7 @@ public class ConnectSQL {
             return st.executeQuery(sql_query);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Lỗi sqlQuery: kết nối tới SQL thất bại !");
             System.exit(0);
         }
         return null;
@@ -42,6 +44,7 @@ public class ConnectSQL {
             conn.createStatement().executeUpdate(sql_query);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Lỗi sqlQueryUpdate: kết nối tới SQL thất bại !");
             System.exit(0);
         }
     }
@@ -52,7 +55,8 @@ public class ConnectSQL {
             st = conn.createStatement();
             return st.executeUpdate(sql_query);
         } catch (SQLException e) {
-            System.out.println("Error Update");
+            System.out.println("Lỗi sqlUpdate: kết nối tới SQL thất bại !");
+            System.exit(0);
         }
         return 0;
     }
