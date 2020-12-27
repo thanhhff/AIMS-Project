@@ -12798,13 +12798,13 @@ insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`,
 insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
 insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
 
-INSERT INTO `Dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
-INSERT INTO `Dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
+INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
+INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
 
-INSERT INTO `Cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
-INSERT INTO `Cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `CDs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `CDs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
 
-INSERT INTO `Lps`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `LPs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
 
 
 insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
