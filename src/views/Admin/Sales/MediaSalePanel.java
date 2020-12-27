@@ -160,28 +160,28 @@ public class MediaSalePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Media Saling");
         add(jLabel1);
-        jLabel1.setBounds(330, 12, 110, 21);
+        jLabel1.setBounds(309, 12, 170, 22);
 
         jLabel2.setText("Start date: ");
         add(jLabel2);
-        jLabel2.setBounds(40, 54, 76, 17);
+        jLabel2.setBounds(40, 54, 68, 16);
 
         jLabel3.setText("End date: ");
         add(jLabel3);
-        jLabel3.setBounds(309, 54, 69, 17);
+        jLabel3.setBounds(309, 54, 62, 16);
 
         jLabel4.setText("Sale off all: ");
         add(jLabel4);
-        jLabel4.setBounds(591, 54, 79, 17);
+        jLabel4.setBounds(591, 54, 74, 16);
 
         percentAll.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         percentAll.setText("0");
         add(percentAll);
-        percentAll.setBounds(682, 51, 41, 23);
+        percentAll.setBounds(682, 51, 41, 26);
 
         jLabel5.setText("%");
         add(jLabel5);
-        jLabel5.setBounds(735, 54, 13, 17);
+        jLabel5.setBounds(735, 54, 9, 16);
 
         submit.setText("Submit");
         submit.addActionListener(new java.awt.event.ActionListener() {
@@ -190,15 +190,15 @@ public class MediaSalePanel extends javax.swing.JPanel {
             }
         });
         add(submit);
-        submit.setBounds(230, 590, 90, 35);
+        submit.setBounds(230, 590, 90, 29);
 
         cancel.setText("Cancel");
         add(cancel);
-        cancel.setBounds(490, 590, 76, 35);
+        cancel.setBounds(490, 590, 86, 29);
         add(start_day);
         start_day.setBounds(120, 50, 180, 40);
         add(end_day);
-        end_day.setBounds(390, 50, 180, 37);
+        end_day.setBounds(390, 50, 180, 29);
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed

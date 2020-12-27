@@ -7,6 +7,7 @@ package views.Admin;
 
 import static aims.AIMS.account;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -179,7 +180,9 @@ public class HomePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Order empty");
         } else {
         OrderList orderList = new OrderList(user.getAllOrders());
-        FillInfor.setLayout(new BorderLayout());
+//        FillInfor.setLayout(new BorderLayout());
+        FillInfor.setLayout(null);
+ 
         FillInfor.add(orderList, BorderLayout.CENTER);
         FillInfor.updateUI();
         }
