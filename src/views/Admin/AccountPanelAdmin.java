@@ -68,6 +68,7 @@ public class AccountPanelAdmin extends javax.swing.JPanel {
             }
         });
 
+        ChangePassword.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
         ChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/change-password.png"))); // NOI18N
         ChangePassword.setText("Change Password");
         ChangePassword.addActionListener(new java.awt.event.ActionListener() {
