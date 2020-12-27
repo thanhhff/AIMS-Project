@@ -5,6 +5,7 @@
  */
 package views.mediaAdmin;
 
+import aims.FormatNumber;
 import controller.Media.*;
 import java.awt.Component;
 import model.Media.*;
@@ -1007,6 +1008,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day and barcode!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
+            
+            
             String title = media_name.getText();
             int value = Integer.parseInt(media_value.getText());
             int price = Integer.parseInt(media_price.getText());
@@ -1029,7 +1032,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Value and price must greater than 0!", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (price < min_price || price > max_price) {
                 JOptionPane.showMessageDialog(null, "Price must in the range of 30% and 150% of value!", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
+            } else if (weight == 0) {
+                JOptionPane.showMessageDialog(null, "Weight must be greater than 0");
+            } else if (width == 0 || height == 0 || depth == 0) {
+                JOptionPane.showMessageDialog(null, "Dimensions of product must be greater than 0");
+            } 
+            else {
                 switch (category_id) {
                     case 1:
                         String author = author_name.getText();
@@ -1079,9 +1087,14 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         break;
                 }
                 if (flag) {
-                    MediaController.insert(media);
+                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                    if (confirm == 0) {
+                        MediaController.insert(media);
+                    }
                 } else {
-                    MediaController.update(media);
+//                    MediaController.update(media);
+                      System.out.println(media.getId());
+                      System.out.println(media.getTitle());
                 }
             }
         }

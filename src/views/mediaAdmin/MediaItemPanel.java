@@ -209,7 +209,6 @@ public class MediaItemPanel extends javax.swing.JPanel {
                 media_frame = new MediaAddFrame(new_book, true);
         }
         media_frame.setLocationRelativeTo(null);
-//        media_frame.setModal(true);
         media_frame.setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
 
@@ -252,7 +251,6 @@ public class MediaItemPanel extends javax.swing.JPanel {
                 media_frame = new MediaAddFrame(new_book, false);
         }
         media_frame.setLocationRelativeTo(null);
-//        media_frame.setModal(true);
         media_frame.setVisible(true);
     }//GEN-LAST:event_showButtonActionPerformed
     private int getValueNumber(JTextField textField) {
