@@ -115,7 +115,8 @@ CREATE TABLE `CDs` (
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
   `artist_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
+  `genre` varchar(255) DEFAULT NULL,
+  `track_list` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 
@@ -124,7 +125,8 @@ CREATE TABLE `LPs` (
   `media_id` bigint NOT NULL,
   `record_label_name` varchar(255) DEFAULT NULL,
   `artist_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
+  `genre` varchar(255) DEFAULT NULL,
+  `track_list` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 -- --------------------------------------------------------
 
