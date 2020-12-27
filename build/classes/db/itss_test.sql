@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 19, 2020 lúc 11:21 AM
+-- Thời gian đã tạo: Th12 27, 2020 lúc 08:47 PM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `itss`
+-- Cơ sở dữ liệu: `itss_test`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -43,7 +43,7 @@ CREATE TABLE `Addresses` (
   `address_id` int NOT NULL,
   `note` varchar(45) NOT NULL,
   `ward_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,16 @@ CREATE TABLE `Books` (
   `language_id` int NOT NULL,
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `Books`
+--
+
+INSERT INTO `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) VALUES
+('2018-10-09 17:00:00', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science'),
+('2018-12-19 17:00:00', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming'),
+('2018-12-19 17:00:00', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
 -- --------------------------------------------------------
 
@@ -69,11 +78,11 @@ CREATE TABLE `Books` (
 --
 
 CREATE TABLE `CartItems` (
-  `media_id` bigint NOT NULL,
+  `media_id` bigint DEFAULT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL,
-  `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  `user_id` int DEFAULT NULL
+);
 
 -- --------------------------------------------------------
 
@@ -85,7 +94,7 @@ CREATE TABLE `Categories` (
   `category_id` int NOT NULL,
   `category_name` varchar(45) NOT NULL,
   `is_physical_good?` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Categories`
@@ -111,17 +120,16 @@ CREATE TABLE `CDs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
+--
+-- Đang đổ dữ liệu cho bảng `CDs`
+--
 
-CREATE TABLE `LPs` (
-  `publication_date` timestamp NULL DEFAULT NULL,
-  `media_id` bigint NOT NULL,
-  `record_label_name` varchar(255) DEFAULT NULL,
-  `artist_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL,
-  `track_list` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+INSERT INTO `CDs` (`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`, `track_list`) VALUES
+(NULL, 9, 'Bach khoa', 'Quang Anh', 'programming', NULL),
+(NULL, 10, 'Bach khoa', 'Quang Anh', 'programming', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -131,7 +139,15 @@ CREATE TABLE `LPs` (
 CREATE TABLE `CoverTypes` (
   `cover_type_id` int NOT NULL,
   `cover_type_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `CoverTypes`
+--
+
+INSERT INTO `CoverTypes` (`cover_type_id`, `cover_type_name`) VALUES
+(1, 'Paperback'),
+(2, 'Hardcover');
 
 -- --------------------------------------------------------
 
@@ -143,7 +159,7 @@ CREATE TABLE `Districts` (
   `district_id` int NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `province_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Districts`
@@ -876,7 +892,15 @@ CREATE TABLE `DVDs` (
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
   `writer_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `DVDs`
+--
+
+INSERT INTO `DVDs` (`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES
+(NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL),
+(NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -887,7 +911,15 @@ CREATE TABLE `DVDs` (
 CREATE TABLE `DVDTypes` (
   `dvd_type_id` int NOT NULL,
   `dvd_type_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `DVDTypes`
+--
+
+INSERT INTO `DVDTypes` (`dvd_type_id`, `dvd_type_name`) VALUES
+(1, 'Blu-ray'),
+(2, 'HD-DVD');
 
 -- --------------------------------------------------------
 
@@ -898,7 +930,7 @@ CREATE TABLE `DVDTypes` (
 CREATE TABLE `EGoods` (
   `media_id` bigint NOT NULL,
   `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -912,7 +944,7 @@ CREATE TABLE `HistoryActions` (
   `note` varchar(45) DEFAULT NULL,
   `user_id` int NOT NULL,
   `media_id` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -923,7 +955,38 @@ CREATE TABLE `HistoryActions` (
 CREATE TABLE `Languages` (
   `language_id` int NOT NULL,
   `language_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `Languages`
+--
+
+INSERT INTO `Languages` (`language_id`, `language_name`) VALUES
+(1, 'Vietnames'),
+(2, 'English'),
+(3, 'Japanese');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `LPs`
+--
+
+CREATE TABLE `LPs` (
+  `publication_date` timestamp NULL DEFAULT NULL,
+  `media_id` bigint NOT NULL,
+  `record_label_name` varchar(255) DEFAULT NULL,
+  `artist_name` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
+  `track_list` varchar(255) DEFAULT NULL
+);
+
+--
+-- Đang đổ dữ liệu cho bảng `LPs`
+--
+
+INSERT INTO `LPs` (`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`, `track_list`) VALUES
+(NULL, 11, 'Bach khoa', 'Quang Anh', 'programming', NULL);
 
 -- --------------------------------------------------------
 
@@ -937,18 +1000,26 @@ CREATE TABLE `Medias` (
   `value` int NOT NULL DEFAULT '0',
   `price` int NOT NULL DEFAULT '0',
   `category_id` int NOT NULL,
-  `image_path` varchar(255),
+  `image_path` varchar(255) DEFAULT NULL,
   `sale_percent` int DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Medias`
 --
 
-INSERT INTO `Medias` (`media_id`, `title`, `value`, `price`, `category_id`) VALUES
-(1, 'Conan tập 93', 15000, 17000, 1),
-(2, 'Conan tập 94', 15000, 17000, 1),
-(3, 'Conan tập 95', 15000, 17000, 1);
+INSERT INTO `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`, `sale_percent`) VALUES
+(1, 'Conan tập 93', 15000, 17000, 1, NULL, 0),
+(2, 'Conan tập 94', 15000, 17000, 1, NULL, 0),
+(3, 'Conan tập 95', 15000, 17000, 1, NULL, 0),
+(4, 'MLCB', 25000, 30000, 1, NULL, 0),
+(5, 'Programming in Python', 20000, 30000, 1, 'images/', 0),
+(6, 'Programming in Java', 30000, 30000, 1, 'images/', 0),
+(7, 'Programming in C#', 20000, 20000, 2, 'images/', 0),
+(8, 'Programming in C', 20000, 20000, 2, 'images/', 0),
+(9, 'Programming in Rust', 20000, 20000, 3, 'images/', 0),
+(10, 'Programming in Go', 20000, 20000, 3, 'images/', 0),
+(11, 'Programming in Javascript', 20000, 20000, 4, 'images/', 0);
 
 -- --------------------------------------------------------
 
@@ -961,7 +1032,7 @@ CREATE TABLE `MediaSales` (
   `media_id` bigint NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `percent` decimal(2,2) NOT NULL DEFAULT '0.00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -970,11 +1041,11 @@ CREATE TABLE `MediaSales` (
 --
 
 CREATE TABLE `OrderItems` (
-  `media_id` bigint NOT NULL,
+  `media_id` bigint DEFAULT NULL,
   `order_id` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderItems`
@@ -995,10 +1066,10 @@ CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
   `ship_fee` int NOT NULL,
   `order_state_id` int NOT NULL DEFAULT '3',
-  `shipping_info` varchar(255) CHARACTER SET utf8mb4  NOT NULL,
-  `user_id` int NOT NULL,
-  `card_number` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Orders`
@@ -1017,7 +1088,7 @@ INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`,
 CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderState`
@@ -1035,17 +1106,17 @@ INSERT INTO `OrderState` (`order_state_id`, `order_state_name`) VALUES
 --
 
 CREATE TABLE `PhysicalGoods` (
-  `barcode` int NOT NULL,
+  `barcode` varchar(45) NOT NULL,
   `description` text,
-  `quantity` int DEFAULT 0,
-  `width` int DEFAULT 0,
-  `height` int DEFAULT 0,
-  `depth` int DEFAULT 0,
-  `size` varchar(45) DEFAULT 0,
+  `quantity` int DEFAULT '0',
+  `width` int DEFAULT '0',
+  `height` int DEFAULT '0',
+  `depth` int DEFAULT '0',
+  `size` varchar(45) DEFAULT '0',
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
-  `weight` int
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  `weight` int DEFAULT NULL
+);
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1127,7 @@ CREATE TABLE `PhysicalGoods` (
 CREATE TABLE `Provinces` (
   `province_id` int NOT NULL,
   `province_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Provinces`
@@ -1137,7 +1208,7 @@ CREATE TABLE `Sales` (
   `sale_id` int NOT NULL,
   `start_day` timestamp NOT NULL,
   `end_day` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -1149,10 +1220,10 @@ CREATE TABLE `ShippingInfos` (
   `shipping_info_id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `ShippingInfos`
@@ -1172,7 +1243,7 @@ INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_inst
 CREATE TABLE `TrackLists` (
   `track_id` int NOT NULL,
   `media_id` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -1183,7 +1254,7 @@ CREATE TABLE `TrackLists` (
 CREATE TABLE `Tracks` (
   `track_id` int NOT NULL,
   `track_name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 -- --------------------------------------------------------
 
@@ -1196,7 +1267,7 @@ CREATE TABLE `Users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Users`
@@ -1216,7 +1287,7 @@ CREATE TABLE `Wards` (
   `ward_id` int NOT NULL,
   `ward_name` varchar(45) NOT NULL,
   `district_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+);
 
 --
 -- Đang đổ dữ liệu cho bảng `Wards`
@@ -12421,7 +12492,6 @@ ALTER TABLE `Books`
 -- Chỉ mục cho bảng `CartItems`
 --
 ALTER TABLE `CartItems`
-  ADD PRIMARY KEY (`media_id`,`user_id`),
   ADD KEY `fk_CartItems_Medias1_idx` (`media_id`),
   ADD KEY `fk_CartItems_Users1_idx` (`user_id`);
 
@@ -12484,6 +12554,12 @@ ALTER TABLE `HistoryActions`
 --
 ALTER TABLE `Languages`
   ADD PRIMARY KEY (`language_id`);
+
+--
+-- Chỉ mục cho bảng `LPs`
+--
+ALTER TABLE `LPs`
+  ADD KEY `fk_LP_Medias` (`media_id`);
 
 --
 -- Chỉ mục cho bảng `Medias`
@@ -12594,31 +12670,31 @@ ALTER TABLE `Addresses`
 -- AUTO_INCREMENT cho bảng `Categories`
 --
 ALTER TABLE `Categories`
-  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `CoverTypes`
 --
 ALTER TABLE `CoverTypes`
-  MODIFY `cover_type_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `cover_type_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `DVDTypes`
 --
 ALTER TABLE `DVDTypes`
-  MODIFY `dvd_type_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `dvd_type_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `Languages`
 --
 ALTER TABLE `Languages`
-  MODIFY `language_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `language_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `Medias`
 --
 ALTER TABLE `Medias`
-  MODIFY `media_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `media_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `Orders`
@@ -12672,20 +12748,20 @@ ALTER TABLE `Addresses`
 ALTER TABLE `Books`
   ADD CONSTRAINT `fk_Books_CoverTypes1` FOREIGN KEY (`cover_type_id`) REFERENCES `CoverTypes` (`cover_type_id`),
   ADD CONSTRAINT `fk_Books_Languages1` FOREIGN KEY (`language_id`) REFERENCES `Languages` (`language_id`),
-  ADD CONSTRAINT `fk_Books_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`)ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Books_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `CartItems`
 --
 ALTER TABLE `CartItems`
-  ADD CONSTRAINT `fk_CartItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
-  ADD CONSTRAINT `fk_CartItems_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+  ADD CONSTRAINT `fk_CartItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_CartItems_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `CDs`
 --
 ALTER TABLE `CDs`
-  ADD CONSTRAINT `fk_CDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_CDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `Districts`
@@ -12699,7 +12775,7 @@ ALTER TABLE `Districts`
 ALTER TABLE `DVDs`
   ADD CONSTRAINT `fk_DVDs_DVDTypes1` FOREIGN KEY (`dvd_type_id`) REFERENCES `DVDTypes` (`dvd_type_id`),
   ADD CONSTRAINT `fk_DVDs_Languages1` FOREIGN KEY (`language_id`) REFERENCES `Languages` (`language_id`),
-  ADD CONSTRAINT `fk_DVDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`)ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_DVDs_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `EGoods`
@@ -12714,6 +12790,12 @@ ALTER TABLE `HistoryActions`
   ADD CONSTRAINT `fk_HistoryActions_Actions1` FOREIGN KEY (`action_id`) REFERENCES `Actions` (`action_id`),
   ADD CONSTRAINT `fk_HistoryActions_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
   ADD CONSTRAINT `fk_HistoryActions_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+
+--
+-- Các ràng buộc cho bảng `LPs`
+--
+ALTER TABLE `LPs`
+  ADD CONSTRAINT `fk_LP_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `Medias`
@@ -12732,24 +12814,20 @@ ALTER TABLE `MediaSales`
 -- Các ràng buộc cho bảng `OrderItems`
 --
 ALTER TABLE `OrderItems`
-  ADD CONSTRAINT `fk_OrderItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
-  ADD CONSTRAINT `fk_OrderItems_Orders1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`);
+  ADD CONSTRAINT `fk_OrderItems_Orders1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `OrderItems_ibfk_1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE SET NULL ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `Orders`
 --
 ALTER TABLE `Orders`
-  ADD CONSTRAINT `fk_Orders_OrderState1` FOREIGN KEY (`order_state_id`) REFERENCES `OrderState` (`order_state_id`),
-  ADD CONSTRAINT `fk_Orders_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+  ADD CONSTRAINT `Orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE SET NULL ON UPDATE RESTRICT;
 
 --
 -- Các ràng buộc cho bảng `PhysicalGoods`
 --
 ALTER TABLE `PhysicalGoods`
-  ADD CONSTRAINT `fk_PhysicalGoods_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
-ALTER TABLE `LPs`
-ADD CONSTRAINT `fk_LP_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_PhysicalGoods_Medias` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `ShippingInfos`
@@ -12775,51 +12853,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-insert into `CoverTypes` values (1, 'Paperback');
-
-insert into `CoverTypes` values (2, 'Hardcover');
-
-
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (4, 'MLCB', 25000, 30000, 1, NULL);
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (6, 'Programming in Java', 30000, 30000, 1, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (7, 'Programming in C#', 20000, 20000, 2, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (8, 'Programming in C', 20000, 20000, 2, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (9, 'Programming in Rust', 20000, 20000, 3, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (10, 'Programming in Go', 20000, 20000, 3, 'images/');
-insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (11, 'Programming in Javascript', 20000, 20000, 4, 'images/');
-
-
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming.', 10, '2020-12-20', 5, 20, 20, 8, 200, 'code');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in java.', 10, '2020-12-20', 6, 20, 20, 8, 200, 'code1010');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C#.', 10, '2020-12-20', 7, 20, 20, 8, 200, 'code1010');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C.', 10, '2020-12-20', 8, 20, 20, 8, 200, 'code1010');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Rust.', 10, '2020-12-20', 9, 20, 20, 8, 200, 'code1010');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
-insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
-
-
-
-INSERT INTO `DVDTypes` values (1, 'Blu-ray');
-INSERT INTO `DVDTypes` values (2, 'HD-DVD');
-
-INSERT INTO `Languages` values (1, 'Vietnames');
-INSERT INTO `Languages` values (2, 'English');
-INSERT INTO `Languages` values (3, 'Japanese');
-
-INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
-INSERT INTO `DVDs`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
-
-INSERT INTO `CDs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
-INSERT INTO `CDs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
-
-INSERT INTO `LPs`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
-
-
-insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
-insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
-insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
-
-
