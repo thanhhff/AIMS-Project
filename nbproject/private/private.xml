@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/cart/test/Test.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Book.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Media.java</file>
@@ -13,6 +14,16 @@
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/mediaTest.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaPanel.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/cart/DeliveryPanel.java</file>
+=======
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Media/Media.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/test/Test.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/db/Test.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CheckOut.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSaleItemPanel.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/DateService.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSalePanel.java</file>
+            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/db/ConnectSQL.java</file>
+>>>>>>> adf9a3f388b92b9dd672743065ff9af4e0e3cde4
         </group>
     </open-files>
 </project-private>

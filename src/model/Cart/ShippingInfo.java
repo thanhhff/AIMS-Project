@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +23,7 @@ public class ShippingInfo {
     private int user_id;
     private int shipping_info_id;
     private Ward ward;
-
+    private static int [] shipUrban = {1,2,3,4,5,6,7,8,9,19,21,268,760,761,762,763,764,765,766,767,768,769,770,771,772};
     public ShippingInfo(int shipping_info_id) {
         this.shipping_info_id = shipping_info_id;
         try {
@@ -41,7 +39,15 @@ public class ShippingInfo {
 
         }
     }
-
+    
+    public static boolean checkShip(int district_id){
+        for(int i : shipUrban){
+            if( i == district_id){
+                return true;
+            }
+        }
+        return false;
+    }
     public ShippingInfo(String name, String phone, int user_id, Ward ward) {
         this.ward = ward;
         this.name = name;

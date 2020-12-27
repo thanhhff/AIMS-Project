@@ -10,6 +10,8 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.Media.Media;
+import model.User.User;
+import views.cart.CartPanel;
 import views.mediaAdmin.MediaPanel;
 
 
@@ -35,8 +37,9 @@ public class Test {
     }
     
     public static void main(String[] args) { 
-        ArrayList<Media> medias = Media.getAllMedia();
-        new Test(new MediaPanel(medias));
+//        ArrayList<Media> medias = Media.getAllMedia();
+//        new Test(new MediaPanel(medias));
 //        new Test(new MediaSalePanel(medias));
+        new Test(new CartPanel(new User()));
     }
 }

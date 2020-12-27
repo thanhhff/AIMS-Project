@@ -22,13 +22,8 @@ import model.Cart.Order;
  */
 public class CartController {
     
-    public static int getShipFee(List<CartItem> cartItems){
-        int totalBill = 0;
-        totalBill = cartItems.stream().map((cartItem) -> cartItem.getPrice() * cartItem.getQuantity()).reduce(totalBill, Integer::sum);
-        if(totalBill >= 100000){
-            return 0;
-        }
-        return 100000;
+    public static int getShipFee(List<CartItem> cartItems,int district_id){
+        return CartItem.getShipFee(cartItems,district_id);
     }
     public static void addCartItem(int user_id, int media_id, int price){
         CartItem.creat(user_id, media_id, price);
