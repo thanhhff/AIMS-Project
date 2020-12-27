@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
+<<<<<<< HEAD
 -- Thời gian đã tạo: Th12 27, 2020 lúc 08:33 PM
+=======
+-- Thời gian đã tạo: Th12 27, 2020 lúc 08:47 PM
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -31,7 +35,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -43,7 +51,11 @@ CREATE TABLE `Addresses` (
   `address_id` int NOT NULL,
   `note` varchar(45) NOT NULL,
   `ward_id` int NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -60,7 +72,11 @@ CREATE TABLE `Books` (
   `language_id` int NOT NULL,
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Books`
@@ -78,11 +94,19 @@ INSERT INTO `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 --
 
 CREATE TABLE `CartItems` (
+<<<<<<< HEAD
   `media_id` bigint NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL,
   `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+  `media_id` bigint DEFAULT NULL,
+  `price` int NOT NULL,
+  `quantity` int NOT NULL,
+  `user_id` int DEFAULT NULL
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -94,7 +118,11 @@ CREATE TABLE `Categories` (
   `category_id` int NOT NULL,
   `category_name` varchar(45) NOT NULL,
   `is_physical_good?` tinyint(1) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Categories`
@@ -120,7 +148,11 @@ CREATE TABLE `CDs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `CDs`
@@ -139,7 +171,11 @@ INSERT INTO `CDs` (`publication_date`, `media_id`, `record_label_name`, `artist_
 CREATE TABLE `CoverTypes` (
   `cover_type_id` int NOT NULL,
   `cover_type_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `CoverTypes`
@@ -159,7 +195,11 @@ CREATE TABLE `Districts` (
   `district_id` int NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `province_id` int NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Districts`
@@ -892,7 +932,11 @@ CREATE TABLE `DVDs` (
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
   `writer_name` varchar(255) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDs`
@@ -911,7 +955,11 @@ INSERT INTO `DVDs` (`publication_date`, `runtime`, `subtitle`, `media_id`, `lang
 CREATE TABLE `DVDTypes` (
   `dvd_type_id` int NOT NULL,
   `dvd_type_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDTypes`
@@ -930,7 +978,11 @@ INSERT INTO `DVDTypes` (`dvd_type_id`, `dvd_type_name`) VALUES
 CREATE TABLE `EGoods` (
   `media_id` bigint NOT NULL,
   `content` text
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -944,7 +996,11 @@ CREATE TABLE `HistoryActions` (
   `note` varchar(45) DEFAULT NULL,
   `user_id` int NOT NULL,
   `media_id` bigint NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -955,7 +1011,11 @@ CREATE TABLE `HistoryActions` (
 CREATE TABLE `Languages` (
   `language_id` int NOT NULL,
   `language_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Languages`
@@ -979,7 +1039,11 @@ CREATE TABLE `LPs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `LPs`
@@ -1002,7 +1066,11 @@ CREATE TABLE `Medias` (
   `category_id` int NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `sale_percent` int DEFAULT '0'
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Medias`
@@ -1032,7 +1100,11 @@ CREATE TABLE `MediaSales` (
   `media_id` bigint NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `percent` decimal(2,2) NOT NULL DEFAULT '0.00'
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -1041,11 +1113,19 @@ CREATE TABLE `MediaSales` (
 --
 
 CREATE TABLE `OrderItems` (
+<<<<<<< HEAD
   `media_id` bigint NOT NULL,
   `order_id` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+  `media_id` bigint DEFAULT NULL,
+  `order_id` int NOT NULL,
+  `price` int NOT NULL,
+  `quantity` int NOT NULL
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderItems`
@@ -1067,9 +1147,15 @@ CREATE TABLE `Orders` (
   `ship_fee` int NOT NULL,
   `order_state_id` int NOT NULL DEFAULT '3',
   `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+<<<<<<< HEAD
   `user_id` int NOT NULL,
   `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+  `user_id` int DEFAULT NULL,
+  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Orders`
@@ -1088,7 +1174,11 @@ INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`,
 CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderState`
@@ -1116,7 +1206,11 @@ CREATE TABLE `PhysicalGoods` (
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -1127,7 +1221,11 @@ CREATE TABLE `PhysicalGoods` (
 CREATE TABLE `Provinces` (
   `province_id` int NOT NULL,
   `province_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Provinces`
@@ -1208,7 +1306,11 @@ CREATE TABLE `Sales` (
   `sale_id` int NOT NULL,
   `start_day` timestamp NOT NULL,
   `end_day` timestamp NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -1223,7 +1325,11 @@ CREATE TABLE `ShippingInfos` (
   `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `ShippingInfos`
@@ -1243,7 +1349,11 @@ INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_inst
 CREATE TABLE `TrackLists` (
   `track_id` int NOT NULL,
   `media_id` bigint NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -1254,7 +1364,11 @@ CREATE TABLE `TrackLists` (
 CREATE TABLE `Tracks` (
   `track_id` int NOT NULL,
   `track_name` varchar(45) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 -- --------------------------------------------------------
 
@@ -1267,7 +1381,11 @@ CREATE TABLE `Users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Users`
@@ -1287,7 +1405,11 @@ CREATE TABLE `Wards` (
   `ward_id` int NOT NULL,
   `ward_name` varchar(45) NOT NULL,
   `district_id` int NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+);
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Đang đổ dữ liệu cho bảng `Wards`
@@ -12492,7 +12614,10 @@ ALTER TABLE `Books`
 -- Chỉ mục cho bảng `CartItems`
 --
 ALTER TABLE `CartItems`
+<<<<<<< HEAD
   ADD PRIMARY KEY (`media_id`,`user_id`),
+=======
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
   ADD KEY `fk_CartItems_Medias1_idx` (`media_id`),
   ADD KEY `fk_CartItems_Users1_idx` (`user_id`);
 
@@ -12755,8 +12880,13 @@ ALTER TABLE `Books`
 -- Các ràng buộc cho bảng `CartItems`
 --
 ALTER TABLE `CartItems`
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_CartItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
   ADD CONSTRAINT `fk_CartItems_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+=======
+  ADD CONSTRAINT `fk_CartItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_CartItems_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Các ràng buộc cho bảng `CDs`
@@ -12815,15 +12945,24 @@ ALTER TABLE `MediaSales`
 -- Các ràng buộc cho bảng `OrderItems`
 --
 ALTER TABLE `OrderItems`
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_OrderItems_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
   ADD CONSTRAINT `fk_OrderItems_Orders1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`);
+=======
+  ADD CONSTRAINT `fk_OrderItems_Orders1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  ADD CONSTRAINT `OrderItems_ibfk_1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`) ON DELETE SET NULL ON UPDATE RESTRICT;
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Các ràng buộc cho bảng `Orders`
 --
 ALTER TABLE `Orders`
+<<<<<<< HEAD
   ADD CONSTRAINT `fk_Orders_OrderState1` FOREIGN KEY (`order_state_id`) REFERENCES `OrderState` (`order_state_id`),
   ADD CONSTRAINT `fk_Orders_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+=======
+  ADD CONSTRAINT `Orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE SET NULL ON UPDATE RESTRICT;
+>>>>>>> dbba75506e9079f8408dce6cfd0541d950e9a0db
 
 --
 -- Các ràng buộc cho bảng `PhysicalGoods`
