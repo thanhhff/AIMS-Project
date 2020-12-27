@@ -53,6 +53,8 @@ public class AccountPanel extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 700));
 
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/order.png"))); // NOI18N
         jButton2.setText("Order Management");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +62,8 @@ public class AccountPanel extends javax.swing.JPanel {
             }
         });
 
+        AccountInformation.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        AccountInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/user-profile.png"))); // NOI18N
         AccountInformation.setText("Account Information");
         AccountInformation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +71,7 @@ public class AccountPanel extends javax.swing.JPanel {
             }
         });
 
+        Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/logout-2.png"))); // NOI18N
         Logout.setText("Logout");
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +79,8 @@ public class AccountPanel extends javax.swing.JPanel {
             }
         });
 
+        ChangePassword.setFont(new java.awt.Font("Lucida Grande", 0, 13)); // NOI18N
+        ChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/change-password.png"))); // NOI18N
         ChangePassword.setText("Change Password");
         ChangePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
