@@ -1105,9 +1105,178 @@ public class MediaAddFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_confirmButtonActionPerformed
-
+    public void AddFrame(Media md, boolean isEdit) {
+        flag = false;
+        initComponents();
+        if (isEdit) {
+            big_label.setText("Edit Media");
+            categories.setEnabled(false);
+        } else {
+            big_label.setText("View Media");
+            media_name.setEditable(false);
+            media_value.setEditable(false);
+            media_value.setEditable(false);
+            media_price.setEditable(false);
+            categories.setEditable(false);
+            categories.setEnabled(false);
+            confirmButton.setVisible(false);
+        }
+        
+        media = md;
+        media.setId(md.getId());
+        media_name.setText(md.getTitle());
+        media_value.setText(md.getValue() + "");
+        media_price.setText(md.getPrice() + "");
+        categories.setEditable(false);
+        int category_id = md.getCategoryId();
+        switch (category_id) {
+            case 1:
+                Book book = (Book) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    author_name.setEditable(false);
+                    languages.setEditable(false);
+                    languages.setEnabled(false);
+                    publisher.setEditable(false);
+                    publication_date.setEditable(false);
+                    page_number.setEditable(false);
+                    book_genre.setEditable(false);
+                    cover_types.setEnabled(false);
+                }
+                media_quantity.setText(book.getQuantity() + "");
+                media_input_day.setText(book.getInputDay().split(" ")[0]);
+                media_barcode.setText(book.getBarcode());
+                media_weight.setText(book.getWeight() + "");
+                media_width.setText(book.getWidth() + "");
+                media_height.setText(book.getHeight()+"");
+                media_depth.setText(book.getDepth()+"");
+                media_description.setText(book.getDescription());
+                author_name.setText(book.getAuthor());
+                languages.setSelectedIndex(book.getLanguageId()-1);
+                publisher.setText(book.getPublisher());
+                publication_date.setText(book.getPublication_date().split(" ")[0]);
+                page_number.setText(book.getPageNumber()+"");
+                book_genre.setText(book.getGenre());
+                cover_types.setSelectedIndex(book.getCoverTypeID()-1);
+                setVisiblePanels(category_id);
+                
+                break;
+            case 2:
+                DVD dvd = (DVD) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    writer_name.setEditable(false);
+                    studio_name.setEditable(false);
+                    publication_date_dvd.setEditable(false);
+                    dvd_runtime.setEditable(false);
+                    dvd_languages.setEditable(false);
+                    dvd_languages.setEnabled(false);
+                    dvd_types.setEnabled(false);
+                    dvd_subtitle.setEditable(false);
+                }
+                media_quantity.setText(dvd.getQuantity() + "");
+                media_input_day.setText(dvd.getInputDay().split(" ")[0]);
+                media_barcode.setText(dvd.getBarcode());
+                media_weight.setText(dvd.getWeight() + "");
+                media_width.setText(dvd.getWidth() + "");
+                media_height.setText(dvd.getHeight()+"");
+                media_depth.setText(dvd.getDepth()+"");
+                media_description.setText(dvd.getDescription());
+                writer_name.setText(dvd.getWriterName());
+                studio_name.setText(dvd.getStudioName());
+                publication_date_dvd.setText(dvd.getPublicationDate().split(" ")[0]);
+                dvd_runtime.setText(dvd.getRunTime()+"");
+                dvd_languages.setSelectedIndex(dvd.getLanguageId()-1);
+                dvd_types.setSelectedIndex(dvd.getDvdTypeId()-1);
+                dvd_subtitle.setText(dvd.getSubtitle());
+                setVisiblePanels(category_id);
+                break;
+            case 3:
+                CD cd = (CD) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    artist_name.setEditable(false);
+                    cd_genre.setEditable(false);
+                    record_name.setEditable(false);
+                    cd_publication_date.setEditable(false);
+                    tracks_list.setEditable(false);
+                }
+                media_quantity.setText(cd.getQuantity() + "");
+                media_input_day.setText(cd.getInputDay().split(" ")[0]);
+                media_barcode.setText(cd.getBarcode());
+                media_weight.setText(cd.getWeight() + "");
+                media_width.setText(cd.getWidth() + "");
+                media_height.setText(cd.getHeight()+"");
+                media_depth.setText(cd.getDepth()+"");
+                media_description.setText(cd.getDescription());
+                artist_name.setText(cd.getArtistName());
+                cd_genre.setText(cd.getGenre());
+                record_name.setText(cd.getRecordLabelName());
+                cd_publication_date.setText(cd.getPublicationDate().split(" ")[0]);
+                tracks_list.setText(cd.getTrackList());
+                setVisiblePanels(category_id);
+                break;
+            case 4:
+                LP lp = (LP) md;
+                if (!isEdit) {
+                    media_quantity.setEditable(false);
+                    media_input_day.setEditable(false);
+                    media_barcode.setEditable(false);
+                    media_weight.setEditable(false);
+                    media_width.setEditable(false);
+                    media_height.setEditable(false);
+                    media_depth.setEditable(false);
+                    media_description.setEditable(false);
+                    lp_artist_name.setEditable(false);
+                    lp_genre.setEditable(false);
+                    lp_record.setEditable(false);
+                    lp_publication_date.setEditable(false);
+                    lp_tracks_list.setEditable(false);
+                }
+                media_quantity.setText(lp.getQuantity() + "");
+                media_input_day.setText(lp.getInputDay().split(" ")[0]);
+                media_barcode.setText(lp.getBarcode());
+                media_weight.setText(lp.getWeight() + "");
+                media_width.setText(lp.getWidth() + "");
+                media_height.setText(lp.getHeight()+"");
+                media_depth.setText(lp.getDepth()+"");
+                media_description.setText(lp.getDescription());
+                lp_artist_name.setText(lp.getArtistName());
+                lp_genre.setText(lp.getGenre());
+                lp_record.setText(lp.getRecordLabelName());
+                lp_publication_date.setText(lp.getPublicationDate().split(" ")[0]);
+                lp_tracks_list.setText(lp.getTrackList());
+                
+                setVisiblePanels(category_id);
+                break;
+        }
+       
+        
+    }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
+         setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
