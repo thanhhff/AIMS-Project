@@ -7,12 +7,15 @@ package views.Admin;
 
 import static aims.AIMS.account;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Media.Media;
 import model.User.User;
 import views.Admin.Sales.MediaSalePanel;
 import views.Admin.User.UserPanel;
+import views.mediaAdmin.MediaPanel;
+import views.mediaAdmin.mediaTest;
 import views.order.OrderList;
 
 /**
@@ -141,6 +144,12 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        FillInfor.removeAll();
+        ArrayList<Media> medias = Media.getAllMedia();
+        MediaPanel mediaPanel = new MediaPanel(medias);
+        FillInfor.setLayout(new BorderLayout());
+        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+        FillInfor.updateUI();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void SaleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleButtonActionPerformed
