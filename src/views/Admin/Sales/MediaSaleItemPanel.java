@@ -38,7 +38,9 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
             this.media = media;
             mediaSale = new MediaSale(media.getId());
             mediaTitle.setText(media.getTitle());
-            categoryLabel.setText(media.getCategoryId() + "");
+            int category_index = media.getCategoryId() - 1;
+            String[] categories = {"Book", "DVD", "CD", "LP"};
+            categoryLabel.setText(categories[category_index]);
             valueLabel.setText(FormatNumber.formatString(media.getValue() + ""));
             valueLabel.setName(media.getValue() + "");
             priceLabel.setText(FormatNumber.formatString(media.getPrice() + ""));
@@ -70,7 +72,7 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
     }
     public MediaSale getMediaSale(){
         mediaSale.setQuantity(getQuantitySale());
-        media.setSalePercent(getPrecentSale());
+        mediaSale.setPercent(getPrecentSale());
         return mediaSale;
     }
     /**
