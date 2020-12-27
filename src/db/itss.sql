@@ -58,15 +58,9 @@ CREATE TABLE `Books` (
   `cover_type_id` int NOT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
   `language_id` int NOT NULL,
-<<<<<<< HEAD
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
-=======
-  `author_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> ce37f24d1f63075c91e7f0dc7b47a8494bbc2ee1
 
 -- --------------------------------------------------------
 
@@ -1041,11 +1035,11 @@ INSERT INTO `OrderState` (`order_state_id`, `order_state_name`) VALUES
 CREATE TABLE `PhysicalGoods` (
   `barcode` int NOT NULL,
   `description` text,
-  `quantity` int NOT NULL DEFAULT '0',
-  `width` int NOT NULL DEFAULT 0,
-  `height` int NOT NULL 0,
-  `depth` int NOT NULL 0,
-  `size` varchar(45) DEFAULT '0',
+  `quantity` int DEFAULT 0,
+  `width` int DEFAULT 0,
+  `height` int DEFAULT 0,
+  `depth` int DEFAULT 0,
+  `size` varchar(45) DEFAULT 0,
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int

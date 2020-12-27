@@ -58,15 +58,9 @@ CREATE TABLE `Books` (
   `cover_type_id` int NOT NULL,
   `publisher_name` varchar(255) DEFAULT NULL,
   `language_id` int NOT NULL,
-<<<<<<< HEAD
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
-=======
-  `author_name` varchar(255) DEFAULT NULL,
-  `genre` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
->>>>>>> ce37f24d1f63075c91e7f0dc7b47a8494bbc2ee1
 
 -- --------------------------------------------------------
 
@@ -1041,11 +1035,11 @@ INSERT INTO `OrderState` (`order_state_id`, `order_state_name`) VALUES
 CREATE TABLE `PhysicalGoods` (
   `barcode` int NOT NULL,
   `description` text,
-  `quantity` int NOT NULL DEFAULT '0',
-  `width` int NOT NULL DEFAULT 0,
-  `height` int NOT NULL 0,
-  `depth` int NOT NULL 0,
-  `size` varchar(45) DEFAULT '0',
+  `quantity` int DEFAULT 0,
+  `width` int DEFAULT 0,
+  `height` int DEFAULT 0,
+  `depth` int DEFAULT 0,
+  `size` varchar(45) DEFAULT 0,
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int
@@ -12787,10 +12781,29 @@ insert into `Covertypes` values (2, 'Hardcover');
 insert into `Medias` values (4, 'MLCB', 25000, 30000, 1, NULL);
 insert into `Medias` values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
 insert into `Medias` values (6, 'Programming in Java', 30000, 30000, 1, 'images/');
+insert into `Medias` values (7, 'Programming in C#', 20000, 20000, 2, 'images/');
+insert into `Medias` values (8, 'Programming in C', 20000, 20000, 2, 'images/');
+insert into `Medias` values (9, 'Programming in Rust', 20000, 20000, 3, 'images/');
+insert into `Medias` values (10, 'Programming in Go', 20000, 20000, 3, 'images/');
+insert into `Medias` values (11, 'Programming in Javascript', 20000, 20000, 4, 'images/');
+
 
 insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
 insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming.', 10, '2020-12-20', 5, 20, 20, 8, 200, 'code');
 insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in java.', 10, '2020-12-20', 6, 20, 20, 8, 200, 'code1010');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C#.', 10, '2020-12-20', 7, 20, 20, 8, 200, 'code1010');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C.', 10, '2020-12-20', 8, 20, 20, 8, 200, 'code1010');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Rust.', 10, '2020-12-20', 9, 20, 20, 8, 200, 'code1010');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
+insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
+
+INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
+INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
+
+INSERT INTO `itss`.`cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `itss`.`cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
+
+INSERT INTO `itss`.`lps`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
 
 
 insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
