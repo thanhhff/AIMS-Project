@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller.Media;
-import model.Media.Media;
+import model.Media.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,34 +38,50 @@ public class MediaController {
         return Media.getAllMedia();
     }
 
-//     public static void sortLowMediaPrice(ArrayList<Media> list)
-//     {
-//       int i, j;
-//            for (i = (list.size()-1); i >= 0; i--) {
-//                for (j = 1; j <= i; j++){
-//                    if (list.get(j-1).getPrice() > list.get(j).getPrice())
-//                    {   
-//                        Media media = new Media() {};
-//                        media.updateMedia(list.get(j));
-//                        list.get(j).updateMedia( list.get(j-1));
-//                        list.get(j-1).updateMedia(media);
-//                    }
-//                }
-//            }
-//     }
-//      public static void sortHighMediaPrice(ArrayList<Media> list)
-//     {
-//       int i, j;
-//            for (i = (list.size()-1); i >= 0; i--) {
-//                for (j = 1; j <= i; j++){
-//                    if (list.get(j-1).getPrice() < list.get(j).getPrice())
-//                    {   
-//                        Media media = new Media() {};
-//                        media.updateMedia(list.get(j));
-//                        list.get(j).updateMedia( list.get(j-1));
-//                        list.get(j-1).updateMedia(media);
-//                    }
-//                }
-//            }
-//     }
+     public static ArrayList<Media> sortLowMediaPrice(ArrayList<Media> list)
+     {
+       ArrayList<Integer> indexes = new ArrayList<Integer>();
+       for (int i = 0; i < list.size(); i++) {
+           indexes.add(i);
+       }
+       ArrayList<Media> results = new ArrayList<Media>();
+       for (int i = 0; i < list.size()-1; i++) {
+           for (int j = i+1; j < list.size(); j++) {
+               if (list.get(j).getPrice() < list.get(i).getPrice()) {
+                   int tmp = indexes.get(i);
+                   indexes.set(i, indexes.get(j));
+                   indexes.set(j, tmp);
+               }
+           }
+       }
+       
+       for (int i = 0; i < indexes.size(); i++) {
+           results.add(list.get(indexes.get(i)));
+       }
+       
+       return results;
+     }
+      public static ArrayList<Media> sortHighMediaPrice(ArrayList<Media> list)
+     {
+       ArrayList<Integer> indexes = new ArrayList<Integer>();
+       for (int i = 0; i < list.size(); i++) {
+           indexes.add(i);
+       }
+       ArrayList<Media> results = new ArrayList<Media>();
+       for (int i = 0; i < list.size()-1; i++) {
+           for (int j = i+1; j < list.size(); j++) {
+               if (list.get(j).getPrice() > list.get(i).getPrice()) {
+                   int tmp = indexes.get(i);
+                   indexes.set(i, indexes.get(j));
+                   indexes.set(j, tmp);
+               }
+           }
+       }
+       
+       for (int i = 0; i < indexes.size(); i++) {
+           results.add(list.get(indexes.get(i)));
+       }
+       
+       return results;
+     }
 }
