@@ -12780,9 +12780,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-insert into `Covertypes` values (1, 'Paperback');
+insert into `CoverTypes` values (1, 'Paperback');
 
-insert into `Covertypes` values (2, 'Hardcover');
+insert into `CoverTypes` values (2, 'Hardcover');
 
 insert into `Medias` values (4, 'MLCB', 25000, 30000, 1, NULL);
 insert into `Medias` values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
@@ -12794,29 +12794,29 @@ insert into `Medias` values (10, 'Programming in Go', 20000, 20000, 3, 'images/'
 insert into `Medias` values (11, 'Programming in Javascript', 20000, 20000, 4, 'images/');
 
 
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming.', 10, '2020-12-20', 5, 20, 20, 8, 200, 'code');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in java.', 10, '2020-12-20', 6, 20, 20, 8, 200, 'code1010');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C#.', 10, '2020-12-20', 7, 20, 20, 8, 200, 'code1010');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C.', 10, '2020-12-20', 8, 20, 20, 8, 200, 'code1010');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Rust.', 10, '2020-12-20', 9, 20, 20, 8, 200, 'code1010');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
-insert into `physicalgoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Very good ML book', 10, '2020-10-10', 4, 20, 30, 7, 120, 'ml1000');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming.', 10, '2020-12-20', 5, 20, 20, 8, 200, 'code');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in java.', 10, '2020-12-20', 6, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C#.', 10, '2020-12-20', 7, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in C.', 10, '2020-12-20', 8, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Rust.', 10, '2020-12-20', 9, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Go.', 10, '2020-12-20', 10, 20, 20, 8, 200, 'code1010');
+insert into `PhysicalGoods` (`description`, `quantity`, `input_day`, `media_id`, `width`, `height`, `depth`, `weight`, `barcode`) values ('Book about programming in Javascript.', 10, '2020-12-20', 11, 20, 20, 8, 200, 'code1010');
 
-INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
-INSERT INTO `itss`.`dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
+INSERT INTO `Dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 7, 2, NULL, 1, NULL, NULL);
+INSERT INTO `Dvds`(`publication_date`, `runtime`, `subtitle`, `media_id`, `language_id`, `studio_name`, `dvd_type_id`, `action_name`, `writer_name`) VALUES (NULL, 100, NULL, 8, 2, NULL, 1, NULL, NULL);
 
-INSERT INTO `itss`.`cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
-INSERT INTO `itss`.`cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `Cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 9, 'Bach khoa', 'Quang Anh', 'programming');
+INSERT INTO `Cds`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 10, 'Bach khoa', 'Quang Anh', 'programming');
 
-INSERT INTO `itss`.`lps`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
-
-
-insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
-insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
-insert into `books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
+INSERT INTO `Lps`(`publication_date`, `media_id`, `record_label_name`, `artist_name`, `genre`) VALUES (NULL, 11, 'Bach khoa', 'Quang Anh', 'programming');
 
 
+insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-10-10', 400, 4, 1, 'NXB Hedspi', 1, 'Vu Huu Tiep', 'Science');
+insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
+insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
-INSERT INTO `itss`.`dvdtypes` values (1, 'Blu-ray');
-INSERT INTO `itss`.`dvdtypes` values (2, 'HD-DVD');
+
+
+INSERT INTO `DvdTypes` values (1, 'Blu-ray');
+INSERT INTO `DvdTypes` values (2, 'HD-DVD');
