@@ -38,7 +38,10 @@ public class mediaTest {
        media.setTitle("conan");
        media.setId(3);
        
-       mediaListPanel mediaItem = new  mediaListPanel();  
+       mediaListPanel mediaItem = new  mediaListPanel();
+     //    ArrayList<MediaItem> list = new ArrayList<MediaItem>();
+    //     SearchController.SearchRandom(list);
+       //  System.out.print(list.size());
        mediaTest test = new mediaTest(mediaItem);
     }
 }
