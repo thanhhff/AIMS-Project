@@ -8,10 +8,19 @@ package views.MediaList;
 import static aims.AIMS.account;
 import aims.FormatNumber;
 import java.awt.Label;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Cart.CartItem;
+import model.Media.Book;
+import model.Media.CD;
+import model.Media.DVD;
+import model.Media.LP;
 import model.Media.Media;
+import model.Media.MediaItem;
+import model.Media.PhysicalGood;
+import views.mediaAdmin.MediaAddFrame;
+import views.mediaAdmin.MediaItemPanel;
 
 /**
  *
@@ -19,11 +28,11 @@ import model.Media.Media;
  */
 public class mediaItem extends javax.swing.JPanel {
 //    Media media = new Media() {};
-    Media media;
+    MediaItem media;
 //    /**
 //     * Creates new form mediaItem
 //     */
-    public mediaItem(Media media) {
+    public mediaItem(MediaItem media) {
         this.media = media;
         initComponents();
         jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
@@ -165,6 +174,46 @@ public class mediaItem extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         ArrayList<Media> medias = Media.getAllMedia();
+            for(int i = 0; i < medias.size() ; i++){
+                  if(medias.get(i).getId() == media.getId())
+                   {
+                        
+                    int category_id = medias.get(i).getCategoryId();
+                      MediaAddFrame media_frame;
+
+                    switch (category_id) {
+                       case 1:
+                           Book book = (Book) medias.get(i);
+                           media_frame = new MediaAddFrame(book, false);
+                           System.out.printf("OK b");
+                           break;
+                       case 2:
+                           DVD dvd = (DVD) medias.get(i);
+                           media_frame = new MediaAddFrame(dvd, false);
+                            System.out.printf("OK dvd");
+                           break;
+                       case 3:
+                           CD cd = (CD) medias.get(i);
+                           media_frame = new MediaAddFrame(cd, false);
+                           System.out.printf("OK");
+                           break;
+                       case 4:
+                           LP lp = (LP) medias.get(i);                           
+                           System.out.printf("OK cd");
+                           media_frame = new MediaAddFrame(lp, false);
+                           break;
+                       default:
+                           Book new_book = (Book) medias.get(i);
+                           System.out.printf("OK new");
+                           media_frame = new MediaAddFrame(new_book, false);
+                   }
+                            media_frame.setLocationRelativeTo(null);
+                            media_frame.setVisible(true);                 
+
+                }
+       }
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCartButtonActionPerformed
