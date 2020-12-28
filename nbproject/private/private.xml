@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Media/Media.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Media/Book.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/model/Media/PhysicalGood.java</file>
@@ -35,6 +36,16 @@
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/controller/Search/SearchController.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/mediaAdmin/mediaTest.java</file>
             <file>file:/C:/Users/User/OneDrive%20-%20Minh%20Duc%20Junior%20High%20School/Documents/NetBeansProjects/AIMS-Project/AIMS-Project/src/views/mediaAdmin/MediaItem.java</file>
+=======
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/cart/test/Test.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Media.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaAddFrame.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaItemPanel.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/MediaList/mediaList.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/mediaTest.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaPanel.java</file>
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/MediaList/mediaListPanel.java</file>
+>>>>>>> aec759122e9163aa92079a37347a8156a386900d
         </group>
     </open-files>
 </project-private>
