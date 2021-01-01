@@ -13,6 +13,7 @@ import model.Media.Media;
 import model.User.User;
 import views.Admin.Sales.MediaSalePanel;
 import views.cart.CartPanel;
+import views.cart.ChangeAddress;
 import views.mediaAdmin.MediaPanel;
 
 
@@ -41,6 +42,6 @@ public class Test {
         ArrayList<Media> medias = Media.getAllMedia();
 //        new Test(new MediaPanel(medias));
 //        new Test(new MediaSalePanel(medias));
-        new Test(new MediaSalePanel(medias));
+        new Test(new ChangeAddress(new User()));
     }
 }
