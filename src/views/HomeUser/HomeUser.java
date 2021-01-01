@@ -200,7 +200,7 @@ public final class HomeUser extends javax.swing.JFrame {
                 if (shippingInfo != null && cart.getCartList().getMediaCount() != 0) {
 
                     JDialog jDialog = new JDialog();
-                    int ship_fee = CartController.getShipFee(user.getCartItems(),shippingInfo.getWardObject().getDistrictID());
+                    int ship_fee = CartController.getShipFee(user.getUser_id(),shippingInfo.getWardObject().getDistrictID());
                     CheckOut checkOut = new CheckOut(shippingInfo, cart.getDelivery().getNoteText(), cart.getTotal(), ship_fee);
                     jDialog.setSize(650, 700);
                     checkOut.setBounds(0, 0, 650, 700);
