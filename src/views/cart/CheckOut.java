@@ -30,7 +30,7 @@ public class CheckOut extends javax.swing.JPanel {
      * @param ward
      * @param note
      */
-
+    private int billAllvalue = 0;
     public CheckOut(ShippingInfo shippingInfo, String note,int totalBill, int shippingFee) {
         initComponents();
         confirmButton.setFocusPainted(false);
@@ -38,11 +38,12 @@ public class CheckOut extends javax.swing.JPanel {
         name_phone.setText("Name: " + shippingInfo.getName() + " - " + shippingInfo.getPhone());
         address.setText("Address: " + shippingInfo.getWardObject().getWard() + "-" + shippingInfo.getWardObject().getDistrict() + "-" + shippingInfo.getWardObject().getProvince());
         noteText.setText("Note: " + note);
-        provisional.setText(FormatNumber.formatString(""+totalBill) + " VND");
+        provisional.setText(FormatNumber.formatString(""+(int)(totalBill*0.9)) + " VND");
         totalBillLabel.setText(FormatNumber.formatString("" + totalBill) + " VND");
+        vatLabel.setText(FormatNumber.formatString("" + (int)(totalBill*0.1)) + " VND");
         shippingFeeLabel.setText(FormatNumber.formatString("" + shippingFee) + " VND");
         billAll.setText(FormatNumber.formatString("" + (shippingFee + totalBill)) + " VND");
-        
+        billAllvalue = shippingFee + totalBill;
         addPlaceholder(cardNumberText, "Enter card number");        
         cardNumberText.setForeground(Color.GRAY);
         cardNumberText.setText("Enter card number");
@@ -74,6 +75,9 @@ public class CheckOut extends javax.swing.JPanel {
     public boolean checkCardNumber(){
         String cardNumber = getCardNumber();
         return cardNumber.matches("[0-9]{6}_group[0-9]{2}_2020");
+    }
+    public int getBillAllValue(){
+        return billAllvalue;
     }
     public boolean checkDateNumber(){
         String date = getdateNumber();
@@ -136,7 +140,7 @@ public class CheckOut extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         totalBillLabel = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        vatLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         shippingFeeLabel = new javax.swing.JLabel();
         billAll = new javax.swing.JLabel();
@@ -201,22 +205,22 @@ public class CheckOut extends javax.swing.JPanel {
         jLabel12.setText("Provisional");
 
         provisional.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        provisional.setText("xxx.xxx đ");
+        provisional.setText("xxx.xxx VND");
 
-        jLabel15.setText("Vat");
+        jLabel15.setText(" Vat ( 10 % )");
 
         jLabel16.setText("Total bill");
 
         totalBillLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        totalBillLabel.setText("xxx.xxx đ");
+        totalBillLabel.setText("xxx.xxx VND");
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("0 VND");
+        vatLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vatLabel.setText("0 VND");
 
         jLabel1.setText("Delivery charges");
 
         shippingFeeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        shippingFeeLabel.setText("xxx.xxx đ");
+        shippingFeeLabel.setText("xxx.xxx VND");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -231,7 +235,7 @@ public class CheckOut extends javax.swing.JPanel {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(totalBillLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(shippingFeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(provisional, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -247,7 +251,7 @@ public class CheckOut extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel18))
+                    .addComponent(vatLabel))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -424,7 +428,6 @@ public class CheckOut extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -440,5 +443,6 @@ public class CheckOut extends javax.swing.JPanel {
     private javax.swing.JLabel provisional;
     private javax.swing.JLabel shippingFeeLabel;
     private javax.swing.JLabel totalBillLabel;
+    private javax.swing.JLabel vatLabel;
     // End of variables declaration//GEN-END:variables
 }

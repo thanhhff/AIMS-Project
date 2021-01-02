@@ -168,7 +168,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel18" max="32767" attributes="0"/>
+                      <Component id="vatLabel" max="32767" attributes="0"/>
                       <Component id="totalBillLabel" pref="182" max="32767" attributes="0"/>
                       <Component id="shippingFeeLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="provisional" alignment="1" max="32767" attributes="0"/>
@@ -188,7 +188,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vatLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -214,12 +214,12 @@
         <Component class="javax.swing.JLabel" name="provisional">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="xxx.xxx &#x111;"/>
+            <Property name="text" type="java.lang.String" value="xxx.xxx VND"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Vat"/>
+            <Property name="text" type="java.lang.String" value=" Vat ( 10 % )"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -230,10 +230,10 @@
         <Component class="javax.swing.JLabel" name="totalBillLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="xxx.xxx &#x111;"/>
+            <Property name="text" type="java.lang.String" value="xxx.xxx VND"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel18">
+        <Component class="javax.swing.JLabel" name="vatLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="0 VND"/>
@@ -247,7 +247,7 @@
         <Component class="javax.swing.JLabel" name="shippingFeeLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="xxx.xxx &#x111;"/>
+            <Property name="text" type="java.lang.String" value="xxx.xxx VND"/>
           </Properties>
         </Component>
       </SubComponents>

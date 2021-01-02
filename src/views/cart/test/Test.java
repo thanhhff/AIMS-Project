@@ -42,6 +42,6 @@ public class Test {
         ArrayList<Media> medias = Media.getAllMedia();
 //        new Test(new MediaPanel(medias));
 //        new Test(new MediaSalePanel(medias));
-        new Test(new ChangeAddress(new User()));
+        new Test(new CartPanel(new User()));
     }
 }

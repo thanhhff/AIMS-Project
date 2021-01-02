@@ -213,7 +213,7 @@ public final class HomeUser extends javax.swing.JFrame {
                     });
                     checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
                         if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
-                            if(CartController.payment(checkOut.getCardNumber(), cart.getTotal())){
+                            if(CartController.payment(checkOut.getCardNumber(), checkOut.getBillAllValue())){
                                 String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
                                         + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
                                         + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();

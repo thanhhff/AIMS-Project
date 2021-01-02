@@ -28,6 +28,9 @@ public class BillPanel extends javax.swing.JPanel {
     public JLabel getProvisialLabel(){
         return this.provisionalLabel;
     }
+    public JLabel getVatLabel(){
+        return this.vatLabel;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +44,7 @@ public class BillPanel extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         provisionalLabel = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        vatLabel = new javax.swing.JLabel();
         totalBillLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -49,15 +52,15 @@ public class BillPanel extends javax.swing.JPanel {
 
         jLabel12.setText("Provisional");
 
-        jLabel15.setText("Vat");
+        jLabel15.setText("VAT ( 10%)");
 
         jLabel16.setText("Total bill");
 
         provisionalLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         provisionalLabel.setText("xxx.xxx VND");
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("0 VND");
+        vatLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vatLabel.setText("0 VND");
 
         totalBillLabel.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         totalBillLabel.setForeground(new java.awt.Color(255, 0, 0));
@@ -76,7 +79,7 @@ public class BillPanel extends javax.swing.JPanel {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(vatLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                     .addComponent(provisionalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(totalBillLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
@@ -91,7 +94,7 @@ public class BillPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel18))
+                    .addComponent(vatLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -105,8 +108,8 @@ public class BillPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel provisionalLabel;
     private javax.swing.JLabel totalBillLabel;
+    private javax.swing.JLabel vatLabel;
     // End of variables declaration//GEN-END:variables
 }
