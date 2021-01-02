@@ -17,12 +17,13 @@ import model.Cart.OrderItem;
  */
 public class OrderMediaDetailListPanel extends JPanel{
     
-    public static int WIDTH = 500;
-    public static int HEIGHT = 250;
+    public static int WIDTH = 700;
+    public static int HEIGHT = 460;
     
     private JPanel orderJPanel;
 
     public OrderMediaDetailListPanel(List<OrderItem> orderItems) {
+        setBorder(null);
         setLayout(new GridLayout(1,0));
         orderJPanel = new JPanel(new GridLayout(0,1));
         add(new JScrollPane(orderJPanel));

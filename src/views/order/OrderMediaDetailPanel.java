@@ -42,6 +42,8 @@ public class OrderMediaDetailPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         titleMedia.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         titleMedia.setText("jLabel1");
 
