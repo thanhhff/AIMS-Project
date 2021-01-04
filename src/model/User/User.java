@@ -78,7 +78,8 @@ public class User {
                 int order_state_id = Integer.parseInt(rs.getString("order_state_id"));
                 String shipping_info = rs.getString("shipping_info");
                 String card_number = rs.getString("card_number");
-                Order order = new Order(order_id, order_state_id, user_id, ship_fee, shipping_info, card_number);
+                String created_at = rs.getString("created_at");
+                Order order = new Order(order_id, order_state_id, user_id, ship_fee, shipping_info, card_number,created_at);
                 orders.add(order);
                 index++;
             }
@@ -103,7 +104,8 @@ public class User {
                 String shipping_info = rs.getString("shipping_info");
                 int userID = Integer.parseInt(rs.getString("user_id"));
                 String card_number = rs.getString("card_number");
-                Order order = new Order(order_id, order_state_id, userID, ship_fee, shipping_info, card_number);
+                String created_at = rs.getString("created_at");
+                Order order = new Order(order_id, order_state_id, userID, ship_fee, shipping_info, card_number,created_at);
                 orders.add(order);
                 index++;
             }

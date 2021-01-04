@@ -6,6 +6,7 @@
 package views.order;
 
 import java.util.List;
+import javax.swing.JButton;
 import model.Cart.Order;
 import model.Cart.OrderItem;
 
@@ -29,9 +30,15 @@ public class OrderDetail extends javax.swing.JPanel {
         if(orderItems.size() <= 5 ){
             height = 70*orderItems.size();
         }
-        orderMediaDetailListPanel.setBounds(12, 12+16+32, 470, height);
+        orderMediaDetailListPanel.setBounds(12, 12+16+32, 530, height);
         add(orderMediaDetailListPanel);
+        shipping_info.setText(order.getShipping_info());
     }
+
+    public JButton getOkButton() {
+        return okButton;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,40 +49,60 @@ public class OrderDetail extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        shipping_info = new javax.swing.JLabel();
 
-        jButton1.setText("OK");
+        okButton.setText("OK");
+        okButton.setFocusPainted(false);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Order Detail");
+
+        jLabel2.setText("Shipping info : ");
+
+        shipping_info.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(shipping_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 231, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(187, 187, 187))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jButton1))
+                .addGap(223, 223, 223))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okButton)
+                .addGap(254, 254, 254))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(422, 422, 422)
-                .addComponent(jButton1)
+                .addGap(438, 438, 438)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(shipping_info))
+                .addGap(27, 27, 27)
+                .addComponent(okButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton okButton;
+    private javax.swing.JLabel shipping_info;
     // End of variables declaration//GEN-END:variables
 }

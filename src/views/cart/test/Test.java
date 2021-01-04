@@ -12,6 +12,7 @@ import model.Cart.Order;
 import model.Media.Media;
 import model.User.User;
 import views.order.OrderDetail;
+import views.order.OrderListPanel;
 
 
 
@@ -41,6 +42,6 @@ public class Test {
 //        new Test(new MediaSalePanel(medias));
         User user = new User();
         List<Order> orders = user.getOrders();
-        new Test(new OrderDetail(orders.get(0)));
+        new Test(new OrderListPanel(orders));
     }
 }

@@ -8,7 +8,9 @@ package views.account.UserPanel;
 import static aims.AIMS.account;
 import views.account.ChangePassword;
 import java.awt.BorderLayout;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Cart.Order;
 import model.User.User;
 import views.order.OrderList;
 
@@ -155,11 +157,15 @@ public class AccountPanel extends javax.swing.JPanel {
         if (user.getOrders() == null) {
             JOptionPane.showMessageDialog(null, "Order empty");
         } else {
-        
-        OrderList orderList = new OrderList(user.getOrders());
-        jpLayout2.setLayout(new BorderLayout());
-        jpLayout2.add(orderList, BorderLayout.CENTER);
-        jpLayout2.updateUI();
+            List<Order> orders = user.getOrders();
+            if (orders.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Order empty!");
+            } else {
+                OrderList orderList = new OrderList(user.getOrders());
+                jpLayout2.setLayout(new BorderLayout());
+                jpLayout2.add(orderList, BorderLayout.CENTER);
+                jpLayout2.updateUI();
+            }
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
