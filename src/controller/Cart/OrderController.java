@@ -14,7 +14,7 @@ import model.Cart.Order;
 public class OrderController {
     
     public static boolean refund(Order order){
-        if(PaymentService.refund(order.getCard_number(), order.getTotalBill())){
+        if(PaymentService.refund(order.getCard_number(), order.getTotalBill() + order.getShip_fee())){
             order.cancel();
             return true;
         }

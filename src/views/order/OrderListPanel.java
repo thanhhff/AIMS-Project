@@ -6,6 +6,7 @@
 package views.order;
 
 import aims.FormatNumber;
+import controller.Cart.OrderController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -26,8 +27,10 @@ public class OrderListPanel extends javax.swing.JPanel {
      */
     private JTable table;
     private List<Order> orders;
-    public OrderListPanel(List<Order> orders) {
+    private int[] orderinfo;
+    public OrderListPanel(List<Order> orders,int [] orderinfo) {
         this.orders = orders;
+        this.orderinfo = orderinfo;
         setLayout(null);
         initComponents();
         String[] columnName = {"Order date","Total bill","Status"};
@@ -35,15 +38,12 @@ public class OrderListPanel extends javax.swing.JPanel {
         int j = 3;
         Object [][] data = new Object[i][j];
         int index = 0;
-        int totalall = 0;
         for(Order order: orders){
             data[index][0] = order.getCreated_at();
-            totalall +=  order.getShip_fee()+ order.getTotalBill();
             data[index][1] = FormatNumber.formatString("" + (order.getShip_fee()+ order.getTotalBill())) + " VND";
             data[index++][2] = order.getState();
         }
-        totalOrder.setText("" + index);
-        totalAllBill.setText(FormatNumber.formatString("" + totalall) + " VND");
+        setOrderInfo();
         table = new JTable(data,columnName);
         JScrollPane scrollPane = new JScrollPane(table);
         table.setFillsViewportHeight(true);
@@ -51,6 +51,7 @@ public class OrderListPanel extends javax.swing.JPanel {
         add(table);
         add(table.getTableHeader());
         table.getTableHeader().setBounds(18, 12, 590, 32);
+        
     }
 
     /**
@@ -66,8 +67,18 @@ public class OrderListPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        totalOrder = new javax.swing.JLabel();
-        totalAllBill = new javax.swing.JLabel();
+        sucessOrder = new javax.swing.JLabel();
+        sucessBill = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cancelOrder = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cancelBill = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        deleOrder = new javax.swing.JLabel();
+        deleBill = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jButton1.setText("Order detail");
         jButton1.setFocusPainted(false);
@@ -76,60 +87,82 @@ public class OrderListPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(631, 12, 112, 35);
 
         jButton2.setText("Cancel");
         jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2);
+        jButton2.setBounds(631, 59, 112, 35);
 
-        jLabel1.setText("Total number of order: ");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Total number of order sucess: ");
+        add(jLabel1);
+        jLabel1.setBounds(12, 335, 235, 17);
 
-        jLabel2.setText("Total all bill:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Total all bill :");
+        add(jLabel2);
+        jLabel2.setBounds(395, 335, 93, 17);
 
-        totalOrder.setText("jLabel3");
+        sucessOrder.setText("jLabel3");
+        add(sucessOrder);
+        sucessOrder.setBounds(259, 335, 80, 17);
 
-        totalAllBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        totalAllBill.setText("jLabel4");
+        sucessBill.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        sucessBill.setText("jLabel4");
+        add(sucessBill);
+        sucessBill.setBounds(506, 335, 237, 17);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(613, 613, 613)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalOrder)
-                            .addComponent(totalAllBill, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(241, 241, 241)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(totalOrder))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(totalAllBill))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Total number of order cancel: ");
+        add(jLabel3);
+        jLabel3.setBounds(12, 370, 235, 17);
+
+        cancelOrder.setText("jLabel4");
+        add(cancelOrder);
+        cancelOrder.setBounds(259, 370, 81, 17);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Total all bill :");
+        add(jLabel5);
+        jLabel5.setBounds(395, 370, 93, 17);
+
+        cancelBill.setText("jLabel6");
+        add(cancelBill);
+        cancelBill.setBounds(506, 370, 237, 17);
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Total number of order delivering:  ");
+        add(jLabel6);
+        jLabel6.setBounds(12, 405, 235, 17);
+
+        deleOrder.setText("jLabel7");
+        add(deleOrder);
+        deleOrder.setBounds(259, 405, 85, 17);
+
+        deleBill.setText("jLabel8");
+        add(deleBill);
+        deleBill.setBounds(506, 405, 237, 17);
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Total all bill :");
+        add(jLabel9);
+        jLabel9.setBounds(395, 405, 93, 17);
     }// </editor-fold>//GEN-END:initComponents
-
+    private void setOrderInfo(){
+        sucessOrder.setText("" + orderinfo[0]);
+        sucessBill.setText(FormatNumber.formatString("" + orderinfo[1]) + " VND");
+        cancelOrder.setText("" + orderinfo[2]);
+        cancelBill.setText(FormatNumber.formatString("" + orderinfo[3]) + " VND");
+        deleOrder.setText("" + orderinfo[4]);
+        deleBill.setText(FormatNumber.formatString("" + orderinfo[5]) + " VND");
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int row = table.getSelectedRow();
@@ -137,7 +170,7 @@ public class OrderListPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select order");
         }else{
             JDialog jDialog = new JDialog();
-            jDialog.setSize(600, 562);
+            jDialog.setSize(560, 600);
             OrderDetail orderDetail = new OrderDetail(orders.get(row));
             orderDetail.setBounds(0, 0, 600, 562);
             jDialog.setUndecorated(true);
@@ -150,13 +183,49 @@ public class OrderListPanel extends javax.swing.JPanel {
          }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int row = table.getSelectedRow();
+        if(row == -1){
+            JOptionPane.showMessageDialog(null, "Please select order");
+        }else{
+            Order order = this.orders.get(row);
+            if(order.getOrder_state_id() != Order.DELIVERING){
+                JOptionPane.showMessageDialog(null, "Can't cancel this order");
+            }else{
+                int select = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if(select == JOptionPane.YES_OPTION){
+                    if (OrderController.refund(order)){
+                        JOptionPane.showMessageDialog(null, "Successful cancellation of the application.\nThe money has been refunded to the account you pay for this order.");
+                        table.setValueAt("Cancel", row, 2);
+                        orderinfo[4]--;
+                        orderinfo[5] -= order.getTotalBill() + order.getShip_fee();
+                        orderinfo[2]++;
+                        orderinfo[3] += order.getTotalBill() + order.getShip_fee();
+                        setOrderInfo();
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Error.\n Please try again later");
+                    }
+                }                
+            }
+         }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cancelBill;
+    private javax.swing.JLabel cancelOrder;
+    private javax.swing.JLabel deleBill;
+    private javax.swing.JLabel deleOrder;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel totalAllBill;
-    private javax.swing.JLabel totalOrder;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel sucessBill;
+    private javax.swing.JLabel sucessOrder;
     // End of variables declaration//GEN-END:variables
 }

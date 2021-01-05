@@ -41,8 +41,8 @@ public class CartController {
     public static void checkOut(int user_id,int ship_fee, String shipping_info, String cart_number){
         Order order = new Order(user_id, ship_fee, shipping_info, cart_number);
     }
-    public static boolean payment(String card_number, int totalBill){
-        return PaymentService.check(card_number, totalBill);
+    public static boolean payment(String card_number, int totalBillAll){
+        return PaymentService.check(card_number, totalBillAll);
     }
     
 }

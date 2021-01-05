@@ -5,6 +5,7 @@
  */
 package views.order;
 
+import aims.FormatNumber;
 import java.util.List;
 import javax.swing.JButton;
 import model.Cart.Order;
@@ -32,7 +33,12 @@ public class OrderDetail extends javax.swing.JPanel {
         }
         orderMediaDetailListPanel.setBounds(12, 12+16+32, 530, height);
         add(orderMediaDetailListPanel);
-        shipping_info.setText(order.getShipping_info());
+        String[] shipping_info = order.getShipping_info().split("/");
+        namePhone.setText(shipping_info[0] + " - " + shipping_info[1]);
+        String note = shipping_info[5].equals("null") ? "" : " / " + shipping_info[5];
+        address.setText(shipping_info[2] + " - " + shipping_info[3] + " - " + shipping_info[4] + note);
+        shipfee.setText(FormatNumber.formatString("" + order.getShip_fee()) + " VND");
+        price.setText(FormatNumber.formatString("" + order.getTotalBill()) + " VND");
     }
 
     public JButton getOkButton() {
@@ -52,7 +58,12 @@ public class OrderDetail extends javax.swing.JPanel {
         okButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        shipping_info = new javax.swing.JLabel();
+        namePhone = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        shipfee = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        price = new javax.swing.JLabel();
 
         okButton.setText("OK");
         okButton.setFocusPainted(false);
@@ -62,26 +73,50 @@ public class OrderDetail extends javax.swing.JPanel {
 
         jLabel2.setText("Shipping info : ");
 
-        shipping_info.setText("jLabel3");
+        namePhone.setText("jLabel3");
+
+        address.setText("jLabel3");
+
+        jLabel3.setText("Shipping fee:");
+
+        shipfee.setText("jLabel4");
+
+        jLabel4.setText("Total price of media:  ");
+
+        price.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(shipping_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 231, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(223, 223, 223))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(okButton)
-                .addGap(254, 254, 254))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(address, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(namePhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(okButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(shipfee, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,8 +126,16 @@ public class OrderDetail extends javax.swing.JPanel {
                 .addGap(438, 438, 438)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(shipping_info))
-                .addGap(27, 27, 27)
+                    .addComponent(namePhone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(address)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(shipfee)
+                    .addComponent(jLabel4)
+                    .addComponent(price))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton)
                 .addContainerGap())
         );
@@ -100,9 +143,14 @@ public class OrderDetail extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel address;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel namePhone;
     private javax.swing.JButton okButton;
-    private javax.swing.JLabel shipping_info;
+    private javax.swing.JLabel price;
+    private javax.swing.JLabel shipfee;
     // End of variables declaration//GEN-END:variables
 }
