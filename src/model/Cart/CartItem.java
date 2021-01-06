@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import model.User.User;
 
 /**
  *
@@ -20,19 +21,41 @@ public class CartItem {
     private int price;
     private int user_id;
     
-    public static int getShipFee(List<CartItem> cartItems,int district_id){
+    public static int getShipFee(int user_id,int district_id){
         
-        int totalBill = 0;
-        totalBill = cartItems.stream().map((cartItem) -> cartItem.getPrice() * cartItem.getQuantity()).reduce(totalBill, Integer::sum);
-        if(totalBill >= 100000){
+        try {
+            int totalBill = 0;
+            User user = new User(user_id);
+            List<CartItem> cartItems = user.getCartItems();
+            totalBill = cartItems.stream().map((cartItem) -> cartItem.getPrice() * cartItem.getQuantity()).reduce(totalBill, Integer::sum);
+            if(totalBill >= 100000){
+                return 0;
+            }   
+            int weight1 = 0,weight2 = 0;
+            ResultSet rs = ConnectSQL.sqlQuery("SELECT p.height*p.depth*p.width as weight2, p.weight*c.quantity as weight1 FROM CartItems c join Medias m using (media_id) join PhysicalGoods p using ( media_id) where user_id = "+user_id+" and p.weight*c.quantity = (SELECT max(p.weight*c.quantity) as max_depth FROM CartItems c join Medias m using (media_id) join PhysicalGoods p using ( media_id) where user_id = "+user_id+")");
+            while(rs.next()){
+                weight1 = Integer.parseInt(rs.getString("weight1"));
+                weight2 = Integer.parseInt(rs.getString("weight2"));
+            } 
+            float bill = 0;
+            float weigh = weight1/1000 + weight2/6000;
+            if(ShippingInfo.checkShip(district_id)){
+                if(weigh <= 3.0){
+                    bill = 22000;
+                }else{
+                    bill = (float) (22000 + (weigh-3.0)/0.5*2500);                    
+                }
+            }else{
+                if(weigh <= 3.0){
+                    bill = 30000;
+                }else{
+                    bill = (float) (30000 + (weigh-3.0)/0.5*2500);                    
+                }
+            } 
+            return (int) bill;
+        } catch (Exception ex) {
             return 0;
         }
-        if(ShippingInfo.checkShip(district_id)){
-            
-        }else{
-            
-        }
-        return 10000;
     }
     public CartItem(int media_id,int quantily, int price,int user_id) {
         this.media_id = media_id;

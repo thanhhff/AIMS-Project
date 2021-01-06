@@ -134,7 +134,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lp" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace pref="96" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="truoc" alignment="1" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="Sau" alignment="1" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>

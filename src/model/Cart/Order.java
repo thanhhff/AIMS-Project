@@ -26,6 +26,7 @@ public class Order {
     private String shipping_info;
     private int user_id;
     private String card_number;
+    private String created_at;
     
     public Order(int user_id,int ship_fee, String shipping_info, String card_number){
         this.user_id = user_id;
@@ -43,19 +44,24 @@ public class Order {
         }
     }
     
-    public Order(int order_id,int order_state_id,int user_id,int ship_fee, String shipping_info, String card_number){
+    public Order(int order_id,int order_state_id,int user_id,int ship_fee, String shipping_info, String card_number,String created_at){
         this.user_id = user_id;
         this.ship_fee = ship_fee;
         this.shipping_info = shipping_info;
         this.card_number = card_number;
         this.order_state_id = order_state_id;
         this.order_id = order_id;
+        this.created_at = created_at;
     }
 
     public int getOrder_id() {
         return order_id;
     }
 
+    public String getCreated_at() {
+        return created_at;
+    }
+    
     public String getCard_number() {
         return card_number;
     }

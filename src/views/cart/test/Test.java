@@ -4,16 +4,14 @@
  * and open the template in the editor.
  */
 package views.cart.test;
-import controller.Media.MediaController;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import model.Cart.Order;
 import model.Media.Media;
 import model.User.User;
-import views.Admin.Sales.MediaSalePanel;
-import views.cart.CartPanel;
-import views.mediaAdmin.MediaPanel;
+import views.order.OrderListPanel;
 
 
 
@@ -41,6 +39,8 @@ public class Test {
         ArrayList<Media> medias = Media.getAllMedia();
 //        new Test(new MediaPanel(medias));
 //        new Test(new MediaSalePanel(medias));
-        new Test(new MediaSalePanel(medias));
+        User user = new User();
+        List<Order> orders = user.getOrders();
+        new Test(new OrderListPanel(orders,user.stateOrder()));
     }
 }

@@ -24,16 +24,29 @@ public class SearchController {
         String sql;
         sql = "SELECT* FROM Medias ORDER BY media_id DESC LIMIT 0,20";
          try {
-            ResultSet rs = ConnectSQL.sqlQuery(sql);
-            
-            while (rs.next()) {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);            
+            while (rs.next()) {           
                 MediaItem media = new MediaItem(){};
                 media.setTitle(rs.getString(2));
                 media.setPrice(rs.getInt(4));
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM MediaSales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -54,7 +67,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -74,7 +101,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -94,7 +135,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -114,7 +169,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -134,7 +203,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -176,7 +259,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {
@@ -223,7 +320,21 @@ public class SearchController {
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
+                media.setSalePercent(0);
                 list.add(media);
+            }
+           
+        } catch (SQLException ex) {
+        }
+          sql = "SELECT* FROM Mediasales";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(2))
+                     list.get(i).setSalePercent(rs.getInt(4));
+               }
             }
            
         } catch (SQLException ex) {

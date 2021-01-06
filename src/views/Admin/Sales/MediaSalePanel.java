@@ -39,7 +39,6 @@ public class MediaSalePanel extends javax.swing.JPanel {
     private List<MediaSaleItemPanel> mediaSaleItemPanels;
     private List<MediaSale> mediaSales;
     public MediaSalePanel(List<Media> medias) {
-        System.out.println(medias.size());
         initComponents();
         setSize(WIDTH, HEIGHT);
         mediaSales = new ArrayList<MediaSale>();

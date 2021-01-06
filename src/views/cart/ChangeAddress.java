@@ -5,9 +5,6 @@
  */
 package views.cart;
 
-import db.ConnectSQL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JButton;
 import model.Cart.ShippingInfo;
 import model.Cart.Ward;
@@ -224,6 +221,7 @@ public class ChangeAddress extends javax.swing.JPanel {
     private void provinceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceBoxActionPerformed
         if (flag_province) {
             setDistrict(provinceBox.getSelectedItem().toString());
+            setWard(districtBox.getSelectedItem().toString());
         }
     }//GEN-LAST:event_provinceBoxActionPerformed
 
@@ -236,10 +234,10 @@ public class ChangeAddress extends javax.swing.JPanel {
     }//GEN-LAST:event_wardBoxActionPerformed
 
     private void districtBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtBoxActionPerformed
+        // TODO add your handling code here:
         if (flag_district) {
             setWard(districtBox.getSelectedItem().toString());
         }
-
     }//GEN-LAST:event_districtBoxActionPerformed
 
 

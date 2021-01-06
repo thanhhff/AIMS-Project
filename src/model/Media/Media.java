@@ -84,7 +84,7 @@ public abstract class Media {
             while(rs.next()){
                 return rs.getString("title");
             }
-            return "Media was deleted";
+            return "NaN";
         } catch (SQLException ex) {
             return null;
         }

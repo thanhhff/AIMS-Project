@@ -8,7 +8,6 @@ package views.cart;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -16,7 +15,6 @@ import aims.FormatNumber;
 import controller.Cart.CartController;
 import java.util.List;
 import model.Cart.CartItem;
-import model.Cart.ShippingInfo;
 import model.User.User;
 
 /**
@@ -110,7 +108,9 @@ public class CartPanel extends JPanel {
         billPanel.getTotalBillLabel().setName("" + totalBill);
         billPanel.getTotalBillLabel().setText(FormatNumber.formatString("" + totalBill) + " VND");
 
-        billPanel.getProvisialLabel().setName("" + totalBill);
-        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + totalBill) + " VND");
+        billPanel.getProvisialLabel().setName("" + (int)(totalBill*0.9));
+        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.9)) + " VND");
+        
+        billPanel.getVatLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.1)) + " VND");
     }
 }

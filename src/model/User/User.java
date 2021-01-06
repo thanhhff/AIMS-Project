@@ -78,7 +78,8 @@ public class User {
                 int order_state_id = Integer.parseInt(rs.getString("order_state_id"));
                 String shipping_info = rs.getString("shipping_info");
                 String card_number = rs.getString("card_number");
-                Order order = new Order(order_id, order_state_id, user_id, ship_fee, shipping_info, card_number);
+                String created_at = rs.getString("created_at");
+                Order order = new Order(order_id, order_state_id, user_id, ship_fee, shipping_info, card_number,created_at);
                 orders.add(order);
                 index++;
             }
@@ -90,7 +91,27 @@ public class User {
         }
         return null;
     }
-    
+    public int [] stateOrder(){
+        List<Order> orders = this.getOrders();
+        int[] result = {0,0,0,0,0,0};
+        for(Order order: orders){
+            switch(order.getOrder_state_id()){
+                case Order.SUCCESS:
+                    result[0]++;
+                    result[1] += order.getTotalBill() + order.getShip_fee();
+                    break;
+                case Order.CANCEL:
+                    result[2]++;
+                    result[3] += order.getTotalBill() + order.getShip_fee();
+                    break;
+                case Order.DELIVERING:
+                    result[4]++;
+                    result[5] += order.getTotalBill() + order.getShip_fee();
+                    break;
+            }
+        }
+        return result;
+    }
     public List<Order> getAllOrders(){
         try {
             int index = 0;
@@ -103,7 +124,8 @@ public class User {
                 String shipping_info = rs.getString("shipping_info");
                 int userID = Integer.parseInt(rs.getString("user_id"));
                 String card_number = rs.getString("card_number");
-                Order order = new Order(order_id, order_state_id, userID, ship_fee, shipping_info, card_number);
+                String created_at = rs.getString("created_at");
+                Order order = new Order(order_id, order_state_id, userID, ship_fee, shipping_info, card_number,created_at);
                 orders.add(order);
                 index++;
             }

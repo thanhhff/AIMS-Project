@@ -22,8 +22,8 @@ import model.Cart.Order;
  */
 public class CartController {
     
-    public static int getShipFee(List<CartItem> cartItems,int district_id){
-        return CartItem.getShipFee(cartItems,district_id);
+    public static int getShipFee(int user_id,int district_id){
+        return CartItem.getShipFee(user_id,district_id);
     }
     public static void addCartItem(int user_id, int media_id, int price){
         CartItem.creat(user_id, media_id, price);
@@ -41,8 +41,8 @@ public class CartController {
     public static void checkOut(int user_id,int ship_fee, String shipping_info, String cart_number){
         Order order = new Order(user_id, ship_fee, shipping_info, cart_number);
     }
-    public static boolean payment(String card_number, int totalBill){
-        return PaymentService.check(card_number, totalBill);
+    public static boolean payment(String card_number, int totalBillAll){
+        return PaymentService.check(card_number, totalBillAll);
     }
     
 }

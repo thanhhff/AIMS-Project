@@ -200,7 +200,7 @@ public final class HomeUser extends javax.swing.JFrame {
                 if (shippingInfo != null && cart.getCartList().getMediaCount() != 0) {
 
                     JDialog jDialog = new JDialog();
-                    int ship_fee = CartController.getShipFee(user.getCartItems(),shippingInfo.getWardObject().getDistrictID());
+                    int ship_fee = CartController.getShipFee(user.getUser_id(),shippingInfo.getWardObject().getDistrictID());
                     CheckOut checkOut = new CheckOut(shippingInfo, cart.getDelivery().getNoteText(), cart.getTotal(), ship_fee);
                     jDialog.setSize(650, 700);
                     checkOut.setBounds(0, 0, 650, 700);
@@ -213,7 +213,7 @@ public final class HomeUser extends javax.swing.JFrame {
                     });
                     checkOut.getConfirmButton().addActionListener((ActionEvent e1) -> {
                         if (checkOut.checkCVV() && checkOut.checkCardNumber() && checkOut.checkDateNumber()) {
-                            if(CartController.payment(checkOut.getCardNumber(), cart.getTotal())){
+                            if(CartController.payment(checkOut.getCardNumber(), checkOut.getBillAllValue())){
                                 String shipping_info = shippingInfo.getName() + "/" + shippingInfo.getPhone() + "/" 
                                         + shippingInfo.getWardObject().getWard() +"/" + shippingInfo.getWardObject().getDistrict() + "/"
                                         + shippingInfo.getWardObject().getProvince() + "/" + shippingInfo.getDelivery_instruction();
