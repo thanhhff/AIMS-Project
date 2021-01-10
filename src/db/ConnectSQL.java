@@ -11,13 +11,8 @@ public class ConnectSQL {
 
     private static Connection conn = null;
 
-<<<<<<< HEAD
     private static final String DB_URL = "jdbc:mysql://localhost:3306/itss?autoReconnect=true&useSSL=false";
-=======
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_test?autoReconnect=true&useSSL=false";
 
- //   private static final String DB_URL = "jdbc:mysql://localhost:3306/itss_test?autoReconnect=true&useSSL=false";
->>>>>>> 3f06e0b5d66b0bd0491b798156a3377664780e33
 
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";

@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 public class MediaAddFrame extends javax.swing.JFrame {
     
     private Media media;
+    private int old_id;
     
     /**
      * Creates new form MediaAddFrame
@@ -50,6 +51,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         
         media = md;
         media.setId(md.getId());
+        old_id = md.getId();
         media_name.setText(md.getTitle());
         media_value.setText(md.getValue() + "");
         media_price.setText(md.getPrice() + "");
@@ -1092,14 +1094,15 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         break;
                 }
                 if (flag) {
-                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                    if (confirm == 0) {
+                    int confirmAdd = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                    if (confirmAdd == 0) {
                         MediaController.insert(media);
                     }
                 } else {
-//                    MediaController.update(media);
-                      System.out.println(media.getId());
-                      System.out.println(media.getTitle());
+                    media.setId(old_id);
+                    MediaController.update(media);
+                    System.out.println(media.getId());
+                    System.out.println(media.getTitle());
                 }
             }
         }

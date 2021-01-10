@@ -185,6 +185,8 @@ public class MediaItemPanel extends javax.swing.JPanel {
         int category_id = media.getCategoryId();
         MediaAddFrame media_frame;
         
+//        System.out.println("Media id: " + media.getId());
+        
         switch (category_id) {
             case 1:
                 Book book = (Book) media;
