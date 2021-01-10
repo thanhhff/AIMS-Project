@@ -57,6 +57,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         media_price.setText(md.getPrice() + "");
         categories.setEditable(false);
         int category_id = md.getCategoryId();
+        categories.setSelectedIndex(category_id-1);
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
