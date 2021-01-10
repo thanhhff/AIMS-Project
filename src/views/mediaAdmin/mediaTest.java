@@ -35,3 +35,6 @@ public class mediaTest {
         new mediaTest(new MediaPanel(medias));
     }
 }
+
+// notes: chua cap nhat lai man hinh sau khi add, update hoac delete
+// chua hien thi nhu thay noi
