@@ -45,7 +45,7 @@ public class MediaSalePanel extends javax.swing.JPanel {
         MediaSaleList  mediaSaleList = new MediaSaleList(medias);
         mediaSaleList.setBounds(40, 80, mediaSaleList.getWidth(), mediaSaleList.getHeight());
         mediaSaleItemPanels = mediaSaleList.getMediaSaleItemPanels();
-        changeValue(30, 150, mediaSaleItemPanels);
+        changeValue(mediaSaleItemPanels);
         start_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay());
         start_day.getModel().setSelected(true);
         end_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay() + 7);
@@ -102,7 +102,7 @@ public class MediaSalePanel extends javax.swing.JPanel {
             }
         });
     }
-    private void changeValue( int min, int max, List<MediaSaleItemPanel> mediaSaleItemPanels) {
+    private void changeValue(List<MediaSaleItemPanel> mediaSaleItemPanels) {
         percentAll.getDocument().addDocumentListener(new DocumentListener() {
            
             public void changedUpdate(DocumentEvent e) {
@@ -121,8 +121,11 @@ public class MediaSalePanel extends javax.swing.JPanel {
 //                System.out.println("Test");
                 int precent = getValueNumber(percentAll);
                 if (precent == 0) {
-
-                } else if (precent == -1 || precent < min || precent > max) {
+                    percentAll.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));                    
+                    for(MediaSaleItemPanel mediaSaleItemPanel: mediaSaleItemPanels){
+                        mediaSaleItemPanel.setSaleValue(precent);
+                    }
+                } else if (precent == -1) {
                     percentAll.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 } else {
                     percentAll.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));                    
