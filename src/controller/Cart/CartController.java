@@ -42,7 +42,7 @@ public class CartController {
         Order order = new Order(user_id, ship_fee, shipping_info, cart_number);
     }
     public static boolean payment(String card_number, int totalBillAll){
-        return PaymentService.check(card_number, totalBillAll);
+        return PaymentService.payment(card_number, totalBillAll);
     }
     
 }
