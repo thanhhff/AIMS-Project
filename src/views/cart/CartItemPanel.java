@@ -15,6 +15,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import model.Cart.CartItem;
 
 /**
@@ -26,60 +27,66 @@ public class CartItemPanel extends javax.swing.JPanel {
     /**
      * Creates new form CartItemPanel
      */
-	public static final int WIDTH = 630;
-	public static final int HEIGHT = 190;
-        private CartItem cartItem;
+    public static final int WIDTH = 630;
+    public static final int HEIGHT = 190;
+    private CartItem cartItem;
+    private boolean flag = true;
+    private boolean flag2 = true;
     public CartItemPanel(CartItem cartItem) {
         initComponents();
         this.cartItem = cartItem;
-        
         mediaNameLabel.setText(this.cartItem.getMediaName());
-        
+
         quantityLabel.setName("" + this.cartItem.getQuantity());
         quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
-        
+
         totalPrice.setName("" + (this.cartItem.getPrice() * this.cartItem.getQuantity()));
         totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-        
+
         priceLabel.setName("" + this.cartItem.getPrice());
         priceLabel.setText(FormatNumber.formatString(priceLabel.getName()));
-        
+
         imageLabel.setBounds(12, 12, 143, 164);
         imageLabel.setPreferredSize(new Dimension(143, 164));
         imageLabel.setMaximumSize(new Dimension(143, 164));
         imageLabel.setMinimumSize(new Dimension(143, 164));
         try {
             BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));
-            Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(),Image.SCALE_SMOOTH);
+            Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             imageLabel.setIcon(imageIcon);
         } catch (IOException e) {
-            System.out.println("Can't file"); 
+            System.out.println("Can't file");
         }
         plusMedia.setName(priceLabel.getName());
-        minusMedia.setName("-"+priceLabel.getName());
+        minusMedia.setName("-" + priceLabel.getName());
         setValueButtonDelete();
     }
-       public JButton getdeleteButton(){
-           return this.deleteButton;
-       }
-       public JButton getMinusMedia(){
-           return this.minusMedia;
-       }
-       public JButton getPlusMedia(){
-           return this.plusMedia;
-       }
-       public int getTotalPrice(){
-           return Integer.parseInt(totalPrice.getName());
-       }
+
+    public JButton getdeleteButton() {
+        return this.deleteButton;
+    }
+
+    public JButton getMinusMedia() {
+        return this.minusMedia;
+    }
+
+    public JButton getPlusMedia() {
+        return this.plusMedia;
+    }
+
+    public int getTotalPrice() {
+        return Integer.parseInt(totalPrice.getName());
+    }
 
     public CartItem getCartItem() {
         return cartItem;
     }
-    public int getQuantity(){
+
+    public int getQuantity() {
         return Integer.parseInt(quantityLabel.getText());
     }
-       
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,39 +233,56 @@ public class CartItemPanel extends javax.swing.JPanel {
 
     private void plusMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMediaActionPerformed
         int quantity = Integer.parseInt(quantityLabel.getName());
-        int price = Integer.parseInt(priceLabel.getName());
-        int total = Integer.parseInt(totalPrice.getName());
-        quantity += 1;
-        quantityLabel.setName(""+quantity);
-        quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
-        totalPrice.setName("" + (price*quantity));
-        totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
-        CartController.updateQuantity(cartItem, this.cartItem.getQuantity() + 1);
-        setValueButtonDelete();
+        int max_quantity = this.cartItem.getMaxQuantity();
+        if (quantity + 1 <= max_quantity) {
+            int price = Integer.parseInt(priceLabel.getName());
+            int total = Integer.parseInt(totalPrice.getName());
+            quantity += 1;
+            if(quantity == max_quantity)
+                flag = false;
+            quantityLabel.setName("" + quantity);
+            quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
+            totalPrice.setName("" + (price * quantity));
+            totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
+            CartController.updateQuantity(cartItem, this.cartItem.getQuantity() + 1);
+            setValueButtonDelete();
+        } else {
+            flag = false;
+            flag2 = false;
+            JOptionPane.showMessageDialog(null, "Not enough products in stock");
+        }
     }//GEN-LAST:event_plusMediaActionPerformed
 
     private void minusMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusMediaActionPerformed
         int quantity = Integer.parseInt(quantityLabel.getName());
+        flag = true;
+        flag2 = true;
         int price = Integer.parseInt(priceLabel.getName());
         int total = Integer.parseInt(totalPrice.getName());
-        if(quantity == 1){
-     
-        }else{
+        if (quantity == 1) {
+
+        } else {
             quantity -= 1;
-            quantityLabel.setName(""+quantity);
+            quantityLabel.setName("" + quantity);
             quantityLabel.setText(FormatNumber.formatString(quantityLabel.getName()));
-            totalPrice.setName("" + (price*quantity));
+            totalPrice.setName("" + (price * quantity));
             totalPrice.setText(FormatNumber.formatString(totalPrice.getName()));
             CartController.updateQuantity(cartItem, this.cartItem.getQuantity() - 1);
             setValueButtonDelete();
         }
     }//GEN-LAST:event_minusMediaActionPerformed
 
+    public boolean isFlag() {
+        if(cartItem.getQuantity() == cartItem.getMaxQuantity())
+            return false;
+        return flag || flag2;
+    }
+
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         setValueButtonDelete();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void setValueButtonDelete(){
+    private void setValueButtonDelete() {
         deleteButton.setName("+" + totalPrice.getName());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

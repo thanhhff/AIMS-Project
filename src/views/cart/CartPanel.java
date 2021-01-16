@@ -68,8 +68,10 @@ public class CartPanel extends JPanel {
                             cartList.deleteObj(cartItemPanel);
                             CartController.deleteCartItem(cartItem);
                             this.updateUI();
-                        } 
-                        totalBill += price;
+                        }
+                        if(price < 0 || cartItemPanel.isFlag())
+                            totalBill += price;
+                        
                     }
                     changeBill();
                 });
@@ -107,10 +109,10 @@ public class CartPanel extends JPanel {
     private void changeBill() {
         billPanel.getTotalBillLabel().setName("" + totalBill);
         billPanel.getTotalBillLabel().setText(FormatNumber.formatString("" + totalBill) + " VND");
-
-        billPanel.getProvisialLabel().setName("" + (int)(totalBill*0.9));
-        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.9)) + " VND");
+        int provisial = (int)(totalBill/1.1);
+        billPanel.getProvisialLabel().setName("" + provisial);
+        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + provisial) + " VND");
         
-        billPanel.getVatLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.1)) + " VND");
+        billPanel.getVatLabel().setText(FormatNumber.formatString("" + (totalBill - provisial)) + " VND");
     }
 }

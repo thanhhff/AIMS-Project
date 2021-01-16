@@ -38,9 +38,10 @@ public class CheckOut extends javax.swing.JPanel {
         name_phone.setText("Name: " + shippingInfo.getName() + " - " + shippingInfo.getPhone());
         address.setText("Address: " + shippingInfo.getWardObject().getWard() + "-" + shippingInfo.getWardObject().getDistrict() + "-" + shippingInfo.getWardObject().getProvince());
         noteText.setText("Note: " + note);
-        provisional.setText(FormatNumber.formatString(""+(int)(totalBill*0.9)) + " VND");
+        int provisial = (int) (totalBill/1.1);
+        provisional.setText(FormatNumber.formatString(""+provisial) + " VND");
         totalBillLabel.setText(FormatNumber.formatString("" + totalBill) + " VND");
-        vatLabel.setText(FormatNumber.formatString("" + (int)(totalBill*0.1)) + " VND");
+        vatLabel.setText(FormatNumber.formatString("" + (totalBill-provisial)) + " VND");
         shippingFeeLabel.setText(FormatNumber.formatString("" + shippingFee) + " VND");
         billAll.setText(FormatNumber.formatString("" + (shippingFee + totalBill)) + " VND");
         billAllvalue = shippingFee + totalBill;

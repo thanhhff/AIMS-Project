@@ -7,6 +7,9 @@ package model.Media;
 
 import db.ConnectSQL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,7 +52,17 @@ public abstract class PhysicalGood extends Media {
         this.depth = depth;
         this.weight = weight;
     }
- 
+    public static int getQuantityByID(int media_id){
+        ResultSet rs = ConnectSQL.sqlQuery("Select quantity from PhysicalGoods where media_id = " + media_id);
+        try {
+            while(rs.next()){
+                return Integer.parseInt(rs.getString("quantity"));
+            }
+            return 0;
+        } catch (SQLException ex) {
+            return 0;
+        }
+    }
 
     public String getBarcode() {
         return barcode;
