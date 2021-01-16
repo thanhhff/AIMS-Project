@@ -43,10 +43,11 @@ public class CartPanel extends JPanel {
             totalBill = cartList.getTotalAll();
 
             changeBill();
-            cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
-            if (cartList.getMediaCount() < 3) {
-                cartList.setBounds(12, 12, CartList.MAX_WIDTH, (CartItemPanel.HEIGHT + 20) * cartList.getMediaCount());
-            }
+//            cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
+//            if (cartList.getMediaCount() < 3) {
+//                cartList.setBounds(12, 12, CartList.MAX_WIDTH, (CartItemPanel.HEIGHT + 20) * cartList.getMediaCount());
+//            }
+            changeSizeCartList();
 
             cartList.getchangeMedia().forEach((button) -> {
                 button.addActionListener((ActionEvent e) -> {
@@ -58,6 +59,7 @@ public class CartPanel extends JPanel {
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
                             CartController.deleteCartItem(cartItem);
+                            changeSizeCartList();
                             this.updateUI();
                         }                        
                     } else {
@@ -66,7 +68,8 @@ public class CartPanel extends JPanel {
                         if(price < 0 && cartItemPanel.getQuantity() == 1){
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
-                            CartController.deleteCartItem(cartItem);
+                            CartController.deleteCartItem(cartItem);              
+                            changeSizeCartList();
                             this.updateUI();
                         }
                         if(price < 0 || cartItemPanel.isFlag())
@@ -96,6 +99,19 @@ public class CartPanel extends JPanel {
     }
     public DeliveryPanel getDelivery(){
         return deliveryPanel;
+    }
+    private void changeSizeCartList(){
+        switch(cartList.getMediaCount()){
+            case 1:
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartItemPanel.HEIGHT + 20);
+                break;
+            case 2: 
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartItemPanel.HEIGHT * 2 + 40);
+                break;
+            default:
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
+                break;
+        }
     }
     public CartList getCartList(){
         return cartList;

@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 import model.Cart.CartItem;
 import model.Cart.Order;
 import model.Cart.ShippingInfo;
