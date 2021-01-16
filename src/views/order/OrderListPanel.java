@@ -28,10 +28,12 @@ public class OrderListPanel extends javax.swing.JPanel {
     private JTable table;
     private List<Order> orders;
     private int[] orderinfo;
+    public static int WIDTH = 900;
+    public static int HEIGHT = 570;
     public OrderListPanel(List<Order> orders,int [] orderinfo) {
+        setLayout(null);
         this.orders = orders;
         this.orderinfo = orderinfo;
-        setLayout(null);
         initComponents();
         String[] columnName = {"Order date","Total bill","Status"};
         int i = orders.size();
@@ -51,7 +53,7 @@ public class OrderListPanel extends javax.swing.JPanel {
         add(table);
         add(table.getTableHeader());
         table.getTableHeader().setBounds(18, 12, 590, 32);
-        
+        setSize(WIDTH, HEIGHT);
     }
 
     /**

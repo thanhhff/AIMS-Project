@@ -42,6 +42,6 @@ public class Test {
 //        new Test(new MediaSalePanel(medias));
         User user = new User();
         List<Order> orders = user.getOrders();
-        new Test(new MediaSalePanel(medias));
+        new Test(new OrderListPanel(orders, user.stateOrder()));
     }
 }

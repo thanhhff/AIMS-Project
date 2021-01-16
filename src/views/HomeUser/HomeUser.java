@@ -10,18 +10,12 @@ package views.HomeUser;
 import static aims.AIMS.account;
 import controller.Cart.CartController;
 
-import controller.Search.SearchController;
 import java.awt.BorderLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import model.Cart.ShippingInfo;
-import model.Media.Media;
 import model.User.User;
-import views.MediaList.mediaListPanel;
-import views.MediaList.mediaList;
 import views.MediaList.mediaListPanel;
 import views.account.Login;
 import views.account.UserPanel.AccountPanel;

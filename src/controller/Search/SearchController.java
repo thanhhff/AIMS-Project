@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import model.Media.Media;
 import model.Media.MediaItem;
 
@@ -18,6 +19,9 @@ import model.Media.MediaItem;
  * @author User
  */
 public class SearchController {
+    public static List<Media> searchByTitle(String title){
+        return Media.searchByTitle(title);
+    }
     public static void SearchRandom(ArrayList<MediaItem> list)
     {   
         
@@ -191,7 +195,7 @@ public class SearchController {
     }
     public static void SearchUser(ArrayList<MediaItem> list,String search) {
          String sql;
-        sql = "SELECT* FROM medias  Where medias.title LIKE '%" + search + "%'LIMIT 0,20";
+        sql = "SELECT* FROM Medias  Where medias.title LIKE '%" + search + "%'LIMIT 0,20";
         System.out.print(search);
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);

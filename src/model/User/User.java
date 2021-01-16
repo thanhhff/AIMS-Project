@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 import model.Cart.CartItem;
 import model.Cart.Order;
 import model.Cart.ShippingInfo;
@@ -112,7 +113,28 @@ public class User {
         }
         return result;
     }
-    public List<Order> getAllOrders(){
+    public static int [] stateAllOrder(){
+        List<Order> orders = getAllOrders();
+        int[] result = {0,0,0,0,0,0};
+        for(Order order: orders){
+            switch(order.getOrder_state_id()){
+                case Order.SUCCESS:
+                    result[0]++;
+                    result[1] += order.getTotalBill() + order.getShip_fee();
+                    break;
+                case Order.CANCEL:
+                    result[2]++;
+                    result[3] += order.getTotalBill() + order.getShip_fee();
+                    break;
+                case Order.DELIVERING:
+                    result[4]++;
+                    result[5] += order.getTotalBill() + order.getShip_fee();
+                    break;
+            }
+        }
+        return result;
+    }
+    public static List<Order> getAllOrders(){
         try {
             int index = 0;
             List<Order> orders = new ArrayList<Order>();
