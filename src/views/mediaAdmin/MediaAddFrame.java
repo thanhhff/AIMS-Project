@@ -1071,12 +1071,18 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int language_id = languages.getSelectedIndex() + 1;
                         String publisher_name = publisher.getText();
                         String publication_day = publication_date.getText();
-                        int pages = Integer.parseInt(page_number.getText());
+                        int pages = 0;
+                        try {
+                            pages = Integer.parseInt(page_number.getText());
+                        } catch (Exception e) {
+                        }
+                        
                         int cover_type_id = cover_types.getSelectedIndex() + 1;
                         String genre = book_genre.getText();
                         int book_id = Media.getMaxID() + 1;
                         if (author.length() == 0 || publisher_name.length() == 0 || publication_day.length() == 0 || page_number.getText().length() == 0 || genre.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter book details");
+                            return;
                         } else {
                             media = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
                         }
@@ -1118,6 +1124,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int lp_id = Media.getMaxID() + 1;
                         if (lp_artist.length() == 0 || genre_lp.length() == 0 || lp_record_name.length() == 0 || lp_publication_day.length() == 0 || lp_tracks.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter LP details");
+                            
                         } else {
                             media = new LP(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
                         }
