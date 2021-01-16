@@ -43,10 +43,11 @@ public class CartPanel extends JPanel {
             totalBill = cartList.getTotalAll();
 
             changeBill();
-            cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
-            if (cartList.getMediaCount() < 3) {
-                cartList.setBounds(12, 12, CartList.MAX_WIDTH, (CartItemPanel.HEIGHT + 20) * cartList.getMediaCount());
-            }
+//            cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
+//            if (cartList.getMediaCount() < 3) {
+//                cartList.setBounds(12, 12, CartList.MAX_WIDTH, (CartItemPanel.HEIGHT + 20) * cartList.getMediaCount());
+//            }
+            changeSizeCartList();
 
             cartList.getchangeMedia().forEach((button) -> {
                 button.addActionListener((ActionEvent e) -> {
@@ -58,6 +59,7 @@ public class CartPanel extends JPanel {
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
                             CartController.deleteCartItem(cartItem);
+                            changeSizeCartList();
                             this.updateUI();
                         }                        
                     } else {
@@ -66,10 +68,13 @@ public class CartPanel extends JPanel {
                         if(price < 0 && cartItemPanel.getQuantity() == 1){
                             CartItem cartItem = cartItemPanel.getCartItem();
                             cartList.deleteObj(cartItemPanel);
-                            CartController.deleteCartItem(cartItem);
+                            CartController.deleteCartItem(cartItem);              
+                            changeSizeCartList();
                             this.updateUI();
-                        } 
-                        totalBill += price;
+                        }
+                        if(price < 0 || cartItemPanel.isFlag())
+                            totalBill += price;
+                        
                     }
                     changeBill();
                 });
@@ -95,6 +100,19 @@ public class CartPanel extends JPanel {
     public DeliveryPanel getDelivery(){
         return deliveryPanel;
     }
+    private void changeSizeCartList(){
+        switch(cartList.getMediaCount()){
+            case 1:
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartItemPanel.HEIGHT + 20);
+                break;
+            case 2: 
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartItemPanel.HEIGHT * 2 + 40);
+                break;
+            default:
+                cartList.setBounds(12, 12, CartList.MAX_WIDTH, CartList.MAX_HEIGHT);
+                break;
+        }
+    }
     public CartList getCartList(){
         return cartList;
     }
@@ -107,10 +125,10 @@ public class CartPanel extends JPanel {
     private void changeBill() {
         billPanel.getTotalBillLabel().setName("" + totalBill);
         billPanel.getTotalBillLabel().setText(FormatNumber.formatString("" + totalBill) + " VND");
-
-        billPanel.getProvisialLabel().setName("" + (int)(totalBill*0.9));
-        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.9)) + " VND");
+        int provisial = (int)(totalBill/1.1);
+        billPanel.getProvisialLabel().setName("" + provisial);
+        billPanel.getProvisialLabel().setText(FormatNumber.formatString("" + provisial) + " VND");
         
-        billPanel.getVatLabel().setText(FormatNumber.formatString("" + (int)(totalBill*0.1)) + " VND");
+        billPanel.getVatLabel().setText(FormatNumber.formatString("" + (totalBill - provisial)) + " VND");
     }
 }

@@ -286,7 +286,7 @@ public class MediaSaleItemPanel extends javax.swing.JPanel {
 
             public void warn() {
                 int precent = getValueNumber(precentLabel);
-                int sale = Math.round(precent * media.getPrice() / 100);
+                int sale = Math.round((100-precent) * media.getPrice() / 100);
                 if (precent == 0) {
 
                 } else if (precent == -1 || sale < min || sale > max) {

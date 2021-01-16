@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import model.Media.PhysicalGood;
 import model.User.User;
 
 /**
@@ -66,7 +67,9 @@ public class CartItem {
     public int getMedia_id() {
         return media_id;
     }
-    
+    public int getMaxQuantity(){
+        return PhysicalGood.getQuantityByID(this.media_id);
+    }
     public int getUser_id() {
         return user_id;
     }

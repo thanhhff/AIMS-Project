@@ -45,7 +45,7 @@ public class MediaSalePanel extends javax.swing.JPanel {
         MediaSaleList  mediaSaleList = new MediaSaleList(medias);
         mediaSaleList.setBounds(40, 80, mediaSaleList.getWidth(), mediaSaleList.getHeight());
         mediaSaleItemPanels = mediaSaleList.getMediaSaleItemPanels();
-        changeValue(30, 150, mediaSaleItemPanels);
+        changeValue(mediaSaleItemPanels);
         start_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay());
         start_day.getModel().setSelected(true);
         end_day.getModel().setDate(DateService.currentYear(), DateService.currentMonth(), DateService.currentDay() + 7);
@@ -55,18 +55,18 @@ public class MediaSalePanel extends javax.swing.JPanel {
     public List<MediaSale> getMediaSales(){
         return mediaSales;
     }
-    private boolean checkDay(){
+    public  boolean checkDay(){
         if(DateService.compareDate(getEndDate() , getStartDate(), "yyyy/MM/dd") == 1){
             return true;
         }
         return false;
     }
-    public JButton getCancel() {
-        return cancel;
-    }
-
     public JButton getSubmit() {
         return submit;
+    }
+
+    public List<MediaSaleItemPanel> getMediaSaleItemPanels() {
+        return mediaSaleItemPanels;
     }
     
     public String getStartDate(){
@@ -102,7 +102,7 @@ public class MediaSalePanel extends javax.swing.JPanel {
             }
         });
     }
-    private void changeValue( int min, int max, List<MediaSaleItemPanel> mediaSaleItemPanels) {
+    private void changeValue(List<MediaSaleItemPanel> mediaSaleItemPanels) {
         percentAll.getDocument().addDocumentListener(new DocumentListener() {
            
             public void changedUpdate(DocumentEvent e) {
@@ -121,8 +121,11 @@ public class MediaSalePanel extends javax.swing.JPanel {
 //                System.out.println("Test");
                 int precent = getValueNumber(percentAll);
                 if (precent == 0) {
-
-                } else if (precent == -1 || precent < min || precent > max) {
+                    percentAll.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));                    
+                    for(MediaSaleItemPanel mediaSaleItemPanel: mediaSaleItemPanels){
+                        mediaSaleItemPanel.setSaleValue(precent);
+                    }
+                } else if (precent == -1) {
                     percentAll.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
                 } else {
                     percentAll.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));                    
@@ -149,7 +152,6 @@ public class MediaSalePanel extends javax.swing.JPanel {
         percentAll = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
         start_day = new org.jdatepicker.JDatePicker();
         end_day = new org.jdatepicker.JDatePicker();
 
@@ -159,68 +161,40 @@ public class MediaSalePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setText("Media Saling");
         add(jLabel1);
-        jLabel1.setBounds(309, 12, 170, 22);
+        jLabel1.setBounds(309, 12, 170, 21);
 
         jLabel2.setText("Start date: ");
         add(jLabel2);
-        jLabel2.setBounds(40, 54, 68, 16);
+        jLabel2.setBounds(40, 54, 76, 17);
 
         jLabel3.setText("End date: ");
         add(jLabel3);
-        jLabel3.setBounds(309, 54, 62, 16);
+        jLabel3.setBounds(309, 54, 69, 17);
 
         jLabel4.setText("Sale off all: ");
         add(jLabel4);
-        jLabel4.setBounds(591, 54, 74, 16);
+        jLabel4.setBounds(591, 54, 79, 17);
 
         percentAll.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         percentAll.setText("0");
         add(percentAll);
-        percentAll.setBounds(682, 51, 41, 26);
+        percentAll.setBounds(682, 51, 41, 23);
 
         jLabel5.setText("%");
         add(jLabel5);
-        jLabel5.setBounds(735, 54, 9, 16);
+        jLabel5.setBounds(735, 54, 13, 17);
 
         submit.setText("Submit");
-        submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitActionPerformed(evt);
-            }
-        });
         add(submit);
-        submit.setBounds(230, 590, 90, 29);
-
-        cancel.setText("Cancel");
-        add(cancel);
-        cancel.setBounds(490, 590, 86, 29);
+        submit.setBounds(340, 590, 90, 35);
         add(start_day);
         start_day.setBounds(120, 50, 180, 40);
         add(end_day);
-        end_day.setBounds(390, 50, 180, 29);
+        end_day.setBounds(390, 50, 180, 37);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        if(checkDay()){
-            mediaSales.removeAll(mediaSales);
-            for (MediaSaleItemPanel mediaSaleItemPanel : mediaSaleItemPanels) {
-                if (mediaSaleItemPanel.isStatus()) {
-                    mediaSales.add(mediaSaleItemPanel.getMediaSale());
-                }
-            }
-            int select = JOptionPane.showConfirmDialog(null, "Sale " + mediaSales.size() + " media(s)");
-            if (select == JOptionPane.YES_OPTION && mediaSales.size() > 0) {
-                SalesController.create(mediaSales, getStartDate(), getEndDate());
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
-        }
-
-    }//GEN-LAST:event_submitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancel;
     private org.jdatepicker.JDatePicker end_day;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

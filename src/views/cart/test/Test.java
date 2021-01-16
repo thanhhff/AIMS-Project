@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import model.Cart.Order;
 import model.Media.Media;
 import model.User.User;
-import views.order.OrderListPanel;
+import views.cart.CartPanel;
 
 
 
@@ -41,6 +41,6 @@ public class Test {
 //        new Test(new MediaSalePanel(medias));
         User user = new User();
         List<Order> orders = user.getOrders();
-        new Test(new OrderListPanel(orders,user.stateOrder()));
+        new Test(new CartPanel(user));
     }
 }

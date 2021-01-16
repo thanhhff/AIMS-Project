@@ -9,6 +9,7 @@ import db.ConnectSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -136,7 +137,16 @@ public abstract class Media {
     public void setCategory(int category_id) {
         this.category_id = category_id;
     }
-    
+    public static List<Media> searchByTitle(String title){
+        List<Media> medias = getAllMedia();
+        List<Media> result =  new ArrayList<Media>();
+        for(Media media: medias){
+            if(media.title.toLowerCase().contains(title.toLowerCase())){
+                result.add(media);
+            }
+        }
+        return result.size() == 0 ? null: result;
+    }
     public String getImagePath() {
         return image_path;
     }

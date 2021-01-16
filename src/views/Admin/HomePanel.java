@@ -6,18 +6,32 @@
 package views.Admin;
 
 import static aims.AIMS.account;
+import controller.Sale.SalesController;
+import controller.Search.SearchController;
 import java.awt.BorderLayout;
+import java.awt.Cursor;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import model.Cart.Order;
 import model.Media.Media;
+import model.Sale.MediaSale;
 import model.User.User;
+import views.Admin.Sales.MediaSaleItemPanel;
 import views.Admin.Sales.MediaSalePanel;
 import views.Admin.User.UserPanel;
 import views.mediaAdmin.MediaPanel;
 import views.mediaAdmin.mediaTest;
 import views.order.OrderList;
+import views.order.OrderListPanel;
 
 /**
  *
@@ -162,28 +176,87 @@ public class HomePanel extends javax.swing.JPanel {
     private void jButtonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaleActionPerformed
         // TODO add your handling code here:
         FillInfor.removeAll();
-        
-        List<Media> medias = Media.getAllMedia();
-        MediaSalePanel salePanel = new MediaSalePanel(medias);
-        
-        FillInfor.setLayout(new BorderLayout());
-        FillInfor.add(salePanel, BorderLayout.CENTER);
+        FillInfor.setLayout(null);
+        JTextField searchField = new JTextField();
+        JButton searchButton = new JButton();
+        searchButton.setText("Search");
+        searchField.setFocusable(true);
+        searchButton.setFocusPainted(false);
+        searchField.setBounds(50, 50, 300, 40);
+        searchButton.setBounds(50 + 300 + 50, 50, 100, 40);
+        FillInfor.add(searchButton);
+        FillInfor.add(searchField);
+        searchButton.addActionListener((ActionEvent e) -> {
+            
+        });
+        searchField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() ==  10){
+                    String title = searchField.getText();
+                    if(title.equals("")){
+                        JOptionPane.showMessageDialog(null, "Please enter keywords you want to search");
+                    }else{
+                        List<Media> medias = SearchController.searchByTitle(title);
+                        if(medias == null){
+                            JOptionPane.showMessageDialog(null, "Can't found media has title '" + title + "'");
+                        }else{
+                            FillInfor.removeAll();
+
+                            MediaSalePanel salePanel = new MediaSalePanel(medias);
+                            
+                            salePanel.getSubmit().addActionListener((ActionEvent e1) -> {
+                                if(salePanel.checkDay()){
+                                    salePanel.getMediaSales().removeAll(salePanel.getMediaSales());
+                                    for (MediaSaleItemPanel mediaSaleItemPanel : salePanel.getMediaSaleItemPanels()) {
+                                        if (mediaSaleItemPanel.isStatus()) {
+                                            salePanel.getMediaSales().add(mediaSaleItemPanel.getMediaSale());
+                                        }
+                                    }
+                                    int select = JOptionPane.showConfirmDialog(null, "Sale " + salePanel.getMediaSales().size() + " media(s)");
+                                    if (select == JOptionPane.YES_OPTION && salePanel.getMediaSales().size() > 0) {
+                                        SalesController.create(salePanel.getMediaSales(), salePanel.getStartDate(), salePanel.getEndDate());
+                                        JOptionPane.showMessageDialog(null, "Successfull");
+                                        jButtonSaleActionPerformed(null);
+                                    }
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
+                                }
+                            });
+
+                            salePanel.setBounds(20, 20, salePanel.getWidth(), salePanel.getHeight());
+                            FillInfor.setLayout(new BorderLayout());
+                            FillInfor.add(salePanel, BorderLayout.CENTER);
+                            FillInfor.updateUI();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
         FillInfor.updateUI();
     }//GEN-LAST:event_jButtonSaleActionPerformed
 
     private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
         // TODO add your handling code here:
         
-        User user = new User(account.getId());
         FillInfor.removeAll();
-        if (user.getAllOrders() == null) {
+        List<Order> orders =  User.getAllOrders();
+        if (orders == null) {
             JOptionPane.showMessageDialog(null, "Order empty");
         } else {
-        OrderList orderList = new OrderList(user.getAllOrders());
+        OrderListPanel orderListPanel = new OrderListPanel(orders, User.stateAllOrder());
 //        FillInfor.setLayout(new BorderLayout());
         FillInfor.setLayout(null);
- 
-        FillInfor.add(orderList, BorderLayout.CENTER);
+        orderListPanel.setBounds(20, 20, orderListPanel.getWidth(), orderListPanel.getHeight());
+        FillInfor.add(orderListPanel, BorderLayout.CENTER);
         FillInfor.updateUI();
         }
     }//GEN-LAST:event_jButtonOrderActionPerformed

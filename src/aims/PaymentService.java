@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class PaymentService {
 
-    public static boolean check(String cart_number, int totalBill){
+    public static boolean payment(String cart_number, int totalBill){
         List<String> data =  new ArrayList<String>();
         boolean flag = false;
         try {
