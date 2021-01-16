@@ -46,6 +46,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
             media_price.setEditable(false);
             categories.setEditable(false);
             categories.setEnabled(false);
+            media_image_path.setEnabled(false);
             confirmButton.setVisible(false);
         }
         
@@ -58,10 +59,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
         categories.setEditable(false);
         int category_id = md.getCategoryId();
         categories.setSelectedIndex(category_id-1);
-        image_path.setText(md.getImagePath());
+        media_image_path.setText(md.getImagePath());
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
+                // if click show button
                 if (!isEdit) {
                     media_quantity.setEditable(false);
                     media_input_day.setEditable(false);
@@ -244,7 +246,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         media_depth = new javax.swing.JFormattedTextField();
         media_weight = new javax.swing.JFormattedTextField();
         image_path_label = new javax.swing.JLabel();
-        image_path = new javax.swing.JTextField();
+        media_image_path = new javax.swing.JTextField();
         detail_panel = new javax.swing.JPanel();
         detail_label = new javax.swing.JLabel();
         add_panel = new javax.swing.JPanel();
@@ -452,7 +454,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                             .addGroup(left_panelLayout.createSequentialGroup()
                                 .addComponent(image_path_label)
                                 .addGap(18, 18, 18)
-                                .addComponent(image_path)))
+                                .addComponent(media_image_path)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         left_panelLayout.setVerticalGroup(
@@ -510,7 +512,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(image_path_label)
-                    .addComponent(image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(media_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -1028,7 +1030,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         
         if (media_name.getText().length() == 0 || media_value.getText().length() == 0 || media_price.getText().length() == 0 
                 || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0
-                || image_path.getText().length() == 0) {
+                || media_image_path.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day, barcode and image path!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             
@@ -1042,6 +1044,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
             String barcode = media_barcode.getText();
             String description = media_description.getText();
             String input_day = media_input_day.getText();
+            String image_path = media_image_path.getText();
+
             
             int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
             int height = media_height.getText().length() == 0 ? 0 : Integer.parseInt(media_height.getText());
@@ -1071,7 +1075,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int cover_type_id = cover_types.getSelectedIndex() + 1;
                         String genre = book_genre.getText();
                         int book_id = Media.getMaxID() + 1;
-                        String image_path = String.valueOf(book_id) + ".png";
                         media = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
                         
                         break;
@@ -1084,8 +1087,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int dvd_type_id = dvd_types.getSelectedIndex() + 1;
                         String subtitle = dvd_subtitle.getText();
                         int dvd_id = Media.getMaxID() + 1;
-                        String dvd_image_path = String.valueOf(dvd_id) + ".png";
-                        media = new DVD(title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
+                        media = new DVD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
                         break;
                     case 3:
                         String artist = artist_name.getText();
@@ -1094,8 +1096,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String cd_publication_day = cd_publication_date.getText();
                         String track_list = tracks_list.getText();
                         int cd_id = Media.getMaxID() + 1;
-                        String cd_image_path = String.valueOf(cd_id) + ".png";
-                        media = new CD(title, value, price, 0, category_id, cd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
+                        media = new CD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
                         
                         break;
                     case 4:
@@ -1105,8 +1106,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String lp_publication_day = lp_publication_date.getText();
                         String lp_tracks = lp_tracks_list.getText();
                         int lp_id = Media.getMaxID() + 1;
-                        String lp_image_path = String.valueOf(lp_id) + ".png";
-                        media = new LP(title, value, price, 0, category_id, lp_image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
+                        media = new LP(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
                         break;
                 }
                 if (flag) {
@@ -1380,7 +1380,6 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dvd_types;
     private javax.swing.JLabel genre_label;
     private javax.swing.JLabel height_label;
-    private javax.swing.JTextField image_path;
     private javax.swing.JLabel image_path_label;
     private javax.swing.JLabel input_day_label;
     private javax.swing.JLabel jLabel1;
@@ -1406,6 +1405,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea media_description;
     private javax.swing.JLabel media_description_label;
     private javax.swing.JFormattedTextField media_height;
+    private javax.swing.JTextField media_image_path;
     private javax.swing.JFormattedTextField media_input_day;
     private javax.swing.JTextField media_name;
     private javax.swing.JFormattedTextField media_price;
