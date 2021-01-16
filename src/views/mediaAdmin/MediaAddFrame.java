@@ -58,6 +58,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
         categories.setEditable(false);
         int category_id = md.getCategoryId();
         categories.setSelectedIndex(category_id-1);
+        image_path.setText(md.getImagePath());
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
