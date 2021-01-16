@@ -242,6 +242,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
         depth_label = new javax.swing.JLabel();
         media_depth = new javax.swing.JFormattedTextField();
         media_weight = new javax.swing.JFormattedTextField();
+        image_path_label = new javax.swing.JLabel();
+        image_path = new javax.swing.JTextField();
         detail_panel = new javax.swing.JPanel();
         detail_label = new javax.swing.JLabel();
         add_panel = new javax.swing.JPanel();
@@ -383,6 +385,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
         media_weight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
 
+        image_path_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        image_path_label.setText("Image path:");
+
         javax.swing.GroupLayout left_panelLayout = new javax.swing.GroupLayout(left_panel);
         left_panel.setLayout(left_panelLayout);
         left_panelLayout.setHorizontalGroup(
@@ -417,10 +422,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
                                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(currency_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(currency_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 210, Short.MAX_VALUE)))
                         .addGap(7, 7, 7))
                     .addGroup(left_panelLayout.createSequentialGroup()
-                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(category_label)
                             .addComponent(quantity_label)
                             .addComponent(input_day_label)
@@ -442,8 +447,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(depth_label)
                                         .addGap(18, 18, 18)
-                                        .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 279, Short.MAX_VALUE))))
+                                        .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addComponent(image_path_label)
+                                .addGap(18, 18, 18)
+                                .addComponent(image_path)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         left_panelLayout.setVerticalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,7 +506,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(media_description_label))
-                .addGap(56, 56, 56))
+                .addGap(10, 10, 10)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(image_path_label)
+                    .addComponent(image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         detail_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -1013,8 +1026,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (media_name.getText().length() == 0 || media_value.getText().length() == 0 || media_price.getText().length() == 0 
-                || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day and barcode!", "Error", JOptionPane.ERROR_MESSAGE);
+                || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0
+                || image_path.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day, barcode and image path!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             
             
@@ -1365,6 +1379,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dvd_types;
     private javax.swing.JLabel genre_label;
     private javax.swing.JLabel height_label;
+    private javax.swing.JTextField image_path;
+    private javax.swing.JLabel image_path_label;
     private javax.swing.JLabel input_day_label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
