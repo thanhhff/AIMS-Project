@@ -60,7 +60,7 @@ public class SearchController {
      public static void SearchBook(ArrayList<MediaItem> list)
      {
         String sql;
-        sql = "SELECT* FROM medias Join books Where medias.media_id = books.media_id LIMIT 0,20"; 
+        sql = "SELECT* FROM Medias Join Books Where Medias.media_id = Books.media_id LIMIT 0,20"; 
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);
             
@@ -269,7 +269,7 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
-          sql = "SELECT* FROM Mediasales";
+          sql = "SELECT* FROM MediaSales";
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);           
             while (rs.next()) {
