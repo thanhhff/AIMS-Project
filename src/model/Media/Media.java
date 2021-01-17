@@ -155,7 +155,18 @@ public abstract class Media {
     public void setImagePath(String image_path) {
         this.image_path = image_path;
     }
-    
+    public static String getImagePathbyID(int media_id){
+        String result = "";
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery("Select image_path from Medias where media_id = " + media_id );
+            while(rs.next()){
+                result = rs.getString("image_path");
+            }
+            return result;
+        } catch (Exception e) {
+            return result;
+        }
+    }
     public static int getNumberOfMedia() {
         try {
             int result = 0;

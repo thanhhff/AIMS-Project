@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.Cart.CartItem;
+import model.Media.Media;
 
 /**
  *
@@ -53,7 +54,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         imageLabel.setMaximumSize(new Dimension(143, 164));
         imageLabel.setMinimumSize(new Dimension(143, 164));
         try {
-            BufferedImage img = ImageIO.read(new File("src/views/images/conank-resize3.png"));
+            BufferedImage img = ImageIO.read(new File("src/views/productImages/" + Media.getImagePathbyID(cartItem.getMedia_id())));
             Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             imageLabel.setIcon(imageIcon);
