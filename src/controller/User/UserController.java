@@ -69,9 +69,6 @@ public class UserController {
         return user_id;
     }
     
-    public static int getCurrentUserId() {
-        return User.current_userid;
-    }
     
     public Account getAccount(int user_id){
         Account acc = null;
