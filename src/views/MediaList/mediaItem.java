@@ -153,6 +153,11 @@ public class mediaItem extends javax.swing.JPanel {
                 plusMedia1MouseClicked(evt);
             }
         });
+        plusMedia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusMedia1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(245, 18, 18));
@@ -280,17 +285,23 @@ public class mediaItem extends javax.swing.JPanel {
         // TODO add your handling code here:
         CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
         if(Integer.parseInt(quantityLabel.getText()) != 0)
-        JOptionPane.showMessageDialog(null, "Thêm giỏ hàng thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Add cart successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
         else
-           JOptionPane.showMessageDialog(null, "Bạn phải chọn số lượng!", "Error", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(null, "You have to choose quantity!", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_addCartButtonActionPerformed
 
     private void plusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusMedia1MouseClicked
         // TODO add your handling code here:
          int quantity = Integer.parseInt(quantityLabel.getText());
+         if(quantity < media.getQuantity()){
          quantity += 1;
          quantityLabel.setName(""+quantity);
          quantityLabel.setText(String.valueOf(quantity));
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(null, "Exceeded quantity allowed!", "Error", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_plusMedia1MouseClicked
 
     private void minusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMedia1MouseClicked
@@ -301,7 +312,13 @@ public class mediaItem extends javax.swing.JPanel {
          quantityLabel.setName(""+quantity);
          quantityLabel.setText(String.valueOf(quantity));
         }
+        else
+           JOptionPane.showMessageDialog(null, "Cannot reduce the quantity!", "Error", JOptionPane.ERROR_MESSAGE); 
     }//GEN-LAST:event_minusMedia1MouseClicked
+
+    private void plusMedia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMedia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plusMedia1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
