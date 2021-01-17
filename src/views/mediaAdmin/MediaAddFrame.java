@@ -46,6 +46,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
             media_price.setEditable(false);
             categories.setEditable(false);
             categories.setEnabled(false);
+            media_image_path.setEnabled(false);
             confirmButton.setVisible(false);
         }
         
@@ -58,9 +59,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
         categories.setEditable(false);
         int category_id = md.getCategoryId();
         categories.setSelectedIndex(category_id-1);
+        media_image_path.setText(md.getImagePath());
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
+                // if click show button
                 if (!isEdit) {
                     media_quantity.setEditable(false);
                     media_input_day.setEditable(false);
@@ -242,6 +245,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
         depth_label = new javax.swing.JLabel();
         media_depth = new javax.swing.JFormattedTextField();
         media_weight = new javax.swing.JFormattedTextField();
+        image_path_label = new javax.swing.JLabel();
+        media_image_path = new javax.swing.JTextField();
         detail_panel = new javax.swing.JPanel();
         detail_label = new javax.swing.JLabel();
         add_panel = new javax.swing.JPanel();
@@ -383,6 +388,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
 
         media_weight.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
 
+        image_path_label.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        image_path_label.setText("Image path:");
+
         javax.swing.GroupLayout left_panelLayout = new javax.swing.GroupLayout(left_panel);
         left_panel.setLayout(left_panelLayout);
         left_panelLayout.setHorizontalGroup(
@@ -417,10 +425,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
                                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(currency_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(currency_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 210, Short.MAX_VALUE)))
                         .addGap(7, 7, 7))
                     .addGroup(left_panelLayout.createSequentialGroup()
-                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(category_label)
                             .addComponent(quantity_label)
                             .addComponent(input_day_label)
@@ -442,8 +450,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(depth_label)
                                         .addGap(18, 18, 18)
-                                        .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 279, Short.MAX_VALUE))))
+                                        .addComponent(media_depth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addComponent(image_path_label)
+                                .addGap(18, 18, 18)
+                                .addComponent(media_image_path)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         left_panelLayout.setVerticalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,7 +509,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(media_description_label))
-                .addGap(56, 56, 56))
+                .addGap(10, 10, 10)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(image_path_label)
+                    .addComponent(media_image_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         detail_label.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -1013,8 +1029,9 @@ public class MediaAddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (media_name.getText().length() == 0 || media_value.getText().length() == 0 || media_price.getText().length() == 0 
-                || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day and barcode!", "Error", JOptionPane.ERROR_MESSAGE);
+                || media_quantity.getText().length() == 0 || media_input_day.getText().length() == 0 || media_barcode.getText().length() == 0
+                || media_image_path.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please enter the media name, value, price, quantity, input day, barcode and image path!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             
             
@@ -1027,6 +1044,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
             String barcode = media_barcode.getText();
             String description = media_description.getText();
             String input_day = media_input_day.getText();
+            String image_path = "/views/productImages/" + media_image_path.getText();
+
             
             int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
             int height = media_height.getText().length() == 0 ? 0 : Integer.parseInt(media_height.getText());
@@ -1052,13 +1071,21 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int language_id = languages.getSelectedIndex() + 1;
                         String publisher_name = publisher.getText();
                         String publication_day = publication_date.getText();
-                        int pages = Integer.parseInt(page_number.getText());
+                        int pages = 0;
+                        try {
+                            pages = Integer.parseInt(page_number.getText());
+                        } catch (Exception e) {
+                        }
+                        
                         int cover_type_id = cover_types.getSelectedIndex() + 1;
                         String genre = book_genre.getText();
                         int book_id = Media.getMaxID() + 1;
-                        String image_path = String.valueOf(book_id) + ".png";
-                        media = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
-                        
+                        if (author.length() == 0 || publisher_name.length() == 0 || publication_day.length() == 0 || page_number.getText().length() == 0 || genre.length() == 0) {
+                            JOptionPane.showMessageDialog(null, "Please enter book details");
+                            return;
+                        } else {
+                            media = new Book(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, author, cover_type_id, publisher_name, publication_day, pages, language_id, genre);
+                        }
                         break;
                     case 2:
                         String director = writer_name.getText();
@@ -1069,8 +1096,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int dvd_type_id = dvd_types.getSelectedIndex() + 1;
                         String subtitle = dvd_subtitle.getText();
                         int dvd_id = Media.getMaxID() + 1;
-                        String dvd_image_path = String.valueOf(dvd_id) + ".png";
-                        media = new DVD(title, value, price, 0, category_id, dvd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
+                        if (director.length() == 0 || studio.length() == 0 || dvd_publication_date.length() == 0 || dvd_runtime.getText().length() == 0 || subtitle.length() == 0) {
+                            JOptionPane.showMessageDialog(null, "Please enter DVD details");
+                        } else {
+                            media = new DVD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
+                        }
                         break;
                     case 3:
                         String artist = artist_name.getText();
@@ -1079,9 +1109,11 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String cd_publication_day = cd_publication_date.getText();
                         String track_list = tracks_list.getText();
                         int cd_id = Media.getMaxID() + 1;
-                        String cd_image_path = String.valueOf(cd_id) + ".png";
-                        media = new CD(title, value, price, 0, category_id, cd_image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
-                        
+                        if (artist.length() == 0 || genre_cd.length() == 0 || record.length() == 0 || track_list.length() == 0) {
+                            JOptionPane.showMessageDialog(null, "Please enter CD details");
+                        } else {
+                            media = new CD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
+                        }
                         break;
                     case 4:
                         String lp_artist = lp_artist_name.getText();
@@ -1090,8 +1122,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String lp_publication_day = lp_publication_date.getText();
                         String lp_tracks = lp_tracks_list.getText();
                         int lp_id = Media.getMaxID() + 1;
-                        String lp_image_path = String.valueOf(lp_id) + ".png";
-                        media = new LP(title, value, price, 0, category_id, lp_image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
+                        if (lp_artist.length() == 0 || genre_lp.length() == 0 || lp_record_name.length() == 0 || lp_publication_day.length() == 0 || lp_tracks.length() == 0) {
+                            JOptionPane.showMessageDialog(null, "Please enter LP details");
+                            
+                        } else {
+                            media = new LP(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
+                        }
                         break;
                 }
                 if (flag) {
@@ -1365,6 +1401,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dvd_types;
     private javax.swing.JLabel genre_label;
     private javax.swing.JLabel height_label;
+    private javax.swing.JLabel image_path_label;
     private javax.swing.JLabel input_day_label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1389,6 +1426,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea media_description;
     private javax.swing.JLabel media_description_label;
     private javax.swing.JFormattedTextField media_height;
+    private javax.swing.JTextField media_image_path;
     private javax.swing.JFormattedTextField media_input_day;
     private javax.swing.JTextField media_name;
     private javax.swing.JFormattedTextField media_price;
