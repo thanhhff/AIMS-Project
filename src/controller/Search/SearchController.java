@@ -37,6 +37,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -84,6 +85,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -131,6 +133,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -178,6 +181,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -225,6 +229,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -272,6 +277,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -341,6 +347,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -415,6 +422,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            

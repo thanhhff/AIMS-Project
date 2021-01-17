@@ -50,7 +50,9 @@ public class mediaItem extends javax.swing.JPanel {
         jLabel68.setMaximumSize(new Dimension(100, 122));
         jLabel68.setMinimumSize(new Dimension(100, 122));
         try {
-            BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));
+            
+           // BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));  //fix cung anh
+            BufferedImage img = ImageIO.read(new File(media.getImagePath()));   // anh theo tung media
             Image dimg = img.getScaledInstance(jLabel68.getWidth(), jLabel68.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jLabel68.setIcon(imageIcon);
