@@ -10,7 +10,8 @@ package model.Media;
  * @author User
  */
 public class MediaItem extends Media{
-
+    private int quantity;
+    private int newPrice;
     @Override
     public void insert() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -20,10 +21,25 @@ public class MediaItem extends Media{
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public MediaItem()
+   /* public MediaItem()
     {
         super();
+    }*/
+    public MediaItem() {
+         super();
     }
-    
-    
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+     public int getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(int newPrice) {
+        this.newPrice = newPrice;
+    }
 }

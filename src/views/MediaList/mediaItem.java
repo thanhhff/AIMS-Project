@@ -7,11 +7,18 @@ package views.MediaList;
 
 import static aims.AIMS.account;
 import aims.FormatNumber;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Label;
 import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import model.Cart.CartItem;
@@ -38,7 +45,20 @@ public class mediaItem extends javax.swing.JPanel {
     public mediaItem(MediaItem media) {
         this.media = media;
         initComponents();
-        jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/conan-resize.png"))); // NOI18N
+        jLabel68.setBounds(12, 12, 100, 122);
+        jLabel68.setPreferredSize(new Dimension(100, 122));
+        jLabel68.setMaximumSize(new Dimension(100, 122));
+        jLabel68.setMinimumSize(new Dimension(100, 122));
+        try {
+            
+           // BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));  //fix cung anh
+            BufferedImage img = ImageIO.read(new File(media.getImagePath()));   // anh theo tung media
+            Image dimg = img.getScaledInstance(jLabel68.getWidth(), jLabel68.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            jLabel68.setIcon(imageIcon);
+        } catch (IOException e) {
+            System.out.println("Can't file");
+        }
         jLabel1.setText(media.getTitle());
         jLabel3.setText(String.valueOf(media.getPrice()) + " VND");
         if(media.getSalePercent() != 0){
@@ -85,14 +105,14 @@ public class mediaItem extends javax.swing.JPanel {
 
         jLabel2.setText("jLabel2");
 
-        jButton1.setText("Thông tin");
+        jButton1.setText("Information");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        addCartButton.setText("Thêm giỏ hàng");
+        addCartButton.setText("Add to cart");
         addCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCartButtonActionPerformed(evt);
@@ -100,6 +120,9 @@ public class mediaItem extends javax.swing.JPanel {
         });
 
         jLabel62.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+
+        jLabel68.setMaximumSize(new java.awt.Dimension(100, 122));
+        jLabel68.setMinimumSize(new java.awt.Dimension(100, 122));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("jLabel1");
@@ -132,6 +155,11 @@ public class mediaItem extends javax.swing.JPanel {
                 plusMedia1MouseClicked(evt);
             }
         });
+        plusMedia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plusMedia1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(245, 18, 18));
@@ -148,62 +176,65 @@ public class mediaItem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(jLabel62))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(minusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(quantityLabel)
-                .addGap(18, 18, 18)
-                .addComponent(plusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saleper, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(addCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addComponent(jButton1))
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(addCartButton))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(minusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(quantityLabel)
+                        .addGap(33, 33, 33)
+                        .addComponent(plusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jLabel62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel68)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel62)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(plusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(quantityLabel)
-                    .addComponent(minusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel62))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(plusMedia1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(minusMedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quantityLabel))
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, 0)
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(saleper))
-                    .addComponent(jLabel3))
-                .addGap(6, 6, 6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saleper)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addGap(6, 6, 6)
+                .addGap(4, 4, 4)
                 .addComponent(addCartButton))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -256,17 +287,23 @@ public class mediaItem extends javax.swing.JPanel {
         // TODO add your handling code here:
         CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
         if(Integer.parseInt(quantityLabel.getText()) != 0)
-        JOptionPane.showMessageDialog(null, "Thêm giỏ hàng thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Add cart successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
         else
-           JOptionPane.showMessageDialog(null, "Bạn phải chọn số lượng!", "Error", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(null, "You have to choose quantity!", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_addCartButtonActionPerformed
 
     private void plusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusMedia1MouseClicked
         // TODO add your handling code here:
          int quantity = Integer.parseInt(quantityLabel.getText());
+         if(quantity < media.getQuantity()){
          quantity += 1;
          quantityLabel.setName(""+quantity);
          quantityLabel.setText(String.valueOf(quantity));
+         }
+         else
+         {
+             JOptionPane.showMessageDialog(null, "Exceeded quantity allowed!", "Error", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_plusMedia1MouseClicked
 
     private void minusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minusMedia1MouseClicked
@@ -277,7 +314,13 @@ public class mediaItem extends javax.swing.JPanel {
          quantityLabel.setName(""+quantity);
          quantityLabel.setText(String.valueOf(quantity));
         }
+        else
+           JOptionPane.showMessageDialog(null, "Cannot reduce the quantity!", "Error", JOptionPane.ERROR_MESSAGE); 
     }//GEN-LAST:event_minusMedia1MouseClicked
+
+    private void plusMedia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMedia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plusMedia1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

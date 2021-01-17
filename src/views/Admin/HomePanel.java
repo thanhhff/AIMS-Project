@@ -5,15 +5,10 @@
  */
 package views.Admin;
 
-import static aims.AIMS.account;
 import controller.Sale.SalesController;
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
-import java.awt.Cursor;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -23,14 +18,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Cart.Order;
 import model.Media.Media;
-import model.Sale.MediaSale;
+import model.Sale.Sale;
 import model.User.User;
 import views.Admin.Sales.MediaSaleItemPanel;
 import views.Admin.Sales.MediaSalePanel;
+import views.Admin.Sales.SaleListPanel;
 import views.Admin.User.UserPanel;
 import views.mediaAdmin.MediaPanel;
-import views.mediaAdmin.mediaTest;
-import views.order.OrderList;
 import views.order.OrderListPanel;
 
 /**
@@ -183,6 +177,12 @@ public class HomePanel extends javax.swing.JPanel {
         searchButton.setFocusPainted(false);
         searchField.setBounds(50, 50, 300, 40);
         searchButton.setBounds(50 + 300 + 50, 50, 100, 40);
+        List<Sale> sales = Sale.getAllSales();
+        if(sales != null){
+            SaleListPanel saleListPanel = new SaleListPanel(Sale.getAllSales());
+            saleListPanel.setBounds(40, 100, 742, 492);
+            FillInfor.add(saleListPanel);
+        }
         FillInfor.add(searchButton);
         FillInfor.add(searchField);
         searchButton.addActionListener((ActionEvent e) -> {

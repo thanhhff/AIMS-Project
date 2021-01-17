@@ -36,6 +36,11 @@ public class DateService {
         cal.setTime(date);
         return cal.get(Calendar.YEAR);
     }
+    public static String now(String formatDate) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat(formatDate);
+        return sdf.format(cal.getTime());
+    }
     public static int compareDate(String date1, String date2, String formatDate){
         try {
             SimpleDateFormat format = new SimpleDateFormat(formatDate);
@@ -51,6 +56,7 @@ public class DateService {
             }
             return 1;
         } catch (ParseException ex) {
+            ex.printStackTrace();
             return 2;
         }        
     }
