@@ -997,7 +997,9 @@ CREATE TABLE `Orders` (
   `order_state_id` int NOT NULL DEFAULT '3',
   `shipping_info` varchar(255) CHARACTER SET utf8mb4  NOT NULL,
   `user_id` int NOT NULL,
-  `card_number` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL
+  `card_number` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
@@ -12822,4 +12824,6 @@ insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 200, 5, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_id`, `publisher_name`, `language_id`, `author_name`, `genre`) values ('2018-12-20', 300, 6, 1, 'NXB Hedspi', 1, 'Bao Anh', 'Programming');
 
-
+insert into `Actions` values (1, 'Them');
+insert into `Actions` values (2, 'Sua');
+insert into `Actions` values (3, 'Xoa');

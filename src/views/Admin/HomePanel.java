@@ -46,9 +46,8 @@ public class HomePanel extends javax.swing.JPanel {
         initComponents();
         fill();
     }
-    
-    public void fill()
-    {
+
+    public void fill() {
         FillInfor.removeAll();
         ArrayList<Media> medias = Media.getAllMedia();
         MediaPanel mediaPanel = new MediaPanel(medias);
@@ -170,7 +169,7 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
         // TODO add your handling code here:
-       fill();
+        fill();
     }//GEN-LAST:event_jButtonProductActionPerformed
 
     private void jButtonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaleActionPerformed
@@ -187,7 +186,43 @@ public class HomePanel extends javax.swing.JPanel {
         FillInfor.add(searchButton);
         FillInfor.add(searchField);
         searchButton.addActionListener((ActionEvent e) -> {
-            
+            String title = searchField.getText();
+            if (title.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please enter keywords you want to search");
+            } else {
+                List<Media> medias = SearchController.searchByTitle(title);
+                if (medias == null) {
+                    JOptionPane.showMessageDialog(null, "Can't found media has title '" + title + "'");
+                } else {
+                    FillInfor.removeAll();
+
+                    MediaSalePanel salePanel = new MediaSalePanel(medias);
+
+                    salePanel.getSubmit().addActionListener((ActionEvent e1) -> {
+                        if (salePanel.checkDay()) {
+                            salePanel.getMediaSales().removeAll(salePanel.getMediaSales());
+                            for (MediaSaleItemPanel mediaSaleItemPanel : salePanel.getMediaSaleItemPanels()) {
+                                if (mediaSaleItemPanel.isStatus()) {
+                                    salePanel.getMediaSales().add(mediaSaleItemPanel.getMediaSale());
+                                }
+                            }
+                            int select = JOptionPane.showConfirmDialog(null, "Sale " + salePanel.getMediaSales().size() + " media(s)");
+                            if (select == JOptionPane.YES_OPTION && salePanel.getMediaSales().size() > 0) {
+                                SalesController.create(salePanel.getMediaSales(), salePanel.getStartDate(), salePanel.getEndDate());
+                                JOptionPane.showMessageDialog(null, "Successfull");
+                                jButtonSaleActionPerformed(null);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
+                        }
+                    });
+
+                    salePanel.setBounds(20, 20, salePanel.getWidth(), salePanel.getHeight());
+                    FillInfor.setLayout(new BorderLayout());
+                    FillInfor.add(salePanel, BorderLayout.CENTER);
+                    FillInfor.updateUI();
+                }
+            }
         });
         searchField.addKeyListener(new KeyListener() {
             @Override
@@ -196,21 +231,21 @@ public class HomePanel extends javax.swing.JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() ==  10){
+                if (e.getKeyCode() == 10) {
                     String title = searchField.getText();
-                    if(title.equals("")){
+                    if (title.equals("")) {
                         JOptionPane.showMessageDialog(null, "Please enter keywords you want to search");
-                    }else{
+                    } else {
                         List<Media> medias = SearchController.searchByTitle(title);
-                        if(medias == null){
+                        if (medias == null) {
                             JOptionPane.showMessageDialog(null, "Can't found media has title '" + title + "'");
-                        }else{
+                        } else {
                             FillInfor.removeAll();
 
                             MediaSalePanel salePanel = new MediaSalePanel(medias);
-                            
+
                             salePanel.getSubmit().addActionListener((ActionEvent e1) -> {
-                                if(salePanel.checkDay()){
+                                if (salePanel.checkDay()) {
                                     salePanel.getMediaSales().removeAll(salePanel.getMediaSales());
                                     for (MediaSaleItemPanel mediaSaleItemPanel : salePanel.getMediaSaleItemPanels()) {
                                         if (mediaSaleItemPanel.isStatus()) {
@@ -223,7 +258,7 @@ public class HomePanel extends javax.swing.JPanel {
                                         JOptionPane.showMessageDialog(null, "Successfull");
                                         jButtonSaleActionPerformed(null);
                                     }
-                                }else{
+                                } else {
                                     JOptionPane.showMessageDialog(null, "EndDay is an earlier date than StartDay");
                                 }
                             });
@@ -246,18 +281,18 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void jButtonOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOrderActionPerformed
         // TODO add your handling code here:
-        
+
         FillInfor.removeAll();
-        List<Order> orders =  User.getAllOrders();
+        List<Order> orders = User.getAllOrders();
         if (orders == null) {
             JOptionPane.showMessageDialog(null, "Order empty");
         } else {
-        OrderListPanel orderListPanel = new OrderListPanel(orders, User.stateAllOrder());
+            OrderListPanel orderListPanel = new OrderListPanel(orders, User.stateAllOrder());
 //        FillInfor.setLayout(new BorderLayout());
-        FillInfor.setLayout(null);
-        orderListPanel.setBounds(20, 20, orderListPanel.getWidth(), orderListPanel.getHeight());
-        FillInfor.add(orderListPanel, BorderLayout.CENTER);
-        FillInfor.updateUI();
+            FillInfor.setLayout(null);
+            orderListPanel.setBounds(20, 20, orderListPanel.getWidth(), orderListPanel.getHeight());
+            FillInfor.add(orderListPanel, BorderLayout.CENTER);
+            FillInfor.updateUI();
         }
     }//GEN-LAST:event_jButtonOrderActionPerformed
 
