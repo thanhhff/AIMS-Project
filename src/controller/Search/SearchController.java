@@ -102,6 +102,19 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
      }
 
     public static void SearchCd(ArrayList<MediaItem> list) {
@@ -131,6 +144,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -170,6 +196,19 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
     }
 
     public static void SearchLp(ArrayList<MediaItem> list) {
@@ -204,6 +243,19 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
     }
     public static void SearchUser(ArrayList<MediaItem> list,String search) {
          String sql;
@@ -233,6 +285,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -294,6 +359,19 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
     }
       public static void SearchPrevious(ArrayList<MediaItem> list,String search,int status, int page) {
          String sql;
@@ -350,6 +428,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
