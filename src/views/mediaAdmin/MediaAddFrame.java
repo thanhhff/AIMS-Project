@@ -1096,13 +1096,19 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String director = writer_name.getText();
                         String studio = studio_name.getText();
                         String dvd_publication_date = publication_date_dvd.getText();
-                        int runtime = Integer.parseInt(dvd_runtime.getText());
+                        int runtime = 0;
+                        try {
+                            runtime = Integer.parseInt(dvd_runtime.getText());
+                        } catch (Exception e) {
+                            
+                        }
                         int dvd_language_id = dvd_languages.getSelectedIndex() + 1;
                         int dvd_type_id = dvd_types.getSelectedIndex() + 1;
                         String subtitle = dvd_subtitle.getText();
                         int dvd_id = Media.getMaxID() + 1;
                         if (director.length() == 0 || studio.length() == 0 || dvd_publication_date.length() == 0 || dvd_runtime.getText().length() == 0 || subtitle.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter DVD details");
+                            return;
                         } else {
                             media = new DVD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
                         }
@@ -1116,6 +1122,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int cd_id = Media.getMaxID() + 1;
                         if (artist.length() == 0 || genre_cd.length() == 0 || record.length() == 0 || track_list.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter CD details");
+                            return;
                         } else {
                             media = new CD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
                         }
@@ -1129,6 +1136,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int lp_id = Media.getMaxID() + 1;
                         if (lp_artist.length() == 0 || genre_lp.length() == 0 || lp_record_name.length() == 0 || lp_publication_day.length() == 0 || lp_tracks.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter LP details");
+                            return;
                             
                         } else {
                             media = new LP(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);

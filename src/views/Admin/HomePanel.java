@@ -25,6 +25,7 @@ import views.Admin.Sales.MediaSalePanel;
 import views.Admin.Sales.SaleListPanel;
 import views.Admin.User.UserPanel;
 import views.MediaList.mediaListPanel;
+import views.mediaAdmin.MediaListPanel;
 import views.mediaAdmin.MediaPanel;
 import views.order.OrderListPanel;
 
@@ -45,9 +46,11 @@ public class HomePanel extends javax.swing.JPanel {
     public void fill() {
         FillInfor.removeAll();
         ArrayList<Media> medias = Media.getAllMedia();
-        MediaPanel mediaPanel = new MediaPanel(medias);
+//        MediaPanel mediaPanel = new MediaPanel(medias);
+        MediaListPanel mediaListPanel = new MediaListPanel(medias);
         FillInfor.setLayout(new BorderLayout());
-        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+//        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+        FillInfor.add(mediaListPanel, BorderLayout.CENTER);
         FillInfor.updateUI();
     }
 
