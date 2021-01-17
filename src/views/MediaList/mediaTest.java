@@ -32,7 +32,7 @@ public class mediaTest {
         jFrame.setVisible(true);
     }
      public static void main(String[] args) {
-       MediaItem media = new MediaItem() {};
+       MediaItem media = new MediaItem();
        media.setCategory(0);
        media.setPrice(15000);
        media.setTitle("conan");
