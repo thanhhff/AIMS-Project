@@ -177,9 +177,12 @@ public class HomePanel extends javax.swing.JPanel {
         searchButton.setFocusPainted(false);
         searchField.setBounds(50, 50, 300, 40);
         searchButton.setBounds(50 + 300 + 50, 50, 100, 40);
-        SaleListPanel saleListPanel = new SaleListPanel(Sale.getAllSales());
-        saleListPanel.setBounds(40, 100, 742, 492);
-        FillInfor.add(saleListPanel);
+        List<Sale> sales = Sale.getAllSales();
+        if(sales != null){
+            SaleListPanel saleListPanel = new SaleListPanel(Sale.getAllSales());
+            saleListPanel.setBounds(40, 100, 742, 492);
+            FillInfor.add(saleListPanel);
+        }
         FillInfor.add(searchButton);
         FillInfor.add(searchField);
         searchButton.addActionListener((ActionEvent e) -> {
