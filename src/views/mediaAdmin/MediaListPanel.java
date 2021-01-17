@@ -7,6 +7,7 @@ package views.mediaAdmin;
 
 import aims.FormatNumber;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -32,37 +33,40 @@ public class MediaListPanel extends javax.swing.JPanel {
      */
     private JTable table;
     private List<Media> medias;
+
     public MediaListPanel(List<Media> medias) {
         this.medias = medias;
         setLayout(null);
         initComponents();
         fillTable();
-        
+
     }
-    private void fillTable(){
-        String[] columnNames = {"MediaID","Title","Category","Value(VND)","Price(VND)","Select"};
+
+    private void fillTable() {
+        String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)", "Select"};
         int i = medias.size();
         int j = 6;
-        Object [][] data = new Object[i][j];
+        Object[][] data = new Object[i][j];
         int index = 0;
         String[] categories = {"Book", "DVD", "CD", "LP"};
-        for(Media media: medias){
+        for (Media media : medias) {
             data[index][0] = media.getId();
-            data[index][2] = categories[media.getCategoryId()-1];
+            data[index][2] = categories[media.getCategoryId() - 1];
             data[index][1] = media.getTitle();
-            data[index][3] = FormatNumber.formatString(media.getValue() +"");
-            data[index][4] = FormatNumber.formatString(media.getPrice() +"");
+            data[index][3] = FormatNumber.formatString(media.getValue() + "");
+            data[index][4] = FormatNumber.formatString(media.getPrice() + "");
             data[index++][5] = false;
         }
         table = new JTable(data, columnNames);
         JScrollPane scrollPane = new JScrollPane(table);
         table.setFillsViewportHeight(true);
-        table.setBounds(12, 12 + 32 +35 + 12, 669, 434-35);
+        table.setBounds(12, 12 + 32 + 35 + 12, 669, 434 - 35);
         this.add(table);
         this.add(table.getTableHeader());
-        table.getTableHeader().setBounds(12, 12 + 35 + 12 , 669, 35);
+        table.getTableHeader().setBounds(12, 12 + 35 + 12, 669, 35);
         this.updateUI();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,31 +155,38 @@ public class MediaListPanel extends javax.swing.JPanel {
         } else {
             Media media = medias.get(row);
             int category_id = media.getCategoryId();
-            MediaAddFrame media_frame;  
+            MediaAddFrame media_frame;
             switch (category_id) {
-                    case 1:
-                        Book book = (Book) media;
-                        media_frame = new MediaAddFrame(book, true);
-                        break;
-                    case 2:
-                        DVD dvd = (DVD) media;
-                        media_frame = new MediaAddFrame(dvd, true);
-                        break;
-                    case 3:
-                        CD cd = (CD) media;
-                        media_frame = new MediaAddFrame(cd, true);
-                        break;
-                    case 4:
-                        LP lp = (LP) media;
-                        media_frame = new MediaAddFrame(lp, true);
-                        break;
-                    default:
-                        Book new_book = (Book) media;
-                        media_frame = new MediaAddFrame(new_book, true);
-                }
-                media_frame.setLocationRelativeTo(null);
-                media_frame.setVisible(true);
-        
+                case 1:
+                    Book book = (Book) media;
+                    media_frame = new MediaAddFrame(book, true);
+                    break;
+                case 2:
+                    DVD dvd = (DVD) media;
+                    media_frame = new MediaAddFrame(dvd, true);
+                    break;
+                case 3:
+                    CD cd = (CD) media;
+                    media_frame = new MediaAddFrame(cd, true);
+                    break;
+                case 4:
+                    LP lp = (LP) media;
+                    media_frame = new MediaAddFrame(lp, true);
+                    break;
+                default:
+                    Book new_book = (Book) media;
+                    media_frame = new MediaAddFrame(new_book, true);
+            }
+            media_frame.setLocationRelativeTo(null);
+            media_frame.setVisible(true);
+            media_frame.getBackButton().addActionListener((ActionEvent e) -> {
+                this.removeAll();
+                medias = Media.getAllMedia();
+                initComponents();
+                this.fillTable();
+                this.updateUI();
+            });
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -213,7 +224,7 @@ public class MediaListPanel extends javax.swing.JPanel {
             }
             media_frame.setLocationRelativeTo(null);
             media_frame.setVisible(true);
-        
+
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

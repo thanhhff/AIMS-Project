@@ -8,6 +8,7 @@ package views.mediaAdmin;
 import aims.FormatNumber;
 import controller.Media.*;
 import java.awt.Component;
+import javax.swing.JButton;
 import model.Media.*;
 import javax.swing.JOptionPane;
 
@@ -1318,9 +1319,14 @@ public class MediaAddFrame extends javax.swing.JFrame {
        
         
     }
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+    
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-
+        
         this.dispose();
 
     }//GEN-LAST:event_backButtonActionPerformed
