@@ -21,11 +21,15 @@ import model.Cart.ShippingInfo;
 public class User {
     private int user_id;
     
+    public static int current_userid;
+    
     public User() {
         this.user_id = 1;
+        current_userid = 1;
     }
     public User(int user_id){
         this.user_id = user_id;
+        current_userid = user_id;
     }
 
     public int getUser_id() {
