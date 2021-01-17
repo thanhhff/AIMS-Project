@@ -49,6 +49,7 @@ public class mediaItem extends javax.swing.JPanel {
         jLabel68.setPreferredSize(new Dimension(100, 122));
         jLabel68.setMaximumSize(new Dimension(100, 122));
         jLabel68.setMinimumSize(new Dimension(100, 122));
+        if(media.getImagePath() != null){
         try {
             
            // BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));  //fix cung anh
@@ -58,6 +59,7 @@ public class mediaItem extends javax.swing.JPanel {
             jLabel68.setIcon(imageIcon);
         } catch (IOException e) {
             System.out.println("Can't file");
+        }
         }
         jLabel1.setText(media.getTitle());
         jLabel3.setText(String.valueOf(media.getPrice()) + " VND");
