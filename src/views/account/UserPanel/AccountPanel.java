@@ -12,7 +12,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cart.Order;
 import model.User.User;
-import views.order.OrderList;
 import views.order.OrderListPanel;
 
 /**

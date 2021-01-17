@@ -77,7 +77,7 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
-          sql = "SELECT* FROM Mediasales";
+          sql = "SELECT* FROM MediaSales";
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);           
             while (rs.next()) {
@@ -94,7 +94,7 @@ public class SearchController {
 
     public static void SearchCd(ArrayList<MediaItem> list) {
          String sql;
-        sql = "SELECT* FROM medias Join cds Where medias.media_id = cds.media_id LIMIT 0,20"; 
+        sql = "SELECT* FROM Medias Join CDs Where Medias.media_id = CDs.media_id LIMIT 0,20"; 
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);
             
@@ -133,7 +133,7 @@ public class SearchController {
             ResultSet rs = ConnectSQL.sqlQuery(sql);
             
             while (rs.next()) {
-                MediaItem media = new MediaItem(){};
+                MediaItem media = new MediaItem();
                 media.setTitle(rs.getString(2));
                 media.setPrice(rs.getInt(4));
                 media.setValue(rs.getInt(3));
