@@ -1044,8 +1044,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
             String barcode = media_barcode.getText();
             String description = media_description.getText();
             String input_day = media_input_day.getText();
-            String image_path = "/views/productImages/" + media_image_path.getText();
-
+            String image_path = "";
+            if (media_image_path.getText().contains("/views/productImages/")) {
+                image_path = media_image_path.getText();
+            } else {
+                image_path = "/views/productImages/" + media_image_path.getText();
+            }
             
             int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
             int height = media_height.getText().length() == 0 ? 0 : Integer.parseInt(media_height.getText());
