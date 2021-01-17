@@ -3,7 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaUser/MediaItem.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaList.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/model/Media/Media.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaAddFrame.java</file>
@@ -11,27 +11,6 @@
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/controller/Media/MediaController.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/mediaTest.java</file>
             <file>file:/C:/Users/Toshiba%20T75/Desktop/Github/AIMS-Project/src/views/mediaAdmin/MediaPanel.java</file>
-=======
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/CartPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/User/User.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/HomeUser/HomeUser.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Cart/Order.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/DateService.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSaleList.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/account/ChangePassword.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/AIMS.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/FormatNumber.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/HomeUser/TestHomeUser.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/account/Login.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSaleItemPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/order/OrderDetail.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/aims/PaymentService.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/Admin/Sales/MediaSalePanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/cart/BillPanel.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/model/Cart/CartItem.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/db/ConnectSQL.java</file>
-            <file>file:/home/hsnt/ドキュメント/AIMS-Project/src/views/account/SignUp.java</file>
->>>>>>> a7f042f4b95e2b125e4ea2d65c7132d487b66d67
         </group>
     </open-files>
 </project-private>
