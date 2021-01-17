@@ -193,6 +193,7 @@ public class Login extends javax.swing.JFrame {
                 {
                     Home adminHome = new Home();
                     adminHome.setVisible(true);
+                    adminHome.setLocationRelativeTo(null);
                 }
                 else if (level == 2)
                 {

@@ -997,7 +997,9 @@ CREATE TABLE `Orders` (
   `order_state_id` int NOT NULL DEFAULT '3',
   `shipping_info` varchar(255) CHARACTER SET utf8mb4  NOT NULL,
   `user_id` int NOT NULL,
-  `card_number` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL
+  `card_number` varchar(45) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
