@@ -55,7 +55,19 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
-    
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
      }
      public static void SearchBook(ArrayList<MediaItem> list)
      {
