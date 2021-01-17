@@ -54,7 +54,7 @@ public class CartItemPanel extends javax.swing.JPanel {
         imageLabel.setMaximumSize(new Dimension(143, 164));
         imageLabel.setMinimumSize(new Dimension(143, 164));
         try {
-            BufferedImage img = ImageIO.read(new File("src/views/productImages/" + Media.getImagePathbyID(cartItem.getMedia_id())));
+            BufferedImage img = ImageIO.read(new File(Media.getImagePathbyID(cartItem.getMedia_id())));
             Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             imageLabel.setIcon(imageIcon);
