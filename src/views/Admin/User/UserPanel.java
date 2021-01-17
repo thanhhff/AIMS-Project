@@ -227,6 +227,7 @@ public class UserPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         CreateAccountPanel newAccount = new CreateAccountPanel();
         newAccount.setVisible(true);
+        newAccount.setLocationRelativeTo(null);
         FillTable();
     }//GEN-LAST:event_AddActionPerformed
 
@@ -270,6 +271,7 @@ public class UserPanel extends javax.swing.JPanel {
             int user_id = (int) tbAccount.getValueAt(select, 0);
             ViewInformation viewAcc = new ViewInformation(user_id);
             viewAcc.setVisible(true);
+            viewAcc.setLocationRelativeTo(null);
             }
         FillTable();
 
@@ -283,6 +285,7 @@ public class UserPanel extends javax.swing.JPanel {
         } else {
             int user_id = (int) tbAccount.getValueAt(select, 0);
             EditAccountPanel editAcc = new EditAccountPanel(user_id);
+            editAcc.setLocationRelativeTo(null);
             editAcc.setVisible(true);
         }
         FillTable();

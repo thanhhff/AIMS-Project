@@ -30,7 +30,7 @@ public class SearchController {
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);            
             while (rs.next()) {           
-                MediaItem media = new MediaItem(){};
+                MediaItem media = new MediaItem();
                 media.setTitle(rs.getString(2));
                 media.setPrice(rs.getInt(4));
                 media.setValue(rs.getInt(3));
