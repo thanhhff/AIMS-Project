@@ -36,6 +36,21 @@ CREATE TABLE `Actions` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `ActionsHistory`
+--
+
+CREATE TABLE `ActionsHistory` (
+  `action_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ; 
+
+ALTER TABLE `ActionsHistory`
+  ADD CONSTRAINT `fk_ActionsHistory_Actions` FOREIGN KEY (action_id) REFERENCES `Actions`(action_id) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_ActionsHistory_Users` FOREIGN KEY (`user_id`) REFERENCES `Users`(user_id) ON DELETE CASCADE;
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `Addresses`
 --
 

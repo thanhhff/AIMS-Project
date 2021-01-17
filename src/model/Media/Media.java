@@ -205,8 +205,7 @@ public abstract class Media {
         
         try {
             int result = ConnectSQL.sqlUpdate(media_query);
-            int maxId = getMaxID();
-            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 1, " + account.getId() + ", " + maxId + ");";
+            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (1, " + account.getId() + ", now());";
             try {
                 ConnectSQL.sqlQueryUpdate(history_query);
             } catch (Exception e) {
@@ -226,13 +225,13 @@ public abstract class Media {
         
         try {
             ConnectSQL.sqlQueryUpdate(media_query);
-//            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 2, " + account.getId() + ", " + this.getId() + ");";
-//            try {
-//                ConnectSQL.sqlQueryUpdate(history_query);
-//            } catch (Exception e) {
-//                
-//            }
-        System.out.println("User id: " + account.getId());
+            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (2, " + account.getId() + ", now());";
+            try {
+                ConnectSQL.sqlQueryUpdate(history_query);
+            } catch (Exception e) {
+                
+            }
+//        System.out.println("User id: " + account.getId());
         } catch (Exception e) {
         }
     }
@@ -243,7 +242,7 @@ public abstract class Media {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = " + media_id + ";";
         try {
             ConnectSQL.sqlQueryUpdate(delete_query);
-            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 3, " + account.getId() + ", " + media_id + ");";
+            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (3, " + account.getId() + ", now());";
             try {
                 ConnectSQL.sqlQueryUpdate(history_query);
             } catch (Exception e) {
