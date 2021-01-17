@@ -55,7 +55,7 @@ public class SearchController {
            
         } catch (SQLException ex) {
         }
-         sql = "SELECT* FROM Physicalgoods";
+         sql = "SELECT * FROM PhysicalGoods";
          try {
             ResultSet rs = ConnectSQL.sqlQuery(sql);           
             while (rs.next()) {
