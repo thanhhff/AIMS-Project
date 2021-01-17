@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Cart.ShippingInfo;
 import model.Cart.Ward;
+import model.User.User;
 
 public class UserController {
 
@@ -66,6 +67,10 @@ public class UserController {
         }
         
         return user_id;
+    }
+    
+    public static int getCurrentUserId() {
+        return User.current_userid;
     }
     
     public Account getAccount(int user_id){

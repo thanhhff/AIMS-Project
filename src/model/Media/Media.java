@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import controller.User.UserController;
 
 /**
  *
@@ -193,6 +194,13 @@ public abstract class Media {
         
         try {
             int result = ConnectSQL.sqlUpdate(media_query);
+            int maxId = getMaxID();
+            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 1, " + UserController.getCurrentUserId() + ", " + maxId + ");";
+            try {
+                ConnectSQL.sqlQueryUpdate(history_query);
+            } catch (Exception e) {
+                
+            }
             return getMaxID();
         } catch (Exception e) {
             return -1;
@@ -207,6 +215,12 @@ public abstract class Media {
         
         try {
             ConnectSQL.sqlQueryUpdate(media_query);
+            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 2, " + UserController.getCurrentUserId() + ", " + this.getId() + ");";
+            try {
+                ConnectSQL.sqlQueryUpdate(history_query);
+            } catch (Exception e) {
+                
+            }
         } catch (Exception e) {
         }
     }
@@ -217,6 +231,12 @@ public abstract class Media {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = " + media_id + ";";
         try {
             ConnectSQL.sqlQueryUpdate(delete_query);
+            String history_query = "INSERT INTO `HistoryActions` (date, action_id, user_id, media_id) values (now(), 3, " + UserController.getCurrentUserId() + ", " + media_id + ");";
+            try {
+                ConnectSQL.sqlQueryUpdate(history_query);
+            } catch (Exception e) {
+                
+            }
         } catch (Exception e) {
             
         }

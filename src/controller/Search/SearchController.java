@@ -37,6 +37,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -84,6 +85,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -97,6 +99,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -118,6 +133,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -131,6 +147,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -152,6 +181,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -165,6 +195,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -186,6 +229,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -199,6 +243,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -220,6 +277,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -233,6 +291,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -276,6 +347,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -289,6 +361,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
@@ -337,6 +422,7 @@ public class SearchController {
                 media.setCategory(rs.getInt(5));
                 media.setId(rs.getInt(1));
                 media.setSalePercent(0);
+                media.setImagePath(rs.getString(6));
                 list.add(media);
             }
            
@@ -350,6 +436,19 @@ public class SearchController {
                {
                  if(list.get(i).getId() == rs.getInt(2))
                      list.get(i).setSalePercent(rs.getInt(4));
+               }
+            }
+           
+        } catch (SQLException ex) {
+        }
+         sql = "SELECT* FROM Physicalgoods";
+         try {
+            ResultSet rs = ConnectSQL.sqlQuery(sql);           
+            while (rs.next()) {
+               for(int i = 0 ; i < list.size(); i++)
+               {
+                 if(list.get(i).getId() == rs.getInt(9))
+                     list.get(i).setQuantity(rs.getInt(10));
                }
             }
            
