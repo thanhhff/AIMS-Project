@@ -12,11 +12,14 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.Cart.CartItem;
+import model.Media.Media;
 
 /**
  *
@@ -51,12 +54,19 @@ public class CartItemPanel extends javax.swing.JPanel {
         imageLabel.setMaximumSize(new Dimension(143, 164));
         imageLabel.setMinimumSize(new Dimension(143, 164));
         try {
-            BufferedImage img = ImageIO.read(new File("src/views/images/conan-resize3.png"));
+            BufferedImage img = ImageIO.read(new File("src/views/productImages/" + Media.getImagePathbyID(cartItem.getMedia_id())));
             Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             imageLabel.setIcon(imageIcon);
         } catch (IOException e) {
-            System.out.println("Can't file");
+            try {
+                BufferedImage img = ImageIO.read(new File("src/views/images/logo-resize.png"));
+                Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                imageLabel.setIcon(imageIcon);
+            } catch (IOException ex) {
+                Logger.getLogger(CartItemPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         plusMedia.setName(priceLabel.getName());
         minusMedia.setName("-" + priceLabel.getName());

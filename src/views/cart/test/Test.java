@@ -43,7 +43,6 @@ public class Test {
 //        new Test(new MediaSalePanel(medias));
         User user = new User();
         List<Order> orders = user.getOrders();
-        System.out.println(Sale.getAllSales().size());
-        new Test(new SaleListPanel(Sale.getAllSales()));
+        new Test(new CartPanel(user));
     }
 }
