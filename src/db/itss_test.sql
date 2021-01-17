@@ -1061,9 +1061,9 @@ CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
   `ship_fee` int NOT NULL,
   `order_state_id` int NOT NULL DEFAULT '3',
-  `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `shipping_info` varchar(255) NOT NULL,
   `user_id` int DEFAULT NULL,
-  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
+  `card_number` varchar(45) DEFAULT NULL
 ) ;
 
 --
@@ -1228,7 +1228,7 @@ CREATE TABLE `ShippingInfos` (
   `shipping_info_id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `delivery_instruction` varchar(45)  DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
 ) ;
@@ -12866,3 +12866,4 @@ ADD COLUMN updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
