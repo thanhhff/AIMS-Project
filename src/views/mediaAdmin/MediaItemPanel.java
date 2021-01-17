@@ -16,7 +16,7 @@ import model.Media.*;
  *
  * @author hsnt
  */
-public class MediaItemPanel extends javax.swing.JPanel {
+public class MediaItemPanel extends javax.swing.JPanel { 
 
     /**
      * Creates new form MediaSaleItem
