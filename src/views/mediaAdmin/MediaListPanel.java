@@ -9,6 +9,7 @@ import aims.FormatNumber;
 import controller.Media.MediaController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -268,18 +269,33 @@ public class MediaListPanel extends javax.swing.JPanel {
         } else if (rows.length > 10) {
             JOptionPane.showMessageDialog(null, "Cannot delete more than 10 medias at a time");
         } else {
+            /*
+            Media media = medias.get(rows[0]); 
+            int category_id = media.getCategoryId();
+            int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
+            if (isDelete == 0) {
+                MediaController.deleteMedia(media.getId());
+                this.removeAll();
+                medias = Media.getAllMedia();
+                initComponents();
+                this.fillTable();
+                this.updateUI();
+            }
+            */
+            ArrayList<Integer> del_mediaids = new ArrayList<Integer>();
             for (int r: rows) {
                 Media media = medias.get(r);
-                int category_id = media.getCategoryId();
-                int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
-                if (isDelete == 0) {
-                    MediaController.deleteMedia(media.getId());
-                    this.removeAll();
-                    medias = Media.getAllMedia();
-                    initComponents();
-                    this.fillTable();
-                    this.updateUI();
-                }
+                del_mediaids.add(media.getId());
+            }
+            int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
+            if (isDelete == 0) {
+//                MediaController.deleteMedia(media.getId());
+                MediaController.deleteListMedias(del_mediaids);
+                this.removeAll();
+                medias = Media.getAllMedia();
+                initComponents();
+                this.fillTable();
+                this.updateUI();
             }
         }
     }//GEN-LAST:event_media_delete_buttonActionPerformed

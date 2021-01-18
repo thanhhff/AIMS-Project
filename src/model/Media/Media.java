@@ -253,7 +253,7 @@ public abstract class Media {
         }
     }
     
-    public static void deleteListMedias(int[] media_ids) {
+    public static void deleteListMedias(ArrayList<Integer> media_ids) {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = ";
         String real_query;
         for (int media_id: media_ids) {
