@@ -262,20 +262,24 @@ public class MediaListPanel extends javax.swing.JPanel {
 
     private void media_delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_delete_buttonActionPerformed
         // TODO add your handling code here:
-        int row = table.getSelectedRow();
-        if (row == -1) {
+        int[] rows = table.getSelectedRows();
+        if (rows.length == 0) {
             JOptionPane.showMessageDialog(null, "Please select media");
+        } else if (rows.length > 10) {
+            JOptionPane.showMessageDialog(null, "Cannot delete more than 10 medias at a time");
         } else {
-            Media media = medias.get(row);
-            int category_id = media.getCategoryId();
-            int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
-            if (isDelete == 0) {
-                MediaController.deleteMedia(media.getId());
-                this.removeAll();
-                medias = Media.getAllMedia();
-                initComponents();
-                this.fillTable();
-                this.updateUI();
+            for (int r: rows) {
+                Media media = medias.get(r);
+                int category_id = media.getCategoryId();
+                int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
+                if (isDelete == 0) {
+                    MediaController.deleteMedia(media.getId());
+                    this.removeAll();
+                    medias = Media.getAllMedia();
+                    initComponents();
+                    this.fillTable();
+                    this.updateUI();
+                }
             }
         }
     }//GEN-LAST:event_media_delete_buttonActionPerformed
