@@ -15,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import model.Media.Book;
 import model.Media.CD;
@@ -66,6 +67,21 @@ public class MediaListPanel extends javax.swing.JPanel {
         this.add(table);
         this.add(table.getTableHeader());
         table.getTableHeader().setBounds(12, 12 + 35 + 12, 669, 35);
+        
+        // new table change code
+        table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        table.setColumnSelectionAllowed(false);
+        table.setRowSelectionAllowed(true);
+        
+        // set column width
+        table.getColumnModel().getColumn(0).setPreferredWidth(20);
+        table.getColumnModel().getColumn(1).setPreferredWidth(150);
+        table.getColumnModel().getColumn(2).setPreferredWidth(50);
+        table.getColumnModel().getColumn(3).setPreferredWidth(30);
+        table.getColumnModel().getColumn(4).setPreferredWidth(30);
+        table.getColumnModel().getColumn(5).setPreferredWidth(20);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        
         this.updateUI();
     }
 
