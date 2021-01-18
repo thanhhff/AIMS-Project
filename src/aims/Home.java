@@ -75,6 +75,12 @@ public final class Home extends javax.swing.JFrame {
             .addGap(0, 707, Short.MAX_VALUE)
         );
 
+        searchText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTextActionPerformed(evt);
+            }
+        });
+
         search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/magnifying-glass-2.png"))); // NOI18N
         search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,7 +135,7 @@ public final class Home extends javax.swing.JFrame {
                     .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchText)
                     .addComponent(SignIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,6 +171,10 @@ public final class Home extends javax.swing.JFrame {
         Login login = new Login();
         login.setVisible(true);
     }//GEN-LAST:event_SignInMouseClicked
+
+    private void searchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

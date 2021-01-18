@@ -131,6 +131,11 @@ public class MediaListPanel extends javax.swing.JPanel {
         });
 
         mediaSearchButton.setText("Search");
+        mediaSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediaSearchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -269,19 +274,6 @@ public class MediaListPanel extends javax.swing.JPanel {
         } else if (rows.length > 10) {
             JOptionPane.showMessageDialog(null, "Cannot delete more than 10 medias at a time");
         } else {
-            /*
-            Media media = medias.get(rows[0]); 
-            int category_id = media.getCategoryId();
-            int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
-            if (isDelete == 0) {
-                MediaController.deleteMedia(media.getId());
-                this.removeAll();
-                medias = Media.getAllMedia();
-                initComponents();
-                this.fillTable();
-                this.updateUI();
-            }
-            */
             ArrayList<Integer> del_mediaids = new ArrayList<Integer>();
             for (int r: rows) {
                 Media media = medias.get(r);
@@ -289,7 +281,6 @@ public class MediaListPanel extends javax.swing.JPanel {
             }
             int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
             if (isDelete == 0) {
-//                MediaController.deleteMedia(media.getId());
                 MediaController.deleteListMedias(del_mediaids);
                 this.removeAll();
                 medias = Media.getAllMedia();
@@ -313,6 +304,20 @@ public class MediaListPanel extends javax.swing.JPanel {
             this.updateUI();
         });
     }//GEN-LAST:event_media_add_buttonActionPerformed
+
+    private void mediaSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediaSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = searchField.getText();
+        if (searchText.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Enter media title!");
+        } else {
+            this.removeAll();
+            medias = Media.getMediasByTitle(searchText);
+            initComponents();
+            this.fillTable();
+            this.updateUI();
+        }
+    }//GEN-LAST:event_mediaSearchButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

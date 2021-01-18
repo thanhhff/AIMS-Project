@@ -41,6 +41,10 @@ public class MediaController {
     public static ArrayList<Media> getAllMedia() {
         return Media.getAllMedia();
     }
+    
+    public static ArrayList<Media> getMediasByTitle(String searchText) {
+        return Media.getMediasByTitle(searchText);
+    }
 
      public static ArrayList<MediaItem> sortLowMediaPrice(ArrayList<MediaItem> list)
      {
