@@ -1,5 +1,6 @@
 package controller.User;
 
+import static aims.AIMS.account;
 import db.ConnectSQL;
 import model.User.Account;
 
@@ -154,6 +155,20 @@ public class UserController {
         } catch (SQLException ex) {
         }
         return shipInfor;
+    }
+      
+    public static int getNumberOfActionsByCurrentAdmin() {
+        String query = "SELECT COUNT(*) FROM ActionsHistory WHERE user_id = " + account.getId() + " and action_id <> 1;";
+        int result = 0;
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(query);
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            
+        }
+        return result;
     }
     
 //    public static void main (String[] args)

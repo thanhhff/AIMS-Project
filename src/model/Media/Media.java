@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import static aims.AIMS.account;
+import controller.User.UserController;
 
 /**
  *
@@ -234,6 +235,8 @@ public abstract class Media {
 //        System.out.println("User id: " + account.getId());
         } catch (Exception e) {
         }
+        
+//        System.out.println("Number of actions: " + UserController.getNumberOfActionsByCurrentAdmin());
     }
     
     public abstract void update();

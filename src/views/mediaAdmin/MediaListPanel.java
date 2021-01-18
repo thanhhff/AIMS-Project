@@ -7,6 +7,7 @@ package views.mediaAdmin;
 
 import aims.FormatNumber;
 import controller.Media.MediaController;
+import controller.User.UserController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -268,6 +269,14 @@ public class MediaListPanel extends javax.swing.JPanel {
 
     private void media_delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_delete_buttonActionPerformed
         // TODO add your handling code here:
+        
+        // check number of actions greater than 30?
+        int numActions = UserController.getNumberOfActionsByCurrentAdmin();
+        if (numActions > 30) {
+            JOptionPane.showMessageDialog(null, "Admin cannot update/delete more than 30 medias!");
+            return;
+        }
+        
         int[] rows = table.getSelectedRows();
         if (rows.length == 0) {
             JOptionPane.showMessageDialog(null, "Please select media");
