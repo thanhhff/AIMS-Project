@@ -253,6 +253,25 @@ public abstract class Media {
         }
     }
     
+    public static void deleteListMedias(int[] media_ids) {
+        String delete_query = "DELETE FROM `Medias` WHERE media_id = ";
+        String real_query;
+        for (int media_id: media_ids) {
+            try {
+                real_query = delete_query + media_id;
+                ConnectSQL.sqlQueryUpdate(real_query);
+                String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (3, " + account.getId() + ", now());";
+                try {
+                    ConnectSQL.sqlQueryUpdate(history_query);
+                } catch (Exception e) {
+
+                }
+            } catch (Exception e) {
+                
+            }
+        }
+    }
+    
     public static ArrayList<Media> getAllMedia() {
         ArrayList<Media> medias = new ArrayList<Media>();
         
