@@ -135,7 +135,7 @@ public class mediaItem extends javax.swing.JPanel {
         minusMedia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/negative.png"))); // NOI18N
         minusMedia1.setBorderPainted(false);
         minusMedia1.setContentAreaFilled(false);
-        minusMedia1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minusMedia1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         minusMedia1.setFocusPainted(false);
         minusMedia1.setName(""); // NOI18N
         minusMedia1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,7 +150,7 @@ public class mediaItem extends javax.swing.JPanel {
         plusMedia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/plus1.png"))); // NOI18N
         plusMedia1.setBorderPainted(false);
         plusMedia1.setContentAreaFilled(false);
-        plusMedia1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        plusMedia1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         plusMedia1.setFocusPainted(false);
         plusMedia1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -178,22 +178,8 @@ public class mediaItem extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saleper, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(addCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jButton1))
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -206,6 +192,20 @@ public class mediaItem extends javax.swing.JPanel {
                     .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(58, 58, 58)
                 .addComponent(jLabel62))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saleper, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(addCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +227,6 @@ public class mediaItem extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(jLabel3)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel4))
@@ -287,11 +286,18 @@ public class mediaItem extends javax.swing.JPanel {
 
     private void addCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCartButtonActionPerformed
         // TODO add your handling code here:
+        if (account.getId() != 0)
+        {
         CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
         if(Integer.parseInt(quantityLabel.getText()) != 0)
         JOptionPane.showMessageDialog(null, "Add cart successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
         else
            JOptionPane.showMessageDialog(null, "You have to choose quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Login to add product", "Notification", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_addCartButtonActionPerformed
 
     private void plusMedia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plusMedia1MouseClicked
