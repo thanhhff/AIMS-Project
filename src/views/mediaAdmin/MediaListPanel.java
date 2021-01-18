@@ -174,80 +174,89 @@ public class MediaListPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void media_edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_edit_buttonActionPerformed
-        int row = table.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Please select media");
+        int[] rows = table.getSelectedRows();
+        if (rows.length > 1) {
+            JOptionPane.showMessageDialog(null, "Please just select only one media for editing!");
         } else {
-            Media media = medias.get(row);
-            int category_id = media.getCategoryId();
-            MediaAddFrame media_frame;
-            switch (category_id) {
-                case 1:
-                    Book book = (Book) media;
-                    media_frame = new MediaAddFrame(book, true);
-                    break;
-                case 2:
-                    DVD dvd = (DVD) media;
-                    media_frame = new MediaAddFrame(dvd, true);
-                    break;
-                case 3:
-                    CD cd = (CD) media;
-                    media_frame = new MediaAddFrame(cd, true);
-                    break;
-                case 4:
-                    LP lp = (LP) media;
-                    media_frame = new MediaAddFrame(lp, true);
-                    break;
-                default:
-                    Book new_book = (Book) media;
-                    media_frame = new MediaAddFrame(new_book, true);
-            }
-            media_frame.setLocationRelativeTo(null);
-            media_frame.setVisible(true);
-            media_frame.getBackButton().addActionListener((ActionEvent e) -> {
-                this.removeAll();
-                medias = Media.getAllMedia();
-                initComponents();
-                this.fillTable();
-                this.updateUI();
-            });
+            int row = table.getSelectedRow();
 
+            if (row == -1) {
+                JOptionPane.showMessageDialog(null, "Please select media");
+            } else {
+                Media media = medias.get(row);
+                int category_id = media.getCategoryId();
+                MediaAddFrame media_frame;
+                switch (category_id) {
+                    case 1:
+                        Book book = (Book) media;
+                        media_frame = new MediaAddFrame(book, true);
+                        break;
+                    case 2:
+                        DVD dvd = (DVD) media;
+                        media_frame = new MediaAddFrame(dvd, true);
+                        break;
+                    case 3:
+                        CD cd = (CD) media;
+                        media_frame = new MediaAddFrame(cd, true);
+                        break;
+                    case 4:
+                        LP lp = (LP) media;
+                        media_frame = new MediaAddFrame(lp, true);
+                        break;
+                    default:
+                        Book new_book = (Book) media;
+                        media_frame = new MediaAddFrame(new_book, true);
+                }
+                media_frame.setLocationRelativeTo(null);
+                media_frame.setVisible(true);
+                media_frame.getBackButton().addActionListener((ActionEvent e) -> {
+                    this.removeAll();
+                    medias = Media.getAllMedia();
+                    initComponents();
+                    this.fillTable();
+                    this.updateUI();
+                });
+            }
         }
     }//GEN-LAST:event_media_edit_buttonActionPerformed
 
     private void media_show_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_show_buttonActionPerformed
-        int row = table.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Please select media");
+        int[] rows = table.getSelectedRows();
+        if (rows.length > 1) {
+            JOptionPane.showMessageDialog(null, "Please just select only one media for editing!");
         } else {
-            Media media = medias.get(row);
-            int category_id = media.getCategoryId();
-            MediaAddFrame media_frame;
+            int row = table.getSelectedRow();
+            if (row == -1) {
+                JOptionPane.showMessageDialog(null, "Please select media");
+            } else {
+                Media media = medias.get(row);
+                int category_id = media.getCategoryId();
+                MediaAddFrame media_frame;
 
-            switch (category_id) {
-                case 1:
-                    Book book = (Book) media;
-                    media_frame = new MediaAddFrame(book, false);
-                    break;
-                case 2:
-                    DVD dvd = (DVD) media;
-                    media_frame = new MediaAddFrame(dvd, false);
-                    break;
-                case 3:
-                    CD cd = (CD) media;
-                    media_frame = new MediaAddFrame(cd, false);
-                    break;
-                case 4:
-                    LP lp = (LP) media;
-                    media_frame = new MediaAddFrame(lp, false);
-                    break;
-                default:
-                    Book new_book = (Book) media;
-                    media_frame = new MediaAddFrame(new_book, false);
+                switch (category_id) {
+                    case 1:
+                        Book book = (Book) media;
+                        media_frame = new MediaAddFrame(book, false);
+                        break;
+                    case 2:
+                        DVD dvd = (DVD) media;
+                        media_frame = new MediaAddFrame(dvd, false);
+                        break;
+                    case 3:
+                        CD cd = (CD) media;
+                        media_frame = new MediaAddFrame(cd, false);
+                        break;
+                    case 4:
+                        LP lp = (LP) media;
+                        media_frame = new MediaAddFrame(lp, false);
+                        break;
+                    default:
+                        Book new_book = (Book) media;
+                        media_frame = new MediaAddFrame(new_book, false);
+                }
+                media_frame.setLocationRelativeTo(null);
+                media_frame.setVisible(true);
             }
-            media_frame.setLocationRelativeTo(null);
-            media_frame.setVisible(true);
-
         }
     }//GEN-LAST:event_media_show_buttonActionPerformed
 
