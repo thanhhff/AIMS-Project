@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th12 27, 2020 lúc 10:12 PM
+-- Thời gian đã tạo: Th1 18, 2021 lúc 10:16 PM
 -- Phiên bản máy phục vụ: 8.0.22-0ubuntu0.20.04.3
 -- Phiên bản PHP: 7.4.3
 
@@ -31,12 +31,29 @@ SET time_zone = "+00:00";
 CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `Actions`
+--
+
+INSERT INTO `Actions` (`action_id`, `action_name`) VALUES
+(1, 'Them'),
+(2, 'Sua'),
+(3, 'Xoa');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ActionsHistory`
+--
+
 CREATE TABLE `ActionsHistory` (
-  `action_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `action_id` int NOT NULL,
+  `user_id` int NOT NULL,
   `date` datetime NOT NULL
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -47,7 +64,7 @@ CREATE TABLE `Addresses` (
   `address_id` int NOT NULL,
   `note` varchar(45) NOT NULL,
   `ward_id` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -64,7 +81,7 @@ CREATE TABLE `Books` (
   `language_id` int NOT NULL,
   `author_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Books`
@@ -85,7 +102,14 @@ CREATE TABLE `CartItems` (
   `price` int NOT NULL,
   `quantity` int NOT NULL,
   `user_id` int DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `CartItems`
+--
+
+INSERT INTO `CartItems` (`media_id`, `price`, `quantity`, `user_id`) VALUES
+(10, 20000, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +121,7 @@ CREATE TABLE `Categories` (
   `category_id` int NOT NULL,
   `category_name` varchar(45) NOT NULL,
   `is_physical_good?` tinyint(1) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Categories`
@@ -123,7 +147,7 @@ CREATE TABLE `CDs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `CDs`
@@ -142,7 +166,7 @@ INSERT INTO `CDs` (`publication_date`, `media_id`, `record_label_name`, `artist_
 CREATE TABLE `CoverTypes` (
   `cover_type_id` int NOT NULL,
   `cover_type_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `CoverTypes`
@@ -162,7 +186,7 @@ CREATE TABLE `Districts` (
   `district_id` int NOT NULL,
   `district_name` varchar(45) NOT NULL,
   `province_id` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Districts`
@@ -895,7 +919,7 @@ CREATE TABLE `DVDs` (
   `dvd_type_id` int NOT NULL,
   `action_name` varchar(255) DEFAULT NULL,
   `writer_name` varchar(255) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDs`
@@ -914,7 +938,7 @@ INSERT INTO `DVDs` (`publication_date`, `runtime`, `subtitle`, `media_id`, `lang
 CREATE TABLE `DVDTypes` (
   `dvd_type_id` int NOT NULL,
   `dvd_type_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `DVDTypes`
@@ -933,8 +957,7 @@ INSERT INTO `DVDTypes` (`dvd_type_id`, `dvd_type_name`) VALUES
 CREATE TABLE `EGoods` (
   `media_id` bigint NOT NULL,
   `content` text
-) ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -945,7 +968,7 @@ CREATE TABLE `EGoods` (
 CREATE TABLE `Languages` (
   `language_id` int NOT NULL,
   `language_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Languages`
@@ -969,7 +992,7 @@ CREATE TABLE `LPs` (
   `artist_name` varchar(255) DEFAULT NULL,
   `genre` varchar(255) DEFAULT NULL,
   `track_list` varchar(255) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `LPs`
@@ -992,19 +1015,19 @@ CREATE TABLE `Medias` (
   `category_id` int NOT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   `sale_percent` int DEFAULT '0'
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Medias`
 --
 
 INSERT INTO `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`, `sale_percent`) VALUES
-(5, 'Programming in Python', 20000, 30000, 1, 'images/', 0),
+(5, 'Programming in PythonTest', 20000, 30000, 1, '/src/views/productImages/python.png', 0),
 (6, 'Programming in Java', 30000, 30000, 1, 'images/', 0),
 (7, 'Programming in C#', 20000, 20000, 2, 'images/', 0),
 (8, 'Programming in C', 20000, 20000, 2, 'images/', 0),
 (9, 'Programming in Rust', 20000, 20000, 3, 'images/', 0),
-(10, 'Programming in Go', 20000, 20000, 3, 'images/', 0),
+(10, 'Programming in Go', 20000, 20000, 3, 'conan-resize.png', 0),
 (11, 'Programming in Javascript', 20000, 20000, 4, 'images/', 0);
 
 -- --------------------------------------------------------
@@ -1018,7 +1041,7 @@ CREATE TABLE `MediaSales` (
   `media_id` bigint NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `percent` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -1031,7 +1054,7 @@ CREATE TABLE `OrderItems` (
   `order_id` int NOT NULL,
   `price` int NOT NULL,
   `quantity` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderItems`
@@ -1040,7 +1063,11 @@ CREATE TABLE `OrderItems` (
 INSERT INTO `OrderItems` (`media_id`, `order_id`, `price`, `quantity`) VALUES
 (NULL, 1, 17000, 4),
 (NULL, 1, 17000, 3),
-(NULL, 3, 17000, 9);
+(NULL, 1, 17000, 9),
+(11, 1, 20000, 4),
+(NULL, 1, 17000, 16),
+(5, 1, 17000, 9),
+(NULL, 1, 17000, 16);
 
 -- --------------------------------------------------------
 
@@ -1052,18 +1079,19 @@ CREATE TABLE `Orders` (
   `order_id` int NOT NULL,
   `ship_fee` int NOT NULL,
   `order_state_id` int NOT NULL DEFAULT '3',
-  `shipping_info` varchar(255) NOT NULL,
+  `shipping_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_id` int DEFAULT NULL,
-  `card_number` varchar(45) DEFAULT NULL
-) ;
+  `card_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Orders`
 --
 
-INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`, `user_id`, `card_number`) VALUES
-(1, 100000, 2, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020'),
-(3, 0, 3, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020');
+INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`, `user_id`, `card_number`, `created_at`, `updated_at`) VALUES
+(1, 100000, 1, 'asd/asd/Phường Phúc Xá/Quận Ba Đình/Thành phố Hà Nội/null', 1, '121227_group03_2020', '2021-01-02 11:27:00', '2021-01-05 10:10:56');
 
 -- --------------------------------------------------------
 
@@ -1074,7 +1102,7 @@ INSERT INTO `Orders` (`order_id`, `ship_fee`, `order_state_id`, `shipping_info`,
 CREATE TABLE `OrderState` (
   `order_state_id` int NOT NULL,
   `order_state_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `OrderState`
@@ -1102,20 +1130,20 @@ CREATE TABLE `PhysicalGoods` (
   `input_day` timestamp NOT NULL,
   `media_id` bigint NOT NULL,
   `weight` int DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `PhysicalGoods`
 --
 
 INSERT INTO `PhysicalGoods` (`barcode`, `description`, `quantity`, `width`, `height`, `depth`, `size`, `input_day`, `media_id`, `weight`) VALUES
-('code', 'Book about programming.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 5, 200),
-('code1010', 'Book about programming in java.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 6, 200),
-('code1010', 'Book about programming in C#.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 7, 200),
-('code1010', 'Book about programming in C.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 8, 200),
-('code1010', 'Book about programming in Rust.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 9, 200),
-('code1010', 'Book about programming in Go.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 10, 200),
-('code1010', 'Book about programming in Javascript.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 11, 200);
+('code', 'Book about programming.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 5, 2000),
+('code1010', 'Book about programming in java.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 6, 2000),
+('code1010', 'Book about programming in C#.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 7, 2000),
+('code1010', 'Book about programming in C.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 8, 2000),
+('code1010', 'Book about programming in Rust.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 9, 2000),
+('code1010', 'Book about programming in Go.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 10, 2000),
+('code1010', 'Book about programming in Javascript.', 10, 20, 20, 8, '0', '2020-12-19 17:00:00', 11, 2000);
 
 -- --------------------------------------------------------
 
@@ -1126,7 +1154,7 @@ INSERT INTO `PhysicalGoods` (`barcode`, `description`, `quantity`, `width`, `hei
 CREATE TABLE `Provinces` (
   `province_id` int NOT NULL,
   `province_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Provinces`
@@ -1207,7 +1235,7 @@ CREATE TABLE `Sales` (
   `sale_id` int NOT NULL,
   `start_day` timestamp NOT NULL,
   `end_day` timestamp NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -1219,10 +1247,10 @@ CREATE TABLE `ShippingInfos` (
   `shipping_info_id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `delivery_instruction` varchar(45)  DEFAULT NULL,
+  `delivery_instruction` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `user_id` int NOT NULL,
   `ward_id` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `ShippingInfos`
@@ -1231,7 +1259,8 @@ CREATE TABLE `ShippingInfos` (
 INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_instruction`, `user_id`, `ward_id`) VALUES
 (3, 'Hoàng Trung Hiếu ', '0352587779', 'Giao hàng nhanh', 3, 1),
 (4, 'Hoàng Trung Hiếu ', '0123456789', 'Giao hàng nhanh', 3, 1),
-(6, 'asd', 'asd', NULL, 1, 1);
+(6, 'asd', 'asd', NULL, 1, 1),
+(7, 'Hoangf Trung Hieu', '0352587779', NULL, 1, 3325);
 
 -- --------------------------------------------------------
 
@@ -1242,7 +1271,7 @@ INSERT INTO `ShippingInfos` (`shipping_info_id`, `name`, `phone`, `delivery_inst
 CREATE TABLE `TrackLists` (
   `track_id` int NOT NULL,
   `media_id` bigint NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -1253,7 +1282,7 @@ CREATE TABLE `TrackLists` (
 CREATE TABLE `Tracks` (
   `track_id` int NOT NULL,
   `track_name` varchar(45) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -1266,14 +1295,14 @@ CREATE TABLE `Users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `is_admin?` tinyint(1) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Users`
 --
 
 INSERT INTO `Users` (`user_id`, `email`, `password`, `is_admin?`) VALUES
-(1, 'hieu.jno1@gmail.com', '123456', 1),
+(1, 'hieu.jno1@gmail.com', '123456', 0),
 (3, 'hieu@gmail.com', '123456', 1);
 
 -- --------------------------------------------------------
@@ -1286,7 +1315,7 @@ CREATE TABLE `Wards` (
   `ward_id` int NOT NULL,
   `ward_name` varchar(45) NOT NULL,
   `district_id` int NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Wards`
@@ -12473,6 +12502,13 @@ ALTER TABLE `Actions`
   ADD PRIMARY KEY (`action_id`);
 
 --
+-- Chỉ mục cho bảng `ActionsHistory`
+--
+ALTER TABLE `ActionsHistory`
+  ADD KEY `fk_ActionsHistory_Actions` (`action_id`),
+  ADD KEY `fk_ActionsHistory_Users` (`user_id`);
+
+--
 -- Chỉ mục cho bảng `Addresses`
 --
 ALTER TABLE `Addresses`
@@ -12539,7 +12575,7 @@ ALTER TABLE `DVDTypes`
 ALTER TABLE `EGoods`
   ADD PRIMARY KEY (`media_id`);
 
-
+--
 -- Chỉ mục cho bảng `Languages`
 --
 ALTER TABLE `Languages`
@@ -12648,7 +12684,7 @@ ALTER TABLE `Wards`
 -- AUTO_INCREMENT cho bảng `Actions`
 --
 ALTER TABLE `Actions`
-  MODIFY `action_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `action_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `Addresses`
@@ -12690,7 +12726,7 @@ ALTER TABLE `Medias`
 -- AUTO_INCREMENT cho bảng `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `OrderState`
@@ -12702,13 +12738,13 @@ ALTER TABLE `OrderState`
 -- AUTO_INCREMENT cho bảng `Sales`
 --
 ALTER TABLE `Sales`
-  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `ShippingInfos`
 --
 ALTER TABLE `ShippingInfos`
-  MODIFY `shipping_info_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `shipping_info_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `Tracks`
@@ -12725,6 +12761,13 @@ ALTER TABLE `Users`
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `ActionsHistory`
+--
+ALTER TABLE `ActionsHistory`
+  ADD CONSTRAINT `fk_ActionsHistory_Actions` FOREIGN KEY (`action_id`) REFERENCES `Actions` (`action_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_ActionsHistory_Users` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `Addresses`
@@ -12772,7 +12815,6 @@ ALTER TABLE `DVDs`
 --
 ALTER TABLE `EGoods`
   ADD CONSTRAINT `fk_eGoods_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
-
 
 --
 -- Các ràng buộc cho bảng `LPs`
@@ -12833,18 +12875,6 @@ ALTER TABLE `Wards`
   ADD CONSTRAINT `fk_SubDistricts_Districts1` FOREIGN KEY (`district_id`) REFERENCES `Districts` (`district_id`);
 COMMIT;
 
-ALTER TABLE Orders 
-ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
-ALTER TABLE Orders 
-ADD COLUMN updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP;
-ALTER TABLE `ActionsHistory`
-  ADD CONSTRAINT `fk_ActionsHistory_Actions` FOREIGN KEY (action_id) REFERENCES `Actions`(action_id) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_ActionsHistory_Users` FOREIGN KEY (user_id) REFERENCES `Users`(user_id) ON DELETE CASCADE;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-insert into `Actions` values (1, 'Them');
-insert into `Actions` values (2, 'Sua');
-insert into `Actions` values (3, 'Xoa');
