@@ -40,6 +40,7 @@ public class AIMS {
             Thread.sleep(2000);
             jDialog.dispose();
             Home home = new Home();
+            home.setLocationRelativeTo(null);
             home.setVisible(true);
         } catch (Exception e) {
         }
