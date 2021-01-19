@@ -1153,8 +1153,8 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         this.setVisible(false);
                     }
                 } else {
-                    int confirmAdd = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                    if (confirmAdd == 0) {
+                    int confirmUpdate = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                    if (confirmUpdate == 0) {
                         media.setId(old_id);
                         MediaController.update(media);
                         System.out.println(media.getId());
