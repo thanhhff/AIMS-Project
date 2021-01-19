@@ -9,8 +9,10 @@ import aims.FormatNumber;
 import controller.Media.*;
 import java.awt.Component;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import model.Media.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -1403,6 +1405,14 @@ public class MediaAddFrame extends javax.swing.JFrame {
                 
             }
         });
+    }
+    
+    public JLabel getImagePathLabel() {
+        return image_path_label;
+    }
+    
+    public JTextField getImagePathTextField() {
+        return media_image_path;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

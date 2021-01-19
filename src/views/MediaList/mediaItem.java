@@ -276,7 +276,9 @@ public class mediaItem extends javax.swing.JPanel {
                            media_frame = new MediaAddFrame(new_book, false);
                    }
                             media_frame.setLocationRelativeTo(null);
-                            media_frame.setVisible(true);                 
+                            media_frame.setVisible(true);         
+                            media_frame.getImagePathLabel().setVisible(false);
+                            media_frame.getImagePathTextField().setVisible(false);
 
                 }
        }
