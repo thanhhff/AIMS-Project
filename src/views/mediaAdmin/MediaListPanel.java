@@ -76,9 +76,11 @@ public class MediaListPanel extends javax.swing.JPanel {
         }else{
             nextButton.setEnabled(true);
         }
-        String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)", "Select"};
+//        String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)", "Select"};
+        String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)"};
         int i = mediaFill.size();
-        int j = 6;
+//        int j = 6;
+        int j = 5;
         Object[][] data = new Object[i][j];
         index = 0;
         String[] categories = {"Book", "DVD", "CD", "LP"};
@@ -87,8 +89,9 @@ public class MediaListPanel extends javax.swing.JPanel {
             data[index][2] = categories[media.getCategoryId() - 1];
             data[index][1] = media.getTitle();
             data[index][3] = FormatNumber.formatString(media.getValue() + "");
-            data[index][4] = FormatNumber.formatString(media.getPrice() + "");
-            data[index++][5] = false;
+            data[index++][4] = FormatNumber.formatString(media.getPrice() + "");
+//            data[index][4] = FormatNumber.formatString(media.getPrice() + "");
+//            data[index++][5] = false;
         }
         table = new JTable(data, columnNames);
         JScrollPane scrollPane = new JScrollPane(table);
@@ -109,7 +112,7 @@ public class MediaListPanel extends javax.swing.JPanel {
         table.getColumnModel().getColumn(2).setPreferredWidth(50);
         table.getColumnModel().getColumn(3).setPreferredWidth(30);
         table.getColumnModel().getColumn(4).setPreferredWidth(30);
-        table.getColumnModel().getColumn(5).setPreferredWidth(20);
+//        table.getColumnModel().getColumn(5).setPreferredWidth(20);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         
         this.updateUI();
