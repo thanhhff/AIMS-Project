@@ -1152,10 +1152,13 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         MediaController.insert(media);
                     }
                 } else {
-                    media.setId(old_id);
-                    MediaController.update(media);
-                    System.out.println(media.getId());
-                    System.out.println(media.getTitle());
+                    int confirmAdd = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                    if (confirmAdd == 0) {
+                        media.setId(old_id);
+                        MediaController.update(media);
+                        System.out.println(media.getId());
+                        System.out.println(media.getTitle());
+                    }
                 }
             }
         }

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import static aims.AIMS.account;
 import controller.User.UserController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -226,12 +227,19 @@ public abstract class Media {
         
         try {
             ConnectSQL.sqlQueryUpdate(media_query);
-            String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (2, " + account.getId() + ", now(), " + this.getId() + ");";
-            try {
-                ConnectSQL.sqlQueryUpdate(history_query);
-            } catch (Exception e) {
-                
+            int hour;
+            hour = getLatestEditTimeOfMedia(this.getId());
+            if (hour >= 2) {
+                String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (2, " + account.getId() + ", now(), " + this.getId() + ");";
+                try {
+                    ConnectSQL.sqlQueryUpdate(history_query);
+                } catch (Exception e) {
+
+                }
+            } else {
+                System.out.println("Time from adding: " + hour);
             }
+            
 //        System.out.println("User id: " + account.getId());
         } catch (Exception e) {
         }
@@ -259,11 +267,12 @@ public abstract class Media {
     public static void deleteListMedias(ArrayList<Integer> media_ids) {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = ";
         String real_query;
+        
         for (int media_id: media_ids) {
             try {
                 real_query = delete_query + media_id;
                 ConnectSQL.sqlQueryUpdate(real_query);
-                String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (3, " + account.getId() + ", now());";
+                String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (3, " + account.getId() + ", now(), " + media_id + ");";
                 try {
                     ConnectSQL.sqlQueryUpdate(history_query);
                 } catch (Exception e) {
@@ -273,6 +282,21 @@ public abstract class Media {
                 
             }
         }
+    }
+    
+    public static int getLatestEditTimeOfMedia(int media_id) {
+        int result = 0;
+        String query = "SELECT TIMEDIFF(now(), date) as diff FROM ActionsHistoryNew WHERE action_id = 1 AND media_id = " + media_id;
+        try {
+            ResultSet rs = ConnectSQL.sqlQuery(query);
+            if (rs.next()) {
+                String datetime = rs.getString("diff");
+                result = Integer.parseInt(datetime.split(":")[0]);
+            }
+        } catch (Exception e) {
+            
+        }
+        return result;
     }
     
     public static ArrayList<Media> getMediasByTitle(String searchText) {

@@ -37,12 +37,14 @@ public class AIMS {
         popUp.setBounds(0, 0, PopUp.WIDTH, PopUp.HEIGHT);        
         jDialog.setVisible(true);        
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             jDialog.dispose();
             Home home = new Home();
             home.setVisible(true);
         } catch (Exception e) {
         }
+//        Home home = new Home();
+//        home.setVisible(true);
         
     }
     

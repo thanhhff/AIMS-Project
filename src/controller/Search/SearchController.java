@@ -62,8 +62,8 @@ public class SearchController {
             while (rs.next()) {
                for(int i = 0 ; i < list.size(); i++)
                {
-                 if(list.get(i).getId() == rs.getInt(9))
-                     list.get(i).setQuantity(rs.getInt(10));
+                 if(list.get(i).getId() == rs.getInt("media_id"))
+                     list.get(i).setQuantity(rs.getInt("quantity"));
                }
             }
            
@@ -79,7 +79,7 @@ public class SearchController {
             
             while (rs.next()) {
                 MediaItem media = new MediaItem(){};
-                media.setTitle(rs.getString(2));
+                media.setTitle(rs.getString("title"));
                 media.setPrice(rs.getInt(4));
                 media.setValue(rs.getInt(3));
                 media.setCategory(rs.getInt(5));
