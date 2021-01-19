@@ -343,8 +343,10 @@ public class MediaListPanel extends javax.swing.JPanel {
         int[] rows = table.getSelectedRows();
         if (rows.length == 0) {
             JOptionPane.showMessageDialog(null, "Please select media");
+            return;
         } else if (rows.length > 10) {
             JOptionPane.showMessageDialog(null, "Cannot delete more than 10 medias at a time");
+            return;
         } else {
             ArrayList<Integer> del_mediaids = new ArrayList<Integer>();
             for (int r: rows) {
