@@ -40,7 +40,7 @@ public class MediaListPanel extends javax.swing.JPanel {
     private JTable table;
     private List<Media> medias;
     private int start;
-    private static final int NUMBER_MEDIA = 5;
+    private static final int NUMBER_MEDIA = 15;
     private int end;
 
     public MediaListPanel(List<Media> medias) {
