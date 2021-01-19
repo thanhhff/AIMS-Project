@@ -12820,3 +12820,14 @@ insert into `Actions` values (1, 'Them');
 insert into `Actions` values (2, 'Sua');
 insert into `Actions` values (3, 'Xoa');
 
+CREATE TABLE `ActionsHistoryNew` (
+  action_id int NOT NULL,
+  user_id int NOT NULL,
+  date datetime NOT NULL,
+  media_id bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+ALTER TABLE `ActionsHistoryNew`
+ADD CONSTRAINT `fk_ActionHistoryNew_Actions` FOREIGN KEY (action_id) REFERENCES Actions(action_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Users` FOREIGN KEY (user_id) REFERENCES Users(user_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Medias` FOREIGN KEY (media_id) REFERENCES Medias(media_id);

@@ -220,7 +220,7 @@ public abstract class Media {
         
         try {
             int result = ConnectSQL.sqlUpdate(media_query);
-            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (1, " + account.getId() + ", now());";
+            String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (1, " + account.getId() + ", now(), " + getMaxID() + ");";
             try {
                 ConnectSQL.sqlQueryUpdate(history_query);
             } catch (Exception e) {
@@ -240,7 +240,7 @@ public abstract class Media {
         
         try {
             ConnectSQL.sqlQueryUpdate(media_query);
-            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (2, " + account.getId() + ", now());";
+            String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (2, " + account.getId() + ", now(), " + this.getId() + ");";
             try {
                 ConnectSQL.sqlQueryUpdate(history_query);
             } catch (Exception e) {
@@ -259,7 +259,7 @@ public abstract class Media {
         String delete_query = "DELETE FROM `Medias` WHERE media_id = " + media_id + ";";
         try {
             ConnectSQL.sqlQueryUpdate(delete_query);
-            String history_query = "INSERT INTO `ActionsHistory` (action_id, user_id, date) values (3, " + account.getId() + ", now());";
+            String history_query = "INSERT INTO `ActionsHistoryNew` (action_id, user_id, date, media_id) values (3, " + account.getId() + ", now(), " + media_id + ");";
             try {
                 ConnectSQL.sqlQueryUpdate(history_query);
             } catch (Exception e) {

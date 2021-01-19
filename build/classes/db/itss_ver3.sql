@@ -12871,9 +12871,25 @@ ALTER TABLE `TrackLists`
 --
 -- Các ràng buộc cho bảng `Wards`
 --
+
+
+CREATE TABLE `ActionsHistoryNew` (
+  action_id int NOT NULL,
+  user_id int NOT NULL,
+  date datetime NOT NULL,
+  media_id bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+ALTER TABLE `ActionsHistoryNew`
+ADD CONSTRAINT `fk_ActionHistoryNew_Actions` FOREIGN KEY (action_id) REFERENCES Actions(action_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Users` FOREIGN KEY (user_id) REFERENCES Users(user_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Medias` FOREIGN KEY (media_id) REFERENCES Medias(media_id);
+
 ALTER TABLE `Wards`
   ADD CONSTRAINT `fk_SubDistricts_Districts1` FOREIGN KEY (`district_id`) REFERENCES `Districts` (`district_id`);
 COMMIT;
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

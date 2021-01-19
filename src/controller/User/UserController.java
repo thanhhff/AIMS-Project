@@ -158,7 +158,7 @@ public class UserController {
     }
       
     public static int getNumberOfActionsByCurrentAdmin() {
-        String query = "SELECT COUNT(*) FROM ActionsHistory WHERE user_id = " + account.getId() + " and action_id <> 1;";
+        String query = "SELECT COUNT(DISTINCT media_id) FROM `ActionsHistoryNew` WHERE user_id = " + account.getId() + " and action_id <> 1;";
         int result = 0;
         try {
             ResultSet rs = ConnectSQL.sqlQuery(query);
@@ -170,11 +170,5 @@ public class UserController {
         }
         return result;
     }
-    
-//    public static void main (String[] args)
-//    {
-//        
-//        
-//    }
-
+   
 }
