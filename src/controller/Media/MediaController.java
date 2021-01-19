@@ -30,7 +30,7 @@ public class MediaController {
         Media.deleteMedia(media_id);
     }
     
-    public static void deleteListMedias(int[] media_ids) {
+    public static void deleteListMedias(ArrayList<Integer> media_ids) {
         Media.deleteListMedias(media_ids);
     }
     
@@ -40,6 +40,10 @@ public class MediaController {
     
     public static ArrayList<Media> getAllMedia() {
         return Media.getAllMedia();
+    }
+    
+    public static ArrayList<Media> getMediasByTitle(String searchText) {
+        return Media.getMediasByTitle(searchText);
     }
 
      public static ArrayList<MediaItem> sortLowMediaPrice(ArrayList<MediaItem> list)

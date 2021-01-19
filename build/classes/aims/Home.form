@@ -55,7 +55,7 @@
                   <Component id="searchText" max="32767" attributes="0"/>
                   <Component id="SignIn" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpLayout" min="-2" max="-2" attributes="0"/>
@@ -82,6 +82,9 @@
     <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
     <Component class="javax.swing.JTextField" name="searchText">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchTextActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="search">
       <Properties>

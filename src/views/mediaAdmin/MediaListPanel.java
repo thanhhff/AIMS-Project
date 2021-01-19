@@ -7,8 +7,10 @@ package views.mediaAdmin;
 
 import aims.FormatNumber;
 import controller.Media.MediaController;
+import controller.User.UserController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -130,6 +132,11 @@ public class MediaListPanel extends javax.swing.JPanel {
         });
 
         mediaSearchButton.setText("Search");
+        mediaSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediaSearchButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -262,24 +269,33 @@ public class MediaListPanel extends javax.swing.JPanel {
 
     private void media_delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_media_delete_buttonActionPerformed
         // TODO add your handling code here:
+        
+        // check number of actions greater than 30?
+        int numActions = UserController.getNumberOfActionsByCurrentAdmin();
+        if (numActions > 30) {
+            JOptionPane.showMessageDialog(null, "Admin cannot update/delete more than 30 medias!");
+            return;
+        }
+        
         int[] rows = table.getSelectedRows();
         if (rows.length == 0) {
             JOptionPane.showMessageDialog(null, "Please select media");
         } else if (rows.length > 10) {
             JOptionPane.showMessageDialog(null, "Cannot delete more than 10 medias at a time");
         } else {
+            ArrayList<Integer> del_mediaids = new ArrayList<Integer>();
             for (int r: rows) {
                 Media media = medias.get(r);
-                int category_id = media.getCategoryId();
-                int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
-                if (isDelete == 0) {
-                    MediaController.deleteMedia(media.getId());
-                    this.removeAll();
-                    medias = Media.getAllMedia();
-                    initComponents();
-                    this.fillTable();
-                    this.updateUI();
-                }
+                del_mediaids.add(media.getId());
+            }
+            int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
+            if (isDelete == 0) {
+                MediaController.deleteListMedias(del_mediaids);
+                this.removeAll();
+                medias = Media.getAllMedia();
+                initComponents();
+                this.fillTable();
+                this.updateUI();
             }
         }
     }//GEN-LAST:event_media_delete_buttonActionPerformed
@@ -297,6 +313,20 @@ public class MediaListPanel extends javax.swing.JPanel {
             this.updateUI();
         });
     }//GEN-LAST:event_media_add_buttonActionPerformed
+
+    private void mediaSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediaSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = searchField.getText();
+        if (searchText.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Enter media title!");
+        } else {
+            this.removeAll();
+            medias = Media.getMediasByTitle(searchText);
+            initComponents();
+            this.fillTable();
+            this.updateUI();
+        }
+    }//GEN-LAST:event_mediaSearchButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

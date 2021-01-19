@@ -131,7 +131,7 @@ public abstract class PhysicalGood extends Media {
     protected void insertPhysical() {
         this.setId(this.insertMedia());
         
-        String physical_query = "INSERT INTO `Physicalgoods` (description, quantity, input_day, media_id, width, height, depth, weight, barcode) VALUES ('" +
+        String physical_query = "INSERT INTO `PhysicalGoods` (description, quantity, input_day, media_id, width, height, depth, weight, barcode) VALUES ('" +
                     description + "', " + quantity + ", '" + input_day + "', " + this.getId() + ", " + width + ", " + height + ", " + depth + ", " + weight + ", '" + barcode + "');";
         
         try {
@@ -142,7 +142,7 @@ public abstract class PhysicalGood extends Media {
     
     protected void updatePhysical() {
         this.updateMedia();
-        String physical_query = "UPDATE `Physicalgoods` SET description = '" + getDescription() + "', quantity = " + getQuantity() + ", input_day = '" + 
+        String physical_query = "UPDATE `PhysicalGoods` SET description = '" + getDescription() + "', quantity = " + getQuantity() + ", input_day = '" + 
                 getInputDay() + "', width = " + getWidth() + ", height = " + getHeight() + ", depth = " + getDepth() + ", weight = " + getWeight() 
                 + ", barcode = '" + getBarcode() + "' WHERE media_id = " + this.getId();
         try {
