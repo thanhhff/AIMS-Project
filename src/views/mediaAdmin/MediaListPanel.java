@@ -12,11 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import model.Media.Book;
@@ -47,7 +49,16 @@ public class MediaListPanel extends javax.swing.JPanel {
 
     }
 
-    private void fillTable() {
+    public JButton getPreButton() {
+        return preButton;
+    }
+
+    public JButton getNextButton() {
+        return nextButton;
+    }
+    
+    
+    public void fillTable() {
         String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)", "Select"};
         int i = medias.size();
         int j = 6;
@@ -102,6 +113,8 @@ public class MediaListPanel extends javax.swing.JPanel {
         media_delete_button = new javax.swing.JButton();
         searchField = new javax.swing.JTextField();
         mediaSearchButton = new javax.swing.JButton();
+        preButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
 
         media_add_button.setText("Add");
         media_add_button.addActionListener(new java.awt.event.ActionListener() {
@@ -138,24 +151,48 @@ public class MediaListPanel extends javax.swing.JPanel {
             }
         });
 
+        preButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/left-arrow.png"))); // NOI18N
+        preButton.setBorderPainted(false);
+        preButton.setContentAreaFilled(false);
+        preButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        preButton.setFocusPainted(false);
+        preButton.setFocusable(false);
+        preButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preButtonActionPerformed(evt);
+            }
+        });
+
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/images/right-arrow.png"))); // NOI18N
+        nextButton.setBorderPainted(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nextButton.setFocusPainted(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(mediaSearchButton))
+                        .addComponent(preButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(media_delete_button, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                            .addComponent(media_show_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                            .addComponent(media_edit_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(media_add_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(mediaSearchButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(387, 387, 387)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(media_delete_button, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                                    .addComponent(media_show_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                                    .addComponent(media_edit_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(media_add_button, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -176,7 +213,11 @@ public class MediaListPanel extends javax.swing.JPanel {
                             .addComponent(mediaSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(media_delete_button)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addGap(326, 326, 326)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(preButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -328,6 +369,10 @@ public class MediaListPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_mediaSearchButtonActionPerformed
 
+    private void preButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preButtonActionPerformed
+        
+    }//GEN-LAST:event_preButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton mediaSearchButton;
@@ -335,6 +380,8 @@ public class MediaListPanel extends javax.swing.JPanel {
     private javax.swing.JButton media_delete_button;
     private javax.swing.JButton media_edit_button;
     private javax.swing.JButton media_show_button;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton preButton;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
 }

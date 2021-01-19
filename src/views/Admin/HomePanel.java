@@ -9,6 +9,7 @@ import controller.Sale.SalesController;
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class HomePanel extends javax.swing.JPanel {
     /**
      * Creates new form HomePanel
      */
+    private int start_media = 0;
+    private int end_media = 20;
+    private static int count_media = Media.getCountMedia();
     public HomePanel() {
         initComponents();
         fill();
@@ -45,12 +49,37 @@ public class HomePanel extends javax.swing.JPanel {
 
     public void fill() {
         FillInfor.removeAll();
-        ArrayList<Media> medias = Media.getAllMedia();
+        ArrayList<Media> medias = Media.getAllMedia(this.start_media,this.end_media);
 //        MediaPanel mediaPanel = new MediaPanel(medias);
         MediaListPanel mediaListPanel = new MediaListPanel(medias);
+        if(start_media ==  0 ){
+            mediaListPanel.getPreButton().setEnabled(false);
+        }else{
+            mediaListPanel.getPreButton().setEnabled(true);
+        }
+        if(end_media + 20 >= count_media){
+            mediaListPanel.getNextButton().setEnabled(false);
+        }else{
+            mediaListPanel.getNextButton().setEnabled(true);
+        }
+        mediaListPanel.getPreButton().addActionListener((ActionEvent e) -> {
+            if(start_media != 0 ){
+                start_media -=20;
+            }
+            fill();
+        });
+        mediaListPanel.getNextButton().addActionListener((ActionEvent e) -> {
+            if(end_media + 20 >= count_media ){
+                end_media = count_media;
+            }else{
+                end_media += 20;
+            }
+            fill();
+        });
         FillInfor.setLayout(new BorderLayout());
 //        FillInfor.add(mediaPanel, BorderLayout.CENTER);
         FillInfor.add(mediaListPanel, BorderLayout.CENTER);
+        
         FillInfor.updateUI();
     }
 
