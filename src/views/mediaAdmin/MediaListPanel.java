@@ -253,7 +253,7 @@ public class MediaListPanel extends javax.swing.JPanel {
             if (row == -1) {
                 JOptionPane.showMessageDialog(null, "Please select media");
             } else {
-                Media media = medias.get(row);
+                Media media = medias.get(row + start);
                 int category_id = media.getCategoryId();
                 MediaAddFrame media_frame;
                 switch (category_id) {
@@ -299,7 +299,7 @@ public class MediaListPanel extends javax.swing.JPanel {
             if (row == -1) {
                 JOptionPane.showMessageDialog(null, "Please select media");
             } else {
-                Media media = medias.get(row);
+                Media media = medias.get(row + start);
                 int category_id = media.getCategoryId();
                 MediaAddFrame media_frame;
 
@@ -350,7 +350,7 @@ public class MediaListPanel extends javax.swing.JPanel {
         } else {
             ArrayList<Integer> del_mediaids = new ArrayList<Integer>();
             for (int r: rows) {
-                Media media = medias.get(r);
+                Media media = medias.get(r + start);
                 del_mediaids.add(media.getId());
             }
             int isDelete = JOptionPane.showConfirmDialog(null, "Are you sure to delete this media?");
