@@ -146,7 +146,13 @@ public final class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_AccountMouseClicked
 
     private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        fill();
+        int out = JOptionPane.showConfirmDialog(null, "Do you want to go to the homepage ?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (out == 0) {
+            this.setVisible(false);
+            aims.Home home = new aims.Home();
+            home.setLocationRelativeTo(null);
+            home.setVisible(true);
+        }
     }//GEN-LAST:event_HomeMouseClicked
 
     private void SigoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SigoutMouseClicked

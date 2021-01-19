@@ -53,7 +53,6 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jButtonHomepage" min="-2" pref="235" max="-2" attributes="0"/>
                       <Component id="jButtonUser" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
                       <Component id="jButtonOrder" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
                       <Component id="jButtonSale" alignment="0" min="-2" pref="235" max="-2" attributes="0"/>
@@ -74,9 +73,7 @@
                   <Component id="jButtonOrder" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonUser" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="355" max="32767" attributes="0"/>
-                  <Component id="jButtonHomepage" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace pref="420" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,15 +113,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUserActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonHomepage">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Homepage"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHomepageActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
