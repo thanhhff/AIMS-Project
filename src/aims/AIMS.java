@@ -35,11 +35,11 @@ public class AIMS {
         jDialog.setLocationRelativeTo(null);
         jDialog.setUndecorated(true);
         popUp.setBounds(0, 0, PopUp.WIDTH, PopUp.HEIGHT);        
-        jDialog.setVisible(true);
-        Home home = new Home();
+        jDialog.setVisible(true);        
         try {
             Thread.sleep(1000);
             jDialog.dispose();
+            Home home = new Home();
             home.setVisible(true);
         } catch (Exception e) {
         }
