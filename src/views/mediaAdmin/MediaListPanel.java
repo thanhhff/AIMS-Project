@@ -39,33 +39,50 @@ public class MediaListPanel extends javax.swing.JPanel {
      */
     private JTable table;
     private List<Media> medias;
-
+    private int start;
+    private static final int NUMBER_MEDIA = 5;
+    private int end;
 
     public MediaListPanel(List<Media> medias) {
         this.medias = medias;
         setLayout(null);
         initComponents();
-        fillTable();
+        start = 0 ;
+        end = NUMBER_MEDIA - 1;
+        fillTable(false);
 
-    }
-
-    public JButton getPreButton() {
-        return preButton;
-    }
-
-    public JButton getNextButton() {
-        return nextButton;
-    }
+    }    
     
-    
-    public void fillTable() {
+    public void fillTable(boolean flag) {
+        if(flag){
+            this.remove(table);
+            this.remove(table.getTableHeader());
+        }
+        List<Media> mediaFill = new ArrayList<Media>();
+        int index = 0;
+        for(Media media: this.medias){
+            if(index>= start && index <= end){
+                mediaFill.add(media);
+            }
+            index++;
+        }
+        if(start == 0){
+            preButton.setEnabled(false);
+        }else{
+            preButton.setEnabled(true);
+        }
+        if(end >= Media.getCountMedia()){
+            nextButton.setEnabled(false);
+        }else{
+            nextButton.setEnabled(true);
+        }
         String[] columnNames = {"MediaID", "Title", "Category", "Value(VND)", "Price(VND)", "Select"};
-        int i = medias.size();
+        int i = mediaFill.size();
         int j = 6;
         Object[][] data = new Object[i][j];
-        int index = 0;
+        index = 0;
         String[] categories = {"Book", "DVD", "CD", "LP"};
-        for (Media media : medias) {
+        for (Media media : mediaFill) {
             data[index][0] = media.getId();
             data[index][2] = categories[media.getCategoryId() - 1];
             data[index][1] = media.getTitle();
@@ -168,6 +185,11 @@ public class MediaListPanel extends javax.swing.JPanel {
         nextButton.setContentAreaFilled(false);
         nextButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nextButton.setFocusPainted(false);
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -261,7 +283,7 @@ public class MediaListPanel extends javax.swing.JPanel {
                     this.removeAll();
                     medias = Media.getAllMedia();
                     initComponents();
-                    this.fillTable();
+                    this.fillTable(true);
                     this.updateUI();
                 });
             }
@@ -335,7 +357,7 @@ public class MediaListPanel extends javax.swing.JPanel {
                 this.removeAll();
                 medias = Media.getAllMedia();
                 initComponents();
-                this.fillTable();
+                this.fillTable(true);
                 this.updateUI();
             }
         }
@@ -350,7 +372,7 @@ public class MediaListPanel extends javax.swing.JPanel {
             this.removeAll();
             medias = Media.getAllMedia();
             initComponents();
-            this.fillTable();
+            this.fillTable(true);
             this.updateUI();
         });
     }//GEN-LAST:event_media_add_buttonActionPerformed
@@ -364,14 +386,23 @@ public class MediaListPanel extends javax.swing.JPanel {
             this.removeAll();
             medias = Media.getMediasByTitle(searchText);
             initComponents();
-            this.fillTable();
+            this.fillTable(true);
             this.updateUI();
         }
     }//GEN-LAST:event_mediaSearchButtonActionPerformed
 
     private void preButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preButtonActionPerformed
-        
+        start -= NUMBER_MEDIA;
+        end -= NUMBER_MEDIA;        
+        fillTable(true);
     }//GEN-LAST:event_preButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+
+        end += NUMBER_MEDIA;
+        start += NUMBER_MEDIA;
+        fillTable(true);
+    }//GEN-LAST:event_nextButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

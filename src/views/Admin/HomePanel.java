@@ -50,40 +50,9 @@ public class HomePanel extends javax.swing.JPanel {
 
     public void fill() {
         FillInfor.removeAll();
-        ArrayList<Media> medias = Media.getAllMedia(this.start_media,this.end_media);
+        ArrayList<Media> medias = Media.getAllMedia();
 //        MediaPanel mediaPanel = new MediaPanel(medias);
         MediaListPanel mediaListPanel = new MediaListPanel(medias);
-        if(start_media ==  0 ){
-            mediaListPanel.getPreButton().setEnabled(false);
-        }else{
-            mediaListPanel.getPreButton().setEnabled(true);
-        }
-        if(end_media + NUMBER_MEDIA_PAGE >= count_media){
-            mediaListPanel.getNextButton().setEnabled(false);
-        }else{
-            mediaListPanel.getNextButton().setEnabled(true);
-        }
-        mediaListPanel.getPreButton().addActionListener((ActionEvent e) -> {
-            if(start_media - NUMBER_MEDIA_PAGE <= 0 ){
-                start_media = 0;
-                end_media = NUMBER_MEDIA_PAGE;
-            } else {
-                start_media -= NUMBER_MEDIA_PAGE;
-                end_media -= NUMBER_MEDIA_PAGE;
-            }
-            
-            fill();
-        });
-        mediaListPanel.getNextButton().addActionListener((ActionEvent e) -> {
-            if(end_media + NUMBER_MEDIA_PAGE >= count_media ){
-                end_media = count_media;
-                start_media += NUMBER_MEDIA_PAGE;
-            }else{
-                end_media += NUMBER_MEDIA_PAGE;
-                start_media += NUMBER_MEDIA_PAGE;
-            }
-            fill();
-        });
         FillInfor.setLayout(new BorderLayout());
 //        FillInfor.add(mediaPanel, BorderLayout.CENTER);
         FillInfor.add(mediaListPanel, BorderLayout.CENTER);
