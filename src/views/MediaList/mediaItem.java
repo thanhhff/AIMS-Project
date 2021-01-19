@@ -288,13 +288,21 @@ public class mediaItem extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (account.getId() != 0)
         {
-        CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
-        if(Integer.parseInt(quantityLabel.getText()) != 0)
-        JOptionPane.showMessageDialog(null, "Add cart successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
-        else
-           JOptionPane.showMessageDialog(null, "You have to choose quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+            if (account.getLv() != 1)
+            {
+            
+            CartItem.creat(account.getId(), media.getId(), media.getPrice(),Integer.parseInt(quantityLabel.getText()));
+            if(Integer.parseInt(quantityLabel.getText()) != 0)
+                JOptionPane.showMessageDialog(null, "Add cart successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
+            else
+                JOptionPane.showMessageDialog(null, "You have to choose quantity!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(null, "Admin can't add product", "Notification", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-        else 
+        else        
         {
             JOptionPane.showMessageDialog(null, "Login to add product", "Notification", JOptionPane.INFORMATION_MESSAGE);
         }
