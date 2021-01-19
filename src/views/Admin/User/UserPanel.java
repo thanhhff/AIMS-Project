@@ -295,6 +295,7 @@ public class UserPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int[] selectedRows = tbAccount.getSelectedRows();
         
+        int flag = 0;
         if (selectedRows.length <= 0) {
             JOptionPane.showMessageDialog(null, "You are not select row!");
         } else {
@@ -306,8 +307,17 @@ public class UserPanel extends javax.swing.JPanel {
                 ListAccount.add(ma);
                 String userName = (String) tbAccount.getValueAt(i, 1);
                 sp += userName + "\n";
+                
+                String levelName = (String) tbAccount.getValueAt(i, 2);
+                if ("Admin".equals(levelName))
+                {
+                    flag = 1;
+                    JOptionPane.showMessageDialog(null, "Can not block Admin account!");
+                }
             }
-            int qs;
+            if (flag == 0)
+            {
+                int qs;
             qs = JOptionPane.showConfirmDialog(null, "Block this account:\n " + sp, "Block Account", JOptionPane.YES_NO_OPTION);
             if (qs == JOptionPane.YES_OPTION) {
                 boolean delete = userAccount.blockAccount(ListAccount, 2);
@@ -315,7 +325,7 @@ public class UserPanel extends javax.swing.JPanel {
                     FillTable();
                 } else
                     JOptionPane.showMessageDialog(null, "Can not block this account!");
-
+            }
             }
         }
     }//GEN-LAST:event_BlockActionPerformed
@@ -323,7 +333,7 @@ public class UserPanel extends javax.swing.JPanel {
     private void UnBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UnBlockActionPerformed
         // TODO add your handling code here:
         int[] selectedRows = tbAccount.getSelectedRows();
-        
+        int flag = 0;
         if (selectedRows.length <= 0) {
             JOptionPane.showMessageDialog(null, "You are not select row!");
         } else {
@@ -335,8 +345,17 @@ public class UserPanel extends javax.swing.JPanel {
                 ListAccount.add(ma);
                 String userName = (String) tbAccount.getValueAt(i, 1);
                 sp += userName + "\n";
+                
+                String levelName = (String) tbAccount.getValueAt(i, 2);
+                if (!"Block".equals(levelName))
+                {
+                    flag = 1;
+                    JOptionPane.showMessageDialog(null, "This account is not blocked!");
+                }
             }
-            int qs;
+            if (flag == 0)
+            {
+                int qs;
             qs = JOptionPane.showConfirmDialog(null, "Un Block this account:\n " + sp, "Un Block Account", JOptionPane.YES_NO_OPTION);
             if (qs == JOptionPane.YES_OPTION) {
                 boolean delete = userAccount.blockAccount(ListAccount, 0);
@@ -345,6 +364,7 @@ public class UserPanel extends javax.swing.JPanel {
                 } else
                     JOptionPane.showMessageDialog(null, "Can not unblock this account!");
 
+            }
             }
         }
     }//GEN-LAST:event_UnBlockActionPerformed
