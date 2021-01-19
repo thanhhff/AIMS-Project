@@ -188,6 +188,7 @@ public class Login extends javax.swing.JFrame {
                 {
                     HomeUser home = new HomeUser();
                     home.setVisible(true);
+                    home.setLocationRelativeTo(null);
                 }
                 else if (level == 1)
                 {
