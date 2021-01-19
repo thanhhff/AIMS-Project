@@ -1049,10 +1049,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
             String description = media_description.getText();
             String input_day = media_input_day.getText();
             String image_path = "";
-            if (media_image_path.getText().contains("/src/views/productImages/")) {
+            if (media_image_path.getText().contains("src/views/productImages/")) {
                 image_path = media_image_path.getText();
             } else {
-                image_path = "/src/views/productImages/" + media_image_path.getText();
+                image_path = "src/views/productImages/" + media_image_path.getText();
             }
             
             int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
@@ -1159,7 +1159,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         MediaController.update(media);
                         System.out.println(media.getId());
                         System.out.println(media.getTitle());
-                        this.setVisible(false);
+//                        this.setVisible(false);
                     }
                 }
             }
