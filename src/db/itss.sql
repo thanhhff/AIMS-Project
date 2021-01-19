@@ -36,6 +36,20 @@ CREATE TABLE `Actions` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `ActionsHistory`
+--
+
+CREATE TABLE `ActionsHistory` (
+  `action_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ; 
+
+
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `Addresses`
 --
 
@@ -900,19 +914,6 @@ CREATE TABLE `EGoods` (
   `content` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `HistoryActions`
---
-
-CREATE TABLE `HistoryActions` (
-  `date` datetime NOT NULL,
-  `action_id` int NOT NULL,
-  `note` varchar(45) DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `media_id` bigint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 
@@ -12473,15 +12474,6 @@ ALTER TABLE `EGoods`
   ADD PRIMARY KEY (`media_id`);
 
 --
--- Chỉ mục cho bảng `HistoryActions`
---
-ALTER TABLE `HistoryActions`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `fk_HistoryActions_Actions1_idx` (`action_id`),
-  ADD KEY `fk_HistoryActions_Users1_idx` (`user_id`),
-  ADD KEY `fk_HistoryActions_Medias1_idx` (`media_id`);
-
---
 -- Chỉ mục cho bảng `Languages`
 --
 ALTER TABLE `Languages`
@@ -12712,10 +12704,6 @@ ALTER TABLE `EGoods`
 --
 -- Các ràng buộc cho bảng `HistoryActions`
 --
-ALTER TABLE `HistoryActions`
-  ADD CONSTRAINT `fk_HistoryActions_Actions1` FOREIGN KEY (`action_id`) REFERENCES `Actions` (`action_id`),
-  ADD CONSTRAINT `fk_HistoryActions_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
-  ADD CONSTRAINT `fk_HistoryActions_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
 
 --
 -- Các ràng buộc cho bảng `Medias`
@@ -12782,6 +12770,10 @@ insert into `CoverTypes` values (1, 'Paperback');
 
 insert into `CoverTypes` values (2, 'Hardcover');
 
+ALTER TABLE `ActionsHistory`
+  ADD CONSTRAINT `fk_ActionsHistory_Actions` FOREIGN KEY (action_id) REFERENCES `Actions`(action_id) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_ActionsHistory_Users` FOREIGN KEY (user_id) REFERENCES `Users`(user_id) ON DELETE CASCADE;
+
 
 insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (4, 'MLCB', 25000, 30000, 1, NULL);
 insert into `Medias` (`media_id`, `title`, `value`, `price`, `category_id`, `image_path`) values (5, 'Programming in Python', 20000, 30000, 1, 'images/');
@@ -12827,3 +12819,15 @@ insert into `Books` (`publication_date`, `page_number`, `media_id`, `cover_type_
 insert into `Actions` values (1, 'Them');
 insert into `Actions` values (2, 'Sua');
 insert into `Actions` values (3, 'Xoa');
+
+CREATE TABLE `ActionsHistoryNew` (
+  action_id int NOT NULL,
+  user_id int NOT NULL,
+  date datetime NOT NULL,
+  media_id bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+ALTER TABLE `ActionsHistoryNew`
+ADD CONSTRAINT `fk_ActionHistoryNew_Actions` FOREIGN KEY (action_id) REFERENCES Actions(action_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Users` FOREIGN KEY (user_id) REFERENCES Users(user_id),
+ADD CONSTRAINT `fk_ActionHistoryNew_Medias` FOREIGN KEY (media_id) REFERENCES Medias(media_id);

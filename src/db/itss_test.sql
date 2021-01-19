@@ -32,7 +32,11 @@ CREATE TABLE `Actions` (
   `action_id` int NOT NULL,
   `action_name` varchar(45) NOT NULL
 ) ;
-
+CREATE TABLE `ActionsHistory` (
+  `action_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL
+)
 -- --------------------------------------------------------
 
 --
@@ -931,19 +935,6 @@ CREATE TABLE `EGoods` (
   `content` text
 ) ;
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `HistoryActions`
---
-
-CREATE TABLE `HistoryActions` (
-  `date` datetime NOT NULL,
-  `action_id` int NOT NULL,
-  `note` varchar(45) DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `media_id` bigint NOT NULL
-) ;
 
 -- --------------------------------------------------------
 
@@ -12548,16 +12539,7 @@ ALTER TABLE `DVDTypes`
 ALTER TABLE `EGoods`
   ADD PRIMARY KEY (`media_id`);
 
---
--- Chỉ mục cho bảng `HistoryActions`
---
-ALTER TABLE `HistoryActions`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `fk_HistoryActions_Actions1_idx` (`action_id`),
-  ADD KEY `fk_HistoryActions_Users1_idx` (`user_id`),
-  ADD KEY `fk_HistoryActions_Medias1_idx` (`media_id`);
 
---
 -- Chỉ mục cho bảng `Languages`
 --
 ALTER TABLE `Languages`
@@ -12791,13 +12773,6 @@ ALTER TABLE `DVDs`
 ALTER TABLE `EGoods`
   ADD CONSTRAINT `fk_eGoods_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`);
 
---
--- Các ràng buộc cho bảng `HistoryActions`
---
-ALTER TABLE `HistoryActions`
-  ADD CONSTRAINT `fk_HistoryActions_Actions1` FOREIGN KEY (`action_id`) REFERENCES `Actions` (`action_id`),
-  ADD CONSTRAINT `fk_HistoryActions_Medias1` FOREIGN KEY (`media_id`) REFERENCES `Medias` (`media_id`),
-  ADD CONSTRAINT `fk_HistoryActions_Users1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
 
 --
 -- Các ràng buộc cho bảng `LPs`
@@ -12862,8 +12837,14 @@ ALTER TABLE Orders
 ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE Orders 
 ADD COLUMN updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP;
+ALTER TABLE `ActionsHistory`
+  ADD CONSTRAINT `fk_ActionsHistory_Actions` FOREIGN KEY (action_id) REFERENCES `Actions`(action_id) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_ActionsHistory_Users` FOREIGN KEY (user_id) REFERENCES `Users`(user_id) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+insert into `Actions` values (1, 'Them');
+insert into `Actions` values (2, 'Sua');
+insert into `Actions` values (3, 'Xoa');

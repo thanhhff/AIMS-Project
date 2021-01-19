@@ -8,6 +8,7 @@ package views.mediaAdmin;
 import aims.FormatNumber;
 import controller.Media.*;
 import java.awt.Component;
+import javax.swing.JButton;
 import model.Media.*;
 import javax.swing.JOptionPane;
 
@@ -59,7 +60,10 @@ public class MediaAddFrame extends javax.swing.JFrame {
         categories.setEditable(false);
         int category_id = md.getCategoryId();
         categories.setSelectedIndex(category_id-1);
-        media_image_path.setText(md.getImagePath());
+        String[] splitArr = md.getImagePath().split("/");
+        String path = splitArr[splitArr.length-1];
+//        media_image_path.setText(md.getImagePath());
+        media_image_path.setText(path);
         switch (category_id) {
             case 1:
                 Book book = (Book) md;
@@ -1044,8 +1048,12 @@ public class MediaAddFrame extends javax.swing.JFrame {
             String barcode = media_barcode.getText();
             String description = media_description.getText();
             String input_day = media_input_day.getText();
-            String image_path = "/views/productImages/" + media_image_path.getText();
-
+            String image_path = "";
+            if (media_image_path.getText().contains("src/views/productImages/")) {
+                image_path = media_image_path.getText();
+            } else {
+                image_path = "src/views/productImages/" + media_image_path.getText();
+            }
             
             int width = media_width.getText().length() == 0 ? 0 : Integer.parseInt(media_width.getText());
             int height = media_height.getText().length() == 0 ? 0 : Integer.parseInt(media_height.getText());
@@ -1091,13 +1099,19 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         String director = writer_name.getText();
                         String studio = studio_name.getText();
                         String dvd_publication_date = publication_date_dvd.getText();
-                        int runtime = Integer.parseInt(dvd_runtime.getText());
+                        int runtime = 0;
+                        try {
+                            runtime = Integer.parseInt(dvd_runtime.getText());
+                        } catch (Exception e) {
+                            
+                        }
                         int dvd_language_id = dvd_languages.getSelectedIndex() + 1;
                         int dvd_type_id = dvd_types.getSelectedIndex() + 1;
                         String subtitle = dvd_subtitle.getText();
                         int dvd_id = Media.getMaxID() + 1;
                         if (director.length() == 0 || studio.length() == 0 || dvd_publication_date.length() == 0 || dvd_runtime.getText().length() == 0 || subtitle.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter DVD details");
+                            return;
                         } else {
                             media = new DVD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, dvd_type_id, director, runtime, studio, dvd_language_id, subtitle, dvd_publication_date);
                         }
@@ -1111,6 +1125,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int cd_id = Media.getMaxID() + 1;
                         if (artist.length() == 0 || genre_cd.length() == 0 || record.length() == 0 || track_list.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter CD details");
+                            return;
                         } else {
                             media = new CD(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, artist, record, cd_publication_day, genre_cd, track_list);
                         }
@@ -1124,6 +1139,7 @@ public class MediaAddFrame extends javax.swing.JFrame {
                         int lp_id = Media.getMaxID() + 1;
                         if (lp_artist.length() == 0 || genre_lp.length() == 0 || lp_record_name.length() == 0 || lp_publication_day.length() == 0 || lp_tracks.length() == 0) {
                             JOptionPane.showMessageDialog(null, "Please enter LP details");
+                            return;
                             
                         } else {
                             media = new LP(title, value, price, 0, category_id, image_path, barcode, description, quantity, input_day, width, height, depth, weight, lp_artist, lp_record_name, lp_publication_day, genre_lp, lp_tracks);
@@ -1134,12 +1150,17 @@ public class MediaAddFrame extends javax.swing.JFrame {
                     int confirmAdd = JOptionPane.showConfirmDialog(null, "Are you sure?");
                     if (confirmAdd == 0) {
                         MediaController.insert(media);
+                        this.setVisible(false);
                     }
                 } else {
-                    media.setId(old_id);
-                    MediaController.update(media);
-                    System.out.println(media.getId());
-                    System.out.println(media.getTitle());
+                    int confirmAdd = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                    if (confirmAdd == 0) {
+                        media.setId(old_id);
+                        MediaController.update(media);
+                        System.out.println(media.getId());
+                        System.out.println(media.getTitle());
+//                        this.setVisible(false);
+                    }
                 }
             }
         }
@@ -1314,9 +1335,14 @@ public class MediaAddFrame extends javax.swing.JFrame {
        
         
     }
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+    
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-
+        
         this.dispose();
 
     }//GEN-LAST:event_backButtonActionPerformed

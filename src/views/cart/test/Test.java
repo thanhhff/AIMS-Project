@@ -10,10 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.Cart.Order;
 import model.Media.Media;
-import model.Sale.Sale;
 import model.User.User;
-import views.Admin.Sales.SaleListPanel;
-import views.cart.CartPanel;
+import views.mediaAdmin.MediaListPanel;
 
 
 
@@ -43,7 +41,6 @@ public class Test {
 //        new Test(new MediaSalePanel(medias));
         User user = new User();
         List<Order> orders = user.getOrders();
-        System.out.println(Sale.getAllSales().size());
-        new Test(new SaleListPanel(Sale.getAllSales()));
+        new Test(new MediaListPanel(medias));
     }
 }

@@ -9,6 +9,7 @@ import controller.Sale.SalesController;
 import controller.Search.SearchController;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import views.Admin.Sales.MediaSalePanel;
 import views.Admin.Sales.SaleListPanel;
 import views.Admin.User.UserPanel;
 import views.MediaList.mediaListPanel;
+import views.mediaAdmin.MediaListPanel;
 import views.mediaAdmin.MediaPanel;
 import views.order.OrderListPanel;
 
@@ -37,6 +39,10 @@ public class HomePanel extends javax.swing.JPanel {
     /**
      * Creates new form HomePanel
      */
+    private int start_media = 0;
+    private static final int NUMBER_MEDIA_PAGE = 5;
+    private int end_media = NUMBER_MEDIA_PAGE;
+    private static int count_media = Media.getCountMedia();
     public HomePanel() {
         initComponents();
         fill();
@@ -45,9 +51,12 @@ public class HomePanel extends javax.swing.JPanel {
     public void fill() {
         FillInfor.removeAll();
         ArrayList<Media> medias = Media.getAllMedia();
-        MediaPanel mediaPanel = new MediaPanel(medias);
+//        MediaPanel mediaPanel = new MediaPanel(medias);
+        MediaListPanel mediaListPanel = new MediaListPanel(medias);
         FillInfor.setLayout(new BorderLayout());
-        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+//        FillInfor.add(mediaPanel, BorderLayout.CENTER);
+        FillInfor.add(mediaListPanel, BorderLayout.CENTER);
+        
         FillInfor.updateUI();
     }
 
@@ -65,7 +74,6 @@ public class HomePanel extends javax.swing.JPanel {
         jButtonSale = new javax.swing.JButton();
         jButtonOrder = new javax.swing.JButton();
         jButtonUser = new javax.swing.JButton();
-        jButtonHomepage = new javax.swing.JButton();
         FillInfor = new javax.swing.JPanel();
 
         Sidebar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -102,14 +110,6 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
 
-        jButtonHomepage.setText("Homepage");
-        jButtonHomepage.setToolTipText("");
-        jButtonHomepage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHomepageActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout SidebarLayout = new javax.swing.GroupLayout(Sidebar);
         Sidebar.setLayout(SidebarLayout);
         SidebarLayout.setHorizontalGroup(
@@ -117,7 +117,6 @@ public class HomePanel extends javax.swing.JPanel {
             .addGroup(SidebarLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(SidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonHomepage, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonSale, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,9 +134,7 @@ public class HomePanel extends javax.swing.JPanel {
                 .addComponent(jButtonOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonUser, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 355, Short.MAX_VALUE)
-                .addComponent(jButtonHomepage, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
 
         FillInfor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -320,23 +317,10 @@ public class HomePanel extends javax.swing.JPanel {
         FillInfor.updateUI();
     }//GEN-LAST:event_jButtonUserActionPerformed
 
-    private void jButtonHomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHomepageActionPerformed
-        // TODO add your handling code here:
-        
-        FillInfor.removeAll();
-        mediaListPanel media = new  mediaListPanel();  
-        FillInfor.setLayout(new BorderLayout());
-        FillInfor.add(media, BorderLayout.CENTER);
-        FillInfor.updateUI();
-        
-        
-    }//GEN-LAST:event_jButtonHomepageActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FillInfor;
     private javax.swing.JPanel Sidebar;
-    private javax.swing.JButton jButtonHomepage;
     private javax.swing.JButton jButtonOrder;
     private javax.swing.JButton jButtonProduct;
     private javax.swing.JButton jButtonSale;
